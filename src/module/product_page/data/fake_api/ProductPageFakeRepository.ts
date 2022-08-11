@@ -5,7 +5,7 @@ export default class ProductPageFakeRepository implements ProductPageRepository{
     async getProductDetails(productId: string): Promise<Product> {
         // fetch ???
         return new Promise((resolve => {
-            resolve(new Product("123"));
+            resolve(new Product("7114", "../public/images/img_7114.jpg", "Basic t-shirt", "Purple", "L / 14 US", 55));
         }));
     }
 
