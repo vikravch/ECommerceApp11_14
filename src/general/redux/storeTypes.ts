@@ -1,5 +1,6 @@
-import {ProductPageStore} from "../../module/product_page/redux/typesProductPage";
+import {LandingPageStore, ProductPageStore} from "../../module/product_page/redux/typesProductPage";
 
 export interface Store{
-    productPage: ProductPageStore
+    productPage: ProductPageStore,
+    landingPage: LandingPageStore
 }

@@ -1,0 +1,23 @@
+/* Blog */
+
+.blog_text
+{
+position: absolute;
+width: 73px;
+height: 44px;
+left: 155px;
+top: 3156px;
+
+/* Headline / 4 */
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 44px;
+/* identical to box height, or 122% */
+
+letter-spacing: -1.2px;
+
+color: #000000;
+}

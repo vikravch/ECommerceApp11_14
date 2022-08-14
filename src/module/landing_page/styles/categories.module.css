@@ -1,0 +1,82 @@
+/* Categories */
+.categories
+{
+    position: absolute;
+    width: 178px;
+    height: 44px;
+    left: 156px;
+    top: 2446px;
+
+    /* Headline / 4 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    /* identical to box height, or 122% */
+
+    letter-spacing: -1.2px;
+
+    color: #000000;
+}
+
+/* Group 11 */
+.group11
+{
+    position: absolute;
+    width: 1290px;
+    height: 520px;
+}
+
+/* Mask group */
+.mask_group_men
+{
+    position: absolute;
+    width: 630px;
+    height: 520px;
+}
+
+/* Rectangle 47 */
+.rectangle47
+{
+    position: absolute;
+    width: 630px;
+    height: 520px;
+
+    background: #C4C4C4;
+    border-radius: 10px;
+}
+
+/* image 1 */
+.img1
+{
+    position: absolute;
+    width: 686.54px;
+    height: 680px;
+
+    background: url("../images/group11/image 1.png");
+}
+
+/* Men */
+
+.text_men
+{
+position: absolute;
+width: 590px;
+height: 70px;
+
+/* Headline / 2 */
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 64px;
+line-height: 70px;
+/* identical to box height, or 109% */
+
+letter-spacing: -3px;
+
+color
+: #000000;
+}
