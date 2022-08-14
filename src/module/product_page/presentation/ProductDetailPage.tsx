@@ -10,7 +10,6 @@ import styles from "./ProductPage.module.css";
 import AlsoLike from "../../preview_product_panel/presentation/AlsoLike";
 import Header from "../../header/presentation/Header";
 
-
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
     const product = useSelector<Store, Product>(
@@ -31,6 +30,11 @@ const ProductDetailPage: React.FC = () => {
 
     let addToChart = () => {
         {
+            // при переходе на страницу продукта пишем в стейт - productId
+            // при клике на цвет пишем в стейт - product color
+            // при клике на цвет пишем в стейт - product size
+            // при клике на addToChart - отправляем инфо в "корзину"
+
             // let data:Product = [];
             console.log("Add_to_Chart Button Clicked")
             // store.addToChart(productDetailsToChart)
@@ -38,6 +42,10 @@ const ProductDetailPage: React.FC = () => {
         }
     }
 
+
+    function dropDownDetails() {
+        console.log("Drop down CLICKED")
+    }
 
     return (
         <div>
@@ -81,9 +89,15 @@ const ProductDetailPage: React.FC = () => {
 
                         <button className={styles.addBtn} onClick={addToChart}>Add to chart</button>
                         <div className={styles.lineDeviderSmall}></div>
+
                         <div className={styles.aditionalInfo}>
-                            <div className={styles.detailsDropdown}>
-                                <div>Details</div>
+
+                            {/*// ---- DROP DAWN*/}
+                            <div>
+                                <div  className={styles.dropdown} onClick={dropDownDetails}>Details</div>
+                                <div className={styles.dropdownContent}>
+                                    <p className={styles.show}>Some text area. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi debitis distinctio impedit.</p>
+                                </div>
                             </div>
                             <div className={styles.shippingDropdown}>
                                 <div>Shipping & Returns</div>
@@ -95,6 +109,19 @@ const ProductDetailPage: React.FC = () => {
                 <div className={styles.lineDevider}></div>
             </div>
             <AlsoLike/>
+
+            <div className="dropdown">
+                <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    Ссылка выпадающего списка
+                </a>
+
+                <ul className="dropdown-menu">
+                    <li><a className="dropdown-item" href="#">Действие</a></li>
+                    <li><a className="dropdown-item" href="#">Другое действие</a></li>
+                    <li><a className="dropdown-item" href="#">Что-то еще здесь</a></li>
+                </ul>
+            </div>
         </div>
 
     );
