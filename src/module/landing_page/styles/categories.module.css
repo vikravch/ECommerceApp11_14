@@ -43,6 +43,8 @@
     position: absolute;
     width: 630px;
     height: 520px;
+    top: 2566px;
+    left: 156px;
 
     background: #C4C4C4;
     border-radius: 10px;
@@ -51,9 +53,10 @@
 /* image 1 */
 .img1
 {
-    position: absolute;
-    width: 686.54px;
-    height: 680px;
+    /*position: absolute;*/
+    width: 630px;
+    height: 520px;
+    border-radius: 10px;
 
     background: url("../images/group11/image 1.png");
 }
@@ -80,3 +83,85 @@ letter-spacing: -3px;
 color
 : #000000;
 }
+
+/* Group 6 */
+
+.group6
+{
+    position: absolute;
+    width: 74px;
+    height: 24px;
+    top: 70px;
+}
+
+/* Explore */
+
+.explore_men
+{
+    position: absolute;
+    width: 50px;
+    height: 23px;
+
+    /* Body 15 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 23px;
+    /* identical to box height, or 153% */
+
+    text-align: center;
+    letter-spacing: -0.6px;
+
+    color: #000000;
+
+    text-shadow: 0px 5px 12px rgba(203, 105, 193, 0.25);
+}
+
+.arrow_right
+{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+}
+
+.arrow_vector
+{
+    position: absolute;
+    left: 225%;
+    right: 25.02%;
+    top: 24.98%;
+    bottom: 24.98%;
+
+    /*background: #000000;*/
+}
+rectangle49
+{
+    position: absolute;
+    width: 300px;
+    height: 255px;
+
+    background: #C4C4C4;
+    border-radius: 10px;
+}
+
+/* Mask group */
+.mask_group_women
+{
+    position: absolute;
+    width: 630px;
+    height: 520px;
+}
+
+/* image 2 */
+.img2
+{
+    position: absolute;
+    width: 300px;
+    height: 250px;
+
+    background: url("../images/group11/image 2.png");
+}
+
+
