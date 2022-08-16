@@ -1,6 +1,5 @@
 /* Categories */
-.categories
-{
+.categories {
     position: absolute;
     width: 178px;
     height: 44px;
@@ -22,24 +21,21 @@
 }
 
 /* Group 11 */
-.group11
-{
+.group11 {
     position: absolute;
     width: 1290px;
     height: 520px;
 }
 
 /* Mask group */
-.mask_group_men
-{
+.mask_group_men {
     position: absolute;
     width: 630px;
     height: 520px;
 }
 
 /* Rectangle 47 */
-.rectangle47
-{
+.rectangle47 {
     position: absolute;
     width: 630px;
     height: 520px;
@@ -51,8 +47,7 @@
 }
 
 /* image 1 */
-.img1
-{
+.img1 {
     /*position: absolute;*/
     width: 630px;
     height: 520px;
@@ -63,31 +58,29 @@
 
 /* Men */
 
-.text_men
-{
-position: absolute;
-width: 590px;
-height: 70px;
+.text_men {
+    position: absolute;
+    width: 590px;
+    height: 70px;
+    left: 15px;
 
-/* Headline / 2 */
+    /* Headline / 2 */
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 64px;
-line-height: 70px;
-/* identical to box height, or 109% */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 70px;
+    /* identical to box height, or 109% */
 
-letter-spacing: -3px;
+    letter-spacing: -3px;
 
-color
-: #000000;
+    color: #000000;
 }
 
 /* Group 6 */
 
-.group6
-{
+.group6 {
     position: absolute;
     width: 74px;
     height: 24px;
@@ -96,11 +89,107 @@ color
 
 /* Explore */
 
-.explore_men
-{
+.explore_men {
     position: absolute;
     width: 50px;
     height: 23px;
+    left: 15px;
+    /* Body 15 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 23px;
+    /* identical to box height, or 153% */
+
+    text-align: center;
+    letter-spacing: -0.6px;
+
+    color: #000000;
+
+    text-shadow: 0px 5px 12px rgba(203, 105, 193, 0.25);
+}
+
+.arrow_men {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+}
+
+.arrow_vector_men {
+    position: absolute;
+    left: 265%;
+    right: 25.02%;
+    top: 24.98%;
+    bottom: 24.98%;
+
+    /*background: #000000;*/
+}
+
+.rectangle49 {
+    position: absolute;
+    width: 300px;
+    height: 255px;
+    top: 2566px;
+    left: 820px;
+
+    background: #C4C4C4;
+    border-radius: 10px;
+}
+
+/* Mask group */
+.mask_group_women {
+    position: absolute;
+    width: 300px;
+    height: 255px;
+}
+
+/* image 2 */
+.img2 {
+    position: absolute;
+    width: 300px;
+    height: 255px;
+    border-radius: 10px;
+
+    background: url("../images/group11/image 2.png");
+}
+
+.text_women {
+    position: absolute;
+    width: 280px;
+    height: 34px;
+
+    /* Headline / 5 */
+    top: 55px;
+    left: 27px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height, or 121% */
+
+    letter-spacing: -0.8px;
+
+    color: #000000;
+}
+
+.group2 {
+    position: absolute;
+    width: 74px;
+    height: 24px;
+    top: 70px;
+}
+
+/* Explore */
+
+.explore {
+    position: absolute;
+    width: 50px;
+    height: 23px;
+    left: 15px;
+    top: 110px;
 
     /* Body 15 */
 
@@ -119,49 +208,192 @@ color
     text-shadow: 0px 5px 12px rgba(203, 105, 193, 0.25);
 }
 
-.arrow_right
-{
+.arrow {
     position: absolute;
     width: 24px;
     height: 24px;
+    left: 60px;
+    top: 109px;
 }
 
-.arrow_vector
-{
+.arrow_vector {
     position: absolute;
-    left: 225%;
+    left: 25%;
     right: 25.02%;
     top: 24.98%;
     bottom: 24.98%;
 
     /*background: #000000;*/
 }
-rectangle49
-{
+
+
+.rectangle51 {
     position: absolute;
     width: 300px;
     height: 255px;
+    top: 2566px;
+    left: 1150px;
 
     background: #C4C4C4;
     border-radius: 10px;
 }
 
 /* Mask group */
-.mask_group_women
-{
-    position: absolute;
-    width: 630px;
-    height: 520px;
-}
-
-/* image 2 */
-.img2
-{
+.mask_group_sale {
     position: absolute;
     width: 300px;
-    height: 250px;
+    height: 255px;
+}
 
-    background: url("../images/group11/image 2.png");
+/* image 4 */
+.img4 {
+    position: absolute;
+    width: 300px;
+    height: 255px;
+    border-radius: 10px;
+
+    background: url("../images/group11/image 4.png");
+}
+
+.text_sale {
+    position: absolute;
+    width: 280px;
+    height: 34px;
+
+    /* Headline / 5 */
+    top: 55px;
+    left: 27px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height, or 121% */
+
+    letter-spacing: -0.8px;
+
+    color: #000000;
+}
+
+.group2 {
+    position: absolute;
+    width: 74px;
+    height: 24px;
+    top: 70px;
+}
+
+.rectangle48 {
+    position: absolute;
+    width: 300px;
+    height: 255px;
+    top: 2830px;
+    left: 820px;
+
+    background: #C4C4C4;
+    border-radius: 10px;
+}
+
+/* Mask group */
+.mask_group_kids {
+    position: absolute;
+    width: 300px;
+    height: 255px;
+}
+
+/* image 3 */
+.img3 {
+    position: absolute;
+    width: 300px;
+    height: 255px;
+    border-radius: 10px;
+
+    background: url("../images/group11/image 3.png");
+}
+
+.text_kids {
+    position: absolute;
+    width: 280px;
+    height: 34px;
+
+    /* Headline / 5 */
+    top: 55px;
+    left: 27px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height, or 121% */
+
+    letter-spacing: -0.8px;
+
+    color: #000000;
+}
+
+.group4 {
+    position: absolute;
+    width: 74px;
+    height: 24px;
+    top: 70px;
+}
+
+.rectangle50 {
+    position: absolute;
+    width: 300px;
+    height: 255px;
+    top: 2836px;
+    left: 1150px;
+    /*top: 2830px;*/
+    /*left: 1120px;*/
+
+    background: #C4C4C4;
+    border-radius: 10px;
+}
+
+/* Mask group */
+.mask_group_kids {
+    position: absolute;
+    width: 300px;
+    height: 255px;
+}
+
+/* image 5 */
+.img5 {
+    position: absolute;
+    width: 300px;
+    height: 255px;
+    border-radius: 10px;
+
+    background: url("../images/group11/image 5.png");
+}
+
+.text_collection {
+    position: absolute;
+    width: 280px;
+    height: 34px;
+
+    /* Headline / 5 */
+    top: 55px;
+    left: 17px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height, or 121% */
+
+    letter-spacing: -0.8px;
+
+    color: #000000;
+}
+
+.group5 {
+    position: absolute;
+    width: 74px;
+    height: 24px;
+    top: 70px;
 }
 
 
