@@ -53,11 +53,11 @@ const Footer = () => {
                     </div>
             </div>
 
-                    {/*<div className={style.facebook_path}>*/}
-                    {/*    <div className={style.base_icon}>*/}
-                    {/*        <img className={style.facebook_icon}/>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
+            <div className={style.twitter}>
+                <div className={style.base_icon}>
+                        <img className={style.twitter_icon}/>
+                </div>
+            </div>
 
 
 

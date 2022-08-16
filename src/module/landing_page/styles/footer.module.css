@@ -733,3 +733,41 @@
 
 /*    background: #FFFFFF;*/
 /*}*/
+
+
+/* Buttons / Icon / 50px */
+
+.twitter
+{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 150px;
+    bottom: 26px;
+}
+
+/* Icons / Social / Twitter */
+
+.twitter_icon
+{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 15px;
+    top: 15px;
+    background: url("../images/footer/Twit.png");
+}
+
+/*.twitter_path*/
+/*{*/
+/*    position: absolute;*/
+/*    left: 8.33%;*/
+/*    right: 8.33%;*/
+/*    top: 16.67%;*/
+/*    bottom: 16.67%;*/
+
+/*    !* Base / White *!*/
+
+/*    background: #FFFFFF;*/
+/*}*/
+
