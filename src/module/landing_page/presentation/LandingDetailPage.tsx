@@ -38,7 +38,7 @@ const LandingDetailPage:React.FC = ()=> {
             <Group12/>
             <Pagionations/>
             <Categories/>
-            {/*<Blog/>*/}
+            <Blog/>
             <Subscribtion/>
             <Footer/>
         </div>

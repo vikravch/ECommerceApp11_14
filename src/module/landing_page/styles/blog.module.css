@@ -21,3 +21,209 @@ letter-spacing: -1.2px;
 
 color: #000000;
 }
+
+/* Post / Small Text */
+
+.post_small_text
+{
+    position: absolute;
+    width: 410px;
+    height: 540px;
+    left: 155px;
+    top: 3248px;
+}
+
+/* Image */
+
+.image
+{
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    /* Accent 1 / 1 */
+
+    background: #F1F4FA;
+    border-radius: 10px;
+}
+
+/* Reach Your Fitness Goals with the our Training Club App (NTC). */
+
+.text_reach
+{
+    position: absolute;
+    height: 270px;
+    left: 20px;
+    right: 20px;
+    top: 64px;
+
+    /* Headline / 3 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 54px;
+    /* or 112% */
+
+    letter-spacing: -1.6px;
+
+    /* Base / Black */
+
+    color: #000000;
+}
+
+/* Statistics */
+
+
+/* Auto layout */
+.statistics
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 30px;
+
+    position: absolute;
+    width: 122px;
+    height: 20px;
+    left: 20px;
+    bottom: 20px;
+}
+
+/* Text States / Regular / Medium / 02 Left Icon */
+/* Auto layout */
+
+.text_states
+{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+    width: 122px;
+    height: 20px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Icons/Base/clock */
+
+.icon_clock
+{
+    width: 20px;
+    height: 20px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: flex-start;
+    flex-grow: 0;
+}
+
+/* Vector */
+
+.vector_clock
+{
+    position: absolute;
+    left: 8.33%;
+    right: 8.33%;
+    top: 8.33%;
+    bottom: 8.33%;
+
+    /* Grey / Dark / 3 */
+
+    /*background: rgba(0, 0, 0, 0.3);*/
+}
+
+/* Text */
+/* Auto layout */
+.text_layout
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    width: 94px;
+    height: 20px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: center;
+    flex-grow: 0;
+}
+
+/* 07.08.2020 */
+
+.data
+{
+    width: 92px;
+    height: 20px;
+
+    /* Caption / 2 / Regular */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    /* identical to box height, or 111% */
+
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.5px;
+
+    /* Grey / Dark / 4 */
+    color: rgba(0, 0, 0, 0.6);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Post / Small */
+
+.post_small_workout
+{
+    position: absolute;
+    width: 410px;
+    height: 540px;
+    left: 595px;
+    top: 3248px;
+}
+
+.post_small_train
+{
+    position: absolute;
+    width: 410px;
+    height: 540px;
+    left: 1035px;
+    top: 3248px;
+}
+
+
+
+
+
+
+
+
+
+
