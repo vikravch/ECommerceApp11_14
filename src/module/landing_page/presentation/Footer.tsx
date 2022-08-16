@@ -46,21 +46,21 @@ const Footer = () => {
                             <img className={style.facebook_icon}/>
                         </div>
                     </div>
-
-                    {/*<div className={style.facebook_path}>*/}
-                    {/*    <div className={style.base_icon}>*/}
-                    {/*        <img className={style.facebook_icon}/>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-
-                    {/*<div className={style.facebook_path}>*/}
-                    {/*    <div className={style.base_icon}>*/}
-                    {/*        <img className={style.facebook_icon}/>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-
-
                 </div>
+            <div className={style.inst}>
+                    <div className={style.base_icon}>
+                        <img className={style.inst_icon}/>
+                    </div>
+            </div>
+
+                    {/*<div className={style.facebook_path}>*/}
+                    {/*    <div className={style.base_icon}>*/}
+                    {/*        <img className={style.facebook_icon}/>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+
+
+
             </div>
 
     )

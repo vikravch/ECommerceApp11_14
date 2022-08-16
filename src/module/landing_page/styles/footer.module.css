@@ -627,7 +627,7 @@
     width: 130px;
     height: 20px;
     right: 1315px;
-    top: 413px;
+    top: 373px;
 
     /* Caption / 2 / Medium */
 
@@ -655,6 +655,7 @@
     height: 50px;
     left: 0px;
     top: 0px;
+    border-radius: 30px;
 
     /* Grey / Light / 2 */
 
@@ -695,3 +696,40 @@
     top: 15px;
     background: url("../images/footer/Path.png");
 }
+
+/* Buttons / Icon / 50px */
+
+.inst
+{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 210px;
+    bottom: 26px;
+}
+
+/* Icons / Social / Instagram */
+.inst_icon
+{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 15px;
+    top: 15px;
+    background: url("../images/footer/Combined Shape.png");
+}
+
+/* Combined Shape */
+
+/*.combined*/
+/*{*/
+/*    position: absolute;*/
+/*    left: 8.34%;*/
+/*    right: 8.33%;*/
+/*    top: 8.33%;*/
+/*    bottom: 8.34%;*/
+
+/*    !* Base / White *!*/
+
+/*    background: #FFFFFF;*/
+/*}*/
