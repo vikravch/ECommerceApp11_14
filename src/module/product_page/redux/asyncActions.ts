@@ -10,26 +10,19 @@ export const getProductDetailsAction = (productId:string):any => {
         });
     }
 };
-
-const FETCH_PRODUCTS = "FETCH_PRODUCTS";
-
-export const fetchProducts = () => async (dispatch:Function) => {
-    const res = await fetch("/api/products");
-    const data = await res.json();
-    console.log(data);
-    dispatch({
-        type: START_PRODUCT_LOAD,
-        payload: data,
-    });
-};
-
 export const START_PRODUCT_LOAD = "start_random_load";
 export const SET_PRODUCT_DATA = "set_random_cocktail_data";
+export const ADD_TO_CHART = "sent_product_to_chart";
 
 export const startProductLoadAction = () => ({
         type: START_PRODUCT_LOAD
     });
 export const setProductDataAction = (data:Product) => ({
     type: SET_PRODUCT_DATA,
+    payload: data
+});
+
+export  const  addToChartActionCreator = (data:Product) => ({
+    type: ADD_TO_CHART,
     payload: data
 })

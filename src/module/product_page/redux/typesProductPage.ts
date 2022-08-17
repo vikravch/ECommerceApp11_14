@@ -1,11 +1,8 @@
 import Product from "../domain/model/Product";
 
-export interface ProductPageStore{
-    product: Product,
-    isLoading: boolean,
-}
 
-export interface LandingPageStore{
+
+export interface ProductPageStore{
     product: Product,
     isLoading: boolean,
 }
