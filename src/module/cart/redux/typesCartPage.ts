@@ -1,4 +1,3 @@
-import Cart from "../domain/model/Cart";
 import Product from "../../product_page/domain/model/Product";
 
 export interface Shipping{

@@ -1,8 +1,4 @@
 import Product from "../../product_page/domain/model/Product";
-import store from "../../../general/redux/store";
-import {CartPageStore, CartProduct} from "./typesCartPage";
-import cartPage from "../presentation/CartPage";
-import {Action} from "../../../general/redux/Action";
 
 export const ADD_TO_CART = "add_to_cart";
 export const REMOVE_FROM_CART = "remove_from_cart";

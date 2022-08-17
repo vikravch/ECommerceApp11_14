@@ -81,27 +81,35 @@ const CartPage:React.FC = () => {
                         </div>
                     </div>
                 {/* Summary*/}
+
                 <div className="col-lg-4 rounded-2 border border-1">
                     <div className="block mb-5">
                         <div className="block-header">
                             <h4 className="text mt-3">Summary</h4>
                         </div>
                         <div className="block-body pt-2">
-                            <ul className="order-summary mb-0 list-unstyled">
-                                <li className="order-summary-item">
-                                    <span>Order Subtotal </span><span>$90.00</span>
+                            <ul className="list-group list-group-flush mb-3">
+                                <li className="list-group-item d-flex justify-content-between lh-sm">
+                                    <div>
+                                        <input type="text" className="form-control form-control-sm mb-2" placeholder="Promo Code"/>
+                                    </div>
+                                    <button className="btn btn-sm btn-light border border-1" style={{height: 30, width: 70}}>Apply</button>
                                 </li>
-                                <li className="order-summary-item">
-                                    <span>Shipping & Handling</span>
-                                    <span>$10.00</span>
+                                <li className="list-group-item d-flex justify-content-between lh-sm">
+                                    <div>
+                                        <p className="my-0">Subtotal</p>
+                                    </div>
+                                    <p className="my-0">$290.00</p>
                                 </li>
-                                <li className="order-summary-item">
-                                    <span>Tax</span>
-                                    <span>$0.00</span>
+                                <li className="list-group-item d-flex justify-content-between lh-sm">
+                                    <div>
+                                        <p className="my-0">Estimated Shipping & Handling</p>
+                                    </div>
+                                    <p className="my-0">$8.00</p>
                                 </li>
-                                <li className="order-summary-item border-0">
-                                    <span>Total</span>
-                                    <strong className="order-summary-total">$100.00</strong>
+                                <li className="list-group-item d-flex justify-content-between">
+                                    <strong>Total</strong>
+                                    <strong>$298</strong>
                                 </li>
                             </ul>
                         </div>
