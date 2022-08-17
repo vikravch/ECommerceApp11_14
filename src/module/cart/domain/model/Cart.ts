@@ -3,12 +3,14 @@ import ProductPreviewInfo from "../../../product_page/domain/model/ProductPrevie
 
 export default class Cart extends ProductPreviewInfo{
     count: number;
-    color: string
+    color: string;
+    size: string;
 
-    constructor(json: any, count: number, color: string) {
+    constructor(json: any, count: number, color: string, size: string) {
         super(json);
         this.count = count;
         this.color = color;
+        this.size = size;
     }
 
     /*constructor(idProduct: string, image: string, title: string, color: string, size: string, price: number, count: number) {
