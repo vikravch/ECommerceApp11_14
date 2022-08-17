@@ -1,0 +1,166 @@
+/* Navigation Menu / Light */
+.navigation_menu {
+    position: absolute;
+    width: 1600px;
+    height: 80px;
+    left: 0px;
+    top: 0px;
+}
+
+/* Base / Bottom */
+.base_bottom
+{
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+}
+
+/* Inputs / 40px / Text */
+.input
+{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 250px;
+    height: 40px;
+    left: 1230px;
+    top: 20px;
+
+    /* Grey / Light / 2 */
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+
+}
+
+.text_states_search
+{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 6px;
+
+    position: absolute;
+    width: 77px;
+    height: 18px;
+    left: 12px;
+    top: 11px;
+}
+
+.icon_base_search
+{
+    width: 18px;
+    height: 18px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: flex-start;
+    flex-grow: 0;
+}
+
+.icon_vector
+{
+    position: absolute;
+    left: 8.25%;
+    right: 8.37%;
+    top: 8.25%;
+    bottom: 8.43%;
+
+    /* Grey / Light / 4 */
+
+    /*background: rgba(255, 255, 255, 0.5);*/
+}
+
+.text_input
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    width: 53px;
+    height: 18px;
+
+    /*background: rgba(255, 255, 255, 0.5);*/
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: center;
+    flex-grow: 0;
+}
+
+.text_placeholder
+{
+    width: 51px;
+    height: 18px;
+
+    /* Caption / 3 / Regular */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    /* identical to box height, or 112% */
+
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.5px;
+
+    /* Grey / Light / 3 */
+
+    color: rgba(255, 255, 255, 0.3);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+/* Icons/Base/user */
+
+.icon_base_user
+{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 1550px;
+    top: 30px;
+}
+
+.icon_shopping_bag
+{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 1505px;
+    top: 30px;
+}
+
+/* Line */
+.line
+{
+    position: absolute;
+    height: 1px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+
+    /* Grey / Light / 1 */
+
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+
+
+
+

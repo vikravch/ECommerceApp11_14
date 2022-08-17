@@ -1,0 +1,312 @@
+/* Banner */
+.banner
+{
+    position: absolute;
+    width: 1600px;
+    height: 650px;
+    left: 0px;
+    top: 0px;
+}
+
+/* Rectangle 46 */
+.rectangle
+{
+    position: absolute;
+    width: 1600px;
+    height: 650px;
+    left: 0px;
+    top: 0px;
+
+    background: #17181F;
+}
+
+/* AIR Beyond Compare */
+.air
+ {
+    position: absolute;
+    width: 892px;
+    height: 80px;
+    left: 354px;
+    top: 102px;
+
+    /* H1 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 72px;
+    line-height: 80px;
+    /* identical to box height, or 111% */
+
+    text-align: center;
+    letter-spacing: -4.5px;
+
+    color: rgba(238, 237, 240, 0.85);
+ }
+
+/* Explore the best Air Max for fall & beyond */
+.explore_best_air
+{
+    position: absolute;
+    width: 429px;
+    height: 30px;
+    left: 585px;
+    top: 198px;
+
+    /* Lead */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    /* identical to box height, or 125% */
+
+    text-align: center;
+    letter-spacing: -1px;
+
+    color: #EEEDF0;
+
+    text-shadow: 0px 5px 12px rgba(203, 105, 193, 0.25);
+}
+
+/* NIKE */
+.nike
+{
+    position: absolute;
+    width: 1129px;
+    height: 80px;
+    left: 226px;
+    top: 333px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 500px;
+    line-height: 80px;
+    /* identical to box height, or 16% */
+
+    text-align: center;
+    letter-spacing: -4.5px;
+
+    color: rgba(238, 237, 240, 0.1);
+
+}
+
+/* zoomx-invincible-run-flyknit-mens-road-running-shoes-sP2zk7 1 */
+.img_nike
+{
+    position: absolute;
+    width: 508.51px;
+    height: 316.81px;
+    left: 444.25px;
+    top: 341.29px;
+
+    background: url("../images/zoomx-invincible-run-flyknit-mens-road-running-shoes-sP2zk7 1.png");
+    transform: rotate(-29.75deg);
+}
+
+/* grad */
+.grad
+{
+    position: absolute;
+    width: 667.03px;
+    height: 452.64px;
+    left: 391px;
+    top: 127px;
+
+    filter: blur(150px);
+}
+
+/* Vector */
+.grad_vector1
+{
+    position: absolute;
+    left: 66.13%;
+    right: -4.97%;
+    top: 6.68%;
+    bottom: 88.75%;
+
+    background: rgba(203, 105, 193, 0.15);
+    transform: matrix(-0.89, 0.41, -0.49, -0.9, 0, 0);
+}
+
+.grad_vector2
+{
+    position: absolute;
+    left: 27.88%;
+    right: 37.93%;
+    top: 7.57%;
+    bottom: 87.57%;
+
+    background: rgba(108, 114, 203, 0.15);
+    transform: matrix(0.89, -0.38, 0.48, 0.91, 0, 0);
+}
+
+/* Buttons / Auto Layout / 40px / Accent */
+.btn
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 11px 12px;
+    gap: 10px;
+
+    position: absolute;
+    width: 95px;
+    height: 40px;
+    left: 123px;
+    top: 562px;
+
+    background: #2D74FF;
+    border-radius: 10px;
+}
+
+/* Text States / Medium / Small / 01 Text */
+.btn_text_states
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 2px;
+
+    width: 67px;
+    height: 18px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Text */
+.btn_text
+{
+    width: 63px;
+    height: 18px;
+
+    /* Caption / 3 / Medium */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    /* identical to box height, or 112% */
+
+    display: flex;
+    align-items: center;
+    /*letter-spacing: -0.5px;*/
+
+    color: #FFFFFF;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Group 2 */
+.group2
+{
+    position: absolute;
+    width: 74px;
+    height: 24px;
+    left: 265px;
+    top: 570px;
+}
+
+/* Explore */
+.text_explore
+{
+    position: absolute;
+    width: 50px;
+    height: 23px;
+    left: -25px;
+    /*top: 570px;*/
+
+    /* Body 15 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 23px;
+    /* identical to box height, or 153% */
+
+    text-align: center;
+    /*letter-spacing: -0.6px;*/
+
+    color: #FFFFFF;
+
+    text-shadow: 0px 5px 12px rgba(203, 105, 193, 0.25);
+}
+
+/* Icons/Navigation/arrow-right */
+.arrow-right
+{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 315px;
+    top: 570px;
+}
+
+/* Vector */
+.arrow_vector
+{
+    position: absolute;
+    left: 35%;
+    right: 25.02%;
+    /*top: 24.98%;*/
+    /*bottom: 25.98%;*/
+
+    /*background: #FFFFFF;*/
+}
+
+/* Icons/Navigation/angle-left */
+.icon_left
+{
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    left: 89px;
+    top: 333px;
+}
+
+/* Vector */
+.icon_left_vector
+{
+    position: absolute;
+    left: 36.98%;
+    right: 37%;
+    top: 28.14%;
+    bottom: 27.96%;
+
+    /*background: #FFFFFF;*/
+}
+
+/* Icons/Navigation/angle-right */
+.icon_right
+{
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    left: 1445px;
+    top: 333px;
+
+}
+
+/* Vector */
+.icon_right_vector
+{
+    position: absolute;
+    left: 37%;
+    right: 36.98%;
+    top: 28.14%;
+    bottom: 28.17%;
+
+    /*background: #FFFFFF;*/
+}
