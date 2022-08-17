@@ -1,0 +1,136 @@
+.fonts{
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+.details{
+    background: #FFFFFF;
+    padding: 25px 30px 25px 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.borderLine{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.p-20px{
+    padding: 20px;
+}
+
+.avatar{
+    width: 65px;
+    height: 65px;
+    background: #F1F4FA;
+    border-radius: 60px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 34px;
+    text-align: center;
+    letter-spacing: -0.8px;
+    padding: 15px;
+    color: rgba(45, 116, 255, 1);
+}
+
+.name{
+    color: #000000;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.6px;
+}
+
+.edit{
+    margin: 5px 0 5px 0;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: -0.2px;
+    color: rgba(45, 116, 255, 1);
+    cursor: pointer;
+}
+
+.gray{
+    margin: 5px 0 5px 0;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: -0.2px;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.fw-400{
+    font-weight: 400;
+}
+
+.fw-500{
+    font-weight: 500;
+}
+
+.bordRad{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.orderTitle{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.6px;
+}
+
+.statusBlue{
+    height: min-content;
+    background: #F1F4FA;
+    border-radius: 20px;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+    color: #2D74FF;
+}
+
+.statusGreen{
+    height: min-content;
+    background: rgba(144, 218, 26, 0.1);
+    border-radius: 20px;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+    color: #90DA1A;
+}
+
+.statusRed{
+    height: min-content;
+    background: rgba(255, 78, 78, 0.1);
+    border-radius: 20px;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+    color: #FF4E4E;
+}
+
+.noOrder{
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -1px;
+}
+
+.preview{
+    border-radius: 10px;
+    display: block;
+    width: 90px;
+    height: 110px;
+    background-color: gray;
+}
+
+.textBlack{
+    color: black;
+}
+
+.prodName{
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+}

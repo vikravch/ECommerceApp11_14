@@ -5,6 +5,7 @@ import ProductDetailPage from "./module/product_page/presentation/ProductDetailP
 import {routes} from "./general/navigation/routes";
 import BlogArticlePage from "./module/article_page/presentation/BlogArticlePage";
 import LandingDetailPage from './module/landing_page/presentation/LandingDetailPage';
+import ProfilePage from "./module/profile/presentation/ProfilePage";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                 <Route path={`/${routes.articlePage}`} element={<BlogArticlePage/>}/>
                 <Route path={`/${routes.articlePage}/:articleId`} element={<BlogArticlePage/>}/>
 
+            <Route path={`/main/${routes.profile}/:profileUID`} element={<ProfilePage/>}/>
             </Routes>
         </>
     );

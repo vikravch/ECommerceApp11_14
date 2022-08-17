@@ -3,5 +3,6 @@ export const routes = {
     landingDetail:"landing",
     cart: "cart",
     checkout: 'checkout',
-    articlePage: "article"
+    articlePage: "article",
+    profile: "profile",
 };
