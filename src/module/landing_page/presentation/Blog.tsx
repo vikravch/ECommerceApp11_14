@@ -23,7 +23,8 @@ const Blog = () => {
             </div>
             <div className={style.post_small_workout}>
                 <div className={style.image}>
-                    <h3 className={style.text_reach}>Workout From Home Routines: Tips and Best Practices</h3>
+                    <div className={style.rectangle4}></div>
+                    <h3 className={style.text_workout}>Workout From Home Routines: Tips and Best Practices</h3>
                     <div className={style.statistics}>
                         <div className={style.text_states}>
                             <div className={style.icon_clock}>
@@ -38,7 +39,8 @@ const Blog = () => {
             </div>
             <div className={style.post_small_train}>
                 <div className={style.image}>
-                    <h3 className={style.text_reach}>Train The Way You Want: Energise Your Routine with our Growing Library of Workout  </h3>
+                    <div className={style.rectangle}></div>
+                    <h3 className={style.text_train}>Train The Way You Want: Energise Your Routine with our Growing Library of Workout  </h3>
                     <div className={style.statistics}>
                         <div className={style.text_states}>
                             <div className={style.icon_clock}>
