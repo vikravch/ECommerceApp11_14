@@ -1,4 +1,6 @@
 export const routes = {
     productDetail:"product",
-    landingDetail:"landing"
+    landingDetail:"landing",
+    cart: "cart",
+    checkout: 'checkout'
 };
