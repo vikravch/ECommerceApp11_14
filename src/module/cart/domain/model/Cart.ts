@@ -1,9 +1,17 @@
 import Product from "../../../product_page/domain/model/Product";
+import ProductPreviewInfo from "../../../product_page/domain/model/ProductPreviewInfo";
 
-export default class Cart extends Product {
+export default class Cart extends ProductPreviewInfo{
     count: number;
+    color: string
 
-    constructor(idProduct: string, image: string, title: string, color: string, size: string, price: number, count: number) {
+    constructor(json: any, count: number, color: string) {
+        super(json);
+        this.count = count;
+        this.color = color;
+    }
+
+    /*constructor(idProduct: string, image: string, title: string, color: string, size: string, price: number, count: number) {
         super(idProduct, image, title, color, size, price);
         this.idProduct = idProduct
         this.image = image
@@ -12,7 +20,7 @@ export default class Cart extends Product {
         this.size = size
         this.price = price
         this.count = count
-    }
+    }*/
 }
 
 // export default class Product{

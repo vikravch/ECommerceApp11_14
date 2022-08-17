@@ -24,13 +24,13 @@ const CartPage:React.FC = () => {
                                                 <img className="cart-item-img rounded-3" src="http://via.placeholder.com/165x200" alt=''/>
                                             <div className="cart-title text-start ms-3">
                                                 <a className="text-uppercase text-dark" href={item.idProduct}>
-                                                    <strong>{item.title}</strong>
+                                                    <strong>{item.product_title}</strong>
                                                 </a>
                                                 <div className="text-muted text-sm">
                                                     Size: {item.size}
                                                 </div>
                                                 <div className="text-muted text-sm">
-                                                    Colour: {item.color}
+                                                    Colour: {item.product_title}
                                                 </div>
                                             </div>
                                         </div>

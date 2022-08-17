@@ -2,7 +2,7 @@
 import Product from "../domain/model/Product";
 import {Action} from "../../../general/redux/Action";
 import {SET_PRODUCT_DATA, START_PRODUCT_LOAD} from "./asyncActions";
-import {LandingPageStore} from "../../product_page/redux/typesProductPage";
+import {LandingPageStore} from "./typesLandingPage";
 
 export function landingPageReducer(
     state: LandingPageStore = {product: new Product("-1"), isLoading: false
