@@ -3,6 +3,7 @@ import './App.css';
 import {Route, Routes} from "react-router-dom";
 import ProductDetailPage from "./module/product_page/presentation/ProductDetailPage";
 import {routes} from "./general/navigation/routes";
+import BlogArticlePage from "./module/article_page/presentation/BlogArticlePage";
 import LandingDetailPage from './module/landing_page/presentation/LandingDetailPage';
 
 
@@ -17,9 +18,13 @@ function App() {
             <Route path={`/${routes.landingDetail}`} element={<LandingDetailPage/>}/>
             <Route path={`/${routes.landingDetail}/:productId`} element={<LandingDetailPage/>}/>
 
-        </Routes>
-      </>
-  );
+                <Route path="/" element={<BlogArticlePage/>}/>
+                <Route path={`/${routes.articlePage}`} element={<BlogArticlePage/>}/>
+                <Route path={`/${routes.articlePage}/:articleId`} element={<BlogArticlePage/>}/>
+
+            </Routes>
+        </>
+    );
 }
 
 export default App;

@@ -7,6 +7,7 @@ import {checkoutPageReducer} from "../../module/checkout/redux/checkoutPageReduc
 import thunk from "redux-thunk";
 import {logger} from "redux-logger";
 import {landingPageReducer} from "../../module/landing_page/redux/landingPageReducer";
+import {articlePageReducer} from "../../module/article_page/redux/articlePageReducer";
 
 const store = createStore(
     combineReducers(
@@ -15,6 +16,7 @@ const store = createStore(
             landingPage: landingPageReducer,
             cartPage: cartPageReducer,
             checkout: checkoutPageReducer,
+            articlePage: articlePageReducer,
         }
     ), composeWithDevTools(
     applyMiddleware(thunk, logger))
