@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import img from "../../../images/t-shirt-7114.png"
 import {useDispatch, useSelector} from "react-redux";
 //import {Store} from "../../../general/redux/storeTypes";
@@ -21,6 +21,27 @@ const ProductDetailPage:React.FC = ()=> {
         price: 55
     }
 
+    useEffect(() => {
+        let cartGoods = [
+        {idProduct: "7114",
+          image: "/src/images/t-shirt-7114.png",
+          title: "Basic t-shirt",
+          color: "Purple",
+          size: "L / 14 US",
+          price: 55,
+          count: 1
+        },
+        {idProduct: "7142",
+         image: "/src/images/t-shirt-7142.png",
+         title: "Basic t-shirt",
+         color: "Black with print",
+         size: "L / 14 US",
+         price: 35,
+         count: 1
+        }]
+        localStorage.setItem("cartItems", JSON.stringify(cartGoods));
+    })
+
     return (
         <section style={{backgroundColor: "#eee"}}>
             <div className="container py-3">
@@ -29,7 +50,7 @@ const ProductDetailPage:React.FC = ()=> {
                         <div className="card text-black">
                             <i className="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
                             <img src="http://via.placeholder.com/165x200"
-                                 className="card-img-top" alt="Apple Computer"/>
+                                 className="card-img-top" alt={product.title}/>
                             <div className="card-body">
                                 <div className="text-center">
                                     <h5 className="card-title">{product.title}</h5>

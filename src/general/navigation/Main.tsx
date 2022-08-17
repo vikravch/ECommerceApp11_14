@@ -12,7 +12,6 @@ const Main = () => {
         <Route path={`/${routes.productDetail}`} element={<ProductDetailPage/>}/>
         <Route path={`/${routes.cart}`} element={<CartPage/>}/>
         <Route path={`/${routes.checkout}`} element={<CheckoutPage/>}/>
-
     </Routes>
 };
 

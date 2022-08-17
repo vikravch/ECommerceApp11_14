@@ -3,11 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {decrementCartCount, incrementCartCount, removeFromCartAction} from "../redux/asyncActions";
 import { CartProduct} from "../redux/typesCartPage";
-//import {getCartProducts} from "../redux/cartPageReducer";
 
 const CartPage:React.FC = () => {
+    //const cart: CartProduct = useSelector<Store, CartProduct>(state => state.cartPage.cartItems);
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems)
     const dispatch = useDispatch()
+
 
     return (<>
             <div className="container">
@@ -16,20 +17,20 @@ const CartPage:React.FC = () => {
                 <div className="col-lg-8">
                         <div className="cart-body">
                             {cartItems.map((item) => (
-                            <div className="cart-item my-4" key={item.cartItem.idProduct}>
+                            <div className="cart-item my-4" key={item.idProduct}>
                                 <div className=" d-flex align-items-center text-start text-md-center row">
                                     <div className="col-md-5 col-12">
                                         <div className="d-flex align-items-center">
                                                 <img className="cart-item-img rounded-3" src="http://via.placeholder.com/165x200" alt=''/>
                                             <div className="cart-title text-start ms-3">
-                                                <a className="text-uppercase text-dark" href={item.cartItem.idProduct}>
-                                                    <strong>{item.cartItem.title}</strong>
+                                                <a className="text-uppercase text-dark" href={item.idProduct}>
+                                                    <strong>{item.title}</strong>
                                                 </a>
                                                 <div className="text-muted text-sm">
-                                                    Size: {item.cartItem.size}
+                                                    Size: {item.size}
                                                 </div>
                                                 <div className="text-muted text-sm">
-                                                    Colour: {item.cartItem.color}
+                                                    Colour: {item.color}
                                                 </div>
                                             </div>
                                         </div>
@@ -38,7 +39,7 @@ const CartPage:React.FC = () => {
                                         <div className="align-items-center row">
                                             <div className="col-md-3">
                                                 <div className="row">
-                                                    <div className="text-end text-md-center col-md-12 col-6">${item.cartItem.price}
+                                                    <div className="text-end text-md-center col-md-12 col-6">${item.price}
                                                     </div>
                                                 </div>
                                             </div>
@@ -47,12 +48,12 @@ const CartPage:React.FC = () => {
                                                     <div className="col-md-12 col-sm-3 col-5">
                                                         <div className="d-flex align-items-center">
                                                             <div className="btn btn-items btn-items-decrease"
-                                                                 onClick={() => dispatch(decrementCartCount(item.cartItem.idProduct))}>-</div>
+                                                                 onClick={() => dispatch(decrementCartCount(item.idProduct))}>-</div>
                                                             <p className="text-center border-0 border-md input-items form-control">
                                                                 {item.count}
                                                             </p>
                                                             <div className="btn btn-items btn-items-increase"
-                                                                 onClick={() => dispatch(incrementCartCount(item.cartItem.idProduct))}>+
+                                                                 onClick={() => dispatch(incrementCartCount(item.idProduct))}>+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -60,13 +61,13 @@ const CartPage:React.FC = () => {
                                             </div>
                                             <div className="col-md-3">
                                                 <div className="row">
-                                                    <div className="text-end text-md-center col-md-12 col-6">${item.cartItem.price*item.count}
+                                                    <div className="text-end text-md-center col-md-12 col-6">${item.price*item.count}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="d-none d-md-block text-center col-2">
                                                   <button className="btn btn-light"
-                                                             onClick={() => dispatch(removeFromCartAction(item.cartItem.idProduct))}
+                                                             onClick={() => dispatch(removeFromCartAction(item.idProduct))}
                                                         >
                                                       X
                                                     </button>
@@ -115,42 +116,3 @@ const CartPage:React.FC = () => {
 );
 }
 export default CartPage;
-
-// const {productId} = useParams<string>()
-// const product = useSelector<Store, Product>(
-//     state => state.productPage.product
-// );
-// const isLoading = useSelector<Store,boolean>(
-//     state => state.productPage.isLoading
-// );
-// const dispatch = useDispatch()
-// useEffect(()=>{
-//     if(productId){
-//         dispatch(getProductDetailsAction(productId))
-//         /*getProductDetails(productId).then((data)=>{
-//             console.log(data);
-//         })*/
-//     }
-// },[productId]);
-
-
-
-{/*{cartItems.map((item) => (*/}
-{/*    <li key={item.cartItem.idProduct}>*/}
-{/*        <div>*/}
-{/*            /!*<img src={item.cartItem.image} alt={item.cartItem.title}></img>*!/*/}
-{/*        </div>*/}
-{/*        <div>*/}
-{/*            <div>{item.cartItem.title}</div>*/}
-{/*            <div className="right">*/}
-{/*                {item.cartItem.price} x {item.count}{" "}*/}
-{/*                /!*<button*!/*/}
-{/*                /!*    className="button"*!/*/}
-{/*                /!*    onClick={() => dispatch(removeFromCart(item))}*!/*/}
-{/*                /!*>*!/*/}
-{/*                /!*    Remove*!/*/}
-{/*                /!*</button>*!/*/}
-{/*            </div>*/}
-{/*        </div>*/}
-{/*    </li>*/}
-{/*))}*/}

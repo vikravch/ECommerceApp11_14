@@ -13,12 +13,10 @@ export interface Promocode{
     promocode_summ: number
 }
 
-export interface CartProduct {
-    cartItem: Product,
+export interface CartProduct extends Product{
     count: number
 }
 
 export interface CartPageStore{
-    idCart: string,
     cartItems: Array<CartProduct>
 }

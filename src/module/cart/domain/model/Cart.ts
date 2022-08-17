@@ -1,10 +1,17 @@
-export default class Cart {
-    idCart: string;
-    cartItems: Array<object>;
+import Product from "../../../product_page/domain/model/Product";
 
-    constructor(idCart:string, cartItems: [{}]) {
-        this.idCart = idCart
-        this.cartItems = cartItems
+export default class Cart extends Product {
+    count: number;
+
+    constructor(idProduct: string, image: string, title: string, color: string, size: string, price: number, count: number) {
+        super(idProduct, image, title, color, size, price);
+        this.idProduct = idProduct
+        this.image = image
+        this.title = title
+        this.color = color
+        this.size = size
+        this.price = price
+        this.count = count
     }
 }
 
