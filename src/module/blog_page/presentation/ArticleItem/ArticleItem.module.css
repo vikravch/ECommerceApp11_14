@@ -1,0 +1,23 @@
+.article {
+    margin: 15px 15px;
+    width: 410px;
+    height: 540px;
+    /*padding: 20px;*/
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.article:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+.article_item_img_div {
+    width: 410px;
+    height: 270px;
+}
+
+.article_item_img {
+    width: 410px;
+    height: 270px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0px 10px 10px 0;
+}

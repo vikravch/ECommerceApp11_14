@@ -7,9 +7,9 @@ import {getArticleDetailsAction} from "../redux/asyncActions";
 import style from './BlogArticlePage.module.css'
 
 
-const ProductDetailPage:React.FC = ()=> {
+const BlogArticlePage:React.FC = ()=> {
     const {articleId} = useParams<string>()
-    const product = useSelector<Store, Article>(
+    const article = useSelector<Store, Article>(
         state => state.articlePage.article
     );
     const isLoading = useSelector<Store,boolean>(
@@ -71,4 +71,4 @@ const ProductDetailPage:React.FC = ()=> {
         </div>
     </div>);
 }
-export default ProductDetailPage;
+export default BlogArticlePage;
