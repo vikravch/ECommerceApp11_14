@@ -5,7 +5,7 @@ import {ArticlePageStore} from "./typesArticlePage";
 
 
 export function articlePageReducer(
-    state: ArticlePageStore = {article: new Article("-1"), isLoading: false
+    state: ArticlePageStore = {article: new Article("66666"), isLoading: false
     }, action: Action
 ){
     switch (action.type){

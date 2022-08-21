@@ -7,22 +7,20 @@ import BlogArticlePage from "./module/article_page/presentation/BlogArticlePage"
 import LandingDetailPage from './module/landing_page/presentation/LandingDetailPage';
 import ProfilePage from "./module/profile/presentation/ProfilePage";
 
+import BlogPage from './module/blog_page/presentation/BlogPage';
 
 function App() {
   return (
       <>
         <Routes>
-          <Route path="/" element={<ProductDetailPage/>}/>
           <Route path={`/${routes.productDetail}`} element={<ProductDetailPage/>}/>
           <Route path={`/${routes.productDetail}/:productId`} element={<ProductDetailPage/>}/>
           <Route path="/" element={<LandingDetailPage/>}/>
           <Route path={`/${routes.landingDetail}`} element={<LandingDetailPage/>}/>
           <Route path={`/${routes.landingDetail}/:productId`} element={<LandingDetailPage/>}/>
-
-          <Route path="/" element={<BlogArticlePage/>}/>
+          <Route path={`/${routes.blogPage}`} element={<BlogPage/>}/>
           <Route path={`/${routes.articlePage}`} element={<BlogArticlePage/>}/>
           <Route path={`/${routes.articlePage}/:articleId`} element={<BlogArticlePage/>}/>
-
           <Route path={`/main/${routes.profile}/:profileUID`} element={<ProfilePage/>}/>
         </Routes>
       </>

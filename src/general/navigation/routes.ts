@@ -5,4 +5,5 @@ export const routes = {
     checkout: 'checkout',
     articlePage: "article",
     profile: "profile",
+    blogPage: "blog",
 };
