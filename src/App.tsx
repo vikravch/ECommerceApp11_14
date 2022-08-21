@@ -6,6 +6,8 @@ import {routes} from "./general/navigation/routes";
 import BlogArticlePage from "./module/article_page/presentation/BlogArticlePage";
 import LandingDetailPage from './module/landing_page/presentation/LandingDetailPage';
 import ProfilePage from "./module/profile/presentation/ProfilePage";
+import CartPage from "./module/cart/presentation/CartPage";
+import CheckoutPage from "./module/checkout/presentation/CheckoutPage";
 
 
 function App() {
@@ -18,11 +20,11 @@ function App() {
           <Route path="/" element={<LandingDetailPage/>}/>
           <Route path={`/${routes.landingDetail}`} element={<LandingDetailPage/>}/>
           <Route path={`/${routes.landingDetail}/:productId`} element={<LandingDetailPage/>}/>
-
-          <Route path="/" element={<BlogArticlePage/>}/>
+          <Route path={`/${routes.cart}`} element={<CartPage/>}/>
+          <Route path={`/${routes.profile}`} element={<ProfilePage/>}/>
+          <Route path={`/${routes.checkout}`} element={<CheckoutPage/>}/>
           <Route path={`/${routes.articlePage}`} element={<BlogArticlePage/>}/>
           <Route path={`/${routes.articlePage}/:articleId`} element={<BlogArticlePage/>}/>
-
           <Route path={`/main/${routes.profile}/:profileUID`} element={<ProfilePage/>}/>
         </Routes>
       </>
