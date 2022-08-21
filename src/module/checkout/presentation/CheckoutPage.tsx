@@ -1,4 +1,6 @@
 import React, {useEffect} from "react";
+//import {CountryDropdown} from 'react-country-region-selector'
+
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
@@ -7,13 +9,47 @@ import {getProductDetailsAction} from "../../product_page/redux/asyncActions";
 
 const CheckoutPage:React.FC = ()=> {
     return (
-        <React.Fragment>
+            <div className="container" style={{maxWidth: 1070}}>
             <div className="row g-5">
                     <div className="col-md-5 col-lg-4">
-                        <div className="rounded-2 border border-1 p-2">
+                        <div className="rounded-2 border border-1 p-2" >
                             <h4 className="d-flex justify-content-between align-items-center mb-3">
                                 <span className="text">Goods</span>
                             </h4>
+                            <div className="mb-3">
+                                <div className="row g-0 m-0">
+                                    <div className="col-md-5 ">
+                                        <img src="http://via.placeholder.com/105x127" className="img-fluid rounded" alt="image"/>
+                                    </div>
+                                    <div className="col-md-7">
+                                        <div className="card-body p-0">
+                                            <p className="mb-0 small"><label className="text-muted small">#7142</label></p>
+                                            <p className="mb-0 small"><strong className="card-title small">Basic t-shirt</strong></p>
+                                            <p className="mb-0 small"><label className="text-muted small">Color: </label><label className="mx-1 small">Black with print</label></p>
+                                            <p className="mb-0 small"><label className="text-muted small">Size: </label><label className="mx-1 small">L / 14 US</label></p>
+                                            <p className="mb-0 small"><label className="text-muted small">Quantity: </label><label className="mx-1 small">1</label></p>
+                                            <p className="mb-0 small"><label className="small"><strong>$35</strong></label></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="mb-3">
+                                <div className="row g-0 m-0">
+                                    <div className="col-md-5 ">
+                                        <img src="http://via.placeholder.com/105x127" className="img-fluid rounded" alt="image"/>
+                                    </div>
+                                    <div className="col-md-7">
+                                        <div className="card-body p-0">
+                                            <p className="mb-0 small"><label className="text-muted small">#7142</label></p>
+                                            <p className="mb-0 small"><strong className="card-title small">Basic t-shirt</strong></p>
+                                            <p className="mb-0 small"><label className="text-muted small">Color: </label><label className="mx-1 small">Black with print</label></p>
+                                            <p className="mb-0 small"><label className="text-muted small">Size: </label><label className="mx-1 small">L / 14 US</label></p>
+                                            <p className="mb-0 small"><label className="text-muted small">Quantity: </label><label className="mx-1 small">1</label></p>
+                                            <p className="mb-0 small"><label className="small"><strong>$35</strong></label></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div className="rounded-2 border border-1 p-2 mt-2">
                             <h4 className="d-flex justify-content-between align-items-center mb-3">
@@ -196,7 +232,7 @@ const CheckoutPage:React.FC = ()=> {
                         </form>
                     </div>
             </div>
-        </React.Fragment>
+            </div>
     )
 }
 export default CheckoutPage;
