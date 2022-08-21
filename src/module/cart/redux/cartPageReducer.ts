@@ -2,7 +2,7 @@ import {Action} from "../../../general/redux/Action";
 import {ADD_TO_CART, DEC_CART_COUNT, INC_CART_COUNT, REMOVE_FROM_CART} from "./asyncActions";
 import Product from "../../product_page/domain/model/Product";
 import cartPage from "../presentation/CartPage";
-import {CartProduct} from "./typesCartPage";
+import CartProduct from "../domain/model/CartProduct";
 
 export const cartPageReducer = (
     state = {cartItems: JSON.parse(localStorage.getItem("cartItems") || "[]")}, //

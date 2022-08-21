@@ -2,8 +2,9 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {decrementCartCount, incrementCartCount, removeFromCartAction} from "../redux/asyncActions";
-import { CartProduct} from "../redux/typesCartPage";
+
 import {sizes} from "../../../general/data/sizes";
+import CartProduct from "../domain/model/CartProduct";
 
 const CartPage:React.FC = () => {
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems)

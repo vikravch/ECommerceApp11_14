@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './Blog.module.css'
+import style from './Blog.module.css';
 import ArticleItem from "./ArticleItem/ArticleItem";
 import {articlesInfo} from "../../../consts";
 

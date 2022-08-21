@@ -1,5 +1,5 @@
 import ProductInOrder from "./ProductInOrder";
-
+// Input - response body
 export default class Order{
     createdAt: string;
     deliveryDate: string;

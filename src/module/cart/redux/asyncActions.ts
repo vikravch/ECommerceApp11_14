@@ -1,11 +1,12 @@
 import Product from "../../product_page/domain/model/Product";
+import CartProduct from "../domain/model/CartProduct";
 
 export const ADD_TO_CART = "add_to_cart";
 export const REMOVE_FROM_CART = "remove_from_cart";
 export const INC_CART_COUNT = "inc_cart_count"
 export const DEC_CART_COUNT = "dec_cart_count"
 
-export const addToCartAction = (cartItems:Product) => ({
+export const addToCartAction = (cartItems:CartProduct) => ({
     type: ADD_TO_CART,
     payload: cartItems
 });

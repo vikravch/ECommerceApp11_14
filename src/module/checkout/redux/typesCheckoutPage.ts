@@ -1,4 +1,4 @@
-import {CartProduct} from "../../cart/redux/typesCartPage";
+import CartProduct from "../../cart/domain/model/CartProduct";
 
 export interface Order {
     idOrder : string;

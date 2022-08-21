@@ -10,14 +10,19 @@ import CartPage from "./module/cart/presentation/CartPage";
 import CheckoutPage from "./module/checkout/presentation/CheckoutPage";
 
 import BlogPage from './module/blog_page/presentation/BlogPage';
+import Header from "./module/header/presentation/Header";
+import Footer from "./module/landing_page/presentation/Footer";
+import TestPage from "./module/test/TestPage";
 
 function App() {
+  //TODO fix header style on main page
   return (
       <>
+        <Header/>
         <Routes>
+          <Route path="/" element={<LandingDetailPage/>}/>
           <Route path={`/${routes.productDetail}`} element={<ProductDetailPage/>}/>
           <Route path={`/${routes.productDetail}/:productId`} element={<ProductDetailPage/>}/>
-          <Route path="/" element={<LandingDetailPage/>}/>
           <Route path={`/${routes.landingDetail}`} element={<LandingDetailPage/>}/>
           <Route path={`/${routes.landingDetail}/:productId`} element={<LandingDetailPage/>}/>
           <Route path={`/${routes.cart}`} element={<CartPage/>}/>
@@ -27,7 +32,9 @@ function App() {
           <Route path={`/${routes.articlePage}`} element={<BlogArticlePage/>}/>
           <Route path={`/${routes.articlePage}/:articleId`} element={<BlogArticlePage/>}/>
           <Route path={`/main/${routes.profile}/:profileUID`} element={<ProfilePage/>}/>
+          <Route path="/test" element={<TestPage/>}/>
         </Routes>
+        <Footer/>
       </>
     );
 }
