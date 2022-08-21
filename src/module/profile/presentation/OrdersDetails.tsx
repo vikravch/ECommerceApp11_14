@@ -8,7 +8,7 @@ const OrdersDetails: React.FC = () => {
                     <h1 className={"col-7 fw-500 m-0 p-0"}>Orders</h1>
                     <div className={"col-2 align-self-center p-0"}>
                         <select className="form-select form-select-sm bordRad fw-500">
-                            <option selected>All</option>
+                            <option defaultValue={"0"}>All</option>
                             <option value="1">Last month</option>
                             <option value="2">Last 6 month</option>
                             <option value="3">Last year</option>
@@ -37,7 +37,8 @@ const OrdersDetails: React.FC = () => {
                         <div className={"col-4 p-0"}>
                             <div className={"row row-cols-auto"}>
                                 <div className={"col ps-3 pe-3"}>
-                                    <div className={"preview"}/>
+                                    <img src={require("./../../../images/t-shirt-7114.png")} className={"preview"}
+                                         alt="product"/>
                                 </div>
                                 <div className={"col p-0"}>
                                     <div className={"gray"}>#7114</div>
@@ -51,7 +52,8 @@ const OrdersDetails: React.FC = () => {
                         <div className={"col-4 p-0"}>
                             <div className={"row row-cols-auto"}>
                                 <div className={"col ps-3 pe-3"}>
-                                    <div className={"preview"}/>
+                                    <img src={require("./../../../images/t-shirt-7114.png")} className={"preview"}
+                                         alt="product"/>
                                 </div>
                                 <div className={"col p-0"}>
                                     <div className={"gray"}>#7114</div>
@@ -65,7 +67,8 @@ const OrdersDetails: React.FC = () => {
                         <div className={"col-4 p-0"}>
                             <div className={"row row-cols-auto"}>
                                 <div className={"col ps-3 pe-3"}>
-                                    <div className={"preview"}/>
+                                    <img src={require("./../../../images/t-shirt-7142.png")} className={"preview"}
+                                         alt="product"/>
                                 </div>
                                 <div className={"col p-0"}>
                                     <div className={"gray"}>#7114</div>
@@ -97,7 +100,8 @@ const OrdersDetails: React.FC = () => {
                         <div className={"col-4 p-0"}>
                             <div className={"row row-cols-auto"}>
                                 <div className={"col ps-3 pe-3"}>
-                                    <div className={"preview"}/>
+                                    <img src={require("./../../../images/t-shirt-7114.png")} className={"preview"}
+                                         alt="product"/>
                                 </div>
                                 <div className={"col p-0"}>
                                     <div className={"gray"}>#7114</div>
@@ -111,7 +115,8 @@ const OrdersDetails: React.FC = () => {
                         <div className={"col-4 p-0"}>
                             <div className={"row row-cols-auto"}>
                                 <div className={"col ps-3 pe-3"}>
-                                    <div className={"preview"}/>
+                                    <img src={require("./../../../images/t-shirt-7142.png")} className={"preview"}
+                                         alt="product"/>
                                 </div>
                                 <div className={"col p-0"}>
                                     <div className={"gray"}>#7114</div>
@@ -143,7 +148,8 @@ const OrdersDetails: React.FC = () => {
                         <div className={"col-4 p-0"}>
                             <div className={"row row-cols-auto"}>
                                 <div className={"col ps-3 pe-3"}>
-                                    <div className={"preview"}/>
+                                    <img src={require("./../../../images/t-shirt-7142.png")} className={"preview"}
+                                         alt="product"/>
                                 </div>
                                 <div className={"col p-0"}>
                                     <div className={"gray"}>#7114</div>

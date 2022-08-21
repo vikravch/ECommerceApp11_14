@@ -15,17 +15,17 @@ function App() {
           <Route path="/" element={<ProductDetailPage/>}/>
           <Route path={`/${routes.productDetail}`} element={<ProductDetailPage/>}/>
           <Route path={`/${routes.productDetail}/:productId`} element={<ProductDetailPage/>}/>
-          <Route path="/" element={<LandingDetailPage/>}/>
-          <Route path={`/${routes.landingDetail}`} element={<LandingDetailPage/>}/>
-          <Route path={`/${routes.landingDetail}/:productId`} element={<LandingDetailPage/>}/>
+            <Route path="/" element={<LandingDetailPage/>}/>
+            <Route path={`/${routes.landingDetail}`} element={<LandingDetailPage/>}/>
+            <Route path={`/${routes.landingDetail}/:productId`} element={<LandingDetailPage/>}/>
 
-          <Route path="/" element={<BlogArticlePage/>}/>
-          <Route path={`/${routes.articlePage}`} element={<BlogArticlePage/>}/>
-          <Route path={`/${routes.articlePage}/:articleId`} element={<BlogArticlePage/>}/>
+                <Route path="/" element={<BlogArticlePage/>}/>
+                <Route path={`/${routes.articlePage}`} element={<BlogArticlePage/>}/>
+                <Route path={`/${routes.articlePage}/:articleId`} element={<BlogArticlePage/>}/>
 
-          <Route path={`/main/${routes.profile}/:profileUID`} element={<ProfilePage/>}/>
-        </Routes>
-      </>
+            <Route path={`/main/${routes.profile}/:profileUID`} element={<ProfilePage/>}/>
+            </Routes>
+        </>
     );
 }
 

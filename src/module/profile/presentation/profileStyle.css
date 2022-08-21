@@ -121,7 +121,7 @@
     display: block;
     width: 90px;
     height: 110px;
-    background-color: gray;
+    cursor: pointer;
 }
 
 .textBlack{
@@ -133,4 +133,14 @@
     font-size: 16px;
     line-height: 18px;
     letter-spacing: -0.5px;
+}
+
+.lineDevider {
+    border: #000000 solid 1px;
+    border-collapse: inherit;
+    opacity: 10%;
+}
+
+.breadcrums {
+    margin-top: 30px;
 }

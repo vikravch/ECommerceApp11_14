@@ -5,11 +5,24 @@ import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import Profile from "../domain/model/Profile";
 import {getProfileDetailsAction} from "../redux/asyncActions";
+import getProfileFake from "../domain/use_cases/getProfileFake";
 
 const ProfileDetails:React.FC = () => {
     const {uid} = useParams<string>();
     const profile = useSelector<Store, Profile>(state => state.profileDetails.profile);
     const isLoading = useSelector<Store, boolean>(state => state.profileDetails.isLoading);
+
+    const getProfileFakeApi = () => {
+        getProfileFake().then((data) => {
+            console.log(data);
+            console.log(data instanceof Profile);
+            //set
+        });
+    }
+
+    useEffect(()=>{
+        getProfileFakeApi();
+    });
 
     const dispatch = useDispatch();
     useEffect(()=>{
@@ -19,6 +32,8 @@ const ProfileDetails:React.FC = () => {
             console.log(data);})*/
         }
     }, [uid]);
+
+
 
     return (
         <>
