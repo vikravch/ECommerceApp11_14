@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Product from "../domain/model/Product";
 import {Store} from "../../../general/redux/storeTypes";
@@ -10,6 +10,7 @@ import styles from "./ProductPage.module.css";
 import AlsoLike from "../../preview_product_panel/presentation/AlsoLike";
 import {ADD_TO_CART, addToCartAction, removeFromCartAction} from "../../cart/redux/asyncActions";
 import CartProduct from "../../cart/domain/model/CartProduct";
+import {sizes} from "../../../general/data/sizes";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -31,25 +32,19 @@ const ProductDetailPage: React.FC = () => {
 
     let addToCart = () => {
         {
+            //TODO colors and sizes to page for choice
+            let dataToCart = new CartProduct(1, "Black",
+                sizes.M, product.idProduct, product.product_main_img,
+                product.product_title, product.rating,
+                product.price, product.discount )
             //use ADD_TO_CART from cartPageReducer
-            //CartProduct{
-            //     count: number;
-            //     color: string;
-            //     size: string;
-            //     idProduct: string;
-            //     product_thumb: string;
-            //     product_title: string;
-            //     rating: string;
-            //     price: number;
-            //     discount: number;}
 
             // при переходе на страницу продукта пишем в стейт - productId
             // при клике на цвет пишем в стейт - product color
             // при клике на цвет пишем в стейт - product size
             // при клике на addToChart - отправляем инфо в "корзину"
-
-            // let data:Product = [];
             console.log("Add_to_Chart Button Clicked")
+            console.log("ID: " + JSON.stringify(dataToCart.idProduct))
             // store.addToChart(productDetailsToChart)
             // store.dispatch(addToChartActionCreator())
         }
@@ -99,8 +94,8 @@ const ProductDetailPage: React.FC = () => {
                             <div className={styles.productSize}>L / 14 US</div>
                         </div>
 
-                         {/*onClick={() => dispatch(addToCartAction(CartProduct))}*/}
-                        <button className={styles.addBtn} >Add to cart</button>
+
+                        <button className={styles.addBtn}     onClick={addToCart}>Add to cart</button>
                         <div className={styles.lineDeviderSmall}></div>
 
                         <div className={styles.aditionalInfo}>

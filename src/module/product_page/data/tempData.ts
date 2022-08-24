@@ -10,3 +10,12 @@ export const tempProductData = '{' +
     '"price":"55",' +
     '"discount":"45",' +
     '}';
+
+export const tempProductPreviewData = '{' +
+    '"idProduct":"1111",' +
+    '"product_thumb":"img_1111.jpg",' +
+    '"product_title":"Basic T-shirt",' +
+    '"rating":"4",' +
+    '"price":"55",' +
+    '"discount":"45",' +
+    '}';
