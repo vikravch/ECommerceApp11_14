@@ -8,7 +8,6 @@ import getProductDetails from "../domain/use_case/getProductDetails";
 import {inspect} from "util";
 import styles from "./ProductPage.module.css";
 import AlsoLike from "../../preview_product_panel/presentation/AlsoLike";
-import Header from "../../header/presentation/Header";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -49,9 +48,8 @@ const ProductDetailPage: React.FC = () => {
 
     return (
         <div>
-            <Header/>
             <div>
-                <div className={styles.lineDevider}></div>
+
                 <div className={styles.breadcrums}>Breadcrums/ bread/ crums</div>
                 <div className={styles.productPage}>
                     <div className={styles.photoBox}>
@@ -109,19 +107,6 @@ const ProductDetailPage: React.FC = () => {
                 <div className={styles.lineDevider}></div>
             </div>
             <AlsoLike/>
-
-            <div className="dropdown">
-                <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                   data-bs-toggle="dropdown" aria-expanded="false">
-                    Ссылка выпадающего списка
-                </a>
-
-                <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">Действие</a></li>
-                    <li><a className="dropdown-item" href="#">Другое действие</a></li>
-                    <li><a className="dropdown-item" href="#">Что-то еще здесь</a></li>
-                </ul>
-            </div>
         </div>
 
     );

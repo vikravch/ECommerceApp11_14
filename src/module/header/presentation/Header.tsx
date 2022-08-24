@@ -12,7 +12,9 @@ const Header = () =>
             <li><a href="#sale">Sale</a></li>
             <li><a href="#collections">Collections</a></li>
             <li><a href="#blog">Blog</a></li>
-        </ul></div>);
+        </ul>
+        <div className={styles.lineDevider}></div>
+    </div>);
 };
 
 export default Header;

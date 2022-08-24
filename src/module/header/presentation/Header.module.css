@@ -32,6 +32,18 @@ li a {
 }
 
 /* Change the link color to #111 (black) on hover */
+/* done :)*/
+
 li a:hover {
     background-color: #d9d9d9;
+    color: black;
+}
+
+.lineDevider {
+    border: #000000 solid 0.5px;
+    border-collapse: inherit;
+    width: 1290px;
+    margin-left: 155px;
+
+    opacity: 10%;
 }
