@@ -8,6 +8,8 @@ import getProductDetails from "../domain/use_case/getProductDetails";
 import {inspect} from "util";
 import styles from "./ProductPage.module.css";
 import AlsoLike from "../../preview_product_panel/presentation/AlsoLike";
+import {ADD_TO_CART, addToCartAction, removeFromCartAction} from "../../cart/redux/asyncActions";
+import CartProduct from "../../cart/domain/model/CartProduct";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -27,8 +29,20 @@ const ProductDetailPage: React.FC = () => {
         }
     }, [productId]);
 
-    let addToChart = () => {
+    let addToCart = () => {
         {
+            //use ADD_TO_CART from cartPageReducer
+            //CartProduct{
+            //     count: number;
+            //     color: string;
+            //     size: string;
+            //     idProduct: string;
+            //     product_thumb: string;
+            //     product_title: string;
+            //     rating: string;
+            //     price: number;
+            //     discount: number;}
+
             // при переходе на страницу продукта пишем в стейт - productId
             // при клике на цвет пишем в стейт - product color
             // при клике на цвет пишем в стейт - product size
@@ -85,7 +99,8 @@ const ProductDetailPage: React.FC = () => {
                             <div className={styles.productSize}>L / 14 US</div>
                         </div>
 
-                        <button className={styles.addBtn} onClick={addToChart}>Add to chart</button>
+                         {/*onClick={() => dispatch(addToCartAction(CartProduct))}*/}
+                        <button className={styles.addBtn} >Add to cart</button>
                         <div className={styles.lineDeviderSmall}></div>
 
                         <div className={styles.aditionalInfo}>

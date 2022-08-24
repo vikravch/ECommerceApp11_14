@@ -42,8 +42,7 @@ li a:hover {
 .lineDevider {
     border: #000000 solid 0.5px;
     border-collapse: inherit;
-    width: 1290px;
-    margin-left: 155px;
+    width: 100%;
 
     opacity: 10%;
 }
