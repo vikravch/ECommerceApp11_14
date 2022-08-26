@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from "./AlsoLike.module.css";
 import typography from "./styles/typography.module.css";
-// import Pagionations from "./Pagionations";
-
 
 
 // создать константу со ссылками на фото окторые прилетят массивом из БД

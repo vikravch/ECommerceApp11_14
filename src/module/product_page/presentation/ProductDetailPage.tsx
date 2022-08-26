@@ -59,7 +59,7 @@ const ProductDetailPage: React.FC = () => {
         <div>
             <div>
 
-                <div className={styles.breadcrums}>Breadcrums/ bread/ crums</div>
+                <div className={styles.breadcrums}>Men / T-Shirt / Basic T-shirt </div>
                 <div className={styles.productPage}>
                     <div className={styles.photoBox}>
                         <img src={require("./images/Products/bigImg/img_1111.jpg")} alt="t-shirt"/>
@@ -90,9 +90,21 @@ const ProductDetailPage: React.FC = () => {
                             </div>
                         </div>
 
-                        <div className={styles.productSizeBox}>Choose size
-                            <div className={styles.productSize}>L / 14 US</div>
-                        </div>
+
+                        <div className={styles.productSizeBox2}>
+                            Choose size
+                            <a href="#">Size guide</a>
+                            <div className={styles.sizes}>
+                        <select className="form-select">
+                            <option className={styles.productSize} defaultValue={"0"}>{sizes.S}</option>
+                            <option className={styles.productSize} value="1">{sizes.M}</option>
+                            <option className={styles.productSize} value="2">{sizes.L}</option>
+
+                        </select>
+                            </div>
+                            </div>
+
+
 
 
                         <button className={styles.addBtn}     onClick={addToCart}>Add to cart</button>
@@ -106,10 +118,12 @@ const ProductDetailPage: React.FC = () => {
                                 <div className={styles.dropdownContent}>
                                     <p className={styles.show}>Some text area. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi debitis distinctio impedit.</p>
                                 </div>
+                                <div className={styles.lineDeviderSmall}></div>
                             </div>
                             <div className={styles.shippingDropdown}>
                                 <div>Shipping & Returns</div>
                             </div>
+                            <div className={styles.lineDeviderSmall}></div>
                         </div>
 
                     </div>
