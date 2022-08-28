@@ -10,5 +10,4 @@ export default class ProductPageFakeRepository implements ProductPageRepository{
             resolve(new Product("123"));
         }));
     }
-
 }

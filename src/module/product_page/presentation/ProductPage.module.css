@@ -6,6 +6,22 @@
 .breadcrums {
     margin-top: 30px;
     margin-left: 155px;
+    height: 20px;
+
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    /* identical to box height, or 111% */
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.3px;
+
+    /* Grey / Dark / 3 */
+    color: rgba(0, 0, 0, 0.3);
+
+
 }
 
 .photoBox {
@@ -38,11 +54,12 @@
     align-items: center;
     padding: 3px 6px;
 
-    position: absolute;
+    /*position: absolute;*/
     width: 49px;
     height: 24px;
-    left: 1085px;
-    top: 160px;
+    /*height: 24px;*/
+    /*left: 1085px;*/
+    /*top: 160px;*/
 
     /* Accent 2 / 4 */
     background: #FA4A69;
@@ -50,32 +67,26 @@
 }
 
 .title {
-
-    position: absolute;
+    display: inline-block;
     width: 204px;
     height: 44px;
-    left: 1085px;
-    top: 199px;
-
-    /* Headline / 4 */
-    font-family: 'Inter';
+    margin-top: 18px;
+    font-family: 'Inter', serif;
     font-style: normal;
     font-weight: 500;
     font-size: 36px;
     line-height: 44px;
-    /* identical to box height, or 122% */
     letter-spacing: -1.2px;
-
-    /* Base / Black */
     color: #000000;
 }
 
 .description {
-    position: absolute;
+    display: inline-block;
+    /*position: absolute;*/
     width: 300px;
     height: 69px;
-    left: 1085px;
-    top: 258px;
+    /*left: 1085px;*/
+    /*top: 258px;*/
 
     /* Body / 15 */
     font-family: 'Inter';
@@ -91,11 +102,9 @@
 }
 
 .newPrice {
-    position: absolute;
     width: 52px;
     height: 34px;
-    left: 1082px;
-    top: 325px;
+
 
     /* Headline / 5 */
     font-family: 'Inter';
@@ -112,11 +121,11 @@
 }
 
 .price {
-    position: absolute;
+
     width: 38px;
     height: 30px;
-    left: 1143px;
-    top: 329px;
+    /*left: 1143px;*/
+    /*top: 329px;*/
 
     /* Body / 21 */
     font-family: 'Inter';
@@ -134,11 +143,12 @@
 
 
 .productColorText {
-    position: absolute;
+    /*position: absolute;*/
     width: 43px;
     height: 18px;
-    left: 1085px;
-    top: 410px;
+    /*left: 1085px;*/
+    /*top: 410px;*/
+    margin-top: 27px;
 
     /* Caption / 3 / Medium */
     font-family: 'Inter';
@@ -156,19 +166,19 @@
 }
 
 .productColorImg {
-    position: absolute;
+    /*position: absolute;*/
     /*display: inline-block;*/
     box-sizing: border-box;
     height: 80px;
-    left: 1085px;
-    top: 449px;
+    margin-top: 20px;
+    /*left: 1085px;*/
+    /*top: 449px;*/
 
 }
 
 .productColorImg img {
     /*display: inline-block;*/
     box-sizing: border-box;
-
     width: 80px;
     height: 80px;
     cursor: pointer;
@@ -180,22 +190,40 @@
     border-radius: 10px;
 }
 
-.productSizeBox {
-    position: absolute;
-    display: inline;
+.productSizeBox2 {
     width: 360px;
     height: 50px;
-    left: 1085px;
-    top: 556px;
+    margin-top: 27px;
 
-    /* Caption / 3 / Medium */
-    font-family: 'Inter';
+    font-family: 'Inter', serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 18px;
     /* identical to box height, or 112% */
-    display: flex;
+    /*display: flex;*/
+    align-items: center;
+    letter-spacing: -0.5px;
+
+    /* Grey / Dark / 3 */
+    color: rgba(0, 0, 0, 0.3);
+
+}
+.productSizeBox {
+    /*display: inline;*/
+    width: 360px;
+    height: 50px;
+    margin-top: 27px;
+
+
+    /* Caption / 3 / Medium */
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    /* identical to box height, or 112% */
+    /*display: flex;*/
     align-items: center;
     letter-spacing: -0.5px;
 
@@ -204,32 +232,43 @@
 
 }
 
-.productSize {
-    box-sizing: border-box;
-    display: table-row;
-    /*text-align: center;*/
-    margin-top: 15px;
-    margin-bottom: 15px;
-    margin-left: 18px;
+.sizes
+{
+  margin-top: 20px;
+}
+.productSizeBox a {
+    float: right;
+}
+.productSizeBox2 a {
+    float: right;
+}
 
+.productSize {
     width: 360px;
     height: 50px;
-    left: 1085px;
-    top: 594px;
-
-    /* Base / White */
+    padding: 12px 16px;
+    cursor: pointer;
+    margin-top: 20px;
     background: #FFFFFF;
-    /* Grey / Dark / 2 */
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
+/*.productSizeDropDown {*/
+/*    display: none;*/
+/*}*/
+/*.productSize:hover .productSizeDropDown {*/
+/*    display: inline-block;*/
+/*}*/
+
 
 .addBtn {
-    position: absolute;
+    /*position: absolute;*/
     width: 281px;
     height: 60px;
-    left: 1085px;
-    top: 669px;
+    margin-top: 60px;
+    margin-bottom: 24px;
+    /*left: 1085px;*/
+    /*top: 669px;*/
 
     /* Accent 1 / 4 */
     background: #2D74FF;
@@ -241,7 +280,7 @@
     font-size: 20px;
     line-height: 24px;
     /* identical to box height, or 120% */
-    display: flex;
+    /*display: flex;*/
     align-items: center;
     letter-spacing: -0.6px;
 
@@ -256,22 +295,22 @@
 .aditionalInfo {
     /* Additional info */
     /*border: black 1px solid;*/
-    position: absolute;
     width: 360px;
     height: 266px;
-    left: 1085px;
-    top: 754px;
+    margin-top: 10px;
+    margin-bottom: 19px;
+
 }
 
 .dropdown {
     /*position: absolute;*/
     /* Caption / 2 / Medium */
     /*border: black 1px solid;*/
-    position: relative;
+    /*position: relative;*/
     display: inline-block;
 
     width: 300px;
-    height: 30px;
+    /*height: 30px;*/
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -304,7 +343,7 @@
 
 
 .shippingDropdown {
-    position: absolute;
+    /*position: absolute;*/
     left: 0%;
     right: 16.8%;
     top: 0%;
@@ -326,16 +365,16 @@
 }
 
 .lineDevider {
+    display: inline-block;
     border: #000000 solid 0.5px;
     border-collapse: inherit;
     width: 1290px;
     margin-left: 155px;
-
     opacity: 10%;
 }
 
 .lineDeviderSmall {
-
+display: inline-block;
     border: #000000 solid 0.5px;
     border-collapse: inherit;
     width: 355px;

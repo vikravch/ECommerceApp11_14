@@ -18,7 +18,7 @@ function App() {
   //TODO fix header style on main page
   return (
       <>
-        <Header/>
+          {window.location.pathname !== '/' && <Header />}
         <Routes>
           <Route path="/" element={<LandingDetailPage/>}/>
           <Route path={`/${routes.productDetail}`} element={<ProductDetailPage/>}/>
@@ -34,7 +34,7 @@ function App() {
           <Route path={`/main/${routes.profile}/:profileUID`} element={<ProfilePage/>}/>
           <Route path="/test" element={<TestPage/>}/>
         </Routes>
-        <Footer/>
+        {window.location.pathname !== '/' && <Footer />}
       </>
     );
 }
