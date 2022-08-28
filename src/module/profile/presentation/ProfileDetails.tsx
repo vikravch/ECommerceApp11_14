@@ -12,16 +12,16 @@ const ProfileDetails:React.FC = () => {
     const profile = useSelector<Store, Profile>(state => state.profileDetails.profile);
     const isLoading = useSelector<Store, boolean>(state => state.profileDetails.isLoading);
 
-    const getProfileFakeApi = () => {
-        getProfileFake().then((data) => {
+    const getProfileFakeApi = (token: string) => {
+        getProfileFake(token).then((data) => {
             console.log(data);
-            console.log(data instanceof Profile);
             //set
         });
     }
 
     useEffect(()=>{
-        getProfileFakeApi();
+        const token = sessionStorage.getItem("token") || '';
+        getProfileFakeApi(token);
     });
 
     const dispatch = useDispatch();
@@ -60,8 +60,8 @@ const ProfileDetails:React.FC = () => {
                     <div className={"p-0"}>2464 Royal Ln. Mesa, New Jersey 45463</div>
                 </div>
                 <div className={"row pb-3"}>
-                    <div className={"p-0 gray fw-400"}>Card</div>
-                    <div className={"p-0"}>**** **** **** 2154</div>
+                    <div className={"p-0 gray fw-400"}>Country</div>
+                    <div className={"p-0"}>US</div>
                 </div>
             </div>
         </>

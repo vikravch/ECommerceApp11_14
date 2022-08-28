@@ -16,6 +16,7 @@ import TestPage from "./module/test/TestPage";
 
 function App() {
   //TODO fix header style on main page
+    sessionStorage.setItem("token", "123");
   return (
       <>
         <Header/>
