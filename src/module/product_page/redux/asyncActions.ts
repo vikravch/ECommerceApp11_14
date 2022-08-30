@@ -1,5 +1,6 @@
 import Product from "../domain/model/Product";
 import getProductDetails from "../domain/use_case/getProductDetails";
+import CartProduct from "../../cart/domain/model/CartProduct";
 
 export const getProductDetailsAction = (productId:string):any => {
     return (dispatch:Function) => {
@@ -22,7 +23,7 @@ export const setProductDataAction = (data:Product) => ({
     payload: data
 });
 
-export  const  addToChartActionCreator = (data:Product) => ({
+export  const  addToChartActionCreator = (data:CartProduct) => ({
     type: ADD_TO_CHART,
     payload: data
 })

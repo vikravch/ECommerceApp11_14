@@ -10,6 +10,8 @@ export const cartPageReducer = (
 ) => {
     switch (action.type) {
         case ADD_TO_CART:
+
+            console.log(JSON.stringify(state.cartItems));
             const cartProducts: Array<CartProduct> = state.cartItems
             const productIndex: number = cartProducts.findIndex((item => item.idProduct == action.payload.idProduct))
             let newCartItems  = cartProducts

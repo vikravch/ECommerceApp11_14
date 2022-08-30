@@ -11,6 +11,7 @@ import AlsoLike from "../../preview_product_panel/presentation/AlsoLike";
 import {ADD_TO_CART, addToCartAction, removeFromCartAction} from "../../cart/redux/asyncActions";
 import CartProduct from "../../cart/domain/model/CartProduct";
 import {sizes} from "../../../general/data/sizes";
+import {CartPageStore} from "../../cart/redux/typesCartPage";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -20,45 +21,86 @@ const ProductDetailPage: React.FC = () => {
     const isLoading = useSelector<Store, boolean>(
         state => state.productPage.isLoading
     );
+    const cartItems = useSelector<Store, Array<CartProduct>> (
+        state => state.cartPage.cartItems
+    )
+
+
+    const [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
+        count: 1,
+        color: product.colors[0],
+        size: product.size.M,
+        idProduct: "1111",
+        product_thumb: "",
+        product_title: product.product_title,
+        rating: product.rating,
+        price: product.price,
+        discount: product.discount,
+    });
+
+
     const dispatch = useDispatch()
     useEffect(() => {
         if (productId) {
-            dispatch(getProductDetailsAction(productId))
+            dispatch(getProductDetailsAction(productId));
             getProductDetails().then((data)=>{
             })
         }
     }, [productId]);
 
 
-    let cartProduct = new CartProduct(1,
-        "Black",
-        sizes.M,
-        product.idProduct,
-        product.product_main_img,
-        product.product_title,
-        product.rating,
-        product.price,
-        product.discount )
 
 
-    // const [selectedOption, setSelectedOption] = useState<String>();
-    const selectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+
+    const [selectedOption, setSelectedOption] = useState<string>("");
+    const selectSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
-        // setSelectedOption(value);
-        console.log("Size changed to: " + value);
-        cartProduct.size = value;
-        console.log("Cart PR size: " + cartProduct.size)
-        console.log("Cart PR: " + JSON.stringify(cartProduct));
+        setSelectedOption(value);
+        // console.log("Size changed to: " + selectedOption);
+        // tempCartProduct.size = value;
+        // console.log("Cart PR size: " + tempCartProduct.size)
+        // console.log("Cart PR: " + JSON.stringify(tempCartProduct));
     };
+
+    const colorChanged = (event: React.ChangeEventHandler<HTMLImageElement>) => {
+        const value = event.name;
+        console.log("Color changed to: " + value);
+    }
+
+    const [clickedColor, setClickedColor] = useState(product.colors[0]);
+
+    const colorHandler = (event: React.MouseEvent<HTMLImageElement>) => {
+        event.preventDefault();
+        const colorImg: HTMLImageElement = event.currentTarget;
+        setClickedColor(colorImg.id);
+        // tempCartProduct.color = clickedColor.valueOf();
+        // console.log(clickedColor.valueOf())
+        // console.log("Cart Product color updated to: " + JSON.stringify(tempCartProduct))
+
+    };
+
 
     let addToCart = () => {
         {
-            //TODO colors and sizes to page for choice
-         dispatch(addToCartAction(cartProduct)) //from cartPageReducer
-            console.log("cart Product: " + JSON.stringify(cartProduct))
-            console.log("ID: " + JSON.stringify(cartProduct.idProduct))
+            // console.log("START ADD to cart Product: " + JSON.stringify(tempCartProduct))
+         // dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
+         //    console.log("cart Product: " + JSON.stringify(tempCartProduct))
+         //    console.log("ID: " + JSON.stringify(tempCartProduct.idProduct))
             // store.addToChart(productDetailsToChart)
             // store.dispatch(addToChartActionCreator())
+            console.log(cartItems.length)
+            cartItems.push({ count: 1,
+            color: clickedColor,
+            size: selectedOption,
+            idProduct: productId??"1111",
+            product_thumb: "",
+            product_title: product.product_title,
+            rating: product.rating,
+            price: product.price,
+            discount: product.discount,})
+
+            console.log(cartItems.length)
+            console.log("cart ITEMS: " + JSON.stringify(cartItems))
         }
     }
 
@@ -91,13 +133,15 @@ const ProductDetailPage: React.FC = () => {
                         <div className={styles.lineDeviderSmall}></div>
 
                         <div className={styles.productColorBox}>
-                            <div className={styles.productColorText}>color:Black</div>
+                            <div className={styles.productColorText}>{clickedColor !== ""
+                                ? `Color: "${clickedColor}"`
+                                : product.colors[0]}</div>
                             <div className={styles.productColorImg}>
-                                <img className={styles.active} src={require("./images/Products/color/img1.png")}
-                                     alt="color"/>
-                                <img src={require("./images/Products/color/img2.png")} alt="color"/>
-                                <img src={require("./images/Products/color/img3.png")} alt="color"/>
-                                <img src={require("./images/Products/color/img4.png")} alt="color"/>
+                                <img onClick={colorHandler} className={styles.active} src={require("./images/Products/color/img1.png")}
+                                     alt="color" id={product.colors[0]}/>
+                                <img onClick={colorHandler} src={require("./images/Products/color/img2.png")} id={product.colors[1]} alt="color"/>
+                                <img onClick={colorHandler} src={require("./images/Products/color/img3.png")} id={product.colors[2]} alt="color"/>
+                                <img onClick={colorHandler} src={require("./images/Products/color/img4.png")} id={product.colors[3]} alt="color"/>
                             </div>
                         </div>
 
@@ -106,7 +150,7 @@ const ProductDetailPage: React.FC = () => {
                             Choose size
                             <a href="#">Size guide</a>
                             <div className={styles.sizes}>
-                        <select onChange={selectChange} className="form-select">
+                        <select onChange={selectSizeChange} className="form-select">
                             <option className={styles.productSize} defaultValue={sizes.S}>{sizes.S}</option>
                             <option className={styles.productSize} value={sizes.M}>{sizes.M}</option>
                             <option className={styles.productSize} value={sizes.L}>{sizes.L}</option>

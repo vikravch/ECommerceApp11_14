@@ -4,6 +4,7 @@ import Order, {getOrder1Str} from "../profile/domain/model/Order";
 import { createServer, Factory, Model } from "miragejs"
 
 export function MockServer({enironment = 'development'}){
+
     return createServer(
         {routes: () => {
 

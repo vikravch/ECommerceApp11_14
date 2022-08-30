@@ -7,7 +7,7 @@ export const tempProductData = {
     product_title: "Tshirt",
     description: "Bla bla",
     rating: "4",
-    colors: ["Black", "Blue"],
+    colors: ["Black", "Blue", "Brown", "White"],
     size: sizes,
     details: "details hkjfh dfjjf kfdjk",
     price: 35,
