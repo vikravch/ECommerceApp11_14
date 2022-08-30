@@ -1,1 +1,1 @@
-export const DOMAIN_NAME = "localhost:8080"
+export const DOMAIN_NAME = "https://ecommerce-project-haifa11.herokuapp.com/"
