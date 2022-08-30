@@ -10,6 +10,7 @@ import {landingPageReducer} from "../../module/landing_page/redux/landingPageRed
 import {articlePageReducer} from "../../module/article_page/redux/articlePageReducer";
 import {profileDetailsReducer} from "../../module/profile/redux/profileDetailsReducer";
 import {blogPageReducer} from "../../module/blog_page/redux/blogPageReduser";
+import {ordersDetailsReducer} from "../../module/profile/redux/ordersDetailsReducer";
 
 const store = createStore(
     combineReducers(
@@ -20,7 +21,7 @@ const store = createStore(
             checkout: checkoutPageReducer,
             articlePage: articlePageReducer,
             profileDetails: profileDetailsReducer,
-
+            ordersDetails: ordersDetailsReducer,
             blogPage: blogPageReducer
         }
     ), composeWithDevTools(

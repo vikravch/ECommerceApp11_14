@@ -4,8 +4,8 @@ import getProductDetails from "../domain/use_case/getProductDetails";
 export const getProductDetailsAction = (productId:string):any => {
     return (dispatch:Function) => {
         dispatch(startProductLoadAction());
-        getProductDetails(productId).then((data)=>{
-            console.log(JSON.stringify(data));
+        getProductDetails().then((data)=>{
+            // console.log(JSON.stringify(data));
             dispatch(setProductDataAction(data));
         });
     }

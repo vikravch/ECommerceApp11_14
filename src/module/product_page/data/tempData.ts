@@ -1,4 +1,19 @@
-export const tempProductData = '{' +
+import {sizes} from "../../../general/data/sizes";
+
+export const tempProductData = {
+    idProduct: "1111",
+    product_main_img: "img1111",
+    product_imgs: ["img123", "img1234"],
+    product_title: "Tshirt",
+    description: "Bla bla",
+    rating: "4",
+    colors: ["Black", "Blue"],
+    size: sizes,
+    details: "details hkjfh dfjjf kfdjk",
+    price: 35,
+    discount: 45,
+}
+export const tempProductDataJSON = '{' +
     '"idProduct":"1111",' +
     '"product_main_img":"img_1111.jpg",' +
     '"product_imgs": [img_1131.jpg, img_1141.jpg],' +

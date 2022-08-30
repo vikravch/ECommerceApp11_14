@@ -1,11 +1,11 @@
 import {ProfileDetailsStore} from "./typesProfilePage";
 import {Action} from "../../../general/redux/Action";
-import Profile from "../domain/model/Profile";
+import Profile, {getProfilePreviewStr} from "../domain/model/Profile";
 import {SET_PROFILE_DATA, START_PROFILE_LOAD} from "./asyncActions";
 
 export function profileDetailsReducer(
     state: ProfileDetailsStore = {
-        profile: new Profile('1221'),
+        profile: new Profile(JSON.parse(getProfilePreviewStr)),
         isLoading: false},
     action: Action){
 

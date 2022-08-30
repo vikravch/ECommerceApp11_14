@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Product from "../domain/model/Product";
 import {Store} from "../../../general/redux/storeTypes";
 import {useParams} from "react-router-dom";
-import {addToChartActionCreator, getProductDetailsAction} from "../redux/asyncActions";
+import {addToChartActionCreator, getProductDetailsAction, setProductDataAction} from "../redux/asyncActions";
 import getProductDetails from "../domain/use_case/getProductDetails";
 import {inspect} from "util";
 import styles from "./ProductPage.module.css";
@@ -24,32 +24,43 @@ const ProductDetailPage: React.FC = () => {
     useEffect(() => {
         if (productId) {
             dispatch(getProductDetailsAction(productId))
-            /*getProductDetails(productId).then((data)=>{
-                console.log(data);
-            })*/
+            getProductDetails().then((data)=>{
+            })
         }
     }, [productId]);
+
+
+    let cartProduct = new CartProduct(1,
+        "Black",
+        sizes.M,
+        product.idProduct,
+        product.product_main_img,
+        product.product_title,
+        product.rating,
+        product.price,
+        product.discount )
+
+
+    // const [selectedOption, setSelectedOption] = useState<String>();
+    const selectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const value = event.target.value;
+        // setSelectedOption(value);
+        console.log("Size changed to: " + value);
+        cartProduct.size = value;
+        console.log("Cart PR size: " + cartProduct.size)
+        console.log("Cart PR: " + JSON.stringify(cartProduct));
+    };
 
     let addToCart = () => {
         {
             //TODO colors and sizes to page for choice
-            let dataToCart = new CartProduct(1, "Black",
-                sizes.M, product.idProduct, product.product_main_img,
-                product.product_title, product.rating,
-                product.price, product.discount )
-            //use ADD_TO_CART from cartPageReducer
-
-            // при переходе на страницу продукта пишем в стейт - productId
-            // при клике на цвет пишем в стейт - product color
-            // при клике на цвет пишем в стейт - product size
-            // при клике на addToChart - отправляем инфо в "корзину"
-            console.log("Add_to_Chart Button Clicked")
-            console.log("ID: " + JSON.stringify(dataToCart.idProduct))
+         dispatch(addToCartAction(cartProduct)) //from cartPageReducer
+            console.log("cart Product: " + JSON.stringify(cartProduct))
+            console.log("ID: " + JSON.stringify(cartProduct.idProduct))
             // store.addToChart(productDetailsToChart)
             // store.dispatch(addToChartActionCreator())
         }
     }
-
 
     function dropDownDetails() {
         console.log("Drop down CLICKED")
@@ -69,12 +80,12 @@ const ProductDetailPage: React.FC = () => {
                     </div>
 
                     <div className={styles.productInfoBox}>
-                        <div className={styles.discount}>-45%</div>
-                        <div className={styles.title}>Title</div>
+                        <div className={styles.discount}>-{product.discount}%</div>
+                        <div className={styles.title}>{product.product_title}</div>
                         <div className={styles.description}>The T-Shirt sets you up with soft cotton jersey and a
                             classic logo with camo on the chest.
                         </div>
-                        <div className={styles.newPrice}>$35</div>
+                        <div className={styles.newPrice}>${product.price}</div>
                         <div className={styles.price}>$55</div>
 
                         <div className={styles.lineDeviderSmall}></div>
@@ -95,11 +106,10 @@ const ProductDetailPage: React.FC = () => {
                             Choose size
                             <a href="#">Size guide</a>
                             <div className={styles.sizes}>
-                        <select className="form-select">
-                            <option className={styles.productSize} defaultValue={"0"}>{sizes.S}</option>
-                            <option className={styles.productSize} value="1">{sizes.M}</option>
-                            <option className={styles.productSize} value="2">{sizes.L}</option>
-
+                        <select onChange={selectChange} className="form-select">
+                            <option className={styles.productSize} defaultValue={sizes.S}>{sizes.S}</option>
+                            <option className={styles.productSize} value={sizes.M}>{sizes.M}</option>
+                            <option className={styles.productSize} value={sizes.L}>{sizes.L}</option>
                         </select>
                             </div>
                             </div>

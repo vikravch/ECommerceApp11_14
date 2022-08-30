@@ -15,6 +15,7 @@ export const cartPageReducer = (
             let newCartItems  = cartProducts
             if (productIndex !== -1) {
                 newCartItems[productIndex].count += 1;
+                console.log("Cart REDUCER count : " + newCartItems[productIndex].count)
                 return {...state, cartItems: newCartItems}
             } else {
                 return state.cartItems.push({...action.payload, count: 1})
