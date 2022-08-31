@@ -73,7 +73,7 @@ export const articlesInfo = {ArticleBaseInfo: [
             id: "44444",
             title: "Summer Sports - Summer Vibes",
             dateModified: "07.08.2020",
-            articleThumb: "https://www....picture.jpg"
+            articleThumb: "https://www.....picture.jpg"
         }
     ]
 }

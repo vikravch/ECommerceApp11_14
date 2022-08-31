@@ -12,7 +12,5 @@ export default class ArticleInfo {
     }
 }
 
-
-
 // Article
 // ArticleInfo -?

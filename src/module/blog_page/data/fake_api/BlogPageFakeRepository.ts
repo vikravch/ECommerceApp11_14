@@ -3,7 +3,7 @@ import ArticlesList from "../../domain/model/ArticlesList";
 import ArticleInfo from "../../domain/model/ArticlesList";
 import {DOMAIN_NAME} from "../../../../general/data/server_setting";
 
-// mirage.js
+
 export default class BlogPageFakeRepository implements BlogPageRepository{
     async getArticlesList(): Promise<any> {
         // fetch ???
