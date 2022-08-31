@@ -1,55 +1,44 @@
-import React, {useEffect} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 //import {CountryDropdown} from 'react-country-region-selector'
 
-import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
-import Product from "../../product_page/domain/model/Product";
-import {getProductDetailsAction} from "../../product_page/redux/asyncActions";
+import CartProduct from "../../cart/domain/model/CartProduct";
+import {shippings} from "../../../general/data/shippings";
+import Profile from "../../profile/domain/model/Profile";
 
 const CheckoutPage:React.FC = ()=> {
+    const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems);
+    const profile = useSelector<Store, Profile>(state => state.profileDetails.profile);
+    const [shipping, setShipping] = useState("Standard");
+
     return (
-            <div className="container" style={{maxWidth: 1070}}>
+            <div className="container my-4" style={{maxWidth: 1070}}>
             <div className="row g-5">
                     <div className="col-md-5 col-lg-4">
                         <div className="rounded-2 border border-1 p-2" >
                             <h4 className="d-flex justify-content-between align-items-center mb-3">
                                 <span className="text">Goods</span>
                             </h4>
-                            <div className="mb-3">
+                            {cartItems.map((item) => (
+                            <div className="mb-3" key={item.idProduct}>
                                 <div className="row g-0 m-0">
                                     <div className="col-md-5 ">
                                         <img src="http://via.placeholder.com/105x127" className="img-fluid rounded" alt="image"/>
                                     </div>
                                     <div className="col-md-7">
                                         <div className="card-body p-0">
-                                            <p className="mb-0 small"><label className="text-muted small">#7142</label></p>
-                                            <p className="mb-0 small"><strong className="card-title small">Basic t-shirt</strong></p>
-                                            <p className="mb-0 small"><label className="text-muted small">Color: </label><label className="mx-1 small">Black with print</label></p>
-                                            <p className="mb-0 small"><label className="text-muted small">Size: </label><label className="mx-1 small">L / 14 US</label></p>
-                                            <p className="mb-0 small"><label className="text-muted small">Quantity: </label><label className="mx-1 small">1</label></p>
-                                            <p className="mb-0 small"><label className="small"><strong>$35</strong></label></p>
+                                            <p className="mb-0 small"><label className="text-muted small">#{item.idProduct}</label></p>
+                                            <p className="mb-0 small"><strong className="card-title small">{item.product_title}</strong></p>
+                                            <p className="mb-0 small"><label className="text-muted small">Color: </label><label className="mx-1 small">{item.color}</label></p>
+                                            <p className="mb-0 small"><label className="text-muted small">Size: </label><label className="mx-1 small">{item.size}</label></p>
+                                            <p className="mb-0 small"><label className="text-muted small">Quantity: </label><label className="mx-1 small">{item.count}</label></p>
+                                            <p className="mb-0 small"><label className="small"><strong>${item.price}</strong></label></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="mb-3">
-                                <div className="row g-0 m-0">
-                                    <div className="col-md-5 ">
-                                        <img src="http://via.placeholder.com/105x127" className="img-fluid rounded" alt="image"/>
-                                    </div>
-                                    <div className="col-md-7">
-                                        <div className="card-body p-0">
-                                            <p className="mb-0 small"><label className="text-muted small">#7142</label></p>
-                                            <p className="mb-0 small"><strong className="card-title small">Basic t-shirt</strong></p>
-                                            <p className="mb-0 small"><label className="text-muted small">Color: </label><label className="mx-1 small">Black with print</label></p>
-                                            <p className="mb-0 small"><label className="text-muted small">Size: </label><label className="mx-1 small">L / 14 US</label></p>
-                                            <p className="mb-0 small"><label className="text-muted small">Quantity: </label><label className="mx-1 small">1</label></p>
-                                            <p className="mb-0 small"><label className="small"><strong>$35</strong></label></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                         <div className="rounded-2 border border-1 p-2 mt-2">
                             <h4 className="d-flex justify-content-between align-items-center mb-3">
@@ -60,13 +49,13 @@ const CheckoutPage:React.FC = ()=> {
                                     <div>
                                         <p className="my-0">Subtotal</p>
                                     </div>
-                                    <p className="my-0">$290.00</p>
+                                    <p className="my-0">${cartItems.reduce((acc:number, next:CartProduct) => (acc += (next.count * next.price)), 0)}</p>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between lh-sm">
                                     <div>
                                         <p className="my-0">Estimated Shipping & Handling</p>
                                     </div>
-                                    <p className="my-0">$8.00</p>
+                                    <p className="my-0">$</p>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between lh-sm">
                                     <div>
@@ -76,7 +65,7 @@ const CheckoutPage:React.FC = ()=> {
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between">
                                     <strong>Total</strong>
-                                    <strong>$248</strong>
+                                    <strong>${cartItems.reduce((acc:number, next:CartProduct) => (acc += (next.count * next.price)), 0)}</strong>
                                 </li>
                             </ul>
                         </div>
@@ -94,7 +83,7 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="firstName" className="form-label">First name</label>
-                                    <input type="text" className="form-control" id="firstName" placeholder="" value=""
+                                    <input type="text" className="form-control" id="firstName" placeholder="" value={profile.name}
                                            required/>
                                         <div className="invalid-feedback">
                                             Valid first name is required.
@@ -103,7 +92,7 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="lastName" className="form-label">Second name</label>
-                                    <input type="text" className="form-control" id="lastName" placeholder="" value=""
+                                    <input type="text" className="form-control" id="lastName" placeholder="" value={profile.surname}
                                            required/>
                                         <div className="invalid-feedback">
                                             Valid last name is required.
@@ -114,7 +103,7 @@ const CheckoutPage:React.FC = ()=> {
                                     <label htmlFor="email" className="form-label">Email <span
                                         className="text-muted"></span></label>
                                     <input type="email" className="form-control" id="email"
-                                           placeholder="you@example.com"/>
+                                           placeholder="you@example.com" value={profile.email}/>
                                     <div className="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -122,7 +111,7 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="phone" className="form-label">Phone number</label>
-                                    <input type="text" className="form-control" id="phone" placeholder="" value=""
+                                    <input type="text" className="form-control" id="phone" placeholder="" value={profile.phone}
                                            required/>
                                     <div className="invalid-feedback">
                                         Valid phone is required.
@@ -140,9 +129,9 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="country" className="form-label">Country</label>
-                                    <select className="form-select" id="country" required>
+                                    <select className="form-select" id="country" required defaultValue={profile.country}>
                                         <option value="">Choose...</option>
-                                        <option>United States</option>
+                                        <option value="US">United States</option>
                                     </select>
                                     <div className="invalid-feedback">
                                         Please select a valid country.
@@ -151,30 +140,32 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="zip" className="form-label">ZIP code</label>
-                                    <input type="text" className="form-control" id="zip" placeholder="" required/>
+                                    <input type="text" className="form-control" id="zip" placeholder="" required value={profile.zipCode}/>
                                         <div className="invalid-feedback">
                                             Zip code required.
                                         </div>
                                 </div>
 
+
                                 <div className="col-sm-6">
-                                    <input className="form-check-input" type="radio" name="inlineRadioOptions"
-                                           id="inlineRadio1" value="option1" checked/>
-                                    <label className="form-check-label mx-lg-2" htmlFor="inlineRadio1">Standard</label>
-                                    <label className="text-muted text-sm">Free, 10 – 14 days</label>
+                                    <input className="form-check-input" type="radio" name="title"
+                                           id="Standard" value="Standard" checked={shipping === "Standard"}
+                                    onChange={(e:ChangeEvent<HTMLInputElement>) => {setShipping(e.target.value)}}/>
+                                    <label className="form-check-label mx-lg-2" htmlFor="inlineRadio1">{shippings[0].title}</label>
+                                    <label className="text-muted text-sm">{shippings[0].description}</label>
                                 </div>
                                 <div className="col-sm-6">
-                                    <input className="form-check-input" type="radio" name="inlineRadioOptions"
-                                           id="inlineRadio2" value="option2"/>
-                                    <label className="form-check-label mx-lg-2" htmlFor="inlineRadio2">Premium</label>
-                                    <label className="text-muted text-sm ">$10, 1 – 3 days</label>
+                                    <input className="form-check-input" type="radio" name="title" checked={shipping === "Premium"}
+                                           id="Premium" value="Premium" onChange={(e:ChangeEvent<HTMLInputElement>) => {setShipping(e.target.value)}}/>
+                                    <label className="form-check-label mx-lg-2" htmlFor="inlineRadio2">{shippings[1].title}</label>
+                                    <label className="text-muted text-sm ">{shippings[1].description}</label>
                                 </div>
 
 
                                 <div className="col-12">
                                     <label htmlFor="address" className="form-label">Address</label>
                                     <input type="text" className="form-control" id="address" placeholder="1234 Main St"
-                                           required/>
+                                           required value={profile.address}/>
                                     <div className="invalid-feedback">
                                         Please enter your shipping address.
                                     </div>

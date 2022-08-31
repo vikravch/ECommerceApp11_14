@@ -1,16 +1,20 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
-import {decrementCartCount, incrementCartCount, removeFromCartAction} from "../redux/asyncActions";
-
+import {
+    changeCountAction,
+    changeSizeAction,
+    removeFromCartAction
+} from "../redux/asyncActions";
 import {sizes} from "../../../general/data/sizes";
 import CartProduct from "../domain/model/CartProduct";
+import {Link} from "react-router-dom";
 
 const CartPage:React.FC = () => {
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems)
     const dispatch = useDispatch()
 
-       return (<>
+    return (<>
             <div className="container" style={{maxWidth: 1070}}>
                 <h1>Cart</h1>
             <div className="mb-5 row">
@@ -31,13 +35,20 @@ const CartPage:React.FC = () => {
                                                 <div className="row h-50 d-flex align-items-end">
                                                     <div className="col-md-7">
                                                     <label htmlFor="size" className="form-label text-muted small mb-0">Size</label>
-                                                        <select className="form-select" id="size" required>
-                                                            <option value={item.size}>{item.size}</option>
+                                                        <select className="form-select" id="size" required defaultValue={item.size} onChange={(e: ChangeEvent<{value: string}>) => {
+                                                            dispatch(changeSizeAction(item.idProduct, e.target.value));}}>
+                                                            <option value={sizes.S}>{sizes.S}</option>
+                                                            <option value={sizes.M}>{sizes.M}</option>
+                                                            <option value={sizes.L}>{sizes.L}</option>
                                                         </select>
                                                     </div>
                                                     <div className="col-md-5">
                                                     <label htmlFor="quantity" className="form-label text-muted small mb-0">Quantity</label>
-                                                        <input id="quantity" className="form-control mw-100" type="number" value={item.count}/>
+                                                        <input id="quantity"
+                                                               className="form-control mw-100"
+                                                               type="number"
+                                                               defaultValue={item.count}
+                                                               onChange={(e: ChangeEvent<{value: string}>) => { dispatch(changeCountAction(item.idProduct, +e.target.value))}}/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -47,8 +58,6 @@ const CartPage:React.FC = () => {
                                         <div className="d-block h-100">
                                         <div className="cart-title row h-50 align-items-start">
                                             <p className="mb-0 card-title text-dark text-end fs-4 fw-500">
-                                                {/*/!*{(item.discount)?<label className="me-2" style={{textDecoration: "line-through", color: "rgba(250, 74, 105, 1), "}}>${Math.round((100 * item.price) / (100 - item.discount)) + "  "}</label>:null}*!/*/}
-                                                {/*${item.price}</p>*/}
                                                 {(item.discount)?<label className="me-2 text-muted" style={{textDecoration: "line-through", textDecorationColor: "rgba(250, 74, 105, 1)"}}>${Math.round((100 * item.price) / (100 - item.discount)) + "  "}</label>:null}
                                                 ${item.price}</p>
                                         </div>
@@ -58,34 +67,9 @@ const CartPage:React.FC = () => {
                                                 Remove
                                             </button>
                                         </div>
-                                            {/*    <div className="align-items-center row">*/}
-                                            {/*        <div className="col-md-12 col-sm-3 col-5">*/}
-                                            {/*            <div className="d-flex align-items-center">*/}
-                                            {/*                <div className="btn btn-items btn-items-decrease"*/}
-                                            {/*                     onClick={() => dispatch(decrementCartCount(item.idProduct))}>-</div>*/}
-                                            {/*                <p className="text-center border-0 border-md input-items form-control">*/}
-                                            {/*                    {item.count}*/}
-                                            {/*                </p>*/}
-                                            {/*                <div className="btn btn-items btn-items-increase"*/}
-                                            {/*                     onClick={() => dispatch(incrementCartCount(item.idProduct))}>+*/}
-                                            {/*                </div>*/}
-                                            {/*            </div>*/}
-                                            {/*        </div>*/}
-                                            {/*    </div>*/}
-                                            {/*</div>*/}
-                                            {/*<div className="col-md-3">*/}
-                                            {/*    <div className="row">*/}
-                                            {/*        <div className="text-end text-md-center col-md-12 col-6">${item.price*item.count}*/}
-                                            {/*        </div>*/}
-                                            {/*    </div>*/}
-                                            {/*</div>*/}
-                                            {/*<div className="d-none d-md-block text-center col-2">*/}
-                                            {/*
-                                            {/*</div>*/}
                                         </div>
                                         </div>
                                     </div>
-                                {/*</div>*/}
                             </div>
                             ))}
 
@@ -110,22 +94,22 @@ const CartPage:React.FC = () => {
                                     <div>
                                         <p className="my-0">Subtotal</p>
                                     </div>
-                                    <p className="my-0">$290.00</p>
+                                    <p className="my-0">${cartItems.reduce((acc:number, next:CartProduct) => (acc += (next.count * next.price)), 0)}</p>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between lh-sm">
                                     <div>
                                         <p className="my-0">Estimated Shipping & Handling</p>
                                     </div>
-                                    <p className="my-0">$8.00</p>
+                                    <p className="my-0">$0.00</p>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between lh-sm py-4">
                                     <label className="fs-4 fw-500">Total</label>
-                                    <label className="fs-4 fw-500">$298</label>
+                                    <label className="fs-4 fw-500">${cartItems.reduce((acc:number, next:CartProduct) => (acc += (next.count * next.price)), 0)}</label>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-center lh-sm py-4">
-                                    <button className="btn btn-lg btn-primary w-100">
+                                    <Link to="/checkout" className="btn btn-lg btn-primary w-100">
                                         Checkout
-                                    </button>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -133,8 +117,6 @@ const CartPage:React.FC = () => {
 
                 </div>
                 </div>
-
-            {/*</div>*/}
         </div>
         </>
 );
