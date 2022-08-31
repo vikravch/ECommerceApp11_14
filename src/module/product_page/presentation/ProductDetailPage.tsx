@@ -25,9 +25,9 @@ const ProductDetailPage: React.FC = () => {
         if (productId) {
             console.log(productId);
             dispatch(getProductDetailsAction(productId))
-            /*getProductDetails(productId).then((data)=>{
-                console.log(data);
-            })*/
+            getProductDetails(productId).then((data)=>{
+                 console.log(data);
+            })
         }
     }, [productId]);
 
