@@ -83,7 +83,7 @@ const ProductDetailPage: React.FC = () => {
     let addToCart = () => {
         {
             // console.log("START ADD to cart Product: " + JSON.stringify(tempCartProduct))
-         // dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
+          dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
          //    console.log("cart Product: " + JSON.stringify(tempCartProduct))
          //    console.log("ID: " + JSON.stringify(tempCartProduct.idProduct))
             // store.addToChart(productDetailsToChart)

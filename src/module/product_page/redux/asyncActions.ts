@@ -5,7 +5,7 @@ import CartProduct from "../../cart/domain/model/CartProduct";
 export const getProductDetailsAction = (productId:string):any => {
     return (dispatch:Function) => {
         dispatch(startProductLoadAction());
-        getProductDetails().then((data)=>{
+        getProductDetails(productId).then((data)=>{
             // console.log(JSON.stringify(data));
             dispatch(setProductDataAction(data));
         });
