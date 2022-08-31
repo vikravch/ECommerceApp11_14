@@ -1,26 +1,33 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Order, {getOrder1Str} from "../profile/domain/model/Order";
 
-import { createServer, Factory, Model } from "miragejs"
-
-export function MockServer({enironment = 'development'}){
-    return createServer(
-        {routes: () => {
-
-            }}
-    )
-}
-
-let server = createServer({
-});
-//server.get("/api/users", { users: [{ id: 1, name: "Bob" }] })
-
 const TestPage: React.FC = () => {
+   useEffect(()=>{
 
-    const obj = JSON.parse(getOrder1Str) as Order;
+       var myHeaders = new Headers();
+       myHeaders.append("Content-Type", "application/json");
+
+       const raw = JSON.stringify({
+           "email": "user1@mail.com",
+           "password": "test",
+           "dateOfBirth": "2022-08-17"
+       });
+
+       const requestOptions: RequestInit = {
+           method: 'POST',
+           headers: myHeaders,
+           body: raw,
+           redirect: 'follow'
+       };
+
+       fetch("https://spring-security-app-ecommerce.herokuapp.com", requestOptions)
+           .then(response => response.text())
+           .then(result => console.log(result))
+           .catch(error => console.log('error', error));
+   },[])
 
     return <h1>
-        {obj.orderLines[0].color}
+
     </h1>
 }
 
