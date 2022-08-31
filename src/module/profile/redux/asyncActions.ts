@@ -41,7 +41,8 @@ export const startOrdersLoadAction = () => ({
 });
 
 export const setOrdersDataAction = (data: Array<Order>) => ({
-    type: SET_ORDERS_DATA
+    type: SET_ORDERS_DATA,
+    payload: data
 });
 
 

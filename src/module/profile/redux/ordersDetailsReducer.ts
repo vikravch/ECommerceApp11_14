@@ -11,7 +11,8 @@ export function ordersDetailsReducer(
 
     switch (action.type) {
         case START_ORDERS_LOAD: return {...state, isLoading: true};
-        case SET_ORDERS_DATA: return {...state, isLoading: false};
+        case SET_ORDERS_DATA: return {...state,
+            orders:action.payload, isLoading: false};
         default: return state;
     }
 }

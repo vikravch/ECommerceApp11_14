@@ -3,22 +3,24 @@ import getOrdersFake from "../domain/use_cases/getOrdersFake";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import Order from "../domain/model/Order";
+import {getOrdersDetailsAction} from "../redux/asyncActions";
 
 const OrdersDetails: React.FC = () => {
     const orders = useSelector<Store, Array<Order>>(state => state.ordersDetails.orders);
     const isLoading = useSelector<Store, boolean>(state => state.ordersDetails.isLoading);
 
-    const getOrdersFakeApi = (token: string) => {
+    /*const getOrdersFakeApi = (token: string) => {
         getOrdersFake(token).then((data) => {
             console.log(data);
         })
-    }
+    }*/
 
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        const token = sessionStorage.getItem("token") || '';
-        getOrdersFakeApi(token);
+        dispatch(getOrdersDetailsAction(sessionStorage.getItem("token") || ''))
+        //const token = sessionStorage.getItem("token") || '';
+        //getOrdersFakeApi(token);
     });
 
     let countKey = 0;
