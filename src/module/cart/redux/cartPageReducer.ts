@@ -10,11 +10,14 @@ export const cartPageReducer = (
 ) => {
     switch (action.type) {
         case ADD_TO_CART:
+
+            console.log(JSON.stringify(state.cartItems));
             const cartProducts: Array<CartProduct> = state.cartItems
             const productIndex: number = cartProducts.findIndex((item => item.idProduct == action.payload.idProduct))
             let newCartItems  = cartProducts
             if (productIndex !== -1) {
                 newCartItems[productIndex].count += 1;
+                console.log("Cart REDUCER count : " + newCartItems[productIndex].count)
                 return {...state, cartItems: newCartItems}
             } else {
                 return state.cartItems.push({...action.payload, count: 1})

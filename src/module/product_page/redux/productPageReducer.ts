@@ -13,8 +13,8 @@ export function productPageReducer(
             return { ...state, isLoading: true}
         }
         case SET_PRODUCT_DATA:{
-
-            return {...state, isLoading: false}
+            let fakeProduct:Product = tempProductData
+            return {...state, product: fakeProduct , isLoading: false}
         }
         default:
             return state;

@@ -1,11 +1,12 @@
 import Product from "../domain/model/Product";
 import getProductDetails from "../domain/use_case/getProductDetails";
+import CartProduct from "../../cart/domain/model/CartProduct";
 
 export const getProductDetailsAction = (productId:string):any => {
     return (dispatch:Function) => {
         dispatch(startProductLoadAction());
-        getProductDetails(productId).then((data)=>{
-            console.log(JSON.stringify(data));
+        getProductDetails().then((data)=>{
+            // console.log(JSON.stringify(data));
             dispatch(setProductDataAction(data));
         });
     }
@@ -22,7 +23,7 @@ export const setProductDataAction = (data:Product) => ({
     payload: data
 });
 
-export  const  addToChartActionCreator = (data:Product) => ({
+export  const  addToChartActionCreator = (data:CartProduct) => ({
     type: ADD_TO_CHART,
     payload: data
 })

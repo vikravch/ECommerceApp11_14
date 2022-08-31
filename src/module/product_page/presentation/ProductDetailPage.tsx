@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Product from "../domain/model/Product";
 import {Store} from "../../../general/redux/storeTypes";
 import {useParams} from "react-router-dom";
-import {addToChartActionCreator, getProductDetailsAction} from "../redux/asyncActions";
+import {addToChartActionCreator, getProductDetailsAction, setProductDataAction} from "../redux/asyncActions";
 import getProductDetails from "../domain/use_case/getProductDetails";
 import {inspect} from "util";
 import styles from "./ProductPage.module.css";
@@ -11,6 +11,7 @@ import AlsoLike from "../../preview_product_panel/presentation/AlsoLike";
 import {ADD_TO_CART, addToCartAction, removeFromCartAction} from "../../cart/redux/asyncActions";
 import CartProduct from "../../cart/domain/model/CartProduct";
 import {sizes} from "../../../general/data/sizes";
+import {CartPageStore} from "../../cart/redux/typesCartPage";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -20,37 +21,88 @@ const ProductDetailPage: React.FC = () => {
     const isLoading = useSelector<Store, boolean>(
         state => state.productPage.isLoading
     );
+    const cartItems = useSelector<Store, Array<CartProduct>> (
+        state => state.cartPage.cartItems
+    )
+
+
+    const [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
+        count: 1,
+        color: product.colors[0],
+        size: product.size.M,
+        idProduct: "1111",
+        product_thumb: "",
+        product_title: product.product_title,
+        rating: product.rating,
+        price: product.price,
+        discount: product.discount,
+    });
+
+
     const dispatch = useDispatch()
     useEffect(() => {
         if (productId) {
-            console.log(productId);
-            dispatch(getProductDetailsAction(productId))
+            dispatch(getProductDetailsAction(productId));
             getProductDetails(productId).then((data)=>{
-                 console.log(data);
             })
         }
     }, [productId]);
 
-    let addToCart = () => {
-        {
-            //TODO colors and sizes to page for choice
-            let dataToCart = new CartProduct(1, "Black",
-                sizes.M, product.idProduct, product.product_main_img,
-                product.product_title, product.rating,
-                product.price, product.discount )
-            //use ADD_TO_CART from cartPageReducer
 
-            // при переходе на страницу продукта пишем в стейт - productId
-            // при клике на цвет пишем в стейт - product color
-            // при клике на цвет пишем в стейт - product size
-            // при клике на addToChart - отправляем инфо в "корзину"
-            console.log("Add_to_Chart Button Clicked")
-            console.log("ID: " + JSON.stringify(dataToCart.idProduct))
-            // store.addToChart(productDetailsToChart)
-            // store.dispatch(addToChartActionCreator())
-        }
+
+
+
+    const [selectedOption, setSelectedOption] = useState<string>("");
+    const selectSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const value = event.target.value;
+        setSelectedOption(value);
+        // console.log("Size changed to: " + selectedOption);
+        // tempCartProduct.size = value;
+        // console.log("Cart PR size: " + tempCartProduct.size)
+        // console.log("Cart PR: " + JSON.stringify(tempCartProduct));
+    };
+
+    const colorChanged = (event: React.ChangeEventHandler<HTMLImageElement>) => {
+        const value = event.name;
+        console.log("Color changed to: " + value);
     }
 
+    const [clickedColor, setClickedColor] = useState(product.colors[0]);
+
+    const colorHandler = (event: React.MouseEvent<HTMLImageElement>) => {
+        event.preventDefault();
+        const colorImg: HTMLImageElement = event.currentTarget;
+        setClickedColor(colorImg.id);
+        // tempCartProduct.color = clickedColor.valueOf();
+        // console.log(clickedColor.valueOf())
+        // console.log("Cart Product color updated to: " + JSON.stringify(tempCartProduct))
+
+    };
+
+
+    let addToCart = () => {
+        {
+            // console.log("START ADD to cart Product: " + JSON.stringify(tempCartProduct))
+         // dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
+         //    console.log("cart Product: " + JSON.stringify(tempCartProduct))
+         //    console.log("ID: " + JSON.stringify(tempCartProduct.idProduct))
+            // store.addToChart(productDetailsToChart)
+            // store.dispatch(addToChartActionCreator())
+            console.log(cartItems.length)
+            cartItems.push({ count: 1,
+            color: clickedColor,
+            size: selectedOption,
+            idProduct: productId??"1111",
+            product_thumb: "",
+            product_title: product.product_title,
+            rating: product.rating,
+            price: product.price,
+            discount: product.discount,})
+
+            console.log(cartItems.length)
+            console.log("cart ITEMS: " + JSON.stringify(cartItems))
+        }
+    }
 
     function dropDownDetails() {
         console.log("Drop down CLICKED")
@@ -70,24 +122,26 @@ const ProductDetailPage: React.FC = () => {
                     </div>
 
                     <div className={styles.productInfoBox}>
-                        <div className={styles.discount}>-45%</div>
-                        <div className={styles.title}>Title</div>
+                        <div className={styles.discount}>-{product.discount}%</div>
+                        <div className={styles.title}>{product.product_title}</div>
                         <div className={styles.description}>The T-Shirt sets you up with soft cotton jersey and a
                             classic logo with camo on the chest.
                         </div>
-                        <div className={styles.newPrice}>$35</div>
+                        <div className={styles.newPrice}>${product.price}</div>
                         <div className={styles.price}>$55</div>
 
                         <div className={styles.lineDeviderSmall}></div>
 
                         <div className={styles.productColorBox}>
-                            <div className={styles.productColorText}>color:Black</div>
+                            <div className={styles.productColorText}>{clickedColor !== ""
+                                ? `Color: "${clickedColor}"`
+                                : product.colors[0]}</div>
                             <div className={styles.productColorImg}>
-                                <img className={styles.active} src={require("./images/Products/color/img1.png")}
-                                     alt="color"/>
-                                <img src={require("./images/Products/color/img2.png")} alt="color"/>
-                                <img src={require("./images/Products/color/img3.png")} alt="color"/>
-                                <img src={require("./images/Products/color/img4.png")} alt="color"/>
+                                <img onClick={colorHandler} className={styles.active} src={require("./images/Products/color/img1.png")}
+                                     alt="color" id={product.colors[0]}/>
+                                <img onClick={colorHandler} src={require("./images/Products/color/img2.png")} id={product.colors[1]} alt="color"/>
+                                <img onClick={colorHandler} src={require("./images/Products/color/img3.png")} id={product.colors[2]} alt="color"/>
+                                <img onClick={colorHandler} src={require("./images/Products/color/img4.png")} id={product.colors[3]} alt="color"/>
                             </div>
                         </div>
 
@@ -96,11 +150,10 @@ const ProductDetailPage: React.FC = () => {
                             Choose size
                             <a href="#">Size guide</a>
                             <div className={styles.sizes}>
-                        <select className="form-select">
-                            <option className={styles.productSize} defaultValue={"0"}>{sizes.S}</option>
-                            <option className={styles.productSize} value="1">{sizes.M}</option>
-                            <option className={styles.productSize} value="2">{sizes.L}</option>
-
+                        <select onChange={selectSizeChange} className="form-select">
+                            <option className={styles.productSize} defaultValue={sizes.S}>{sizes.S}</option>
+                            <option className={styles.productSize} value={sizes.M}>{sizes.M}</option>
+                            <option className={styles.productSize} value={sizes.L}>{sizes.L}</option>
                         </select>
                             </div>
                             </div>

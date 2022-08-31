@@ -11,6 +11,17 @@ export const addToCartAction = (cartItems:CartProduct) => ({
     payload: cartItems
 });
 
+
+
+
+
+
+// cartItems need to be an Array of CartProduct
+// export const addToCartAction = (cartItems:Array<CartProduct>) => ({
+//     type: ADD_TO_CART,
+//     payload: cartItems
+// });
+
 export const removeFromCartAction = (idProduct:string) => ({
     type: REMOVE_FROM_CART,
     payload: idProduct

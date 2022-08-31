@@ -25,4 +25,5 @@ export default class CartProduct{
         this.price = price;
         this.discount = discount;
     }
+
 }
