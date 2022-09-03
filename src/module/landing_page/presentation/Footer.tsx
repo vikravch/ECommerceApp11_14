@@ -1,69 +1,70 @@
 import React from 'react';
-import style from "../styles/footer.module.css"
+import facebook from "../images/footer/Path.png"
+import instagram from "../images/footer/Combined Shape.png"
+import twitter from "../images/footer/Twit.png"
 
 const Footer = () => {
-    return (
-        <div className={style.footer}>
-            <div className={style.base}>
-                <div className={style.logo}>LOGO</div>
+    return (<footer className="ry-5 bg-dark">
+            <div className='container text-md-start p-5'>
+                             <div className='row'>
+                                 <div className='col '>
+                                     <h5 className='text-uppercase fw-bold mb-4 text-light'>LOGO</h5>
+                                 </div>
 
-                <div className={style.products_text}>Products</div>
-                    <div className={style.products_men}>Men</div>
-                    <div className={style.products_women}>Women</div>
-                    <div className={style.products_kids}>Kids</div>
-                    <div className={style.products_sale}>Sale</div>
-                    <div className={style.products_collections}>Collections</div>
+                                 <div  className='mx-auto  col '>
+                                     <h5 className=' fw-bold mb-4 text-light'>Products</h5>
+                                     <p><a href='#!' className='text-secondary'>Men</a></p>
+                                     <p><a href='#!' className='text-secondary'>Women</a></p>
+                                     <p><a href='#!' className='text-secondary'>Kids</a></p>
+                                     <p><a href='#!' className='text-secondary'>Sale</a></p>
+                                     <p><a href='#!' className='text-secondary'>Collection </a></p>
+                                 </div>
 
-                <div className={style.get_help}>Get help</div>
-                <div className={style.order_status}>Order status</div>
-                <div className={style.delovery}>Shipping and delovery</div>
-                <div className={style.returns}>Returns</div>
-                <div className={style.payment_options}>Payment options</div>
+                                 <div className='mx-auto col '>
+                                     <h5 className='fw-bold mb-4 text-light'>Get help</h5>
+                                     <p><a href='#!' className='text-secondary'>Order status</a></p>
+                                     <p><a href='#!' className='text-secondary'>Shipping and delovery</a></p>
+                                     <p><a href='#!' className='text-secondary'>Returns</a></p>
+                                     <p><a href='#!' className='text-secondary'>Payment options</a></p>
+                                 </div>
 
-                <div className={style.legals}>Legals</div>
-                <div className={style.terms}>Terms of services</div>
-                <div className={style.privacy_policy}>Privacy policy</div>
+                                 <div  className='mx-auto mb-md-0 col'>
+                                     <h5 className='fw-bold mb-4 text-light'>Legals</h5>
+                                     <p className='text-secondary'>Terms of services</p>
+                                     <p className='text-secondary'>Privacy policy</p>
+                                 </div >
 
-                <div className={style.contact}>Contact</div>
-                <div className={style.email}>Email</div>
-                <div className={style.gmail}>eccommerce@gmail.com</div>
-                <div className={style.frame2}>
-                    <div className={style.phone}>Phone</div>
-                    <div className={style.phone_number}>972 756 555-0123</div>
-                </div>
-                <div className={style.frame4}>
-                    <div className={style.address}>Address</div>
-                    <div className={style.address_city}>2464 Royal Ln. Mesa, New Jersey 45463</div>
-                </div>
+                                 <div  className='mx-auto mb-md-0 col-3 '>
+                                     <h5 className='fw-bold mb-4 text-light'>Contact</h5>
+                                     <p className='text-secondary'>Email</p>
+                                     <p className="text-light">ecommerce@gmail.com</p>
+                                     <p className='text-secondary'>Phone</p>
+                                     <p className="text-primary">972 756 555-0123</p>
+                                     <p className='text-secondary'>Address</p>
+                                     <p className="text-light">2464 Royal Ln. Mesa, New Jersey 45463</p>
+                                 </div>
+                             </div>
+                         </div>
+            <div className="container border-bottom"></div>
+            <div className='container text-md-start mt-5'>
+                             <div className='row'>
+                                 <div className='col '>
+                                    <h5 className='fw-bold mb-4 text-secondary'>Tel Ran © 2022</h5>
+                                </div>
 
-                </div>
-                <div className={style.divider}></div>
-                <h6 className={style.telRan}>TelRan &copy; 2022</h6>
-                <div className={style.facebook}>
-
-                    <div className={style.facebook_path}>
-                        <div className={style.base_icon}>
-                            <img className={style.facebook_icon}/>
+                                <div className='col-auto '>
+                                    <img src={facebook}/>
+                                </div>
+                                <div className='col-auto '>
+                                     <img src={instagram}/>
+                                 </div>
+                                 <div className='col-auto '>
+                                    <img src={twitter}/>
+                                </div>
+                             </div>
                         </div>
-                    </div>
-                </div>
-            <div className={style.inst}>
-                    <div className={style.base_icon}>
-                        <img className={style.inst_icon}/>
-                    </div>
-            </div>
-
-            <div className={style.twitter}>
-                <div className={style.base_icon}>
-                        <img className={style.twitter_icon}/>
-                </div>
-            </div>
-
-
-
-            </div>
-
-    )
+        </footer>
+)
 };
 
 export default Footer;
