@@ -18,7 +18,7 @@ function App() {
   //TODO fix header style on main page
     sessionStorage.setItem("token", "123");
   return (
-      <>
+      <div className="container-xl">
           {window.location.pathname !== '/' && <Header />}
         <Routes>
           <Route path="/" element={<LandingDetailPage/>}/>
@@ -36,7 +36,7 @@ function App() {
           <Route path="/test" element={<TestPage/>}/>
         </Routes>
         {window.location.pathname !== '/' && <Footer />}
-      </>
+      </div>
     );
 }
 
