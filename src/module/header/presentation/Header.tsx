@@ -11,7 +11,7 @@ const Header = () =>
             <li><a href="#kids">Kids</a></li>
             <li><a href="#sale">Sale</a></li>
             <li><a href="#collections">Collections</a></li>
-            <li><a href="#blog">Blog</a></li>
+            <li><a href="blog">Blog</a></li>
         </ul>
         <div className={styles.lineDevider}></div>
     </div>);
