@@ -1,25 +1,14 @@
-/* Banner */
-.banner
-{
-    position: absolute;
-    width: 1600px;
-    height: 650px;
-    left: 0px;
-    top: 0px;
-}
 
-/* Rectangle 46 */
 .rectangle
 {
-    position: absolute;
+    /*position: absolute;*/
     width: 1600px;
     height: 650px;
     left: 0px;
     top: 0px;
-
     background: #17181F;
-}
 
+}
 /* AIR Beyond Compare */
 .air
  {
@@ -48,9 +37,9 @@
 .explore_best_air
 {
     position: absolute;
-    width: 429px;
+    width: 505px;
     height: 30px;
-    left: 585px;
+    left: 545px;
     top: 198px;
 
     /* Lead */
@@ -59,7 +48,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
-    line-height: 30px;
+    line-height: 40px;
     /* identical to box height, or 125% */
 
     text-align: center;
@@ -183,8 +172,7 @@
 /* Text */
 .btn_text
 {
-    width: 63px;
-    height: 18px;
+    width: 95px;
 
     /* Caption / 3 / Medium */
 
