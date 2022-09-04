@@ -11,8 +11,3 @@ export default class ArticleInfo {
         this.timestampDateMod = timestampDateMod;
     }
 }
-
-
-
-// Article
-// ArticleInfo -?
