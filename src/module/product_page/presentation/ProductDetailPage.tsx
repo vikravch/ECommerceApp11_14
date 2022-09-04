@@ -3,12 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import Product from "../domain/model/Product";
 import {Store} from "../../../general/redux/storeTypes";
 import {useParams} from "react-router-dom";
-import {addToChartActionCreator, getProductDetailsAction, setProductDataAction} from "../redux/asyncActions";
+import {getProductDetailsAction, setProductDataAction} from "../redux/asyncActions";
 import getProductDetails from "../domain/use_case/getProductDetails";
 import {inspect} from "util";
 import styles from "./ProductPage.module.css";
 import AlsoLike from "../../preview_product_panel/presentation/AlsoLike";
-import {ADD_TO_CART, addToCartAction, removeFromCartAction} from "../../cart/redux/asyncActions";
+import {addToCartAction, removeFromCartAction} from "../../cart/redux/asyncActions";
 import CartProduct from "../../cart/domain/model/CartProduct";
 import {sizes} from "../../../general/data/sizes";
 import {CartPageStore} from "../../cart/redux/typesCartPage";
@@ -27,17 +27,16 @@ const ProductDetailPage: React.FC = () => {
 
 
     const [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
+        idProduct: "1111",
+        product_thumb: "",
         count: 1,
         color: product.colors[0],
         size: product.size.M,
-        idProduct: "1111",
-        product_thumb: "",
         product_title: product.product_title,
         rating: product.rating,
         price: product.price,
         discount: product.discount,
     });
-
 
     const dispatch = useDispatch()
     useEffect(() => {
@@ -80,29 +79,30 @@ const ProductDetailPage: React.FC = () => {
     };
 
 
-    let addToCart = () => {
-        {
-            // console.log("START ADD to cart Product: " + JSON.stringify(tempCartProduct))
-          dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
-         //    console.log("cart Product: " + JSON.stringify(tempCartProduct))
-         //    console.log("ID: " + JSON.stringify(tempCartProduct.idProduct))
-            // store.addToChart(productDetailsToChart)
-            // store.dispatch(addToChartActionCreator())
-            console.log(cartItems.length)
-            cartItems.push({ count: 1,
-            color: clickedColor,
-            size: selectedOption,
-            idProduct: productId??"1111",
-            product_thumb: "",
-            product_title: product.product_title,
-            rating: product.rating,
-            price: product.price,
-            discount: product.discount,})
-
-            console.log(cartItems.length)
-            console.log("cart ITEMS: " + JSON.stringify(cartItems))
-        }
-    }
+    // let addToCart = () => {
+    //     //console.log(tempCartProduct)
+    //         // console.log("START ADD to cart Product: " + JSON.stringify(tempCartProduct))
+    //       dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
+    //      //    console.log("cart Product: " + JSON.stringify(tempCartProduct))
+    //      //    console.log("ID: " + JSON.stringify(tempCartProduct.idProduct))
+    //         // store.addToChart(productDetailsToChart)
+    //         // store.dispatch(addToChartActionCreator())
+    //
+    //         // console.log(cartItems.length)
+    //         // cartItems.push({ count: 1,
+    //         // color: clickedColor,
+    //         // size: selectedOption,
+    //         // idProduct: productId??"1111",
+    //         // product_thumb: "",
+    //         // product_title: product.product_title,
+    //         // rating: product.rating,
+    //         // price: product.price,
+    //         // discount: product.discount,})
+    //         //
+    //         // console.log(cartItems.length)
+    //         // console.log("cart ITEMS: " + JSON.stringify(cartItems))
+    //
+    // }
 
     function dropDownDetails() {
         console.log("Drop down CLICKED")
@@ -161,7 +161,7 @@ const ProductDetailPage: React.FC = () => {
 
 
 
-                        <button className={styles.addBtn}     onClick={addToCart}>Add to cart</button>
+                        <button className={styles.addBtn}     onClick={() => {dispatch(addToCartAction(tempCartProduct))}}>Add to cart</button>
                         <div className={styles.lineDeviderSmall}></div>
 
                         <div className={styles.aditionalInfo}>

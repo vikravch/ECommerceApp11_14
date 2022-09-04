@@ -83,7 +83,7 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="firstName" className="form-label">First name</label>
-                                    <input type="text" className="form-control" id="firstName" placeholder="" value={profile.name}
+                                    <input type="text" className="form-control" id="firstName" defaultValue={profile.name}
                                            required/>
                                         <div className="invalid-feedback">
                                             Valid first name is required.
@@ -92,7 +92,7 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="lastName" className="form-label">Second name</label>
-                                    <input type="text" className="form-control" id="lastName" placeholder="" value={profile.surname}
+                                    <input type="text" className="form-control" id="lastName" placeholder="" defaultValue={profile.surname}
                                            required/>
                                         <div className="invalid-feedback">
                                             Valid last name is required.
@@ -103,7 +103,7 @@ const CheckoutPage:React.FC = ()=> {
                                     <label htmlFor="email" className="form-label">Email <span
                                         className="text-muted"></span></label>
                                     <input type="email" className="form-control" id="email"
-                                           placeholder="you@example.com" value={profile.email}/>
+                                           placeholder="you@example.com" defaultValue={profile.email}/>
                                     <div className="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -111,7 +111,7 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="phone" className="form-label">Phone number</label>
-                                    <input type="text" className="form-control" id="phone" placeholder="" value={profile.phone}
+                                    <input type="text" className="form-control" id="phone" placeholder="" defaultValue={profile.phone}
                                            required/>
                                     <div className="invalid-feedback">
                                         Valid phone is required.
@@ -140,7 +140,7 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="zip" className="form-label">ZIP code</label>
-                                    <input type="text" className="form-control" id="zip" placeholder="" required value={profile.zipCode}/>
+                                    <input type="text" className="form-control" id="zip" placeholder="" required defaultValue={profile.zipCode}/>
                                         <div className="invalid-feedback">
                                             Zip code required.
                                         </div>
@@ -165,7 +165,7 @@ const CheckoutPage:React.FC = ()=> {
                                 <div className="col-12">
                                     <label htmlFor="address" className="form-label">Address</label>
                                     <input type="text" className="form-control" id="address" placeholder="1234 Main St"
-                                           required value={profile.address}/>
+                                           required defaultValue={profile.address}/>
                                     <div className="invalid-feedback">
                                         Please enter your shipping address.
                                     </div>
@@ -191,7 +191,7 @@ const CheckoutPage:React.FC = ()=> {
 
                                         <div className="form-check form-check-inline">
                                             <input id="credit" name="paymentMethod" type="radio"
-                                                   className="form-check-input" checked required/>
+                                                   className="form-check-input" defaultChecked required/>
                                                 <label className="form-check-label" htmlFor="credit">Visa</label>
                                         </div>
                                         <div className="form-check form-check-inline">

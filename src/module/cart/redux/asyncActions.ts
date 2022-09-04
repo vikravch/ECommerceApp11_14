@@ -8,7 +8,7 @@ export const DEC_CART_COUNT = "dec_cart_count"
 export const CHANGE_COUNT = "change_count"
 export const CHANGE_SIZE = "change_size"
 
-export const addToCartAction = (cartItem:CartProduct) => ({
+export const addToCartAction = (cartItem: CartProduct) => ({
     type: ADD_TO_CART,
     payload: cartItem
 });
@@ -24,48 +24,7 @@ export const changeSizeAction = (idProduct: string, size: string) => ({
 });
 
 
-
-
-
-
-// cartItems need to be an Array of CartProduct
-// export const addToCartAction = (cartItems:Array<CartProduct>) => ({
-//     type: ADD_TO_CART,
-//     payload: cartItems
-// });
-
 export const removeFromCartAction = (idProduct:string) => ({
     type: REMOVE_FROM_CART,
     payload: idProduct
 });
-
-export const incrementCartCount = (idProduct: string) => ({
-        type: INC_CART_COUNT,
-        payload:idProduct
-    }
-);
-
-export const decrementCartCount = (idProduct: string) => ({
-    type: DEC_CART_COUNT,
-    payload: idProduct
-});
-
-// export const addToCart = (product:Product) => {
-//         // return (dispatch: Function) => {
-//             const cartItems = store.getState().cartPage.cartItems.slice();
-//             let alreadyExists = false;
-//             cartItems.forEach((x: CartProduct) => {
-//                 if (x.idProduct === product.idProduct) {
-//                     alreadyExists = true;
-//                     x.count++;
-//                 }
-//             });
-//             if (!alreadyExists) {
-//                 cartItems.push({...product, count: 1});
-//             }
-//             //putCartItems(cartItems);
-//             localStorage.setItem("cartItems", JSON.stringify(cartItems));
-//         // }
-// };
-
-
