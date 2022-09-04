@@ -1,12 +1,13 @@
 import getProfileDetails from "../domain/use_cases/getProfileDetails";
 import Profile from "../domain/model/Profile";
 import Order from "../domain/model/Order";
+import getProfileFake from "../domain/use_cases/getProfileFake";
+import getOrdersFake from "../domain/use_cases/getOrdersFake";
 
 export const getProfileDetailsAction = (token: string) :any => {
     return (dispatch: Function) => {
         dispatch(startProfileLoadAction());
-        getProfileDetails(token).then((data) => {
-            console.log(JSON.stringify(data));
+        getProfileFake(token).then((data) => {
             dispatch(setProfileDataAction(data));
         })
     }
@@ -15,9 +16,8 @@ export const getProfileDetailsAction = (token: string) :any => {
 export const getOrdersDetailsAction = (token: string) :any => {
     return (dispatch: Function) => {
         dispatch(startOrdersLoadAction());
-        getProfileDetails(token).then((data) => {
-            console.log(JSON.stringify(data));
-            dispatch(setProfileDataAction(data));
+        getOrdersFake(token).then((data) => {
+            dispatch(setOrdersDataAction(data));
         })
     }
 }
