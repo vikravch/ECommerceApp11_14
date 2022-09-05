@@ -2,6 +2,8 @@ import React from 'react';
 import facebook from "../images/footer/Path.png"
 import instagram from "../images/footer/Combined Shape.png"
 import twitter from "../images/footer/Twit.png"
+import imgBag from "../images/sumbol/bag.png";
+import style from "../styles/navigation_menu.module.css";
 
 const Footer = () => {
     return (<footer className="ry-5 bg-dark">
@@ -13,11 +15,11 @@ const Footer = () => {
 
                                  <div  className='mx-auto  col '>
                                      <h5 className=' fw-bold mb-4 text-light'>Products</h5>
-                                     <p><a href='#!' className='text-secondary'>Men</a></p>
-                                     <p><a href='#!' className='text-secondary'>Women</a></p>
-                                     <p><a href='#!' className='text-secondary'>Kids</a></p>
-                                     <p><a href='#!' className='text-secondary'>Sale</a></p>
-                                     <p><a href='#!' className='text-secondary'>Collection </a></p>
+                                     <p><a href='/product/men' className='text-secondary'>Men</a></p>
+                                     <p><a href='/product/women' className='text-secondary'>Women</a></p>
+                                     <p><a href='/product/kids' className='text-secondary'>Kids</a></p>
+                                     <p><a href='/product/sale' className='text-secondary'>Sale</a></p>
+                                     <p><a href='/product/collection' className='text-secondary'>Collection </a></p>
                                  </div>
 
                                  <div className='mx-auto col '>
@@ -53,13 +55,20 @@ const Footer = () => {
                                 </div>
 
                                 <div className='col-auto '>
-                                    <img src={facebook}/>
+                                    <a href="https://ru-ru.facebook.com/" className="nav-item nav-link">
+                                        <img src={facebook} alt="facebook"/>
+                                    </a>
+
                                 </div>
                                 <div className='col-auto '>
-                                     <img src={instagram}/>
+                                    <a href="https://www.instagram.com/" className="nav-item nav-link">
+                                        <img src={instagram} alt="instagram"/>
+                                    </a>
                                  </div>
                                  <div className='col-auto '>
-                                    <img src={twitter}/>
+                                     <a href="https://twitter.com/?lang=ru" className="nav-item nav-link">
+                                         <img src={twitter} alt="twitter"/>
+                                     </a>
                                 </div>
                              </div>
                         </div>
