@@ -11,7 +11,9 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "bootstrap": "^5.2.0",
+    "macro-css": "^1.0.5",
     "miragejs": "^0.1.45",
+    "node-sass": "^7.0.1",
     "react": "^18.2.0",
     "react-country-region-selector": "^3.6.1",
     "react-dom": "^18.2.0",
@@ -21,6 +23,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
+    "sass": "^1.54.8",
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
