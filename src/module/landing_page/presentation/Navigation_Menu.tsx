@@ -11,25 +11,22 @@ const Navigation_Menu = () => {
                     <a className="navbar-brand text-light " href="#">LOGO</a>
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 bg-dark">
                         <li className="nav-item">
-                            <a className="nav-link active text-light" aria-current="page" href="#">Men</a>
+                            <a className="nav-link active text-light" aria-current="page" href="/product/men">Men</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="#">Women</a>
+                            <a className="nav-link text-light" href="/product/women">Women</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="#">Kids</a>
+                            <a className="nav-link text-light" href="/product/kids">Kids</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="#">Sale</a>
+                            <a className="nav-link text-light" href="/product/sale">Sale</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="#">Sale</a>
+                            <a className="nav-link text-light" href="/product/collection">Collection</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="#">Collection</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link text-light" href="#">Blog</a>
+                            <a className="nav-link text-light" href="/blog">Blog</a>
                         </li>
                     </ul>
                 </div>
@@ -43,9 +40,9 @@ const Navigation_Menu = () => {
                 </div>
 
                 <div className="navbar-nav">
-                    <a href="#" className="nav-item nav-link"><img src={imgBag}
+                    <a href="/cart" className="nav-item nav-link"><img src={imgBag}
                                                                    className={style.icon_shopping_bag}/></a>
-                    <a href="#" className="nav-item nav-link "><img src={imgUser} className={style.icon_base_user}/></a>
+                    <a href="/profile" className="nav-item nav-link "><img src={imgUser} className={style.icon_base_user}/></a>
                 </div>
             </div>
             <div className={style.line}></div>
