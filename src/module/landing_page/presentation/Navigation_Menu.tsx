@@ -5,7 +5,8 @@ import imgUser from "../images/sumbol/user.png"
 import lupa from "../images/sumbol/lupa.png"
 
 const Navigation_Menu = () => {
-    return (<nav className="navbar navbar-expand-lg  bg-dark p-20px">
+    return (
+        <nav className="navbar navbar-expand-lg  bg-dark p-20px">
             <div className="container">
                 <div className="collapse navbar-collapse">
                     <a className="navbar-brand text-light " href="#">LOGO</a>

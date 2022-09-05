@@ -6,7 +6,8 @@ import imgBag from "../images/sumbol/bag.png";
 import style from "../styles/navigation_menu.module.css";
 
 const Footer = () => {
-    return (<footer className="ry-5 bg-dark">
+    return (
+        <footer className="ry-5 bg-dark">
             <div className='container text-md-start p-5'>
                              <div className='row'>
                                  <div className='col '>
