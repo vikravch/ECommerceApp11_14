@@ -3,7 +3,8 @@ import style from "../styles/categories.module.css";
 import vector from "../images/group11/vector.png"
 
 const Categories = () => {
-    return ( <div className="py-5">
+    return (
+        <div className="py-5">
             <h4 className={style.categories}>Categories</h4>
             <section className="container px-2 px-lg-3 mt-3 ">
                 <div className="row">
