@@ -20,7 +20,11 @@ function App() {
   sessionStorage.setItem("token", "123");
   return (
       <div className="container-xl">
-          {window.location.pathname !== '/' && <Header />}
+          {
+            window.location.pathname !== '/' &&
+              <Header isDark={window.location.pathname === '/'}/>
+          }
+
         <Routes>
           <Route path="/" element={<LandingDetailPage/>}/>
           <Route path={`/${routes.productDetail}`} element={<ProductDetailPage/>}/>
