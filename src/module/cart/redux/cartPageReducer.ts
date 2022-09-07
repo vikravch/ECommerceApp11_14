@@ -6,8 +6,12 @@ export const calcTotalPrice = (items: CartProduct[]) => {
     return items.reduce((sum, obj) => obj.price * obj.count + sum, 0);
 };
 
+const oldCart: Array<CartProduct> = JSON.parse(localStorage.getItem("cartItems") || "[]");
+const oldCount = oldCart.length;
+const oldCartTotal = calcTotalPrice(oldCart);
+
 export const cartPageReducer = (
-    state = {cartItems: JSON.parse(localStorage.getItem("cartItems") || "[]"), cartCount: 0, cartTotal: 0}, //
+    state = {cartItems: oldCart, cartCount: oldCount, cartTotal: oldCartTotal}, //
     action: Action
 ) => {
     switch (action.type) {
@@ -23,7 +27,7 @@ export const cartPageReducer = (
                 cartProducts.push(action.payload)
                 const totalSum = calcTotalPrice(cartProducts)
                 localStorage.setItem("cartItems", JSON.stringify( cartProducts))
-                return {...state, cartItems: cartProducts, cartCount: state.cartCount + 1, cartTotal: totalSum}
+                return {...state, cartItems: cartProducts, cartCount: state.cartItems.length, cartTotal: totalSum}
             }
         case REMOVE_FROM_CART:
             let cartGoods: Array<CartProduct> = state.cartItems
@@ -31,7 +35,7 @@ export const cartPageReducer = (
                 cartGoods = cartGoods.filter((product: {idProduct: string; }) => product.idProduct !== action.payload)
                 const total = calcTotalPrice(cartGoods)
                 localStorage.setItem("cartItems", JSON.stringify(cartGoods))
-                return {...state, cartItems: cartGoods, cartCount: state.cartCount - 1, cartTotal: total}
+                return {...state, cartItems: cartGoods, cartCount: state.cartItems.length, cartTotal: total}
         case CHANGE_COUNT:
                 let newGoods =  state.cartItems
                 const changeIndex: number = newGoods.findIndex((product: { idProduct: string; }) => product.idProduct === action.payload.idProduct)
@@ -46,6 +50,7 @@ export const cartPageReducer = (
                 localStorage.setItem("cartItems", JSON.stringify(sGoods))
                 return {...state, cartItems: sGoods}
         default:
+            // return {state, cartCount: state.cartItems.length, cartTotal: calcTotalPrice(state.cartItems)};
             return state;
     }
 };

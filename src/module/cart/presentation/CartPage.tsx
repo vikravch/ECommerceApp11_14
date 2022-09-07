@@ -19,7 +19,7 @@ const CartPage:React.FC = () => {
         <div className="container" style={{maxWidth: 1070}}>
             <h1 className="text-muted fw-500 my-3">Your cart is empty</h1>
 
-            <Link to="/product/" className="btn btn-lg btn-dark mb-5">
+            <Link to="/" className="btn btn-lg btn-dark mb-5">
                 Go to main page
             </Link>
         </div>
