@@ -14,6 +14,7 @@ import Footer from "./Footer";
 import Blog from "./Blog";
 import Categories from "./Categories";
 import Navigation_Menu from "./Navigation_Menu";
+import {products} from "../utils/constants";
 
 const LandingDetailPage:React.FC = ()=> {
     const {productId} = useParams<string>()
@@ -34,10 +35,28 @@ const LandingDetailPage:React.FC = ()=> {
     },[productId]);
 
     return (
-        <div className="home" >
+        <div className="wrapper clear" >
             <Navigation_Menu/>
             <Banner/>
-            <Group12/>
+            <div className="content p-40">
+                <div className="d-flex align-center mb-45 justify-between">
+                    <h1>New arrivals</h1>
+                </div>
+
+                <div className="d-flex flex-wrap">
+                    {products.map((obj)=>
+                        <Group12
+                            imageUrl={obj.imageUrl}
+                            title={obj.title}
+                            article={obj.article}
+                            price={obj.price}
+                            imageAddCart={obj.imgAddCart}
+                            onClickAddCart={()=> console.log("Добавили закладки")}
+                        />)}
+                </div>
+
+            </div>
+            {/*<Group12/>*/}
             <Pagionations/>
             <Categories/>
             <Blog/>
