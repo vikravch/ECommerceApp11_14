@@ -25,9 +25,6 @@ const Group12 = (props: {
                 <span>{props.title}</span>
                 <b>{props.price}</b>
             </div>
-            <div>
-                {/*<img className={styles.plus} onClick={onClickPlus}src={isAdded ? "/img/btn-cheked.svg" : "/img/btn_plus.svg"} alt="Plus"/>*/}
-            </div>
 
         </div>
     );

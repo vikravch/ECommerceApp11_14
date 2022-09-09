@@ -33,6 +33,19 @@ const LandingDetailPage:React.FC = ()=> {
             })
         }
     },[productId]);
+    // const [products, setProducts] = React.useState([]);
+    // back-end
+    // React.useEffect(() =>
+    // {
+    //     fetch("https://631ac033fae3df4dcfeb4d15.mockapi.io/products")
+    //         .then((response) =>{
+    //             return response.json();
+    //         })
+    //         .then((json) =>{
+    //             setProducts(json);
+    //         });
+    // }, []);
+
 // добавление в корзину
 //     const [cartItems, setCartItems] = React.useState([]);
     const onAddToCart = (obj: any) =>
