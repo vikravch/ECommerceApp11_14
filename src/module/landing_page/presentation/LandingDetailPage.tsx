@@ -40,6 +40,7 @@ const LandingDetailPage:React.FC = ()=> {
        console.log(obj)
     }
 
+
     return (
         <div className="wrapper clear" >
             <Navigation_Menu/>
