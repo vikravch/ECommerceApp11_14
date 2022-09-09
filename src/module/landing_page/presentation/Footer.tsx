@@ -52,15 +52,22 @@ const Footer = () => {
                                     <h5 className='fw-bold mb-4 text-secondary'>Tel Ran © 2022</h5>
                                 </div>
 
-                                <div className='col-auto '>
-                                    <img src={facebook}/>
-                                </div>
-                                <div className='col-auto '>
-                                     <img src={instagram}/>
+                                 <div className='col-auto '>
+                                     <a href="https://ru-ru.facebook.com/" className="nav-item nav-link">
+                                         <img src={facebook} alt="facebook"/>
+                                     </a>
+
                                  </div>
                                  <div className='col-auto '>
-                                    <img src={twitter}/>
-                                </div>
+                                     <a href="https://www.instagram.com/" className="nav-item nav-link">
+                                         <img src={instagram} alt="instagram"/>
+                                     </a>
+                                 </div>
+                                 <div className='col-auto '>
+                                     <a href="https://twitter.com/?lang=ru" className="nav-item nav-link">
+                                         <img src={twitter} alt="twitter"/>
+                                     </a>
+                                 </div>
                              </div>
                         </div>
         </footer>

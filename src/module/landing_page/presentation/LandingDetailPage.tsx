@@ -33,7 +33,12 @@ const LandingDetailPage:React.FC = ()=> {
             })
         }
     },[productId]);
-
+// добавление в корзину
+//     const [cartItems, setCartItems] = React.useState([]);
+    const onAddToCart = (obj: any) =>
+    {
+       console.log(obj)
+    }
     return (
         <div className="wrapper clear" >
             <Navigation_Menu/>
@@ -44,14 +49,15 @@ const LandingDetailPage:React.FC = ()=> {
                 </div>
 
                 <div className="d-flex flex-wrap">
-                    {products.map((obj)=>
+                    {products.map((product)=>
                         <Group12
-                            imageUrl={obj.imageUrl}
-                            title={obj.title}
-                            article={obj.article}
-                            price={obj.price}
-                            imageAddCart={obj.imgAddCart}
-                            onClickAddCart={()=> console.log("Добавили закладки")}
+                            imageUrl={product.imageUrl}
+                            title={product.title}
+                            article={product.article}
+                            price={product.price}
+                            imageAddCart={product.imgAddCart}
+                            // onPlus={(obj)=> console.log(obj)}
+                            onClickAddCart={()=> onAddToCart(product)}
                         />)}
                 </div>
 
