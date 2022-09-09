@@ -12,6 +12,7 @@ import Image11 from '../images/group12/Image11.png'
 import Image12 from '../images/group12/Image12.png'
 import addCart from '../images/sumbol/bag_cart.svg'
 
+
 export  const products = [
     {
         imageUrl:Image1,

@@ -5,6 +5,7 @@ const Group12 = (props: {
     imageAddCart: any;
     onClickAddCart: React.MouseEventHandler<HTMLDivElement> | undefined; imageUrl: string | undefined; article: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; title: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; price: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }) => {
 
+
     return (
         <div className={styles.card}>
             <div className={styles.addToCart} onClick={props.onClickAddCart}>
