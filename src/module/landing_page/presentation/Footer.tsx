@@ -13,11 +13,11 @@ const Footer = () => {
 
                                  <div  className='mx-auto  col '>
                                      <h5 className=' fw-bold mb-4 text-light'>Products</h5>
-                                     <p><a href='#!' className='text-secondary'>Men</a></p>
-                                     <p><a href='#!' className='text-secondary'>Women</a></p>
-                                     <p><a href='#!' className='text-secondary'>Kids</a></p>
-                                     <p><a href='#!' className='text-secondary'>Sale</a></p>
-                                     <p><a href='#!' className='text-secondary'>Collection </a></p>
+                                     <p><a href='/product' className='text-secondary'>Men</a></p>
+                                     <p><a href='/product' className='text-secondary'>Women</a></p>
+                                     <p><a href='/product' className='text-secondary'>Kids</a></p>
+                                     <p><a href='/product' className='text-secondary'>Sale</a></p>
+                                     <p><a href='/product' className='text-secondary'>Collection </a></p>
                                  </div>
 
                                  <div className='mx-auto col '>

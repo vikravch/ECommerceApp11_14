@@ -14,87 +14,112 @@ import addCart from '../images/sumbol/bag_cart.svg'
 
 export  const products = [
     {
+        productId: "001",
         imageUrl:Image1,
         title:"Airlift Bra",
         price: "$35",
         article:"#7142",
-        imgAddCart: addCart
+        imgAddCart: addCart,
+        rating:3
     },
     {
+        productId: "002",
         imageUrl:Image2,
         title:"Basic t-shirt",
         price: "$35",
         article:"#7142",
-        imgAddCart: addCart
+        imgAddCart: addCart,
+        rating:2
     },
     {
+        productId: "003",
         imageUrl:Image3,
         title:"Nike One",
         price: "$680",
         article:"#7142",
-        imgAddCart: addCart
+        imgAddCart: addCart,
+        rating:5
     },
     {
+        productId: "004",
         imageUrl:Image4,
         title:"Tracksuit Jacket",
         price: "$35",
-        article:"#7142",imgAddCart: addCart
+        article:"#7142",
+        imgAddCart: addCart,
+        rating:1
     },
     {
+        productId: "005",
         imageUrl:Image5,
         title:"French Terry Shorts",
         price: "$35",
         article:"#7142",
-        imgAddCart: addCart
+        imgAddCart: addCart,
+        rating:1
     },
     {
+        productId: "006",
         imageUrl:Image6,
         title:"Sportwear",
         price: "$35",
         article:"#7142",
-        imgAddCart: addCart
+        imgAddCart: addCart,
+        rating:3
     },
     {
+        productId: "007",
         imageUrl:Image7,
         title:"Cropped Jacket",
         price: "$35",
         article:"#7142",
-        imgAddCart: addCart
+        imgAddCart: addCart,
+        rating:1
     },
     {
+        productId: "008",
         imageUrl:Image8,
         title:"Hotspur",
         price: "$35",
         article:"#7142",
-        imgAddCart: addCart
+        imgAddCart: addCart,
+        rating:5
     },
     {
+        productId: "009",
         imageUrl:Image9,
         title:"Basic t-shirt",
         price: "$45",
         article:"#7142",
-        imgAddCart: addCart
+        imgAddCart: addCart,
+        rating:0
     },
     {
+        productId: "0010",
         imageUrl:Image10,
         title:"Fleece Trousers",
         price: "$356",
         article:"#7142",
-        imgAddCart: addCart
+        imgAddCart: addCart,
+        rating:2
     },
     {
+        productId: "0011",
         imageUrl:Image11,
         title:"Women's Shorts",
         price: "$125.90",
         article:"#7142",
-        imgAddCart: addCart
+        imgAddCart: addCart,
+        rating:2
     },
     {
+        productId: "0012",
         imageUrl:Image12,
         title:"Basic t-shirt",
         price: "$35.45",
         article:"#7142",
-        imgAddCart: addCart
+        imgAddCart: addCart,
+        rating:1
     },
 
 ]
