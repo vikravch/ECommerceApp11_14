@@ -33,7 +33,11 @@
     border-radius: 2px;
 }
 
-
+input
+{
+    border: none;
+    color: #868686;
+}
 
 
 
