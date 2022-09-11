@@ -115,10 +115,13 @@ const ProductDetailPage: React.FC = () => {
                 <div className={styles.breadcrums}>Men / T-Shirt / Basic T-shirt </div>
                 <div className={styles.productPage}>
                     <div className={styles.photoBox}>
-                        <img src={require("./images/Products/bigImg/img_1111.jpg")} alt="t-shirt"/>
-                        <img src={require("./images/Products/bigImg/img_1121.jpg")} alt="t-shirt"/>
-                        <img src={require("./images/Products/bigImg/img_1131.jpg")} alt="t-shirt"/>
-                        <img src={require("./images/Products/bigImg/img_1141.jpg")} alt="t-shirt"/>
+                        { product.product_imgs.map(el => {
+                            return <img alt={"imgs"} src={el} />;
+                        })}
+                        {/*<img src={require("./images/Products/bigImg/img_1111.jpg")} alt="t-shirt"/>*/}
+                        {/*<img src={require("./images/Products/bigImg/img_1121.jpg")} alt="t-shirt"/>*/}
+                        {/*<img src={require("./images/Products/bigImg/img_1131.jpg")} alt="t-shirt"/>*/}
+                        {/*<img src={require("./images/Products/bigImg/img_1141.jpg")} alt="t-shirt"/>*/}
                     </div>
 
                     <div className={styles.productInfoBox}>
