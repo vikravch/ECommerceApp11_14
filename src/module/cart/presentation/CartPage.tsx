@@ -12,11 +12,22 @@ import {Link} from "react-router-dom";
 
 const CartPage:React.FC = () => {
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems)
+    const total = useSelector<Store, number>(state => state.cartPage.cartTotal)
+    const count = useSelector<Store, number>(state => state.cartPage.cartCount)
     const dispatch = useDispatch()
+    if (count === 0) return (
+        <div className="container" style={{maxWidth: 1070}}>
+            <h1 className="text-muted fw-500 my-3">Your cart is empty</h1>
 
+            <Link to="/" className="btn btn-lg btn-dark mb-5">
+                Go to main page
+            </Link>
+        </div>
+    )
     return (<>
             <div className="container" style={{maxWidth: 1070}}>
-                <h1>Cart</h1>
+
+            <h1>Cart</h1>
             <div className="mb-5 row">
                 <div className="col-lg-8">
                         <div className="cart-body">
@@ -94,7 +105,7 @@ const CartPage:React.FC = () => {
                                     <div>
                                         <p className="my-0">Subtotal</p>
                                     </div>
-                                    <p className="my-0">${cartItems.reduce((acc:number, next:CartProduct) => (acc += (next.count * next.price)), 0)}</p>
+                                    <p className="my-0">${total}</p>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between lh-sm">
                                     <div>
@@ -104,7 +115,7 @@ const CartPage:React.FC = () => {
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between lh-sm py-4">
                                     <label className="fs-4 fw-500">Total</label>
-                                    <label className="fs-4 fw-500">${cartItems.reduce((acc:number, next:CartProduct) => (acc += (next.count * next.price)), 0)}</label>
+                                    <label className="fs-4 fw-500">${total}</label>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-center lh-sm py-4">
                                     <Link to="/checkout" className="btn btn-lg btn-primary w-100">

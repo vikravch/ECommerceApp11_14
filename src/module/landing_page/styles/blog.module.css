@@ -1,8 +1,8 @@
-/* Blog */
+/* blog */
 
 .blog_text
 {
-position: absolute;
+
 width: 73px;
 height: 44px;
 left: 155px;
@@ -26,18 +26,17 @@ color: #000000;
 
 .post_small_text
 {
-    position: absolute;
-    width: 410px;
-    height: 540px;
-    left: 155px;
-    top: 3248px;
+
+    /*width: 417px;*/
+    /*height: 540px;*/
+
 }
 
 /* Image */
 
 .image
 {
-    position: absolute;
+
     left: 0%;
     right: 0%;
     top: 0%;
@@ -53,7 +52,7 @@ color: #000000;
 
 .text_reach
 {
-    position: absolute;
+
     height: 270px;
     left: 20px;
     right: 20px;
@@ -87,7 +86,7 @@ color: #000000;
     padding: 0px;
     gap: 30px;
 
-    position: absolute;
+
     width: 122px;
     height: 20px;
     left: 20px;
@@ -136,7 +135,7 @@ color: #000000;
 
 .vector_clock
 {
-    position: absolute;
+
     left: 8.33%;
     right: 8.33%;
     top: 8.33%;
@@ -202,7 +201,7 @@ color: #000000;
 
 .post_small_workout
 {
-    position: absolute;
+
     width: 410px;
     height: 540px;
     left: 595px;
@@ -210,7 +209,7 @@ color: #000000;
 }
 .rectangle4
 {
-    position: absolute;
+
     width: 410px;
     height: 270px;
     left: 0px;
@@ -223,7 +222,7 @@ color: #000000;
 
 .text_workout
 {
-    position: absolute;
+
     height: 102px;
     left: 20px;
     right: 20px;
@@ -247,7 +246,7 @@ color: #000000;
 
 .post_small_train
 {
-    position: absolute;
+
     width: 410px;
     height: 540px;
     left: 1035px;
@@ -258,7 +257,7 @@ color: #000000;
 
 .rectangle
 {
-    position: absolute;
+
     width: 410px;
     height: 270px;
     left: 0px;
@@ -271,7 +270,7 @@ color: #000000;
 
 .text_train
 {
-position: absolute;
+
 height: 204px;
 left: 20px;
 right: 20px;

@@ -16,7 +16,6 @@ li {
 
 li a {
     display: block;
-    color: #000000;
     text-align: center;
     padding: 30px 16px;
     text-decoration: none;
@@ -24,7 +23,6 @@ li a {
 
 .active {
     display: block;
-    color: #000000;
     text-align: center;
     font-weight: bold;
     padding: 30px 16px;
@@ -36,7 +34,6 @@ li a {
 
 li a:hover {
     background-color: #d9d9d9;
-    color: black;
 }
 
 .lineDevider {
@@ -45,4 +42,16 @@ li a:hover {
     width: 100%;
 
     opacity: 10%;
+}
+
+.imgProfile{
+    padding: 0 20px 0 20px;
+    cursor: pointer;
+}
+
+.dark{
+    color: #FFFFFF;
+}
+.white{
+    color: #000000;
 }

@@ -1,12 +1,9 @@
 /* Categories */
-.categories {
-    position: absolute;
-    width: 178px;
+.categories
+{
+    width: 200px;
     height: 44px;
-    left: 156px;
-    top: 2446px;
-
-    /* Headline / 4 */
+    left: 815px;
 
     font-family: 'Inter';
     font-style: normal;
@@ -20,35 +17,8 @@
     color: #000000;
 }
 
-/* Group 11 */
-.group11 {
-    position: absolute;
-    width: 1290px;
-    height: 520px;
-}
-
-/* Mask group */
-.mask_group_men {
-    position: absolute;
-    width: 630px;
-    height: 520px;
-}
-
-/* Rectangle 47 */
-.rectangle47 {
-    position: absolute;
-    width: 630px;
-    height: 520px;
-    top: 2566px;
-    left: 156px;
-
-    background: #C4C4C4;
-    border-radius: 10px;
-}
-
 /* image 1 */
 .img1 {
-    /*position: absolute;*/
     width: 630px;
     height: 520px;
     border-radius: 10px;
@@ -62,7 +32,7 @@
     position: absolute;
     width: 590px;
     height: 70px;
-    left: 15px;
+    /*left: 15px;*/
 
     /* Headline / 2 */
 
@@ -78,22 +48,14 @@
     color: #000000;
 }
 
-/* Group 6 */
-
-.group6 {
-    position: absolute;
-    width: 74px;
-    height: 24px;
-    top: 70px;
-}
-
 /* Explore */
 
-.explore_men {
+.explore_men
+{
     position: absolute;
     width: 50px;
     height: 23px;
-    left: 15px;
+    /*left: 15px;*/
     /* Body 15 */
 
     font-family: 'Inter';
@@ -127,27 +89,9 @@
     /*background: #000000;*/
 }
 
-.rectangle49 {
-    position: absolute;
-    width: 300px;
-    height: 255px;
-    top: 2566px;
-    left: 820px;
-
-    background: #C4C4C4;
-    border-radius: 10px;
-}
-
-/* Mask group */
-.mask_group_women {
-    position: absolute;
-    width: 300px;
-    height: 255px;
-}
-
 /* image 2 */
 .img2 {
-    position: absolute;
+    /*position: absolute;*/
     width: 300px;
     height: 255px;
     border-radius: 10px;
@@ -226,28 +170,9 @@
     /*background: #000000;*/
 }
 
-
-.rectangle51 {
-    position: absolute;
-    width: 300px;
-    height: 255px;
-    top: 2566px;
-    left: 1150px;
-
-    background: #C4C4C4;
-    border-radius: 10px;
-}
-
-/* Mask group */
-.mask_group_sale {
-    position: absolute;
-    width: 300px;
-    height: 255px;
-}
-
 /* image 4 */
 .img4 {
-    position: absolute;
+    /*position: absolute;*/
     width: 300px;
     height: 255px;
     border-radius: 10px;
@@ -276,34 +201,9 @@
     color: #000000;
 }
 
-.group2 {
-    position: absolute;
-    width: 74px;
-    height: 24px;
-    top: 70px;
-}
-
-.rectangle48 {
-    position: absolute;
-    width: 300px;
-    height: 255px;
-    top: 2830px;
-    left: 820px;
-
-    background: #C4C4C4;
-    border-radius: 10px;
-}
-
-/* Mask group */
-.mask_group_kids {
-    position: absolute;
-    width: 300px;
-    height: 255px;
-}
-
 /* image 3 */
 .img3 {
-    position: absolute;
+    /*position: absolute;*/
     width: 300px;
     height: 255px;
     border-radius: 10px;
@@ -332,36 +232,9 @@
     color: #000000;
 }
 
-.group4 {
-    position: absolute;
-    width: 74px;
-    height: 24px;
-    top: 70px;
-}
-
-.rectangle50 {
-    position: absolute;
-    width: 300px;
-    height: 255px;
-    top: 2836px;
-    left: 1150px;
-    /*top: 2830px;*/
-    /*left: 1120px;*/
-
-    background: #C4C4C4;
-    border-radius: 10px;
-}
-
-/* Mask group */
-.mask_group_kids {
-    position: absolute;
-    width: 300px;
-    height: 255px;
-}
-
 /* image 5 */
 .img5 {
-    position: absolute;
+    /*position: absolute;*/
     width: 300px;
     height: 255px;
     border-radius: 10px;
@@ -387,13 +260,6 @@
     letter-spacing: -0.8px;
 
     color: #000000;
-}
-
-.group5 {
-    position: absolute;
-    width: 74px;
-    height: 24px;
-    top: 70px;
 }
 
 

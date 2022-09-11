@@ -5,14 +5,15 @@ import {Store} from "../../../general/redux/storeTypes";
 import {useParams} from "react-router-dom";
 import {getProductDetailsAction} from "../redux/asyncActions";
 import getProductDetails from "../domain/use_case/getProductDetails";
+
 import Banner from "./Banner";
-import style from "../styles/landing.module.css";
 import Group12 from "./Group12";
 import Pagionations from "./Pagionations";
 import Subscribtion from "./Subscribtion";
 import Footer from "./Footer";
 import Blog from "./Blog";
 import Categories from "./Categories";
+import Navigation_Menu from "./Navigation_Menu";
 
 const LandingDetailPage:React.FC = ()=> {
     const {productId} = useParams<string>()
@@ -32,16 +33,16 @@ const LandingDetailPage:React.FC = ()=> {
         }
     },[productId]);
 
-    return ( <div className="rounded-top">
-        <div className={style.landing} >
+    return (
+        <div className="home" >
+            <Navigation_Menu/>
             <Banner/>
             <Group12/>
             <Pagionations/>
             <Categories/>
             <Blog/>
-            <Subscribtion/>
+            {/*<Subscribtion/>*/}
             <Footer/>
-        </div>
     </div>)
 }
 export default LandingDetailPage;

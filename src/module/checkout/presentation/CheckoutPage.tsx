@@ -1,16 +1,29 @@
 import React, {ChangeEvent, useEffect, useState} from "react";
-//import {CountryDropdown} from 'react-country-region-selector'
-
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import CartProduct from "../../cart/domain/model/CartProduct";
 import {shippings} from "../../../general/data/shippings";
 import Profile from "../../profile/domain/model/Profile";
+import {CountryDropdown} from "react-country-region-selector";
 
 const CheckoutPage:React.FC = ()=> {
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems);
+    const cartTotal = useSelector<Store, number>(state => state.cartPage.cartTotal)
     const profile = useSelector<Store, Profile>(state => state.profileDetails.profile);
-    const [shipping, setShipping] = useState("Standard");
+    const [shipping, setShipping] = useState(shippings[0].title);
+    const [shippingCost, setShippingCost] = useState(0);
+    const [orderSum, setOrderSum] = useState(cartTotal);
+    const [country, setCountry] = useState(profile.country)
+
+    useEffect(() => {
+        if (shipping === shippings[0].title) {
+            setShippingCost(shippings[0].cost)
+            setOrderSum(cartTotal)
+        } else {
+            setShippingCost(shippings[1].cost);
+            setOrderSum(cartTotal + shippings[1].cost)
+        }
+    }, [shipping])
 
     return (
             <div className="container my-4" style={{maxWidth: 1070}}>
@@ -49,13 +62,13 @@ const CheckoutPage:React.FC = ()=> {
                                     <div>
                                         <p className="my-0">Subtotal</p>
                                     </div>
-                                    <p className="my-0">${cartItems.reduce((acc:number, next:CartProduct) => (acc += (next.count * next.price)), 0)}</p>
+                                    <p className="my-0">${cartTotal.toFixed(2)}</p>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between lh-sm">
                                     <div>
                                         <p className="my-0">Estimated Shipping & Handling</p>
                                     </div>
-                                    <p className="my-0">$</p>
+                                    <p className="my-0">${shippingCost.toFixed(2)}</p>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between lh-sm">
                                     <div>
@@ -65,7 +78,7 @@ const CheckoutPage:React.FC = ()=> {
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between">
                                     <strong>Total</strong>
-                                    <strong>${cartItems.reduce((acc:number, next:CartProduct) => (acc += (next.count * next.price)), 0)}</strong>
+                                    <strong>${orderSum}</strong>
                                 </li>
                             </ul>
                         </div>
@@ -83,7 +96,7 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="firstName" className="form-label">First name</label>
-                                    <input type="text" className="form-control" id="firstName" placeholder="" value={profile.name}
+                                    <input type="text" className="form-control" id="firstName" defaultValue={profile.name}
                                            required/>
                                         <div className="invalid-feedback">
                                             Valid first name is required.
@@ -92,7 +105,7 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="lastName" className="form-label">Second name</label>
-                                    <input type="text" className="form-control" id="lastName" placeholder="" value={profile.surname}
+                                    <input type="text" className="form-control" id="lastName" placeholder="" defaultValue={profile.surname}
                                            required/>
                                         <div className="invalid-feedback">
                                             Valid last name is required.
@@ -103,7 +116,7 @@ const CheckoutPage:React.FC = ()=> {
                                     <label htmlFor="email" className="form-label">Email <span
                                         className="text-muted"></span></label>
                                     <input type="email" className="form-control" id="email"
-                                           placeholder="you@example.com" value={profile.email}/>
+                                           placeholder="you@example.com" defaultValue={profile.email}/>
                                     <div className="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -111,7 +124,7 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="phone" className="form-label">Phone number</label>
-                                    <input type="text" className="form-control" id="phone" placeholder="" value={profile.phone}
+                                    <input type="text" className="form-control" id="phone" placeholder="" defaultValue={profile.phone}
                                            required/>
                                     <div className="invalid-feedback">
                                         Valid phone is required.
@@ -129,10 +142,11 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="country" className="form-label">Country</label>
-                                    <select className="form-select" id="country" required defaultValue={profile.country}>
-                                        <option value="">Choose...</option>
-                                        <option value="US">United States</option>
-                                    </select>
+                                    <CountryDropdown value={country} onChange={(value) => setCountry(value)} classes="form-select" id="country"/>
+                                    {/*<select className="form-select" id="country" required defaultValue={profile.country}>*/}
+                                    {/*    <option value="">Choose...</option>*/}
+                                    {/*    <option value="US">United States</option>*/}
+                                    {/*</select>*/}
                                     <div className="invalid-feedback">
                                         Please select a valid country.
                                     </div>
@@ -140,7 +154,7 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="zip" className="form-label">ZIP code</label>
-                                    <input type="text" className="form-control" id="zip" placeholder="" required value={profile.zipCode}/>
+                                    <input type="text" className="form-control" id="zip" placeholder="" required defaultValue={profile.zipCode}/>
                                         <div className="invalid-feedback">
                                             Zip code required.
                                         </div>
@@ -165,7 +179,7 @@ const CheckoutPage:React.FC = ()=> {
                                 <div className="col-12">
                                     <label htmlFor="address" className="form-label">Address</label>
                                     <input type="text" className="form-control" id="address" placeholder="1234 Main St"
-                                           required value={profile.address}/>
+                                           required defaultValue={profile.address}/>
                                     <div className="invalid-feedback">
                                         Please enter your shipping address.
                                     </div>
@@ -191,7 +205,7 @@ const CheckoutPage:React.FC = ()=> {
 
                                         <div className="form-check form-check-inline">
                                             <input id="credit" name="paymentMethod" type="radio"
-                                                   className="form-check-input" checked required/>
+                                                   className="form-check-input" defaultChecked required/>
                                                 <label className="form-check-label" htmlFor="credit">Visa</label>
                                         </div>
                                         <div className="form-check form-check-inline">
@@ -218,7 +232,7 @@ const CheckoutPage:React.FC = ()=> {
                                         </div>
                                     </div>
 
-                                        <button className="w-30 btn btn-primary" type="submit">Purchase for 100$
+                                        <button className="w-30 btn btn-primary" type="submit">Purchase for ${orderSum}
                                         </button>
                         </form>
                     </div>
