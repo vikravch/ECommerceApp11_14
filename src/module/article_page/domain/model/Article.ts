@@ -1,7 +1,18 @@
 export default class Article {
-    articleId: string;
+    id: string;
+    title: string;
+    body:string;
+    images:string[];
+    thumbImg:string
+    timestampDateMod:number;
 
-    constructor(articleId:string) {
-        this.articleId = articleId
+
+    constructor(id: string, title: string, body: string, images: string[], thumbImg: string, timestampDateMod: number) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.images = images;
+        this.thumbImg = thumbImg;
+        this.timestampDateMod = timestampDateMod;
     }
 }

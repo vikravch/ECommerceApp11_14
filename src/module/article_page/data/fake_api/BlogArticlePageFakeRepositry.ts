@@ -1,12 +1,14 @@
 import BlogArticlePageRepository from "../../domain/BlogArticlePageRepository";
 import Article from "../../domain/model/Article";
+import {article} from "./article";
 
-// mirage.js
+
 export default class BlogArticlePageFakeRepository implements BlogArticlePageRepository{
-    async getArticleDetails(articleId: string): Promise<Article> {
-        // fetch ???
+    async getArticleDetails(id: string): Promise<Article> {
+        //const res = await fetch(`${DOMAIN_NAME}article_get?id=${id}`);
+        const res = JSON.parse(article);
         return new Promise((resolve => {
-            resolve(new Article("77777"));
+            resolve(res);
         }));
     }
 

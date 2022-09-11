@@ -1,12 +1,10 @@
 import React, {useEffect} from 'react';
 import style from './Blog.module.css';
 import ArticleItem from "./ArticleItem/ArticleItem";
-
 import {useDispatch, useSelector} from "react-redux";
 import ArticleInfo from "../domain/model/ArticlesList";
 import {Store} from "../../../general/redux/storeTypes";
 import {getArticlesListAction} from "../redux/asyncActions";
-import getArticlesList from "../domain/use_case/getArticlesList";
 
 const BlogPage:React.FC = () => {
     const articlesList = useSelector<Store, Array<ArticleInfo>>(state => state.blogPage.articlesList)
@@ -43,7 +41,7 @@ const BlogPage:React.FC = () => {
             </div>
             <div>
                 <div className={style.articles_wrapper}>{articlesList.map((item) =>
-                    <ArticleItem title={item.title} key={item.id} date={item.timestampDateMod}/>)}
+                    <ArticleItem title={item.title} key={item.id} id={item.id} date={item.timestampDateMod}/>)}
                 </div>
                 <div className={style.pagination_position}>
                     <div className={style.pagination}>

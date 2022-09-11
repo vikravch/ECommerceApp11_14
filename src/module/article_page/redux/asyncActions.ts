@@ -1,12 +1,11 @@
 import Article from "../domain/model/Article";
 import getArticleDetails from "../domain/use_case/getArticleDetails";
 
-export const getArticleDetailsAction = (articleId:string):any => {
+export const getArticleDetailsAction = (id:string):any => {
     return (dispatch:Function) => {
         dispatch(startArticleLoadAction());
-        getArticleDetails(articleId).then((data)=>{
-            console.log(JSON.stringify(data));
-            dispatch(setArticleDataAction(data));
+        getArticleDetails(id)
+            .then((data)=>{dispatch(setArticleDataAction(data));
         });
     }
 };
