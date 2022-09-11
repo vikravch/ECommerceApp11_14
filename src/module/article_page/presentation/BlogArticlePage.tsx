@@ -8,7 +8,7 @@ import style from './BlogArticlePage.module.css'
 
 
 const BlogArticlePage:React.FC = ()=> {
-    const {articleId} = useParams<string>()
+    const {id} = useParams<string>()
     const article = useSelector<Store, Article>(
         state => state.articlePage.article
     );
@@ -17,14 +17,14 @@ const BlogArticlePage:React.FC = ()=> {
     );
     const dispatch = useDispatch()
     useEffect(()=>{
-        if(articleId){
-            dispatch(getArticleDetailsAction(articleId))
+        if(id){
+            dispatch(getArticleDetailsAction(id))
         }
-    },[articleId]);
+    },[id]);
 
     return (<div className={style.wrapper}>
-        <h1>Why our Training club?</h1>
-        <div>07.08.2020</div>
+        <h1>{article.title}</h1>
+        <div>{article.timestampDateMod}</div>
         <p className={style.paragraph}>Reach your fitness goals with the Nike Training Club App (NTC). With access to 200+ free workouts and targeted training programmes, the NTC App will support you every step of the way. From invigorating yoga classes to bodyweight sessions with and without equipment, you'll find the right workout for you. Follow our Nike Master Trainers through varied classes, ranging from 5–50 minutes.
             Do them at home, in the gym, or outdoors – whenever and wherever you want. Plus, our free video library is constantly growing, so expect new videos to flow in.
             No matter what fitness level you're at, NTC will give you the tools you need to succeed.</p>
