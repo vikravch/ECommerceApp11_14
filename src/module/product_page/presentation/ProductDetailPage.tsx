@@ -81,31 +81,30 @@ const ProductDetailPage: React.FC = () => {
 
     };
 
+    let addToCart = () => {
+         //console.log(tempCartProduct)
+             // console.log("START ADD to cart Product: " + JSON.stringify(tempCartProduct))
+           dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
+          //    console.log("cart Product: " + JSON.stringify(tempCartProduct))
+          //    console.log("ID: " + JSON.stringify(tempCartProduct.idProduct))
+          //    store.addToChart(productDetailsToChart)
+          //    store.dispatch(addToChartActionCreator())
 
-    // let addToCart = () => {
-    //     //console.log(tempCartProduct)
-    //         // console.log("START ADD to cart Product: " + JSON.stringify(tempCartProduct))
-    //       dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
-    //      //    console.log("cart Product: " + JSON.stringify(tempCartProduct))
-    //      //    console.log("ID: " + JSON.stringify(tempCartProduct.idProduct))
-    //      //    store.addToChart(productDetailsToChart)
-    //      //    store.dispatch(addToChartActionCreator())
-    //
-    //         console.log(cartItems.length)
-    //         cartItems.push({ count: 1,
-    //         color: clickedColor,
-    //         size: selectedOption,
-    //         idProduct: productId??"1111",
-    //         product_thumb: "",
-    //         product_title: product.product_title,
-    //         rating: product.rating,
-    //         price: product.price,
-    //         discount: product.discount,})
-    //
-    //         console.log(cartItems.length)
-    //         console.log("cart ITEMS: " + JSON.stringify(cartItems))
-    //
-    // }
+             console.log(cartItems.length)
+             cartItems.push({ count: 1,
+             color: clickedColor,
+             size: selectedOption,
+             idProduct: productId??"1111",
+             product_thumb: "",
+             product_title: product.product_title,
+             rating: product.rating,
+             price: product.price,
+             discount: product.discount,})
+
+             console.log(cartItems.length)
+             console.log("cart ITEMS: " + JSON.stringify(cartItems))
+
+     }
 
     function dropDownDetails() {
         console.log("Drop down CLICKED")
@@ -166,7 +165,7 @@ const ProductDetailPage: React.FC = () => {
 
 
 
-                        <button className={styles.addBtn}     onClick={() => {dispatch(addToCartAction(tempCartProduct))}}>Add to cart</button>
+                        <button className={styles.addBtn}     onClick={addToCart}>Add to cart</button>
                         <div className={styles.lineDeviderSmall}></div>
 
                         <div className={styles.aditionalInfo}>
