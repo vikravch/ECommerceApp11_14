@@ -12,6 +12,8 @@ import {addToCartAction, removeFromCartAction} from "../../cart/redux/asyncActio
 import CartProduct from "../../cart/domain/model/CartProduct";
 import {sizes} from "../../../general/data/sizes";
 import {CartPageStore} from "../../cart/redux/typesCartPage";
+import useModal from "../modalWindow/useModal";
+import Modal from "../modalWindow/modal";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -24,6 +26,7 @@ const ProductDetailPage: React.FC = () => {
     const cartItems = useSelector<Store, Array<CartProduct>> (
         state => state.cartPage.cartItems
     )
+    const { isOpen, toggle, imgSrc } = useModal();
 
 
     const [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
@@ -85,22 +88,22 @@ const ProductDetailPage: React.FC = () => {
     //       dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
     //      //    console.log("cart Product: " + JSON.stringify(tempCartProduct))
     //      //    console.log("ID: " + JSON.stringify(tempCartProduct.idProduct))
-    //         // store.addToChart(productDetailsToChart)
-    //         // store.dispatch(addToChartActionCreator())
+    //      //    store.addToChart(productDetailsToChart)
+    //      //    store.dispatch(addToChartActionCreator())
     //
-    //         // console.log(cartItems.length)
-    //         // cartItems.push({ count: 1,
-    //         // color: clickedColor,
-    //         // size: selectedOption,
-    //         // idProduct: productId??"1111",
-    //         // product_thumb: "",
-    //         // product_title: product.product_title,
-    //         // rating: product.rating,
-    //         // price: product.price,
-    //         // discount: product.discount,})
-    //         //
-    //         // console.log(cartItems.length)
-    //         // console.log("cart ITEMS: " + JSON.stringify(cartItems))
+    //         console.log(cartItems.length)
+    //         cartItems.push({ count: 1,
+    //         color: clickedColor,
+    //         size: selectedOption,
+    //         idProduct: productId??"1111",
+    //         product_thumb: "",
+    //         product_title: product.product_title,
+    //         rating: product.rating,
+    //         price: product.price,
+    //         discount: product.discount,})
+    //
+    //         console.log(cartItems.length)
+    //         console.log("cart ITEMS: " + JSON.stringify(cartItems))
     //
     // }
 
@@ -111,14 +114,16 @@ const ProductDetailPage: React.FC = () => {
     return (
         <div>
             <div>
-
+                <Modal isOpen={isOpen} toggle={toggle} imgSrc={''}>
+                    <img src={imgSrc} alt="img"/>
+                </Modal>
                 <div className={styles.breadcrums}>Men / T-Shirt / Basic T-shirt </div>
                 <div className={styles.productPage}>
                     <div className={styles.photoBox}>
-                        <img src={require("./images/Products/bigImg/img_1111.jpg")} alt="t-shirt"/>
-                        <img src={require("./images/Products/bigImg/img_1121.jpg")} alt="t-shirt"/>
-                        <img src={require("./images/Products/bigImg/img_1131.jpg")} alt="t-shirt"/>
-                        <img src={require("./images/Products/bigImg/img_1141.jpg")} alt="t-shirt"/>
+                        { product.product_imgs.map(el => {
+                            return <img onClick={toggle} alt={"imgs"} src={el} key={Math.random()}/>;
+                        })}
+
                     </div>
 
                     <div className={styles.productInfoBox}>
