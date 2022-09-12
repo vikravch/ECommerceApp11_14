@@ -1,21 +1,22 @@
 
 .modalOverlay {
     z-index: 9999;
-    width: 100vw;
-    height: 100vh;
-    /*position: absolute;*/
+    width: 110vw;
+    height: 110vh;
+    position: fixed;
     top: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
+
     justify-content: center;
     align-items: center;
 }
 
 .modalBox {
     display: block;
-    background: white;
-    width: 70%;
-    height: 70%;
+    /*background: #FFFFFF;*/
+    width: 750px;
+    height: 960px;
     padding: 1rem;
     border-radius: 1rem;
     justify-content: center;
@@ -26,4 +27,6 @@
     justify-content: center;
     align-items: center;
     margin: auto;
+    width: 70%;
+    height: 70%;
 }

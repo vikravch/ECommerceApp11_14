@@ -19,7 +19,7 @@ const Header = (props: Props) => {
         <div className={(props.isDark) ? styles.dark : styles.white}>
             <div className={styles.navBar}>
                 <ul>
-                    <li><a href="/landing">LOGO</a></li>
+                    <li><a href="/">LOGO</a></li>
                     <li><a className={styles.active} href="#men">Men</a></li>
                     <li><a href="#women">Women</a></li>
                     <li><a href="#kids">Kids</a></li>

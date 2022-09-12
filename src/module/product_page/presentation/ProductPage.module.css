@@ -209,6 +209,7 @@
     color: rgba(0, 0, 0, 0.3);
 
 }
+
 .productSizeBox {
     /*display: inline;*/
     width: 360px;
@@ -232,13 +233,14 @@
 
 }
 
-.sizes
-{
-  margin-top: 20px;
+.sizes {
+    margin-top: 20px;
 }
+
 .productSizeBox a {
     float: right;
 }
+
 .productSizeBox2 a {
     float: right;
 }
@@ -253,6 +255,7 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
+
 /*.productSizeDropDown {*/
 /*    display: none;*/
 /*}*/
@@ -323,23 +326,16 @@
 }
 
 .dropdownContent {
+    margin-top: 10px;
+    color: #656262;
 
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    width: 100%;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    padding: 12px 16px;
-    z-index: 1;
 }
 
 .dropdown:hover .dropdownContent {
     display: block;
-   cursor: pointer;
-    background-color: #FA4A69;
+    cursor: pointer;
+    background-color: #ffffff;
 }
-
 
 
 .shippingDropdown {
@@ -374,7 +370,7 @@
 }
 
 .lineDeviderSmall {
-display: inline-block;
+    display: inline-block;
     border: #000000 solid 0.5px;
     border-collapse: inherit;
     width: 355px;

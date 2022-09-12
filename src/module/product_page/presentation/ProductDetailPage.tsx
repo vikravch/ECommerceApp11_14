@@ -21,6 +21,7 @@ import useModal from "../modalWindow/useModal";
 import Modal from "../modalWindow/modal";
 import store from "../../../general/redux/store";
 import {tempProductData} from "../data/tempData";
+import DropDownOut from "../dropdown/DropDownOut";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -43,6 +44,7 @@ const ProductDetailPage: React.FC = () => {
             })
         }
     }, [productId]);
+
 
 
     const [selectedSizeOption, setSelectedSizeOption] = useState<string>("S");
@@ -165,19 +167,15 @@ const ProductDetailPage: React.FC = () => {
                         <div className={styles.lineDeviderSmall}></div>
 
                         <div className={styles.aditionalInfo}>
-
-                            {/*// ---- DROP DAWN*/}
                             <div>
-                                <div  className={styles.dropdown} onClick={dropDownDetails}>Details</div>
-                                <div className={styles.dropdownContent}>
-                                    <p className={styles.show}>Some text area. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi debitis distinctio impedit.</p>
-                                </div>
+                                <DropDownOut title={"Details"}/>
                                 <div className={styles.lineDeviderSmall}></div>
                             </div>
-                            <div className={styles.shippingDropdown}>
-                                <div>Shipping & Returns</div>
+                            <div>
+                                <DropDownOut title={"Shipping & Return"}/>
+                                <div className={styles.lineDeviderSmall}></div>
                             </div>
-                            <div className={styles.lineDeviderSmall}></div>
+
                         </div>
 
                     </div>
