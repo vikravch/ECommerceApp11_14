@@ -29,7 +29,7 @@ const ProductDetailPage: React.FC = () => {
     const { isOpen, toggle, imgSrc } = useModal();
 
 
-    const [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
+    const [tempCartProduct, setTempCartProduct] = useState<CartProduct>(  {
         idProduct: "1111",
         product_thumb: "",
         count: 1,
@@ -40,6 +40,7 @@ const ProductDetailPage: React.FC = () => {
         price: product.price,
         discount: product.discount,
     });
+
 
     const dispatch = useDispatch()
     useEffect(() => {
@@ -54,11 +55,14 @@ const ProductDetailPage: React.FC = () => {
 
 
 
-    const [selectedOption, setSelectedOption] = useState<string>("");
+    const [selectedSizeOption, setSelectedSizeOption] = useState<string>("M");
+
     const selectSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        event.preventDefault();
         const value = event.target.value;
-        setSelectedOption(value);
-        // console.log("Size changed to: " + selectedOption);
+        console.log("Size was: " + selectedSizeOption.valueOf());
+        setSelectedSizeOption(value);
+        console.log("Size changed to: " + selectedSizeOption.valueOf());
         // tempCartProduct.size = value;
         // console.log("Cart PR size: " + tempCartProduct.size)
         // console.log("Cart PR: " + JSON.stringify(tempCartProduct));
@@ -69,43 +73,44 @@ const ProductDetailPage: React.FC = () => {
         console.log("Color changed to: " + value);
     }
 
-    const [clickedColor, setClickedColor] = useState(product.colors[0]);
+    const [selectedColor, setSelectedColor] = useState(product.colors[0]);
 
     const colorHandler = (event: React.MouseEvent<HTMLImageElement>) => {
         event.preventDefault();
         const colorImg: HTMLImageElement = event.currentTarget;
-        setClickedColor(colorImg.id);
-        // tempCartProduct.color = clickedColor.valueOf();
-        // console.log(clickedColor.valueOf())
-        // console.log("Cart Product color updated to: " + JSON.stringify(tempCartProduct))
+        setSelectedColor(colorImg.id);
+         tempCartProduct.color = selectedColor.valueOf();
+         console.log(selectedColor.valueOf())
+        console.log("Cart Product color updated to: " + JSON.stringify(tempCartProduct))
 
     };
 
+    let addToCart = () => {
+        console.log("START ADD to cart Product: " + JSON.stringify(tempCartProduct))
+        setTempCartProduct({ count: 1,
+            color: selectedColor,
+            size: selectedSizeOption,
+            idProduct: productId??"1111",
+            product_thumb: "",
+            product_title: product.product_title,
+            rating: product.rating,
+            price: product.price,
+            discount: product.discount,})
 
-    // let addToCart = () => {
-    //     //console.log(tempCartProduct)
-    //         // console.log("START ADD to cart Product: " + JSON.stringify(tempCartProduct))
-    //       dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
-    //      //    console.log("cart Product: " + JSON.stringify(tempCartProduct))
-    //      //    console.log("ID: " + JSON.stringify(tempCartProduct.idProduct))
-    //      //    store.addToChart(productDetailsToChart)
-    //      //    store.dispatch(addToChartActionCreator())
-    //
-    //         console.log(cartItems.length)
-    //         cartItems.push({ count: 1,
-    //         color: clickedColor,
-    //         size: selectedOption,
-    //         idProduct: productId??"1111",
-    //         product_thumb: "",
-    //         product_title: product.product_title,
-    //         rating: product.rating,
-    //         price: product.price,
-    //         discount: product.discount,})
-    //
-    //         console.log(cartItems.length)
-    //         console.log("cart ITEMS: " + JSON.stringify(cartItems))
-    //
-    // }
+          dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
+         //    console.log("cart Product: " + JSON.stringify(tempCartProduct))
+         //    console.log("ID: " + JSON.stringify(tempCartProduct.idProduct))
+         //   store.addToChart(productDetailsToChart)
+         //    store.dispatch(addToChartActionCreator())
+
+
+            console.log(cartItems.length)
+            cartItems.push(tempCartProduct)
+
+            console.log(cartItems.length)
+            console.log("cart ITEMS: " + JSON.stringify(cartItems))
+
+    }
 
     function dropDownDetails() {
         console.log("Drop down CLICKED")
@@ -138,8 +143,8 @@ const ProductDetailPage: React.FC = () => {
                         <div className={styles.lineDeviderSmall}></div>
 
                         <div className={styles.productColorBox}>
-                            <div className={styles.productColorText}>{clickedColor !== ""
-                                ? `Color: "${clickedColor}"`
+                            <div className={styles.productColorText}>{selectedColor !== ""
+                                ? `Color: "${selectedColor}"`
                                 : product.colors[0]}</div>
                             <div className={styles.productColorImg}>
                                 <img onClick={colorHandler} className={styles.active} src={require("./images/Products/color/img1.png")}
@@ -156,17 +161,16 @@ const ProductDetailPage: React.FC = () => {
                             <a href="#">Size guide</a>
                             <div className={styles.sizes}>
                         <select onChange={selectSizeChange} className="form-select">
-                            <option className={styles.productSize} defaultValue={sizes.S}>{sizes.S}</option>
-                            <option className={styles.productSize} value={sizes.M}>{sizes.M}</option>
+                            <option className={styles.productSize} value={sizes.S}>{sizes.S}</option>
+                            <option className={styles.productSize} defaultValue={sizes.M}>{sizes.M}</option>
                             <option className={styles.productSize} value={sizes.L}>{sizes.L}</option>
                         </select>
                             </div>
                             </div>
 
-
-
-
-                        <button className={styles.addBtn}     onClick={() => {dispatch(addToCartAction(tempCartProduct))}}>Add to cart</button>
+                        <button className={styles.addBtn}
+                                //TODO return to onClick={addToCart}
+                                onClick={addToCart}>Add to cart</button>
                         <div className={styles.lineDeviderSmall}></div>
 
                         <div className={styles.aditionalInfo}>

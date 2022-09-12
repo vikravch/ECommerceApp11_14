@@ -13,7 +13,7 @@ export const getProductDetailsAction = (productId:string):any => {
 };
 export const START_PRODUCT_LOAD = "start_random_load";
 export const SET_PRODUCT_DATA = "set_random_data";
-//export const ADD_TO_CHART = "sent_product_to_chart";
+export const ADD_TO_CHART = "sent_product_to_chart"; //Alena did "//"
 
 export const startProductLoadAction = () => ({
         type: START_PRODUCT_LOAD
@@ -23,7 +23,9 @@ export const setProductDataAction = (data:Product) => ({
     payload: data
 });
 
-// export  const  addToChartActionCreator = (data:CartProduct) => ({
-//     type: ADD_TO_CHART,
-//     payload: data
-// })
+//TODO Check what the dif between addToChartAction from ALena's AsyncActions
+
+export  const  addToChartActionCreator = (data:CartProduct) => ({
+    type: ADD_TO_CHART,
+    payload: data
+})
