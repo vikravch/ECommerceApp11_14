@@ -3,7 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import Product from "../domain/model/Product";
 import {Store} from "../../../general/redux/storeTypes";
 import {useParams} from "react-router-dom";
-import {getProductDetailsAction, setProductDataAction} from "../redux/asyncActions";
+import {
+    addToChartActionTest,
+    getProductDetailsAction,
+    setCartProductAction,
+    setProductDataAction
+} from "../redux/asyncActions";
 import getProductDetails from "../domain/use_case/getProductDetails";
 import {inspect} from "util";
 import styles from "./ProductPage.module.css";
@@ -14,6 +19,8 @@ import {sizes} from "../../../general/data/sizes";
 import {CartPageStore} from "../../cart/redux/typesCartPage";
 import useModal from "../modalWindow/useModal";
 import Modal from "../modalWindow/modal";
+import store from "../../../general/redux/store";
+import {tempProductData} from "../data/tempData";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -28,20 +35,6 @@ const ProductDetailPage: React.FC = () => {
     )
     const { isOpen, toggle, imgSrc } = useModal();
 
-
-    const [tempCartProduct, setTempCartProduct] = useState<CartProduct>(  {
-        idProduct: "1111",
-        product_thumb: "",
-        count: 1,
-        color: product.colors[0],
-        size: product.size.M,
-        product_title: product.product_title,
-        rating: product.rating,
-        price: product.price,
-        discount: product.discount,
-    });
-
-
     const dispatch = useDispatch()
     useEffect(() => {
         if (productId) {
@@ -52,60 +45,58 @@ const ProductDetailPage: React.FC = () => {
     }, [productId]);
 
 
-
-
-
-    const [selectedSizeOption, setSelectedSizeOption] = useState<string>("M");
+    const [selectedSizeOption, setSelectedSizeOption] = useState<string>("S");
 
     const selectSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         event.preventDefault();
         const value = event.target.value;
-        console.log("Size was: " + selectedSizeOption.valueOf());
-        setSelectedSizeOption(value);
-        console.log("Size changed to: " + selectedSizeOption.valueOf());
-        // tempCartProduct.size = value;
-        // console.log("Cart PR size: " + tempCartProduct.size)
-        // console.log("Cart PR: " + JSON.stringify(tempCartProduct));
+        tempCartProduct.size = value;
+        console.log("TEM PR SIZE: " + tempCartProduct.size )
+        // setSelectedSizeOption(value);
+        tempCartProduct.size = value;
     };
 
-    const colorChanged = (event: React.ChangeEventHandler<HTMLImageElement>) => {
-        const value = event.name;
-        console.log("Color changed to: " + value);
-    }
 
     const [selectedColor, setSelectedColor] = useState(product.colors[0]);
 
     const colorHandler = (event: React.MouseEvent<HTMLImageElement>) => {
-        event.preventDefault();
         const colorImg: HTMLImageElement = event.currentTarget;
-        setSelectedColor(colorImg.id);
-         tempCartProduct.color = selectedColor.valueOf();
-         console.log(selectedColor.valueOf())
-        console.log("Cart Product color updated to: " + JSON.stringify(tempCartProduct))
+        console.log("COLORIMG ID " + colorImg.id)
+        // setSelectedColor(colorImg.id);
+        tempCartProduct.color = colorImg.id;
+        console.log("TEM PR COLOR: " + tempCartProduct.color )
+        // console.log("Cart Product color updated to: " + JSON.stringify(tempCartProduct))
 
     };
 
+    let [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
+        idProduct: productId??"1111",
+        product_thumb: "url fo img",
+        count: 1,
+        color: selectedColor,
+        size: selectedSizeOption,
+        product_title: product.product_title,
+        rating: product.rating,
+        price: product.price,
+        discount: product.discount,
+    });
+
+
     let addToCart = () => {
-        console.log("START ADD to cart Product: " + JSON.stringify(tempCartProduct))
-        setTempCartProduct({ count: 1,
-            color: selectedColor,
-            size: selectedSizeOption,
-            idProduct: productId??"1111",
-            product_thumb: "",
-            product_title: product.product_title,
-            rating: product.rating,
-            price: product.price,
-            discount: product.discount,})
+        // setTempCartProduct({ count: 1,
+        //  color: selectedColor,
+        //     size: selectedSizeOption,
+        //     idProduct: productId??"1111",
+        //     product_thumb: "",
+        //     product_title: product.product_title,
+        //     rating: product.rating,
+        //     price: product.price,
+        //     discount: product.discount,})
 
-          dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
-         //    console.log("cart Product: " + JSON.stringify(tempCartProduct))
-         //    console.log("ID: " + JSON.stringify(tempCartProduct.idProduct))
-         //   store.addToChart(productDetailsToChart)
-         //    store.dispatch(addToChartActionCreator())
-
-
+        console.log("Set product done!: " + JSON.stringify(tempCartProduct))
+        dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
             console.log(cartItems.length)
-            cartItems.push(tempCartProduct)
+            // cartItems.push(tempCartProduct) // пушает второй экземпляр
 
             console.log(cartItems.length)
             console.log("cart ITEMS: " + JSON.stringify(cartItems))
@@ -142,6 +133,7 @@ const ProductDetailPage: React.FC = () => {
 
                         <div className={styles.lineDeviderSmall}></div>
 
+                        //TODO fix in color title
                         <div className={styles.productColorBox}>
                             <div className={styles.productColorText}>{selectedColor !== ""
                                 ? `Color: "${selectedColor}"`
@@ -169,7 +161,6 @@ const ProductDetailPage: React.FC = () => {
                             </div>
 
                         <button className={styles.addBtn}
-                                //TODO return to onClick={addToCart}
                                 onClick={addToCart}>Add to cart</button>
                         <div className={styles.lineDeviderSmall}></div>
 
