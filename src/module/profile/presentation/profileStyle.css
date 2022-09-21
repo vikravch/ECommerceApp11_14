@@ -145,3 +145,16 @@
 .breadcrums {
     margin-top: 30px;
 }
+
+.buttons {
+    padding: 18px 20px;
+    background: #2D74FF;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.content-box{
+    box-sizing: content-box;
+}
