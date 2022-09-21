@@ -112,7 +112,7 @@ const ProductDetailPage: React.FC = () => {
     return (
         <div>
             <div>
-                <Modal isOpen={isOpen} toggle={toggle} imgSrc={''}>
+                <Modal isOpen={isOpen} toggle={toggle} imgSrc={imgSrc}>
                     <img src={imgSrc} alt="img"/>
                 </Modal>
                 <div className={styles.breadcrums}>Men / T-Shirt / Basic T-shirt </div>
