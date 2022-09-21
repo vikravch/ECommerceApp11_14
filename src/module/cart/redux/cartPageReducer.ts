@@ -1,5 +1,5 @@
 import {Action} from "../../../general/redux/Action";
-import {ADD_TO_CART, CHANGE_COUNT, CHANGE_SIZE, REMOVE_FROM_CART} from "./asyncActions";
+import {ADD_TO_CART, CHANGE_COUNT, CHANGE_SIZE, CLEAR_CART, REMOVE_FROM_CART} from "./asyncActions";
 import CartProduct from "../domain/model/CartProduct";
 
 export const calcTotalPrice = (items: CartProduct[]) => {
@@ -49,6 +49,9 @@ export const cartPageReducer = (
                 sGoods[sizeIndex].size = action.payload.size
                 localStorage.setItem("cartItems", JSON.stringify(sGoods))
                 return {...state, cartItems: sGoods}
+        case CLEAR_CART:
+            return {...state, cartItems: [], cartTotal: 0, cartCount: 0}
+
         default:
             // return {state, cartCount: state.cartItems.length, cartTotal: calcTotalPrice(state.cartItems)};
             return state;

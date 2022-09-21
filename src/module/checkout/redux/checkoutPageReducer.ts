@@ -1,5 +1,5 @@
 import {Action} from "../../../general/redux/Action";
-import {CREATE_ORDER, FETCH_ORDERS} from "./asyncActions";
+import {CREATE_ORDER} from "./asyncActions";
 
 export const checkoutPageReducer = (
     state = {Order: {}},
@@ -7,9 +7,7 @@ export const checkoutPageReducer = (
 ) => {
     switch (action.type) {
         case CREATE_ORDER:
-            return state;
-        case FETCH_ORDERS:
-            return {orders: action.payload}
+            return {...state, Order: action.payload}
         default:
             return state;
     }

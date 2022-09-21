@@ -1,10 +1,12 @@
-import React, {ChangeEvent, useEffect, useState} from "react";
-import {useSelector} from "react-redux";
+import React, {ChangeEvent, FormEvent, useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import CartProduct from "../../cart/domain/model/CartProduct";
 import {shippings} from "../../../general/data/shippings";
 import Profile from "../../profile/domain/model/Profile";
 import {CountryDropdown} from "react-country-region-selector";
+import {createOrder} from "../redux/asyncActions";
+import Order from "../domain/model/Order";
 
 const CheckoutPage:React.FC = ()=> {
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems);
@@ -13,7 +15,15 @@ const CheckoutPage:React.FC = ()=> {
     const [shipping, setShipping] = useState(shippings[0].title);
     const [shippingCost, setShippingCost] = useState(0);
     const [orderSum, setOrderSum] = useState(cartTotal);
-    const [country, setCountry] = useState(profile.country)
+    const [country, setCountry] = useState(profile.country);
+    const [zip, setZip] = useState(profile.zipCode);
+    const [addr, setAddr] = useState(profile.address);
+    const [wishes, setWishes] = useState('');
+    const [name, setName] = useState(profile.name);
+    const [lastName, setLastName] = useState(profile.surname);
+    const [email, setEmail] = useState(profile.email);
+    const [phone, setPhone] = useState(profile.phone);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (shipping === shippings[0].title) {
@@ -24,6 +34,28 @@ const CheckoutPage:React.FC = ()=> {
             setOrderSum(cartTotal + shippings[1].cost)
         }
     }, [shipping])
+
+    const transformCartItem = (cartItem:CartProduct) => {
+        return {
+            prodId: +cartItem.idProduct,
+            color: cartItem.color,
+            size: cartItem.size,
+            number: cartItem.count
+        }
+    }
+
+    const handleCreateOrder = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const newOrder: Order = {
+            orderId:Number(new Date().getTime()),
+            customerId: 1050356773,
+            cartItems: cartItems.map(transformCartItem),
+            timestampOrderDate: Number(new Date().getTime()),
+            deliveryAddr: {country: country, zip: +zip, addr: addr},
+            deliveryCost: shippingCost
+        }
+        dispatch(createOrder(newOrder))
+    }
 
     return (
             <div className="container my-4" style={{maxWidth: 1070}}>
@@ -85,7 +117,7 @@ const CheckoutPage:React.FC = ()=> {
                     </div>
                     <div className="col-md-7 col-lg-8">
 
-                        <form className="needs-validation" noValidate>
+                        <form className="needs-validation" noValidate onSubmit={handleCreateOrder}>
                             <div className="row g-3">
                                 <div className="col-sm-2">
                                     <h4 className="mb-2">Contacts</h4>
@@ -96,8 +128,12 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="firstName" className="form-label">First name</label>
-                                    <input type="text" className="form-control" id="firstName" defaultValue={profile.name}
-                                           required/>
+                                    <input type="text"
+                                           className="form-control"
+                                           id="firstName"
+                                           value={name}
+                                           required
+                                           onChange = {(e: FormEvent<HTMLInputElement>) => {setName(e.currentTarget.value)}}/>
                                         <div className="invalid-feedback">
                                             Valid first name is required.
                                         </div>
@@ -105,8 +141,13 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="lastName" className="form-label">Second name</label>
-                                    <input type="text" className="form-control" id="lastName" placeholder="" defaultValue={profile.surname}
-                                           required/>
+                                    <input type="text"
+                                           className="form-control"
+                                           id="lastName"
+                                           placeholder=""
+                                           value={lastName}
+                                           required
+                                           onChange = {(e: FormEvent<HTMLInputElement>) => {setLastName(e.currentTarget.value)}}/>
                                         <div className="invalid-feedback">
                                             Valid last name is required.
                                         </div>
@@ -115,8 +156,12 @@ const CheckoutPage:React.FC = ()=> {
                                 <div className="col-sm-6">
                                     <label htmlFor="email" className="form-label">Email <span
                                         className="text-muted"></span></label>
-                                    <input type="email" className="form-control" id="email"
-                                           placeholder="you@example.com" defaultValue={profile.email}/>
+                                    <input type="email"
+                                           className="form-control"
+                                           id="email"
+                                           placeholder="you@example.com"
+                                           value={email}
+                                           onChange = {(e: FormEvent<HTMLInputElement>) => {setEmail(e.currentTarget.value)}}/>
                                     <div className="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -124,8 +169,13 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="phone" className="form-label">Phone number</label>
-                                    <input type="text" className="form-control" id="phone" placeholder="" defaultValue={profile.phone}
-                                           required/>
+                                    <input type="text"
+                                           className="form-control"
+                                           id="phone"
+                                           placeholder=""
+                                           value={phone}
+                                           required
+                                           onChange = {(e: FormEvent<HTMLInputElement>) => {setPhone(e.currentTarget.value)}}/>
                                     <div className="invalid-feedback">
                                         Valid phone is required.
                                     </div>
@@ -143,10 +193,6 @@ const CheckoutPage:React.FC = ()=> {
                                 <div className="col-sm-6">
                                     <label htmlFor="country" className="form-label">Country</label>
                                     <CountryDropdown value={country} onChange={(value) => setCountry(value)} classes="form-select" id="country"/>
-                                    {/*<select className="form-select" id="country" required defaultValue={profile.country}>*/}
-                                    {/*    <option value="">Choose...</option>*/}
-                                    {/*    <option value="US">United States</option>*/}
-                                    {/*</select>*/}
                                     <div className="invalid-feedback">
                                         Please select a valid country.
                                     </div>
@@ -154,17 +200,21 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="zip" className="form-label">ZIP code</label>
-                                    <input type="text" className="form-control" id="zip" placeholder="" required defaultValue={profile.zipCode}/>
+                                    <input type="text"
+                                           className="form-control"
+                                           id="zip" placeholder=""
+                                           required
+                                           value={zip}
+                                           onChange = {(e: FormEvent<HTMLInputElement>) => {setZip(e.currentTarget.value)}}/>
                                         <div className="invalid-feedback">
                                             Zip code required.
                                         </div>
                                 </div>
 
-
                                 <div className="col-sm-6">
                                     <input className="form-check-input" type="radio" name="title"
                                            id="Standard" value="Standard" checked={shipping === "Standard"}
-                                    onChange={(e:ChangeEvent<HTMLInputElement>) => {setShipping(e.target.value)}}/>
+                                           onChange={(e:ChangeEvent<HTMLInputElement>) => {setShipping(e.target.value)}}/>
                                     <label className="form-check-label mx-lg-2" htmlFor="inlineRadio1">{shippings[0].title}</label>
                                     <label className="text-muted text-sm">{shippings[0].description}</label>
                                 </div>
@@ -175,11 +225,15 @@ const CheckoutPage:React.FC = ()=> {
                                     <label className="text-muted text-sm ">{shippings[1].description}</label>
                                 </div>
 
-
                                 <div className="col-12">
                                     <label htmlFor="address" className="form-label">Address</label>
-                                    <input type="text" className="form-control" id="address" placeholder="1234 Main St"
-                                           required defaultValue={profile.address}/>
+                                    <input type="text"
+                                           className="form-control"
+                                           id="address"
+                                           placeholder="1234 Main St"
+                                           required
+                                           value={addr}
+                                           onChange = {(e: FormEvent<HTMLInputElement>) => {setAddr(e.currentTarget.value)}}/>
                                     <div className="invalid-feedback">
                                         Please enter your shipping address.
                                     </div>
@@ -187,7 +241,11 @@ const CheckoutPage:React.FC = ()=> {
 
                                 <div className="col-12">
                                     <label htmlFor="wishes" className="form-label">Wishes</label>
-                                    <textarea className="form-control" id="wishes" placeholder="Type your wishes"
+                                    <textarea className="form-control"
+                                              id="wishes"
+                                              value={wishes}
+                                              placeholder="Type your wishes"
+                                              onChange = {(e: FormEvent<HTMLTextAreaElement>) => {setWishes(e.currentTarget.value)}}
                                            />
                                     <div className="invalid-feedback">
                                         Please enter your shipping address.

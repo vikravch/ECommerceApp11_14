@@ -1,28 +1,44 @@
-import Cart from "../../../cart/domain/model/Cart";
 import CartProduct from "../../../cart/domain/model/CartProduct"
 // Output / request body
-export default class Order {
-    orderId : string;
-    customerId: string;
-    cartItems: CartProduct;
-    createdAt: string;
-    deliveryAddr: string;
-    deliveryDate: string;
-    shippingCost: number;
-    paymentStatus: string;
-    orderStatus: string;
-// orderCost:number
 
-    constructor(orderId:string, customerId: string, cartItems:CartProduct, createdAt: string, deliveryAddr:string, deliveryDate: string,
-                shippingCost: number, paymentStatus: string, orderStatus: string) {
-        this.orderId = orderId
-        this.customerId = customerId
-        this.cartItems = cartItems;
-        this.createdAt = createdAt
-        this.deliveryAddr = deliveryAddr
-        this.deliveryDate = deliveryDate
-        this.shippingCost = shippingCost
-        this.paymentStatus = paymentStatus
-        this.orderStatus = orderStatus
+class OrderProduct {
+    constructor(prodId: number, color: string, size: string, number: number) {
+        this.prodId = prodId;
+        this.color = color;
+        this.size = size;
+        this.number = number;
     }
+    prodId: number;
+    color: string;
+    size: string;
+    number: number;
+}
+
+export class Addr {
+    constructor(country: string, zip: number, addr: string) {
+        this.country = country;
+        this.zip = zip;
+        this.addr = addr;
+    }
+
+    country: string;
+    zip: number;
+    addr: string;
+}
+
+export default class Order {
+    constructor(orderId: number, customerId: number, cartItems: Array<OrderProduct>, timestampOrderDate: number, deliveryAddr: Addr, deliveryCost: number) {
+        this.orderId = orderId;
+        this.customerId = customerId;
+        this.cartItems = cartItems;
+        this.timestampOrderDate = timestampOrderDate;
+        this.deliveryAddr = deliveryAddr;
+        this.deliveryCost = deliveryCost;
+    }
+    orderId : number;
+    customerId: number;
+    cartItems: Array<OrderProduct>;
+    timestampOrderDate: number;
+    deliveryAddr: Addr;
+    deliveryCost: number;
 }
