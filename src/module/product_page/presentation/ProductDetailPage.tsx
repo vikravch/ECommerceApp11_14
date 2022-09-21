@@ -3,7 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import Product from "../domain/model/Product";
 import {Store} from "../../../general/redux/storeTypes";
 import {useParams} from "react-router-dom";
-import {getProductDetailsAction, setProductDataAction} from "../redux/asyncActions";
+import {
+    addToChartActionTest,
+    getProductDetailsAction,
+    setCartProductAction,
+    setProductDataAction
+} from "../redux/asyncActions";
 import getProductDetails from "../domain/use_case/getProductDetails";
 import {inspect} from "util";
 import styles from "./ProductPage.module.css";
@@ -14,6 +19,9 @@ import {sizes} from "../../../general/data/sizes";
 import {CartPageStore} from "../../cart/redux/typesCartPage";
 import useModal from "../modalWindow/useModal";
 import Modal from "../modalWindow/modal";
+import store from "../../../general/redux/store";
+import {tempProductData} from "../data/tempData";
+import DropDownOut from "../dropdown/DropDownOut";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -28,19 +36,6 @@ const ProductDetailPage: React.FC = () => {
     )
     const { isOpen, toggle, imgSrc } = useModal();
 
-
-    const [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
-        idProduct: "1111",
-        product_thumb: "",
-        count: 1,
-        color: product.colors[0],
-        size: product.size.M,
-        product_title: product.product_title,
-        rating: product.rating,
-        price: product.price,
-        discount: product.discount,
-    });
-
     const dispatch = useDispatch()
     useEffect(() => {
         if (productId) {
@@ -52,59 +47,63 @@ const ProductDetailPage: React.FC = () => {
 
 
 
+    const [selectedSizeOption, setSelectedSizeOption] = useState<string>("S");
 
-
-    const [selectedOption, setSelectedOption] = useState<string>("");
     const selectSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        event.preventDefault();
         const value = event.target.value;
-        setSelectedOption(value);
-        // console.log("Size changed to: " + selectedOption);
-        // tempCartProduct.size = value;
-        // console.log("Cart PR size: " + tempCartProduct.size)
-        // console.log("Cart PR: " + JSON.stringify(tempCartProduct));
+        tempCartProduct.size = value;
+        console.log("TEM PR SIZE: " + tempCartProduct.size )
+        // setSelectedSizeOption(value);
+        tempCartProduct.size = value;
     };
 
-    const colorChanged = (event: React.ChangeEventHandler<HTMLImageElement>) => {
-        const value = event.name;
-        console.log("Color changed to: " + value);
-    }
 
-    const [clickedColor, setClickedColor] = useState(product.colors[0]);
+    const [selectedColor, setSelectedColor] = useState(product.colors[0]);
 
     const colorHandler = (event: React.MouseEvent<HTMLImageElement>) => {
-        event.preventDefault();
         const colorImg: HTMLImageElement = event.currentTarget;
-        setClickedColor(colorImg.id);
-        // tempCartProduct.color = clickedColor.valueOf();
-        // console.log(clickedColor.valueOf())
+        console.log("COLORIMG ID " + colorImg.id)
+        // setSelectedColor(colorImg.id);
+        tempCartProduct.color = colorImg.id;
+        console.log("TEM PR COLOR: " + tempCartProduct.color )
         // console.log("Cart Product color updated to: " + JSON.stringify(tempCartProduct))
 
     };
 
+    let [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
+        idProduct: productId??"1111",
+        product_thumb: "url fo img",
+        count: 1,
+        color: selectedColor,
+        size: selectedSizeOption,
+        product_title: product.product_title,
+        rating: product.rating,
+        price: product.price,
+        discount: product.discount,
+    });
+
+
     let addToCart = () => {
-         //console.log(tempCartProduct)
-             // console.log("START ADD to cart Product: " + JSON.stringify(tempCartProduct))
-           dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
-          //    console.log("cart Product: " + JSON.stringify(tempCartProduct))
-          //    console.log("ID: " + JSON.stringify(tempCartProduct.idProduct))
-          //    store.addToChart(productDetailsToChart)
-          //    store.dispatch(addToChartActionCreator())
+        // setTempCartProduct({ count: 1,
+        //  color: selectedColor,
+        //     size: selectedSizeOption,
+        //     idProduct: productId??"1111",
+        //     product_thumb: "",
+        //     product_title: product.product_title,
+        //     rating: product.rating,
+        //     price: product.price,
+        //     discount: product.discount,})
 
-             console.log(cartItems.length)
-             cartItems.push({ count: 1,
-             color: clickedColor,
-             size: selectedOption,
-             idProduct: productId??"1111",
-             product_thumb: "",
-             product_title: product.product_title,
-             rating: product.rating,
-             price: product.price,
-             discount: product.discount,})
+        console.log("Set product done!: " + JSON.stringify(tempCartProduct))
+        dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
+            console.log(cartItems.length)
+            // cartItems.push(tempCartProduct) // пушает второй экземпляр
 
-             console.log(cartItems.length)
-             console.log("cart ITEMS: " + JSON.stringify(cartItems))
+            console.log(cartItems.length)
+            console.log("cart ITEMS: " + JSON.stringify(cartItems))
 
-     }
+    }
 
     function dropDownDetails() {
         console.log("Drop down CLICKED")
@@ -136,9 +135,10 @@ const ProductDetailPage: React.FC = () => {
 
                         <div className={styles.lineDeviderSmall}></div>
 
+                        //TODO fix in color title
                         <div className={styles.productColorBox}>
-                            <div className={styles.productColorText}>{clickedColor !== ""
-                                ? `Color: "${clickedColor}"`
+                            <div className={styles.productColorText}>{selectedColor !== ""
+                                ? `Color: "${selectedColor}"`
                                 : product.colors[0]}</div>
                             <div className={styles.productColorImg}>
                                 <img onClick={colorHandler} className={styles.active} src={require("./images/Products/color/img1.png")}
@@ -155,33 +155,27 @@ const ProductDetailPage: React.FC = () => {
                             <a href="#">Size guide</a>
                             <div className={styles.sizes}>
                         <select onChange={selectSizeChange} className="form-select">
-                            <option className={styles.productSize} defaultValue={sizes.S}>{sizes.S}</option>
-                            <option className={styles.productSize} value={sizes.M}>{sizes.M}</option>
+                            <option className={styles.productSize} value={sizes.S}>{sizes.S}</option>
+                            <option className={styles.productSize} defaultValue={sizes.M}>{sizes.M}</option>
                             <option className={styles.productSize} value={sizes.L}>{sizes.L}</option>
                         </select>
                             </div>
                             </div>
 
-
-
-
-                        <button className={styles.addBtn}     onClick={addToCart}>Add to cart</button>
+                        <button className={styles.addBtn}
+                                onClick={addToCart}>Add to cart</button>
                         <div className={styles.lineDeviderSmall}></div>
 
                         <div className={styles.aditionalInfo}>
-
-                            {/*// ---- DROP DAWN*/}
                             <div>
-                                <div  className={styles.dropdown} onClick={dropDownDetails}>Details</div>
-                                <div className={styles.dropdownContent}>
-                                    <p className={styles.show}>Some text area. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi debitis distinctio impedit.</p>
-                                </div>
+                                <DropDownOut title={"Details"}/>
                                 <div className={styles.lineDeviderSmall}></div>
                             </div>
-                            <div className={styles.shippingDropdown}>
-                                <div>Shipping & Returns</div>
+                            <div>
+                                <DropDownOut title={"Shipping & Return"}/>
+                                <div className={styles.lineDeviderSmall}></div>
                             </div>
-                            <div className={styles.lineDeviderSmall}></div>
+
                         </div>
 
                     </div>

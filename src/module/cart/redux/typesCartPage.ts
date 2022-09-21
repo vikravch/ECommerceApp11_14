@@ -16,7 +16,8 @@ export interface Promocode{
 
 export interface CartPageStore{
     cartItems: Array<CartProduct>,
-    // cartProduct: CartProduct,
+    //TODO cart product below was //
+    cartProduct: CartProduct,
     cartCount: number,
     cartTotal: number
 }

@@ -4,14 +4,15 @@ export default function useModal() {
     const [isOpen, setisOpen] = useState(false);
     const [imgSrc, setImgSrc] = useState("");
 
+
     const toggle = (event: React.MouseEvent<HTMLImageElement>) => {
-        event.preventDefault();
+        // event.preventDefault();
+        let img:string = event.currentTarget.src;
         setisOpen(!isOpen);
-        const img: HTMLImageElement = event.currentTarget;
-        setImgSrc(img.src);
-        console.log(img.src)
-        console.log("IMG : "+ imgSrc.toString());
-        console.log("IsOpen : "+ isOpen.toString());
+        console.log(img)
+        setImgSrc(img);
+        console.log("IMG : "+ imgSrc);
+        console.log("IsOpen : " + isOpen);
     };
 
     return {
