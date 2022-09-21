@@ -1,9 +1,5 @@
-import CartProduct from "../../cart/domain/model/CartProduct";
+import Order from "../domain/model/Order";
 
-export interface Order {
-    idOrder : string;
-    customerId: string;
-    cartItems: Array<CartProduct>
-    orderDate: string;
-    deliveryAddr: string;
+export interface ChekoutPageStore {
+    order : Order
 }

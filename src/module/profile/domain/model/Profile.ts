@@ -39,13 +39,13 @@ export default class Profile{
 //     '}';
 
 export const getProfilePreviewStr = '{' +
-    '"address": "",' +
-    '"country": "",' +
+    '"address": "1725 Slough Avenue, Scranton, Pennsylvania",' +
+    '"country": "United States",' +
     '"email": "dwight.schrute@gmail.com",' +
     '"name": "Dwight",' +
     '"phone": "",' +
     '"surname": "Schrute",' +
-    '"zipCode": ""' +
+    '"zipCode": "143409"' +
     '}';
 
 const profileDataOnServer = {
