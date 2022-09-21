@@ -1,4 +1,3 @@
-import getProfileDetails from "../domain/use_cases/getProfileDetails";
 import Profile from "../domain/model/Profile";
 import Order from "../domain/model/Order";
 import getProfileFake from "../domain/use_cases/getProfileFake";

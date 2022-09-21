@@ -1,53 +1,51 @@
 import React from 'react';
+import Order from "../domain/model/Order";
+import ProductItem from "./ProductItem";
 
-const OrdersItem = () => {
+interface Props{
+    key: number;
+    order: Order;
+}
+
+const OrdersItem:React.FC<Props> = (props: Props) => {
+    function getStringDate(data: string): string{
+        let date = new Date(Number(data));
+        let month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+            'October', 'November', 'December'];
+        return `${month[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+    }
+
+    let order = props.order;
+    let styleStatus = 'statusBlue';
+    switch (order.orderStatus) {
+        case 'Done': styleStatus = 'statusGreen'; break;
+        case 'Canceled': styleStatus = 'statusRed'; break;
+        default: break;
+    }
+    let payment = order.paymentMethod == 'paypal' ? 'PayPal' : 'card';
+    let price = Number(order.totalPrice).toFixed(2);
+
     return (
         <div className={'details mb-3'}>
             <div className={"row justify-content-between"}>
                 <div className={"col-9"}>
                     <div className={"row row-cols-auto"}>
-                        <div className={"orderTitle"}>№2 – April 7, 2021</div>
-                        <div className={"statusGreen"}>Done</div>
+                        <div className={"orderTitle"}>
+                        №{order.orderId} – {getStringDate(order.createdAt)}</div>
+                        <div className={styleStatus}>{order.orderStatus}</div>
                     </div>
                 </div>
-                <div className={"col text-end orderTitle"}>150$</div>
+                <div className={"col text-end orderTitle"}>${price}</div>
             </div>
             <div className={"row"}>
-                <div className={"col gray"}>Delivery: June 10, 2021</div>
-                <div className={"col text-end gray"}>Payed by card</div>
+                <div className={"col gray"}>Delivery: {getStringDate(order.deliveryDate)}</div>
+                <div className={"col text-end gray"}>Payed by {payment}</div>
             </div>
             <div className={"row borderLine mt-3 mb-3"}/>
-            <div className={"row"}>
-                <div className={"col-4 p-0"}>
-                    <div className={"row row-cols-auto"}>
-                        <div className={"col ps-3 pe-3"}>
-                            <img src={require("./../../../images/t-shirt-7114.png")} className={"preview"}
-                                 alt="product"/>
-                        </div>
-                        <div className={"col p-0"}>
-                            <div className={"gray"}>#7114</div>
-                            <div className={"prodName"}>Basic t-shirt</div>
-                            <div className={"gray"}>Color: <span className={"textBlack"}>Purple</span></div>
-                            <div className={"gray"}>Size: <span className={"textBlack"}>L / 14 US</span></div>
-                            <div className={"gray"}>Quantity: <span className={"textBlack"}>1</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div className={"col-4 p-0"}>
-                    <div className={"row row-cols-auto"}>
-                        <div className={"col ps-3 pe-3"}>
-                            <img src={require("./../../../images/t-shirt-7142.png")} className={"preview"}
-                                 alt="product"/>
-                        </div>
-                        <div className={"col p-0"}>
-                            <div className={"gray"}>#7114</div>
-                            <div className={"prodName"}>Basic t-shirt</div>
-                            <div className={"gray"}>Color: <span className={"textBlack"}>Purple</span></div>
-                            <div className={"gray"}>Size: <span className={"textBlack"}>L / 14 US</span></div>
-                            <div className={"gray"}>Quantity: <span className={"textBlack"}>1</span></div>
-                        </div>
-                    </div>
-                </div>
+            <div className={"row"}>{ props.order.orderLines ?
+                props.order.orderLines.map(item => {
+                    return <ProductItem key={Number(item.idProduct)} product={item}/>
+                }) : ''}
             </div>
         </div>
     );

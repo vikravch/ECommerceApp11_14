@@ -13,11 +13,8 @@ export interface Promocode{
     promocode_summ: number
 }
 
-
 export interface CartPageStore{
     cartItems: Array<CartProduct>,
-    //TODO cart product below was //
-    cartProduct: CartProduct,
     cartCount: number,
     cartTotal: number
 }

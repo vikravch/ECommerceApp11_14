@@ -35,8 +35,6 @@ const Header = (props: Props) => {
                     </li>
                     <li className={"position-absolute end-0"}><a href={profileBtn}>
                         <img src={imgProfile} className={"imgProfile ps-2 pe-2"} alt={"profile"}/></a></li>
-
-
                 </ul>
                 <div className={styles.lineDevider}/>
             </div>

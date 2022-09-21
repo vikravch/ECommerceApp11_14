@@ -21,7 +21,7 @@ export default class ProfileDetailsFakeRepository implements ProfileDetailsRepos
     async getOrdersFake(token:string): Promise<Array<Order>> {
         return new Promise(resolve => {
             setTimeout(() => {
-                resolve(new Array(JSON.parse(orders)))
+                resolve(JSON.parse(orders)); // TODO get '[]' if not exists
             }, 2000);
         });
     }

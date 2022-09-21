@@ -5,6 +5,7 @@ import {Store} from "../../../general/redux/storeTypes";
 import Profile from "../domain/model/Profile";
 import {getProfileDetailsAction} from "../redux/asyncActions";
 import ProfileItem from "./ProfileItem";
+import Modal from "./Modal";
 
 const ProfileDetails:React.FC = () => {
     const profile = useSelector<Store, Profile>(state => state.profileDetails.profile);
@@ -39,11 +40,13 @@ const ProfileDetails:React.FC = () => {
                 </div>
                 <div className={"row borderLine"}/>
                 <div className={"pt-3 position-relative"}>
-                    <div className={"pt-3 text-end edit position-absolute top-0 end-0"}>Edit</div>
+                    <div className={"pt-3 text-end edit position-absolute top-0 end-0"}
+                         data-bs-toggle="modal" data-bs-target="#modal">Edit</div>
                     {Object.values(profileView).map((item, index)=>
                         <ProfileItem key={index} k={Object.keys(profileView)[index]} val={item}/>)}
                 </div>
             </div>
+            <Modal/>
         </>
     );
 };
