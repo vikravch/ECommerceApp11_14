@@ -12,7 +12,7 @@ import CheckoutPage from "./module/checkout/presentation/CheckoutPage";
 import BlogPage from './module/blog_page/presentation/BlogPage';
 import Header from "./module/header/presentation/Header";
 import Footer from "./module/landing_page/presentation/Footer";
-import TestPage from "./module/test/TestPage";
+// import TestPage from "./module/test/TestPage";
 import LoginPage from "./module/profile/data/tempData";
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
           <Route path={`/${routes.articlePage}/:articleId`} element={<BlogArticlePage/>}/>
           <Route path={`/${routes.profile}`} element={<ProfilePage/>}/>
           <Route path={`/${routes.login}`} element={<LoginPage/>}/>
-          <Route path="/test" element={<TestPage/>}/>
+          {/*<Route path="/test" element={<TestPage/>}/>*/}
         </Routes>
         {window.location.pathname !== '/' && <Footer />}
       </div>
