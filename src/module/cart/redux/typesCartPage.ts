@@ -1,6 +1,5 @@
 import CartProduct from "../domain/model/CartProduct";
 
-
 export interface Shipping{
     shipping_id: string,
     shipping_method: string,

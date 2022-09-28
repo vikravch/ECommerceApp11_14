@@ -1,6 +1,3 @@
-import CartProduct from "../../../cart/domain/model/CartProduct"
-// Output / request body
-
 class OrderProduct {
     constructor(prodId: number, color: string, size: string, number: number) {
         this.prodId = prodId;

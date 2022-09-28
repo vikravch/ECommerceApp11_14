@@ -6,5 +6,8 @@ export const routes = {
     articlePage: "article",
     profile: "profile",
     blogPage: "blog",
-    login: "login"
+    login: "login",
+    men: "men",
+    women: "women",
+    kids: "kids"
 };

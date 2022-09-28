@@ -7,11 +7,13 @@ import Profile from "../../profile/domain/model/Profile";
 import {CountryDropdown} from "react-country-region-selector";
 import {createOrder} from "../redux/asyncActions";
 import Order from "../domain/model/Order";
+import CheckoutSuccess from "./CheckoutSuccess";
 
 const CheckoutPage:React.FC = ()=> {
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems);
     const cartTotal = useSelector<Store, number>(state => state.cartPage.cartTotal)
     const profile = useSelector<Store, Profile>(state => state.profileDetails.profile);
+    const [orderSubmit, setOrderSubmit] = useState(false);
     const [shipping, setShipping] = useState(shippings[0].title);
     const [shippingCost, setShippingCost] = useState(0);
     const [orderSum, setOrderSum] = useState(cartTotal);
@@ -55,10 +57,12 @@ const CheckoutPage:React.FC = ()=> {
             deliveryCost: shippingCost
         }
         dispatch(createOrder(newOrder))
+        setOrderSubmit(true);
     }
 
     return (
             <div className="container my-4" style={{maxWidth: 1070}}>
+                {orderSubmit ? <CheckoutSuccess/> : (
             <div className="row g-5">
                     <div className="col-md-5 col-lg-4">
                         <div className="rounded-2 border border-1 p-2" >
@@ -73,12 +77,12 @@ const CheckoutPage:React.FC = ()=> {
                                     </div>
                                     <div className="col-md-7">
                                         <div className="card-body p-0">
-                                            <p className="mb-0 small"><label className="text-muted small">#{item.idProduct}</label></p>
-                                            <p className="mb-0 small"><strong className="card-title small">{item.product_title}</strong></p>
-                                            <p className="mb-0 small"><label className="text-muted small">Color: </label><label className="mx-1 small">{item.color}</label></p>
-                                            <p className="mb-0 small"><label className="text-muted small">Size: </label><label className="mx-1 small">{item.size}</label></p>
-                                            <p className="mb-0 small"><label className="text-muted small">Quantity: </label><label className="mx-1 small">{item.count}</label></p>
-                                            <p className="mb-0 small"><label className="small"><strong>${item.price}</strong></label></p>
+                                            <p className="my-0 small"><label className="text-muted small my-0">#{item.idProduct}</label></p>
+                                            <p className="my-0 small"><strong className="card-title small my-0">{item.product_title}</strong></p>
+                                            <p className="my-0 small"><label className="text-muted small my-0">Color: </label><label className="mx-1 small my-0">{item.color}</label></p>
+                                            <p className="my-0 small"><label className="text-muted small my-0">Size: </label><label className="mx-1 small my-0">{item.size}</label></p>
+                                            <p className="my-0 small"><label className="text-muted small my-0">Quantity: </label><label className="mx-1 small my-0">{item.count}</label></p>
+                                            <p className="my-0 small"><label className="small my-0"><strong>${item.price}</strong></label></p>
                                         </div>
                                     </div>
                                 </div>
@@ -294,7 +298,7 @@ const CheckoutPage:React.FC = ()=> {
                                         </button>
                         </form>
                     </div>
-            </div>
+            </div>)}
             </div>
     )
 }

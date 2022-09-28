@@ -1,4 +1,3 @@
-import Product from "../../product_page/domain/model/Product";
 import CartProduct from "../domain/model/CartProduct";
 
 export const ADD_TO_CART = "add_to_cart";
