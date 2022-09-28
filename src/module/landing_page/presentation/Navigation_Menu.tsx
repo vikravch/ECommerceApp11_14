@@ -9,23 +9,23 @@ const Navigation_Menu = () => {
         <nav className="navbar navbar-expand-lg  bg-dark p-20px">
             <div className="container">
                 <div className="collapse navbar-collapse">
-                    <a className="navbar-brand text-light " href="/landing">LOGO</a>
+                    <a className="navbar-brand text-light ">LOGO</a>
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 bg-dark">
                         <li className="nav-item">
-                            <a className="nav-link active text-light" aria-current="page" href="/product/men">Men</a>
+                            <a className="nav-link active text-light" aria-current="page" href="catalog/men">Men</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="/product/women">Women</a>
+                            <a className="nav-link text-light" href="catalog/women">Women</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="/product/kids">Kids</a>
+                            <a className="nav-link text-light" href="catalog/kids">Kids</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="/product/sale">Sale</a>
+                            <a className="nav-link text-light" href="catalog/sale">Sale</a>
                         </li>
 
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="/product/collection">Collection</a>
+                            <a className="nav-link text-light" href="catalog/collection">Collections</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link text-light" href="/blog">Blog</a>

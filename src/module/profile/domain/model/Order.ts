@@ -1,14 +1,15 @@
-import CartProduct from "../../../cart/domain/model/CartProduct";
 // Input - response body
+import CartProduct from "../../../cart/domain/model/CartProduct";
+
 export default class Order{
     createdAt: string;
     deliveryDate: string;
     orderId: string;
     orderLines: Array<CartProduct>;
     orderStatus: string;
-    paymentMethod: string; //Alena add ("visa"/"mastercard"/"paypal")
+    paymentMethod: string;
     paymentStatus: string;
-    totalPrice: string; //Alena add
+    totalPrice: string;
     updatedAt: string;
 
     constructor(json: any) {
@@ -132,6 +133,4 @@ export const getOrder4Str = `{"createdAt": ${Number(dateLastMonth).toString()},`
     '"updatedAt": "16592229347452"}';
 
 export const orders = `[${getOrder1Str}, ${getOrder2Str}, ${getOrder3Str}, ${getOrder4Str}]`;
-
-//let date2 = new Date(Number(Date.now().toString()));
-//let date3 = dateNow.toDateString();
+export const orders2 = `[${getOrder1Str}]`;

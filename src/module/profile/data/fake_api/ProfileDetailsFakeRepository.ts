@@ -1,6 +1,6 @@
 import ProfileDetailsRepository from "../../domain/ProfileDetailsRepository";
 import Profile, {getProfilePreviewStr} from "../../domain/model/Profile";
-import Order, {orders} from "../../domain/model/Order";
+import Order, {orders, orders2} from "../../domain/model/Order";
 
 export default class ProfileDetailsFakeRepository implements ProfileDetailsRepository{
     async getProfileDetails(token: string): Promise<Profile> {

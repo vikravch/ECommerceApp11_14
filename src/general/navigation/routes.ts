@@ -9,5 +9,6 @@ export const routes = {
     login: "login",
     men: "men",
     women: "women",
-    kids: "kids"
+    kids: "kids",
+    catalog: "catalog",
 };
