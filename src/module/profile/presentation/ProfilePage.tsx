@@ -6,7 +6,7 @@ import OrdersDetails from "./OrdersDetails";
 const ProfilePage:React.FC = () => {
     return (
         <div className={'container fonts'}>
-            <div className={'breadcrums'}>Breadcrums/ bread/ crums</div>
+            <div className={'breadcrums main'}>Main / <span className={'black'}>Profile</span></div>
             <div className={'row justify-content-evenly pt-4'}>
                 <div className={'col-4 details h-50'}>
                     <ProfileDetails/>

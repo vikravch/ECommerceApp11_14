@@ -2,66 +2,51 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import Order from "../domain/model/Order";
-import {getOrdersDetailsAction} from "../redux/asyncActions";
+import {getOrdersDetailsAction, setFilterTypeAction} from "../redux/asyncActions";
 import OrdersItem from "./OrdersItem";
 
 const OrdersDetails: React.FC = () => {
-    const orders = useSelector<Store, Array<Order>>(state => state.ordersDetails.orders);
+    const filteredOrders = useSelector<Store, Array<Order>>(state => state.ordersDetails.filteredOrders);
     const isLoading = useSelector<Store, boolean>(state => state.ordersDetails.isLoading);
-    let ordersNewDirection = new Array<Order>(orders.length);
 
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getOrdersDetailsAction(sessionStorage.getItem("token") || ''));
     }, []);
 
-    if(orders.length !== 0){
-        for(let i = 0, j = orders.length-1; i < orders.length; i++, j--){
-            ordersNewDirection[j] = orders[i];
-        }
+    function filterOrders(option: string):any{
+        console.log(option)
+        // TODO dispatch
+        dispatch(setFilterTypeAction(option));
     }
 
-    function sortOrders(option: string):any{
-        switch (option){
-            case '1': {
-                if(orders.length !== 0){
-                    for(let i = 0; i < orders.length; i++){
-                        ordersNewDirection[i] = orders[i];
-                    }
-                } break;
-            }
-            case '2': console.log("2"); break;
-            case '3': console.log("3"); break;
-            default: {
-              orders.shift();
-            }
-        }
-    }
+    let dateNow = new Date();
+    let dateLastMonth = new Date();
+    dateLastMonth.setDate(dateNow.getDate() - 30);
+    let dateLast6Month = new Date();
+    dateLast6Month.setMonth(dateNow.getMonth() - 6);
+    let dateLastYear = new Date();
+    dateLastYear.setMonth(dateNow.getMonth() - 12);
 
-    useEffect(()=>{
-        console.log("helllo its me")
-    }, [ordersNewDirection]);
-
-    // TODO first render is [[..., ...]]
     return (
-        orders.length !== 0 ? (
+        filteredOrders.length !== 0 ? (
         <>
             <div className={"container mb-3"}>
                 <div className={"row justify-content-between"}>
                     <h1 className={"col-7 fw-500 m-0 p-0"}>Orders</h1>
                     <div className={"col-2 align-self-center p-0"}>
                         <select className="form-select form-select-sm bordRad fw-500"
-                                onChange={(e)=>sortOrders(e.target.value)}>
+                                onChange={(e)=>filterOrders(e.target.value)}>
                             <option value="0">All</option>
-                            <option value="1">Last month</option>
-                            <option value="2">Last 6 month</option>
-                            <option value="3">Last year</option>
+                            <option value={Number(dateLastMonth).toString()}>Last month</option>
+                            <option value={Number(dateLast6Month).toString()}>Last 6 month</option>
+                            <option value={Number(dateLastYear).toString()}>Last year</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div>{
-                ordersNewDirection.map(item => {
+                filteredOrders.map(item => {
                     return <OrdersItem key={Number(item.createdAt)} order={item}/>
                 })}
             </div>

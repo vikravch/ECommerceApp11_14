@@ -6,5 +6,6 @@ export const routes = {
     articlePage: "article",
     profile: "profile",
     blogPage: "blog",
-    login: "login"
+    login: "login",
+    catalog: "catalog"
 };
