@@ -1,7 +1,10 @@
 import React from 'react';
 import {categories} from "../../constants";
+import {getProductsByGenderAndCategory} from "../../redux/asyncActions";
+import {useDispatch} from "react-redux";
 
-const Category:React.FC= () => {
+const Category = (props:any) => {
+    const dispatch = useDispatch();
     return (
         <div className="accordion-item border-0">
             <div className={"m-0 borderLine"}/>
@@ -17,7 +20,7 @@ const Category:React.FC= () => {
                 <div className="accordion-body p-0 pb-4">
                     {categories.map((item)=>
                         <div key={item.id}>
-                            <input className="visually-hidden check" type="radio" name={'category'} value={item.name} id={item.id}/>
+                            <input className="visually-hidden check" type="radio" name={'category'} value={item.name} id={item.id} onClick={() => dispatch(getProductsByGenderAndCategory(props.gender,item.URL))}/>
                             <label className="form-check-label pointer" htmlFor={item.id}>{item.name}</label>
                         </div>)}
                 </div>
