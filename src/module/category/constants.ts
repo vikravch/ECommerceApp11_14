@@ -1,14 +1,14 @@
 export const categories = [
-    {name: 'All', id: 'cat0'},
-    {name: 'Coats & Jackets', id: 'cat1'},
-    {name: 'T-shirts', id: 'cat2'},
-    {name: 'Tops', id: 'cat3'},
-    {name: 'Trousers', id: 'cat4'},
-    {name: 'Jumpsuits & Rompers', id: 'cat5'},
-    {name: 'Pants', id: 'cat6'},
-    {name: 'Shorts', id: 'cat7'},
-    {name: 'Sweaters', id: 'cat8'},
-    {name: 'Shoes', id: 'cat9'}];
+    {name: 'All', id: 'cat0', URL: 'ALL'},
+    {name: 'Coats & Jackets', id: 'cat1', URL: 'COATS_AND_JACKETS'},
+    {name: 'T-shirts', id: 'cat2', URL: 'T_SHIRTS'},
+    {name: 'Tops', id: 'cat3', URL: 'TOPS'},
+    {name: 'Trousers', id: 'cat4', URL: 'TROUSERS'},
+    {name: 'Jumpsuits & Rompers', id: 'cat5', URL: 'JUMPSUITS_AND_ROMPERS'},
+    {name: 'Pants', id: 'cat6', URL: 'PANTS'},
+    {name: 'Shorts', id: 'cat7', URL: 'SHORTS'},
+    {name: 'Sweaters', id: 'cat8', URL: 'SWEATERS'},
+    {name: 'Shoes', id: 'cat9', URL: 'SHOES'}];
 
 export const price = [
     {name: 'Under 100$', id: 'price0'},
