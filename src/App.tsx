@@ -16,9 +16,10 @@ import Footer from "./module/landing_page/presentation/Footer";
 import LoginPage from "./module/profile/data/tempData";
 import CategoryPage from "./module/category/presentation/CategoryPage";
 import Category from "./module/category/presentation/Category";
+import SignIn from "./module/login/presentation/SignIn";
 function App() {
   //TODO fix header style on main page
-  sessionStorage.setItem("token", "123");
+  //sessionStorage.setItem("token", "123");
   return (
       // <div className="container-xl">
       <div>
@@ -40,7 +41,7 @@ function App() {
           <Route path={`/${routes.articlePage}`} element={<BlogArticlePage/>}/>
           <Route path={`/${routes.articlePage}/:articleId`} element={<BlogArticlePage/>}/>
           <Route path={`/${routes.profile}`} element={<ProfilePage/>}/>
-          <Route path={`/${routes.login}`} element={<LoginPage/>}/>
+          <Route path={`/${routes.login}`} element={<SignIn/>}/>
           <Route path={`/${routes.catalog}`} element={<CategoryPage/>}/>
           <Route path={`/${routes.catalog}/:type`} element={<CategoryPage/>}/>
           {/*<Route path="/test" element={<TestPage/>}/>*/}

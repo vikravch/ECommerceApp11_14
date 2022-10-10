@@ -7,6 +7,7 @@ import {BlogPageStore} from "../../module/blog_page/redux/typesBlogPage";
 import {OrdersDetailsStore} from "../../module/profile/redux/typesOrdersPage";
 import {ChekoutPageStore} from "../../module/checkout/redux/typesCheckoutPage";
 import {CategoryPageStore} from "../../module/category/redux/typesCategoryPage";
+import {LoginPageStore} from "../../module/login/redux/typesLoginPage";
 
 export interface Store{
     productPage: ProductPageStore,
@@ -17,5 +18,6 @@ export interface Store{
     categoryPage: CategoryPageStore,
     profileDetails: ProfileDetailsStore,
     ordersDetails: OrdersDetailsStore,
-    blogPage: BlogPageStore
+    blogPage: BlogPageStore,
+    loginPage: LoginPageStore,
 }

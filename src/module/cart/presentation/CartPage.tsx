@@ -24,6 +24,7 @@ const CartPage:React.FC = () => {
             </Link>
         </div>
     )
+    let profileBtn = sessionStorage.getItem("token") ? "/profile" : "/login";
     return (<>
             <div className="container" style={{maxWidth: 1070}}>
 
@@ -118,9 +119,12 @@ const CartPage:React.FC = () => {
                                     <label className="fs-4 fw-500">${total}</label>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-center lh-sm py-4">
-                                    <Link to="/checkout" className="btn btn-lg btn-primary w-100">
+
+                                    <a href={profileBtn} className="btn btn-lg btn-primary w-100">
+                                        {/*<Link to="/checkout" className="btn btn-lg btn-primary w-100">*/}
                                         Checkout
-                                    </Link>
+                                        {/*/!*</Link>*/}
+                                        </a>
                                 </li>
                             </ul>
                         </div>

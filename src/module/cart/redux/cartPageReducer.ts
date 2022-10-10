@@ -51,7 +51,6 @@ export const cartPageReducer = (
                 return {...state, cartItems: sGoods}
         case CLEAR_CART:
             return {...state, cartItems: [], cartTotal: 0, cartCount: 0}
-
         default:
             // return {state, cartCount: state.cartItems.length, cartTotal: calcTotalPrice(state.cartItems)};
             return state;

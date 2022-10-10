@@ -11,6 +11,7 @@ import {profileDetailsReducer} from "../../module/profile/redux/profileDetailsRe
 import {blogPageReducer} from "../../module/blog_page/redux/blogPageReduser";
 import {ordersDetailsReducer} from "../../module/profile/redux/ordersDetailsReducer";
 import {categoryReducer} from "../../module/category/redux/categoryReducer";
+import {loginPageReducer} from "../../module/login/redux/loginPageReducer";
 
 const store = createStore(
     combineReducers(
@@ -23,7 +24,8 @@ const store = createStore(
             articlePage: articlePageReducer,
             profileDetails: profileDetailsReducer,
             ordersDetails: ordersDetailsReducer,
-            blogPage: blogPageReducer
+            blogPage: blogPageReducer,
+            loginPage: loginPageReducer,
         }
     ), composeWithDevTools(
     applyMiddleware(thunk, logger))
