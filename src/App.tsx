@@ -48,8 +48,8 @@ function App() {
           <Route path={`/${routes.recovery}`} element={<RestorePass/>}/>
           <Route path={`/${routes.catalog}`} element={<CategoryPage/>}/>
           <Route path={`/${routes.catalog}/:type`} element={<CategoryPage/>}/>
-          <Route path={`/:category`} element={<Category/>}/>
           {/*<Route path="/test" element={<TestPage/>}/>*/}
+          <Route path={`/:category`} element={<Category/>}/>
         </Routes>
         {window.location.pathname !== '/' && <Footer />}
       </div>
