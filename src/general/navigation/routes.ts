@@ -7,6 +7,8 @@ export const routes = {
     profile: "profile",
     blogPage: "blog",
     login: "login",
+    register: "register",
+    recovery: "recovery",
     men: "men",
     women: "women",
     kids: "kids",

@@ -20,6 +20,7 @@ const Category: React.FC = () => {
                 dispatch(getProdustsByCategory(category))
            }
     }, [category]);
+
     return (
         (products)?(
         <div className="content p-40">

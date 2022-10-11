@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import './categoryStyle.css';
 import PreviewProduct from "./PreviewProduct";
-//import {products} from "../../landing_page/utils/constants";
 import Category from "./navBarComponents/Category";
 import Price from "./navBarComponents/Price";
 import Size from "./navBarComponents/Size";
@@ -19,6 +18,8 @@ import {getProdustsByCategory} from "../redux/asyncActions";
 type Params = {
     type: string;
 }
+
+//TODO you may also like <AlsoLike/>
 
 const  CategoryPage:React.FC = () => {
     const products = useSelector<Store, Array<ProductPreviewInfo>>(state => state.categoryPage.data);
@@ -77,7 +78,7 @@ const  CategoryPage:React.FC = () => {
                             rating={product.rating}
                             discount={product.discount}/>)}
                     </div>
-                    {products.length == 0 ? null :<Pagionations/>}
+                    {products.length === 0 ? null :<Pagionations/>}
                 </div>
             </div>
         </div>

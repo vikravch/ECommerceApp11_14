@@ -41,7 +41,7 @@ const OrdersItem:React.FC<Props> = (props: Props) => {
                 <div className={"col gray"}>Delivery: {getStringDate(order.deliveryDate)}</div>
                 <div className={"col text-end gray"}>Payed by {payment}</div>
             </div>
-            <div className={"row borderLine mt-3 mb-3"}/>
+            <div className={"row borderLine mt-3 mb-1"}/>
             <div className={"row"}>{ props.order.orderLines ?
                 props.order.orderLines.map(item => {
                     return <ProductItem key={Number(item.idProduct)} product={item}/>

@@ -10,7 +10,7 @@ const ProductItem:React.FC<Props> = (props: Props) => {
     let product = props.product;
 
     return (
-        <div className={"col-4 mt-2 p-0"}>
+        <div className={"col-4 mt-4 p-0"}>
             <div className={"row row-cols-auto"}>
                 <div className={"col ps-3 pe-3"}>
                     <a href={`/product/${product.idProduct}`}>

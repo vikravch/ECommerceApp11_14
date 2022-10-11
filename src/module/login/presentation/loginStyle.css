@@ -1,0 +1,54 @@
+.bg-gray{
+    background: rgba(0, 0, 0, 0.05);
+    opacity: 0.5;
+}
+
+.p-card{
+    padding: 23px 30px 23px 30px;
+}
+
+.h-card{
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 34px;
+    letter-spacing: -0.8px;
+}
+
+.inputs{
+    height: 50px;
+    margin-bottom: 16px;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+}
+
+.inputs::placeholder{
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.btnBlue{
+    height: 50px;
+    background: rgba(45, 116, 255, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    margin-bottom: 20px;
+}
+
+.pPrivacy{
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.2px;
+}
+
+.passwordControl{
+    position: absolute;
+    top: 18px;
+    right: 17px;
+    display: inline-block;
+    width: 20px;
+    height: 14px;
+    background: url("/src/module/login/presentation/icons/eyeOpen.png") no-repeat;
+}
