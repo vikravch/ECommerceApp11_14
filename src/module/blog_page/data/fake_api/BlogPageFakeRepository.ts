@@ -1,6 +1,5 @@
 import BlogPageRepository from "../../domain/BlogPageRepository";
 import {DOMAIN_NAME} from "../../../../general/data/server_setting";
-import {articlesList} from "./articlesList";
 import ArticleInfo from "../../domain/model/ArticleInfo";
 
 export default class BlogPageFakeRepository implements BlogPageRepository {
