@@ -1,4 +1,4 @@
-import ArticleInfo from "../domain/model/ArticlesList";
+import ArticleInfo from "../domain/model/ArticleInfo";
 
 export interface BlogPageStore{
     articlesList: Array<ArticleInfo>,

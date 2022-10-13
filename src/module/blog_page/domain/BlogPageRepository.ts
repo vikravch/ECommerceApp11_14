@@ -1,5 +1,5 @@
-import ArticlesList from "./model/ArticlesList";
+import ArticleInfo from "./model/ArticleInfo";
 
 export default interface BlogArticlePageRepository {
-    getArticlesList: () => Promise<Array<ArticlesList>>;
+    getArticlesList: () => Promise<Array<ArticleInfo>>;
 }

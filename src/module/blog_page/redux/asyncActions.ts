@@ -1,4 +1,4 @@
-import ArticlesList from "../domain/model/ArticlesList";
+import ArticleInfo from "../domain/model/ArticleInfo";
 import getArticlesList from "../domain/use_case/getArticlesList";
 
 export const getArticlesListAction = ():any => {
@@ -16,7 +16,7 @@ export const SET_ARTICLES_LIST_DATA = "set_articles_list_data";
 export const startArticlesListLoadAction = () => ({
         type: START_ARTICLES_LIST_LOAD
     });
-export const setArticlesListDataAction = (data:Array<ArticlesList>) => ({
+export const setArticlesListDataAction = (data:Array<ArticleInfo>) => ({
     type: SET_ARTICLES_LIST_DATA,
     payload: data
 })

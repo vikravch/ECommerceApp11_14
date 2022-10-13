@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import style from './Blog.module.css';
 import ArticleItem from "./ArticleItem/ArticleItem";
 import {useDispatch, useSelector} from "react-redux";
-import ArticleInfo from "../domain/model/ArticlesList";
+import ArticleInfo from "../domain/model/ArticleInfo";
 import {Store} from "../../../general/redux/storeTypes";
 import {getArticlesListAction} from "../redux/asyncActions";
 
