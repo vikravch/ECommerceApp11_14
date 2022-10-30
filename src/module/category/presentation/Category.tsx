@@ -7,6 +7,7 @@ import {getProdustsByCategory} from "../redux/asyncActions";
 import Group12 from "../../landing_page/presentation/Group12";
 import addCart from "../../landing_page/images/sumbol/bag_cart.svg"
 import {addToCartAction} from "../../cart/redux/asyncActions";
+import Skeleton from "./Skeleton";
 
 
 const Category: React.FC = () => {
@@ -26,26 +27,27 @@ const Category: React.FC = () => {
         <div className="content p-40">
             <div className="d-flex flex-wrap">
                 {products.map((product,productId) =>
-                        <Group12
-                            key={productId}
-                            imageUrl="http://via.placeholder.com/365x300"
-                            title={product.product_title}
-                            article={product.idProduct}
-                            price={Math.round(product.price)}
-                            rating={product.rating}
-                            imageAddCart={addCart}
-                            onClickAddCart={()=> dispatch(addToCartAction({
-                                count:1,
-                                color:"Black",
-                                size:"M",
-                                idProduct: product.idProduct,
-                                product_thumb: product.product_thumb,
-                                product_title: product.product_title,
-                                rating: product.rating,
-                                price: Math.round(product.price),
-                                discount: product.discount
-                            }))}
-                        />)}
+                    <Group12
+                        key={productId}
+                        imageUrl="http://via.placeholder.com/365x300"
+                        title={product.product_title}
+                        article={product.idProduct}
+                        price={Math.round(product.price)}
+                        rating={product.rating}
+                        imageAddCart={addCart}
+                        onClickAddCart={()=> dispatch(addToCartAction({
+                            count:1,
+                            color:"Black",
+                            size:"M",
+                            idProduct: product.idProduct,
+                            product_thumb: product.product_thumb,
+                            product_title: product.product_title,
+                            rating: product.rating,
+                            price: Math.round(product.price),
+                            discount: product.discount
+                        }))}
+                    />
+                )}
             </div>
 
         </div>):<div>Loading...</div>

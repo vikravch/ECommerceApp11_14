@@ -1,10 +1,19 @@
-import React, {useState} from 'react';
+import React, {FormEvent, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {signIn, signUp} from "../redux/asyncActions";
+import {Store} from "../../../general/redux/storeTypes";
 
 const SignUp:React.FC = () => {
     let [inputType1, setInputType1] = useState('password');
     let [inputType2, setInputType2] = useState('password');
     let [pass, setPass] = useState('');
     let [confirmPass, setConfirmPass] = useState('');
+    const [name, setName] = useState("");
+    const [surname, setSurname] = useState("");
+    const [email, setEmail] = useState("");
+    const [dateOfBirth, setDateOfBirth] = useState("");
+    const message = useSelector<Store, string>(state => state.loginPage.message);
+    const dispatch = useDispatch();
 
     function changeInputType(str: string): void {
         if(str == 'first'){
@@ -18,6 +27,7 @@ const SignUp:React.FC = () => {
         if(pass != confirmPass) {
             alert('Password and repeat password values are not the same.');
         }
+        dispatch(signUp(email, pass, dateOfBirth));
     }
 
     return (
@@ -37,11 +47,14 @@ const SignUp:React.FC = () => {
                             </div>
                             <form onSubmit={(e) => {e.preventDefault(); formOnSubmit()}}>
                                 <input type="text" className="form-control inputs" placeholder="Name"
-                                       pattern={'[A-Za-z]+(-[A-Za-z]+)?( [A-Za-z]+)?'} required/>
+                                       pattern={'[A-Za-z]+(-[A-Za-z]+)?( [A-Za-z]+)?'} required
+                                       onChange = {(e: FormEvent<HTMLInputElement>) => {setName(e.currentTarget.value)}}/>
                                 <input type="text" className="form-control inputs" placeholder="Surname"
-                                       pattern={'[A-Za-z]+(-[A-Za-z]+)?( [A-Za-z]+)?'} required/>
+                                       pattern={'[A-Za-z]+(-[A-Za-z]+)?( [A-Za-z]+)?'} required
+                                       onChange = {(e: FormEvent<HTMLInputElement>) => {setSurname(e.currentTarget.value)}}/>
                                 <input type="email" className="form-control inputs" placeholder="Email"
-                                       pattern={'.*(\\.\\w{2,})$'} required/>
+                                       pattern={'.*(\\.\\w{2,})$'} required
+                                       onChange = {(e: FormEvent<HTMLInputElement>) => {setEmail(e.currentTarget.value)}}/>
                                 <div className={'position-relative'}>
                                     <input type={inputType1} className="form-control inputs" placeholder="Password"
                                            pattern={"(?!.*\\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,16}"}
@@ -56,7 +69,16 @@ const SignUp:React.FC = () => {
                                            onChange={(e)=>setConfirmPass(e.target.value)} required/>
                                     <div className={'passwordControl pointer'} onClick={()=>changeInputType('second')}/>
                                 </div>
+                                <input type="date" className="form-control inputs" placeholder="dd/mm/yy"
+                                       required onChange = {(e: FormEvent<HTMLInputElement>) => {setDateOfBirth(e.currentTarget.value)}}/>
                                 <button type={'submit'} className={'btn btn-primary w-100 btnBlue'}>Sign up</button>
+                                {message && (
+                                    <div className="form-group">
+                                        <div className="alert alert-danger" role="alert">
+                                            {message}
+                                        </div>
+                                    </div>
+                                )}
                             </form>
                             <p className={'m-0 d-block text-center gray pPrivacy'}>
                                 By signing in to your account you agree with our&nbsp;
