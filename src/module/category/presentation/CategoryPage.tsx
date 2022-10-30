@@ -14,6 +14,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
 import {getProdustsByCategory} from "../redux/asyncActions";
+import Skeleton from "./Skeleton";
 
 type Params = {
     type: string;
@@ -22,6 +23,7 @@ type Params = {
 //TODO you may also like <AlsoLike/>
 
 const  CategoryPage:React.FC = () => {
+    const isLoading = useSelector<Store, boolean>(state => state.categoryPage.isLoading);
     const products = useSelector<Store, Array<ProductPreviewInfo>>(state => state.categoryPage.data);
     const dispatch = useDispatch();
     let type = useParams<Params>().type || '';
@@ -34,7 +36,7 @@ const  CategoryPage:React.FC = () => {
             dispatch(getProdustsByCategory(type))
         }
     }, [type]);
-
+    const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
     return (
         <div className={'container p-0'}>
             <div className={'main'}>{type} / <span className={'black'}>All</span></div>
@@ -67,8 +69,8 @@ const  CategoryPage:React.FC = () => {
                 </div>
                 <div className={'col p-0 ps-5'}>
                     <div className={'row row-cols-3 justify-content-center p-0 m-0'}>
-                        {products.length == 0 ? <h3>Products not found</h3> :
-                        products.map((product,productId)=> <PreviewProduct
+                        {isLoading ? skeletons : products.map((product,productId) =>
+                            <PreviewProduct
                             key={productId}
                             id={productId}
                             imageUrl={"http://via.placeholder.com/300x365"}
@@ -76,7 +78,8 @@ const  CategoryPage:React.FC = () => {
                             article={product.idProduct}
                             price={Math.round(product.price)}
                             rating={product.rating}
-                            discount={product.discount}/>)}
+                            discount={product.discount}/>
+                        )}
                     </div>
                     {products.length === 0 ? null :<Pagionations/>}
                 </div>
