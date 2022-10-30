@@ -14,7 +14,9 @@ import Footer from "./Footer";
 import Blog from "./Blog";
 import Categories from "./Categories";
 import Navigation_Menu from "./Navigation_Menu";
-import {products} from "../utils/constants";
+import { products} from "../utils/constants";
+
+
 
 const LandingDetailPage:React.FC = ()=> {
     const {productId} = useParams<string>()
@@ -70,10 +72,7 @@ const LandingDetailPage:React.FC = ()=> {
             <Navigation_Menu/>
             <Banner/>
             <div className="content p-40">
-                <div className="d-flex align-center mb-45 justify-between">
-                    <h1>New arrivals</h1>
-                </div>
-
+                <h1>New arrivals</h1>
                 <div className="d-flex flex-wrap">
                     {products
                         .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
@@ -89,14 +88,15 @@ const LandingDetailPage:React.FC = ()=> {
                                 onClickAddCart={()=> onAddToCart(product)}
                             />)}
                 </div>
-
+                <Pagionations/>
+                <h1>Categories</h1>
+                <Categories/>
+                <h1>Blog</h1>
+                <Blog/>
             </div>
-            {/*<Group12/>*/}
-            <Pagionations/>
-            <Categories/>
-            <Blog/>
-            {/*<Subscribtion/>*/}
+            <Subscribtion/>
             <Footer/>
+
         </div>)
 }
 export default LandingDetailPage;

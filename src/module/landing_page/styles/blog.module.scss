@@ -1,0 +1,55 @@
+.blog {
+  width: 412px;
+  height: 540px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin: 25px 30px;
+  transition: box-shadow 0.2s ease-in-out,
+  transform 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.10);
+    transform: translateY(-5px);
+  }
+
+  .clock {
+    align-content: center;
+    margin: 170px 20px;
+  }
+
+  .clock1 {
+    align-content: center;
+    margin: 85px 20px;
+  }
+
+  .clock2 {
+    align-content: center;
+    margin: 50px 20px;
+  }
+
+  .reach {
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 54px;
+    margin: 64px 20px;
+    letter-spacing: -1.6px;
+  }
+
+  h5 {
+    margin: 45px 20px;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: -0.8px;
+  }
+
+  b {
+    margin: auto 10px;
+    letter-spacing: -0.8px;
+  }
+
+  .blog1 {
+    background: #F1F4FA;
+  }
+}
+

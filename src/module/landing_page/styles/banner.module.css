@@ -1,37 +1,29 @@
-
 .rectangle
 {
-    /*position: absolute;*/
-    width: 1600px;
+    position: relative;
+    width: 100%;
     height: 650px;
-    left: 0px;
-    top: 0px;
     background: #17181F;
 
 }
 /* AIR Beyond Compare */
 .air
- {
+{
     position: absolute;
     width: 892px;
     height: 80px;
     left: 354px;
     top: 102px;
 
-    /* H1 */
-
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 500;
     font-size: 72px;
     line-height: 80px;
-    /* identical to box height, or 111% */
 
     text-align: center;
     letter-spacing: -4.5px;
 
     color: rgba(238, 237, 240, 0.85);
- }
+}
 
 /* Explore the best Air Max for fall & beyond */
 .explore_best_air
@@ -41,11 +33,6 @@
     height: 30px;
     left: 545px;
     top: 198px;
-
-    /* Lead */
-
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 40px;
@@ -68,8 +55,6 @@
     left: 226px;
     top: 333px;
 
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 500;
     font-size: 500px;
     line-height: 80px;
@@ -86,50 +71,52 @@
 .img_nike
 {
     position: absolute;
-    width: 508.51px;
-    height: 316.81px;
-    left: 444.25px;
-    top: 341.29px;
-
-    background: url("../images/zoomx-invincible-run-flyknit-mens-road-running-shoes-sP2zk7 1.png");
-    transform: rotate(-29.75deg);
-}
-
-/* grad */
-.grad
-{
-    position: absolute;
     width: 667.03px;
     height: 452.64px;
     left: 391px;
     top: 127px;
 
-    filter: blur(150px);
+    /*filter: blur(150px);*/
+    /*transform: matrix(-0.89, 0.41, -0.49, -0.9, 0, 0);*/
+    background: url("../images/zoomx-invincible-run-flyknit-mens-road-running-shoes-sP2zk7 1.png");
+    /*transform: rotate(-9.75deg);*/
 }
 
-/* Vector */
+/* grad */
+/*.grad*/
+/*{*/
+/*    position: absolute;*/
+/*    width: 667.03px;*/
+/*    height: 452.64px;*/
+/*    left: 391px;*/
+/*    top: 127px;*/
+
+/*    filter: blur(150px);*/
+/*}*/
+
+/*!* Vector *!*/
 .grad_vector1
 {
-    position: absolute;
-    left: 66.13%;
-    right: -4.97%;
-    top: 6.68%;
-    bottom: 88.75%;
+    /*position: absolute;*/
+    /*left: 66.13%;*/
+    /*right: -4.97%;*/
+    /*top: 6.68%;*/
+    /*bottom: 88.75%;*/
 
     background: rgba(203, 105, 193, 0.15);
-    transform: matrix(-0.89, 0.41, -0.49, -0.9, 0, 0);
+    /*transform: matrix(-0.89, 0.41, -0.49, -0.9, 0, 0);*/
 }
 
 .grad_vector2
 {
-    position: absolute;
-    left: 27.88%;
-    right: 37.93%;
-    top: 7.57%;
-    bottom: 87.57%;
+    /*position: absolute;*/
+    /*left: 27.88%;*/
+    /*right: 37.93%;*/
+    /*top: 7.57%;*/
+    /*bottom: 87.57%;*/
 
     background: rgba(108, 114, 203, 0.15);
-    transform: matrix(0.89, -0.38, 0.48, 0.91, 0, 0);
+    /*transform: matrix(0.89, -0.38, 0.48, 0.91, 0, 0);*/
 }
 
 /* Buttons / Auto Layout / 40px / Accent */
