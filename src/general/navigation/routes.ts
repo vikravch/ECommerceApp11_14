@@ -13,4 +13,5 @@ export const routes = {
     women: "women",
     kids: "kids",
     catalog: "catalog",
+    agreement: "agreement"
 };

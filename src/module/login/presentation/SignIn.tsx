@@ -26,7 +26,7 @@ const SignIn:React.FC = () => {
     }
 
     if (isLoggedIn) {
-        return <Navigate to="/profile" />;
+        return <Navigate to="/profile"/>;
     }
 
     return (
@@ -49,7 +49,7 @@ const SignIn:React.FC = () => {
                                        pattern={'.*(\\.\\w{2,})$'} required onChange = {(e: FormEvent<HTMLInputElement>) => {setEmail(e.currentTarget.value)}}/>
                                 <div className={'position-relative'}>
                                     <input type={inputType} className="form-control inputs" placeholder="Password"
-                                           //pattern={"(?!.*\\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}"}
+                                           //pattern={"(?!.*\\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,16}"}
                                            title={'Password must contain at least 1 lowercase letter, 1 uppercase letter, 1 digit with length more than 8'}
                                            required onChange = {(e: FormEvent<HTMLInputElement>) => {setPassword(e.currentTarget.value)}}/>
                                     <div className={'passwordControl pointer'} onClick={()=>changeInputType()}/>

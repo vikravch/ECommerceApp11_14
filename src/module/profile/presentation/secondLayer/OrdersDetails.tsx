@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {Store} from "../../../general/redux/storeTypes";
-import Order from "../domain/model/Order";
-import {getOrdersDetailsAction, setFilterTypeAction} from "../redux/asyncActions";
-import OrdersItem from "./OrdersItem";
+import {Store} from "../../../../general/redux/storeTypes";
+import Order from "../../domain/model/Order";
+import {getOrdersDetailsAction, setFilterTypeAction} from "../../redux/asyncActions";
+import OrdersItem from "../thirdLayer/OrdersItem";
+import {DOMAIN_NAME} from "../../../../general/data/server_setting";
 
 const OrdersDetails: React.FC = () => {
     const filteredOrders = useSelector<Store, Array<Order>>(state => state.ordersDetails.filteredOrders);
@@ -12,6 +13,7 @@ const OrdersDetails: React.FC = () => {
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getOrdersDetailsAction(sessionStorage.getItem("token") || ''));
+        // dispatch(getOrdersAction(sessionStorage.getItem("token") || ''));
     }, []);
 
     function filterOrders(option: string):any{

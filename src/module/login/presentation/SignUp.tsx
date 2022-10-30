@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 
 const SignUp:React.FC = () => {
-    //TODO Privacy Policy and Terms of Use
-
     let [inputType1, setInputType1] = useState('password');
     let [inputType2, setInputType2] = useState('password');
     let [pass, setPass] = useState('');
@@ -17,10 +15,8 @@ const SignUp:React.FC = () => {
     }
 
     function formOnSubmit(): void {
-        console.log(pass);
-        console.log(confirmPass);
         if(pass != confirmPass) {
-            alert('Password and repeat password values is not the same.');
+            alert('Password and repeat password values are not the same.');
         }
     }
 
@@ -48,14 +44,14 @@ const SignUp:React.FC = () => {
                                        pattern={'.*(\\.\\w{2,})$'} required/>
                                 <div className={'position-relative'}>
                                     <input type={inputType1} className="form-control inputs" placeholder="Password"
-                                           pattern={"(?!.*\\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}"}
+                                           pattern={"(?!.*\\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,16}"}
                                            title={'Password must contain at least 1 lowercase letter, 1 uppercase letter, 1 digit with length more than 8'}
                                            onChange={(e) => setPass(e.target.value)} required/>
                                     <div className={'passwordControl pointer'} onClick={()=>changeInputType('first')}/>
                                 </div>
                                 <div className={'position-relative'}>
                                     <input type={inputType2} className="form-control inputs" placeholder="Confirm password"
-                                           pattern={"(?!.*\\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}"}
+                                           pattern={"(?!.*\\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,16}"}
                                            title={'Password must contain at least 1 lowercase letter, 1 uppercase letter, 1 digit with length more than 8'}
                                            onChange={(e)=>setConfirmPass(e.target.value)} required/>
                                     <div className={'passwordControl pointer'} onClick={()=>changeInputType('second')}/>
@@ -64,9 +60,9 @@ const SignUp:React.FC = () => {
                             </form>
                             <p className={'m-0 d-block text-center gray pPrivacy'}>
                                 By signing in to your account you agree with our&nbsp;
-                                <a href={'https://agreementservice.svs.nike.com/rest/agreement?agreementType=privacyPolicy&country=IL&language=en&mobileStatus=false&requestType=redirect&uxId=com.nike.commerce.nikedotcom.web'}
+                                <a href={'/agreement/privacyPolicy'}
                                    className={'fw-500 black text-decoration-none'}>Privacy Policy</a> and&nbsp;
-                                <a href={'https://agreementservice.svs.nike.com/rest/agreement?agreementType=termsOfUse&country=IL&language=en&mobileStatus=false&requestType=redirect&uxId=com.nike.commerce.nikedotcom.web'}
+                                <a href={'/agreement/termsOfUse'}
                                    className={'fw-500 black text-decoration-none'}>Terms of Use.</a></p>
                         </div>
                     </div>

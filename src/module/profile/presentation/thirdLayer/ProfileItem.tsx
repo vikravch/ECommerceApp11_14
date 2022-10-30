@@ -1,6 +1,6 @@
 import React from 'react';
-import './profileStyle.css';
-import ModalAddSmall from "./ModalAddSmall";
+import '../profileStyle.css';
+import ModalAddSmall from "../fourthLayer/ModalAddSmall";
 
 interface Props{
     k: string,

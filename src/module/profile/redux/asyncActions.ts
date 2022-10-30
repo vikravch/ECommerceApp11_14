@@ -2,6 +2,11 @@ import Profile from "../domain/model/Profile";
 import Order from "../domain/model/Order";
 import getProfileFake from "../domain/use_cases/getProfileFake";
 import getOrdersFake from "../domain/use_cases/getOrdersFake";
+import {DOMAIN_NAME} from "../../../general/data/server_setting";
+import {CLEAR_CART} from "../../cart/redux/asyncActions";
+import {CREATE_ORDER} from "../../checkout/redux/asyncActions";
+import ArticleInfo from "../../blog_page/domain/model/ArticlesList";
+//import getOrders from "../domain/use_cases/getOrders";
 
 export const getProfileDetailsAction = (token: string) :any => {
     return (dispatch: Function) => {
@@ -24,6 +29,34 @@ export const getOrdersDetailsAction = (token: string) :any => {
         })
     }
 }
+
+// export const getOrdersAction = (token: string) :any => {
+//     return (dispatch: Function) => {
+//         dispatch(startOrdersLoadAction());
+//         getOrders(token).then((ordersArray) => {
+//             let res = new Array(ordersArray.length);
+//             for(let i = ordersArray.length-1, j = 0; i >= 0; i--, j++){
+//                 res[j] = ordersArray[i];
+//             }
+//             dispatch(setOrdersDataAction(res));
+//         })
+//     }
+//
+//     const response = fetch(`${DOMAIN_NAME}all_orders_get`);
+//     console.log(response)
+//     if(response.ok){
+//         console.log(response)
+//         const json = await response.json();
+//         try{
+//             const resArticleList = JSON.parse(json) as Array<ArticleInfo>;
+//             return Promise.resolve(resArticleList);
+//         } catch(err){
+//             return Promise.reject(err);
+//         }
+//     } else {
+//         return Promise.reject(new Error("Response failed"));
+//     }
+// }
 
 export const START_PROFILE_LOAD = 'start_profile_load';
 export const SET_PROFILE_DATA = 'set_profile_data';

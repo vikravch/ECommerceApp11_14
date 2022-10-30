@@ -14,7 +14,7 @@ const ProductItem:React.FC<Props> = (props: Props) => {
             <div className={"row row-cols-auto"}>
                 <div className={"col ps-3 pe-3"}>
                     <a href={`/product/${product.idProduct}`}>
-                    <img src={require("./../../../images/t-shirt-7142.png")} className={"preview"} alt="product"/></a>
+                    <img src={require("../../../../images/t-shirt-7142.png")} className={"preview"} alt="product"/></a>
                 </div>
                 <div className={"col p-0"}>
                     <div className={"gray"}>#{product.idProduct}</div>

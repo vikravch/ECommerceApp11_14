@@ -1,14 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import styles from "./Header.module.css";
 import img from '../icons/shopping-bag.png';
 import imgEmpty from '../icons/shoppingBagEmpty.png';
 import search from '../icons/search.png';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import imgProfile from "../icons/imgProfile.png";
-import lupa from "../../landing_page/images/sumbol/lupa.png";
-import CategoryPage from "../../category/presentation/CategoryPage";
 
 interface Props {
     isDark: boolean
@@ -19,6 +17,9 @@ const Header = (props: Props) => {
     let [cartImg, setCartImg] = useState({img: imgEmpty, spanCountStyle: 'd-none'});
     let [searchVal, setSearchVal] = useState('');
     let profileBtn = sessionStorage.getItem("token") ? "/profile" : "/login";
+    const navigate = useNavigate();
+    // const handleOnClick = useCallback(() => navigate('/catalog/search'), [navigate]);
+    let [startSearch, setStartSearch] = useState(false);
 
     useEffect(()=>{
         if(cartCount === 0){
@@ -28,9 +29,17 @@ const Header = (props: Props) => {
         }
     }, [cartCount]);
 
+    useEffect(() => {
+        if (startSearch) {
+            navigate("/catalog/search");
+        }
+        setStartSearch(false);
+    }, [startSearch]);
+
     function handleKeyPress (event: React.KeyboardEvent<HTMLInputElement>): void {
         if(event.key === 'Enter'){
-            console.log(searchVal)
+            console.log(searchVal);
+            setStartSearch(true);
         }
     }
 
@@ -47,7 +56,7 @@ const Header = (props: Props) => {
                     <li><a href="/blog">Blog</a></li>
                     <li></li>
                     <li className={"position-absolute end-0"}>
-                        <a href={'/catalog/search'} className={styles.searchLink}><img src={search} alt={'search'} className={styles.searchBtn} onClick={(e)=>{e.preventDefault();console.log(searchVal)}}/></a>
+                        <a href={''} className={styles.searchLink}><img src={search} alt={'search'} className={styles.searchBtn} onClick={()=>setStartSearch(true)}/></a>
                         <input type="search" className={`d-inline-block ${styles.search}`} placeholder="Search"
                                onChange={(e)=>setSearchVal(e.target.value)}
                                onKeyPress={(e) => handleKeyPress(e)}/>

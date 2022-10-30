@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
-import './profileStyle.css';
+import '../profileStyle.css';
 import {useDispatch, useSelector} from "react-redux";
-import {Store} from "../../../general/redux/storeTypes";
-import Profile from "../domain/model/Profile";
-import {getProfileDetailsAction} from "../redux/asyncActions";
-import ProfileItem from "./ProfileItem";
-import Modal from "./Modal";
+import {Store} from "../../../../general/redux/storeTypes";
+import Profile from "../../domain/model/Profile";
+import {getProfileDetailsAction} from "../../redux/asyncActions";
+import ProfileItem from "../thirdLayer/ProfileItem";
+import Modal from "../fourthLayer/Modal";
 
 const ProfileDetails:React.FC = () => {
     const profile = useSelector<Store, Profile>(state => state.profileDetails.profile);

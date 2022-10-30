@@ -47,14 +47,3 @@ export const getProfilePreviewStr = '{' +
     '"surname": "Schrute",' +
     '"zipCode": ""' +
     '}';
-
-const profileDataOnServer = {
-    "address": "2464 Royal Ln. Mesa, New Jersey",
-    "country": "US",
-    "email": "debbie.baker@gmail.com",
-    "name": "Debbie",
-    "phone": "6035550123",
-    "surname": "Baker",
-    "uid": "1234512",
-    "zipCode": "45463"
-};

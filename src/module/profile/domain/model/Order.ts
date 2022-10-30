@@ -43,7 +43,7 @@ export const getOrder1Str = `{"createdAt": ${Number(dateAll).toString()},` +
     '"paymentMethod": "visa",' +
     '"paymentStatus": "paid",' + //pending
     '"totalPrice": "230.2",' +
-    '"updatedAt": "16592229347452"}'; // for sorting
+    '"updatedAt": "16592229347452"}';
 
 let dateLastYear = new Date();
 dateLastYear.setMonth(dateNow.getMonth() - 10);

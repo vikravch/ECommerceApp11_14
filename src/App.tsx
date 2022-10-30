@@ -5,7 +5,7 @@ import ProductDetailPage from "./module/product_page/presentation/ProductDetailP
 import {routes} from "./general/navigation/routes";
 import BlogArticlePage from "./module/article_page/presentation/BlogArticlePage";
 import LandingDetailPage from './module/landing_page/presentation/LandingDetailPage';
-import ProfilePage from "./module/profile/presentation/ProfilePage";
+import ProfilePage from "./module/profile/presentation/firstLayer/ProfilePage";
 import CartPage from "./module/cart/presentation/CartPage";
 import CheckoutPage from "./module/checkout/presentation/CheckoutPage";
 import BlogPage from './module/blog_page/presentation/BlogPage';
@@ -17,6 +17,8 @@ import Category from "./module/category/presentation/Category";
 import SignIn from "./module/login/presentation/SignIn";
 import SignUp from "./module/login/presentation/SignUp";
 import RestorePass from "./module/login/presentation/RestorePass";
+import PrivacyPolicy from "./module/login/presentation/PrivacyPolicy";
+import TermsOfUse from "./module/login/presentation/TermsOfUse";
 
 function App() {
   //TODO fix header style on main page
@@ -50,8 +52,10 @@ function App() {
           <Route path={`/${routes.catalog}/:type`} element={<CategoryPage/>}/>
           {/*<Route path="/test" element={<TestPage/>}/>*/}
           <Route path={`/:category`} element={<Category/>}/>
+          <Route path={`/${routes.agreement}/privacyPolicy`} element={<PrivacyPolicy/>}/>
+          <Route path={`/${routes.agreement}/termsOfUse`} element={<TermsOfUse/>}/>
         </Routes>
-        {window.location.pathname !== '/' && <Footer />}
+        {window.location.pathname !== '/' && <Footer/>}
       </div>
     );
 }

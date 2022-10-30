@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import {Store} from "../../../general/redux/storeTypes";
-import Profile from "../domain/model/Profile";
+import {Store} from "../../../../general/redux/storeTypes";
+import Profile from "../../domain/model/Profile";
 
 const Modal:React.FC = () => {
     const profile = useSelector<Store, Profile>(state => state.profileDetails.profile);

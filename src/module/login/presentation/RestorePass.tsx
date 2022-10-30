@@ -15,7 +15,7 @@ const RestorePass:React.FC = () => {
                                         <a className={'edit text-decoration-none fw-500'} href={'login'}>Sign in</a></div>
                                 </div>
                             </div>
-                            <form onChange={(e) => {}}>
+                            <form onChange={() => {}}>
                                 <input type="email" className="form-control inputs" placeholder="Your email"
                                        pattern={'.*(\\.\\w{2,})$'} required/>
                                 <button type={'submit'} className={'btn btn-primary w-100 btnBlue m-0'}>Send</button>

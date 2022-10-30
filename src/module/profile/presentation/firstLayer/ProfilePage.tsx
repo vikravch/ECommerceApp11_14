@@ -1,7 +1,7 @@
 import React from 'react';
-import './profileStyle.css';
-import ProfileDetails from './ProfileDetails';
-import OrdersDetails from "./OrdersDetails";
+import '../profileStyle.css';
+import ProfileDetails from '../secondLayer/ProfileDetails';
+import OrdersDetails from "../secondLayer/OrdersDetails";
 
 const ProfilePage:React.FC = () => {
     return (

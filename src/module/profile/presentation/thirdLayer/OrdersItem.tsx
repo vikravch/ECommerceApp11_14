@@ -1,6 +1,6 @@
 import React from 'react';
-import Order from "../domain/model/Order";
-import ProductItem from "./ProductItem";
+import Order from "../../domain/model/Order";
+import ProductItem from "../fourthLayer/ProductItem";
 
 interface Props{
     key: number;
