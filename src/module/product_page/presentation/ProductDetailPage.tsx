@@ -63,8 +63,8 @@ const ProductDetailPage: React.FC = () => {
 
     const colorHandler = (event: React.MouseEvent<HTMLImageElement>) => {
         const colorImg: HTMLImageElement = event.currentTarget;
-        console.log("COLORIMG ID " + colorImg.id)
-        // setSelectedColor(colorImg.id);
+        console.log("COLORING ID " + colorImg.id)
+        setSelectedColor(colorImg.id);
         tempCartProduct.color = colorImg.id;
         console.log("TEM PR COLOR: " + tempCartProduct.color )
         // console.log("Cart Product color updated to: " + JSON.stringify(tempCartProduct))
@@ -73,7 +73,7 @@ const ProductDetailPage: React.FC = () => {
 
     let [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
         idProduct: productId??"1111",
-        product_thumb: "url fo img",
+        product_thumb: "url to img",
         count: 1,
         color: selectedColor,
         size: selectedSizeOption,
@@ -112,7 +112,7 @@ const ProductDetailPage: React.FC = () => {
     return (
         <div>
             <div>
-                <Modal isOpen={isOpen} toggle={toggle} imgSrc={''}>
+                <Modal isOpen={isOpen} toggle={toggle} imgSrc={imgSrc}>
                     <img src={imgSrc} alt="img"/>
                 </Modal>
                 <div className={styles.breadcrums}>Men / T-Shirt / Basic T-shirt </div>
@@ -138,7 +138,7 @@ const ProductDetailPage: React.FC = () => {
                         //TODO fix in color title
                         <div className={styles.productColorBox}>
                             <div className={styles.productColorText}>{selectedColor !== ""
-                                ? `Color: "${selectedColor}"`
+                                ? `Color: "${tempCartProduct.color}"`
                                 : product.colors[0]}</div>
                             <div className={styles.productColorImg}>
                                 <img onClick={colorHandler} className={styles.active} src={require("./images/Products/color/img1.png")}
