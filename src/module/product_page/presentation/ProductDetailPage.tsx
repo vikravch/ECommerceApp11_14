@@ -22,6 +22,7 @@ import Modal from "../modalWindow/modal";
 import store from "../../../general/redux/store";
 import {tempProductData} from "../data/tempData";
 import DropDownOut from "../dropdown/DropDownOut";
+import {Breadcrumbs} from "../../breadcrumbs/presentation/Breadcrumbs";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -46,7 +47,6 @@ const ProductDetailPage: React.FC = () => {
     }, [productId]);
 
 
-
     const [selectedSizeOption, setSelectedSizeOption] = useState<string>("S");
 
     const selectSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -57,7 +57,6 @@ const ProductDetailPage: React.FC = () => {
         // setSelectedSizeOption(value);
         tempCartProduct.size = value;
     };
-
 
     const [selectedColor, setSelectedColor] = useState(product.colors[0]);
 
@@ -115,7 +114,8 @@ const ProductDetailPage: React.FC = () => {
                 <Modal isOpen={isOpen} toggle={toggle} imgSrc={imgSrc}>
                     <img src={imgSrc} alt="img"/>
                 </Modal>
-                <div className={styles.breadcrums}>Men / T-Shirt / Basic T-shirt </div>
+
+                <div className={styles.breadcrumbs}><Breadcrumbs/></div>
                 <div className={styles.productPage}>
                     <div className={styles.photoBox}>
                         { product.product_imgs.map(el => {
@@ -135,7 +135,6 @@ const ProductDetailPage: React.FC = () => {
 
                         <div className={styles.lineDeviderSmall}></div>
 
-                        //TODO fix in color title
                         <div className={styles.productColorBox}>
                             <div className={styles.productColorText}>{selectedColor !== ""
                                 ? `Color: "${tempCartProduct.color}"`

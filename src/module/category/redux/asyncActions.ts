@@ -21,6 +21,9 @@ export const getProdustsByCategory = (category:string):any => async (dispatch:Di
     }
 
 export const getProductsByGenderAndCategory = (gender:string, category:string):any => async (dispatch:Dispatch<any>) => {
+    console.log(gender)
+    console.log(category)
+
     if (category == 'ALL') {
         dispatch(getProdustsByCategory(gender))
         return} else {
