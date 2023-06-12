@@ -1,0 +1,6 @@
+.Breadcrumbs {
+    display: inline-block;
+    float: left;
+    /*padding: 30px 16px;*/
+    text-decoration: none;
+}

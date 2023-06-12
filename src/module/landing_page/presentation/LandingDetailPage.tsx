@@ -56,6 +56,7 @@ const LandingDetailPage:React.FC = ()=> {
     const onAddToCart = (obj: any) =>
     {
         console.log(obj)
+        //todo AddtoCart action
         // setCartProducts(prev => [...prev, obj]);
     }
 // Search

@@ -22,6 +22,7 @@ import Modal from "../modalWindow/modal";
 import store from "../../../general/redux/store";
 import {tempProductData} from "../data/tempData";
 import DropDownOut from "../dropdown/DropDownOut";
+import {Breadcrumbs} from "../../breadcrumbs/presentation/Breadcrumbs";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -46,7 +47,6 @@ const ProductDetailPage: React.FC = () => {
     }, [productId]);
 
 
-
     const [selectedSizeOption, setSelectedSizeOption] = useState<string>("S");
 
     const selectSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -58,13 +58,12 @@ const ProductDetailPage: React.FC = () => {
         tempCartProduct.size = value;
     };
 
-
     const [selectedColor, setSelectedColor] = useState(product.colors[0]);
 
     const colorHandler = (event: React.MouseEvent<HTMLImageElement>) => {
         const colorImg: HTMLImageElement = event.currentTarget;
-        console.log("COLORIMG ID " + colorImg.id)
-        // setSelectedColor(colorImg.id);
+        console.log("COLORING ID " + colorImg.id)
+        setSelectedColor(colorImg.id);
         tempCartProduct.color = colorImg.id;
         console.log("TEM PR COLOR: " + tempCartProduct.color )
         // console.log("Cart Product color updated to: " + JSON.stringify(tempCartProduct))
@@ -73,7 +72,7 @@ const ProductDetailPage: React.FC = () => {
 
     let [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
         idProduct: productId??"1111",
-        product_thumb: "url fo img",
+        product_thumb: "url to img",
         count: 1,
         color: selectedColor,
         size: selectedSizeOption,
@@ -112,10 +111,11 @@ const ProductDetailPage: React.FC = () => {
     return (
         <div>
             <div>
-                <Modal isOpen={isOpen} toggle={toggle} imgSrc={''}>
+                <Modal isOpen={isOpen} toggle={toggle} imgSrc={imgSrc}>
                     <img src={imgSrc} alt="img"/>
                 </Modal>
-                <div className={styles.breadcrums}>Men / T-Shirt / Basic T-shirt </div>
+
+                <div className={styles.breadcrumbs}><Breadcrumbs/></div>
                 <div className={styles.productPage}>
                     <div className={styles.photoBox}>
                         { product.product_imgs.map(el => {
@@ -135,10 +135,9 @@ const ProductDetailPage: React.FC = () => {
 
                         <div className={styles.lineDeviderSmall}></div>
 
-                        //TODO fix in color title
                         <div className={styles.productColorBox}>
                             <div className={styles.productColorText}>{selectedColor !== ""
-                                ? `Color: "${selectedColor}"`
+                                ? `Color: "${tempCartProduct.color}"`
                                 : product.colors[0]}</div>
                             <div className={styles.productColorImg}>
                                 <img onClick={colorHandler} className={styles.active} src={require("./images/Products/color/img1.png")}

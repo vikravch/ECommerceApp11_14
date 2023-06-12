@@ -8,6 +8,7 @@ import {OrdersDetailsStore} from "../../module/profile/redux/typesOrdersPage";
 import {ChekoutPageStore} from "../../module/checkout/redux/typesCheckoutPage";
 import {CategoryPageStore} from "../../module/category/redux/typesCategoryPage";
 import {LoginPageStore} from "../../module/login/redux/typesLoginPage";
+import {BreadCrumbsStore} from "../../module/breadcrumbs/redux/typesBreadcrumbs";
 
 export interface Store{
     productPage: ProductPageStore,
@@ -20,4 +21,5 @@ export interface Store{
     ordersDetails: OrdersDetailsStore,
     blogPage: BlogPageStore,
     loginPage: LoginPageStore,
+    breadcrumbs: BreadCrumbsStore
 }

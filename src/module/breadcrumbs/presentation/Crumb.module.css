@@ -1,0 +1,27 @@
+.Crumb {
+    display: inline;
+    /*border: black solid 1px;*/
+    text-align: center;
+    text-decoration: none;
+
+    /*margin-top: 30px;*/
+    margin-left: 12px;
+    height: 20px;
+
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    align-items: center;
+    letter-spacing: -0.3px;
+
+    color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.Crumb:hover {
+
+    font-weight: bold;
+    color: rgb(82, 82, 82);
+}

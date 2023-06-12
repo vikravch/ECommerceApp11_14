@@ -17,7 +17,7 @@ const ProfileDetails:React.FC = () => {
     }, []);
 
     useEffect(()=>{
-        // TODO rerender after profile change
+        //TODO rerender after profile change
     }, [profile]);
 
     const profileView = {

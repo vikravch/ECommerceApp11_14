@@ -2,7 +2,7 @@ import React from 'react';
 import "./loginStyle.css";
 
 const PrivacyPolicy:React.FC = () => {
-    // TODO adaptive layout
+    //todo adaptive layout
 
     return (
         <div className={'container fontsPP'}>

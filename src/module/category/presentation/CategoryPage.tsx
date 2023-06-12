@@ -15,6 +15,7 @@ import {Store} from "../../../general/redux/storeTypes";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
 import {getProdustsByCategory} from "../redux/asyncActions";
 import Skeleton from "./Skeleton";
+import {Breadcrumbs} from "../../breadcrumbs";
 
 type Params = {
     type: string;
@@ -39,6 +40,7 @@ const  CategoryPage:React.FC = () => {
     const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
     return (
         <div className={'container p-0'}>
+            <Breadcrumbs/>
             <div className={'main'}>{type} / <span className={'black'}>All</span></div>
             <div className={"container marCategory"}>
                 <div className={"row justify-content-between"}>
