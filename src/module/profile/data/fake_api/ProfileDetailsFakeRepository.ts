@@ -3,6 +3,7 @@ import Profile, {getProfilePreviewStr} from "../../domain/model/Profile";
 import Order, {orders, orders2} from "../../domain/model/Order";
 import {DOMAIN_NAME} from "../../../../general/data/server_setting";
 import ArticleInfo from "../../../blog_page/domain/model/ArticlesList";
+import {makeArrayOrders} from "../../domain/model/ProfilesAndOrders";
 
 export default class ProfileDetailsFakeRepository implements ProfileDetailsRepository{
     async getProfileDetails(token: string): Promise<Profile> {
@@ -28,25 +29,28 @@ export default class ProfileDetailsFakeRepository implements ProfileDetailsRepos
         });
     }
 
-    // async getOrders(token:string): Promise<Array<Order>> {
-    //     const response = await fetch(`${DOMAIN_NAME}all_orders_get`)
-    //
-    //     if(response.ok){
-    //         console.log(response)
-    //         const json = await response.json();
-    //         try{
-    //             const resArticleList = JSON.parse(json) as Array<ArticleInfo>;
-    //             return Promise.resolve(resArticleList);
-    //         } catch(err){
-    //             return Promise.reject(err);
-    //         }
-    //     } else {
-    //         return Promise.reject(new Error("Response failed"));
-    //     }
-    //     return new Promise(resolve => {
-    //         setTimeout(() => {
-    //             resolve(JSON.parse(orders)); // TODO get '[]' if not exists
-    //         }, 2000);
-    //     });
-    // }
+    //https://ecommerce-project-haifa11.herokuapp.com/all_orders_get
+    async getOrders(token:string): Promise<Array<Order>> {
+        const response = await fetch(`${DOMAIN_NAME}all_orders_get`)
+
+        if(response.ok){
+            console.log(response)
+            const json = await response.json();
+            console.log('this is json');
+            try{
+                makeArrayOrders(json);
+                const ordersArr = JSON.parse(json) as Array<Order>;
+                return Promise.resolve(ordersArr);
+            } catch(err){
+                return Promise.reject(err);
+            }
+        } else {
+            return Promise.reject(new Error("Response failed"));
+        }
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve(JSON.parse(orders)); // TODO get '[]' if not exists
+            }, 2000);
+        });
+    }
 }

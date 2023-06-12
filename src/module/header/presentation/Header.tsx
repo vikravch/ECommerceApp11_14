@@ -16,7 +16,7 @@ const Header = (props: Props) => {
     const cartCount = useSelector<Store, number>(state => state.cartPage.cartCount);
     let [cartImg, setCartImg] = useState({img: imgEmpty, spanCountStyle: 'd-none'});
     let [searchVal, setSearchVal] = useState('');
-    let profileBtn = sessionStorage.getItem("token") ? "/profile" : "/login";
+    let profileBtn = sessionStorage.getItem("user") ? "/profile" : "/login";
     const navigate = useNavigate();
     // const handleOnClick = useCallback(() => navigate('/catalog/search'), [navigate]);
     let [startSearch, setStartSearch] = useState(false);
@@ -66,7 +66,8 @@ const Header = (props: Props) => {
                                 ${cartImg.spanCountStyle}`} style={{fontSize: 9}}>{cartCount}</span>
                         </Link>
                         <a href={profileBtn} className={'d-inline-block'}>
-                        <img src={imgProfile} className={'pointer'} alt={"profile"}/></a></li>
+                            <img src={imgProfile} className={'pointer'} alt={"profile"}/>
+                        </a></li>
                 </ul>
                 <div className={styles.lineDevider}/>
             </div>

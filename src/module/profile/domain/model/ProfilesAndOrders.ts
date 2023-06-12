@@ -1,3 +1,13 @@
+import Order from "../../../checkout/domain/model/Order";
+
+
+export function makeArrayOrders(json: any): Array<Order>{
+    let orderFromGet = JSON.parse(json);
+    let res = [];
+
+    console.log("this is res" + orderFromGet);
+    return [];
+}
 
 // password from 8 to 16 symbols, 1 [a-z], 1 [A-Z], 1 [0-9], no whitespace!
 
@@ -160,3 +170,8 @@ third. country
 * edit request for all fields
 
 * restore password request*/
+
+/*
+    "email":"user1@mail.com",
+    "password":"test"
+*/

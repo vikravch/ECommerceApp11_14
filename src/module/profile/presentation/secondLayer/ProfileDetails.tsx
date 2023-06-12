@@ -13,7 +13,7 @@ const ProfileDetails:React.FC = () => {
 
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(getProfileDetailsAction(sessionStorage.getItem("token") || ''));
+        dispatch(getProfileDetailsAction(sessionStorage.getItem("user") || ''));
     }, []);
 
     useEffect(()=>{
