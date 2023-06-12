@@ -8,7 +8,7 @@ import {Store} from "../../../general/redux/storeTypes";
 
 const Navigation_Menu = () => {
     const cartCount = useSelector<Store, number>(state => state.cartPage.cartCount);
-    let profileBtn = sessionStorage.getItem("token") ? "/profile" : "/login";
+    let profileBtn = sessionStorage.getItem("user") ? "/profile" : "/login";
 
     return (
         <nav className="navbar navbar-expand-lg  bg-dark p-20px">
@@ -50,7 +50,7 @@ const Navigation_Menu = () => {
                     <a href="/cart" className="nav-item nav-link"><img src={imgBag}
                                                                        className={style.icon_shopping_bag}/> <span className="top-0 start-100 translate-middle badge rounded-pill bg-primary small"
                                                                                                                    style={{fontSize: 9}}>{cartCount}</span></a>
-                    <a href="/profile" className="nav-item nav-link "><img src={imgUser} className={style.icon_base_user}/></a>
+                    <a href={profileBtn} className="nav-item nav-link "><img src={imgUser} className={style.icon_base_user}/></a>
                 </div>
             </div>
             <div className={style.line}></div>

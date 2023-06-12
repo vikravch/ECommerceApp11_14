@@ -22,7 +22,7 @@ import TermsOfUse from "./module/login/presentation/TermsOfUse";
 
 function App() {
   //TODO fix header style on main page
-  //sessionStorage.setItem("token", "123");
+  //sessionStorage.setItem("token", "123"); // h32-0 // p 14
 
   return (
       // <div className="container-xl">
