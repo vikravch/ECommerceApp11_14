@@ -12,6 +12,32 @@ import Image11 from '../images/group12/Image11.png'
 import Image12 from '../images/group12/Image12.png'
 import addCart from '../images/sumbol/bag_cart.svg'
 
+export  const products2 = [
+    {
+        idProduct: "001",
+        product_thumb:Image1,
+        product_title:"Airlift Bra",
+        price: 35,
+        rating:3,
+        discount:0
+    },
+    {
+        idProduct: "002",
+        product_thumb:Image1,
+        product_title:"Airlift Bra",
+        price: 35,
+        rating:3,
+        discount:0
+    },
+    {
+        idProduct: "003",
+        product_thumb:Image1,
+        product_title:"Airlift Bra",
+        price: 35,
+        rating:3,
+        discount:0
+    }]
+
 export  const products = [
     {
         productId: "001",

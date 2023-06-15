@@ -5,6 +5,7 @@ import typography from "./styles/typography.module.css";
 
 // создать константу со ссылками на фото окторые прилетят массивом из БД
 // замапить ее и послать на рендер в компонент
+
 const productPreview = []
 const AlsoLike = () => {
 
