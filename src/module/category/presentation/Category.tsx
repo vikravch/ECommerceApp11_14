@@ -9,7 +9,7 @@ import addCart from "../../landing_page/images/sumbol/bag_cart.svg"
 import {addToCartAction} from "../../cart/redux/asyncActions";
 import Skeleton from "./Skeleton";
 
-
+//TODO not used component.Check & Delete
 const Category: React.FC = () => {
     const {category} = useParams<string>();
     const products = useSelector<Store, Array<ProductPreviewInfo>>(state => state.categoryPage.data);

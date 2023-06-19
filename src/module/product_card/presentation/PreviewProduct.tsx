@@ -14,6 +14,9 @@ const PreviewProduct = (props: any) => {
         setRating(rate)
         // other logic
     }
+
+    //TODO add discount icon to product card
+
     return (
         <div className={'col mb-4 ps-4 previewProd'}>
             <a href={`/product/${props.article}`}>

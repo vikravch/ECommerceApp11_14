@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { Rating } from 'react-simple-star-rating';
 import styles from "../styles/group12.module.scss";
 
+//TODO not used component. Check & Delete
+
 const Group12 = (props: any
                  // imageAddCart: any;
                  // onClickAddCart: React.MouseEventHandler<HTMLDivElement> | undefined; imageUrl: string | undefined;

@@ -1,5 +1,8 @@
 import React from 'react';
 
+
+//TODO recieve from backEnd number of products
+//TODO the logic of pagination depending on number of products
 const Pagionations = () => {
     return (    <nav>
         <ul className="pagination justify-content-center my-5">

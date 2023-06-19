@@ -19,11 +19,11 @@ export  const products2 = [
         product_title:"Airlift Bra",
         price: 35,
         rating:3,
-        discount:0
+        discount:50
     },
     {
         idProduct: "002",
-        product_thumb:Image1,
+        product_thumb:Image2,
         product_title:"Airlift Bra",
         price: 35,
         rating:3,
@@ -31,14 +31,22 @@ export  const products2 = [
     },
     {
         idProduct: "003",
-        product_thumb:Image1,
+        product_thumb:Image3,
+        product_title:"Airlift Bra",
+        price: 35,
+        rating:3,
+        discount:0
+    },
+    {
+        idProduct: "004",
+        product_thumb:Image4,
         product_title:"Airlift Bra",
         price: 35,
         rating:3,
         discount:0
     }]
 
-export  const products = [
+export  const fakeProducts = [
     {
         productId: "001",
         imageUrl:Image1,

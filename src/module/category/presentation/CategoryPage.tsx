@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import './categoryStyle.css';
-import PreviewProduct from "./PreviewProduct";
+import PreviewProduct from "../../product_card/presentation/PreviewProduct";
 import Category from "./navBarComponents/Category";
 import Price from "./navBarComponents/Price";
 import Size from "./navBarComponents/Size";

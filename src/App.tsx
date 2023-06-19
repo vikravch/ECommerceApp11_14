@@ -50,8 +50,10 @@ function App() {
           <Route path={`/${routes.recovery}`} element={<RestorePass/>}/>
           <Route path={`/${routes.catalog}`} element={<CategoryPage/>}/>
           <Route path={`/${routes.catalog}/:type`} element={<CategoryPage/>}/>
+
           {/*<Route path="/test" element={<TestPage/>}/>*/}
-          <Route path={`/:category`} element={<Category/>}/>
+          {/*<Route path={`/:category`} element={<Category/>}/>*/}
+
           <Route path={`/${routes.agreement}/privacyPolicy`} element={<PrivacyPolicy/>}/>
           <Route path={`/${routes.agreement}/termsOfUse`} element={<TermsOfUse/>}/>
         </Routes>

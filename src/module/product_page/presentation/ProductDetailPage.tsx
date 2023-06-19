@@ -12,17 +12,15 @@ import {
 import getProductDetails from "../domain/use_case/getProductDetails";
 import {inspect} from "util";
 import styles from "./ProductPage.module.css";
-import AlsoLike from "../../preview_product_panel/presentation/AlsoLike";
+import AlsoLike from "./AlsoLike";
 import {addToCartAction, removeFromCartAction} from "../../cart/redux/asyncActions";
 import CartProduct from "../../cart/domain/model/CartProduct";
 import {sizes} from "../../../general/data/sizes";
-import {CartPageStore} from "../../cart/redux/typesCartPage";
 import useModal from "../modalWindow/useModal";
 import Modal from "../modalWindow/modal";
-import store from "../../../general/redux/store";
-import {tempProductData} from "../data/tempData";
 import DropDownOut from "../dropdown/DropDownOut";
 import {Breadcrumbs} from "../../breadcrumbs/presentation/Breadcrumbs";
+import PreviewProduct from "../../product_card/presentation/PreviewProduct";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -37,6 +35,7 @@ const ProductDetailPage: React.FC = () => {
     )
     const { isOpen, toggle, imgSrc } = useModal();
 
+
     const dispatch = useDispatch()
     useEffect(() => {
         if (productId) {
@@ -45,7 +44,6 @@ const ProductDetailPage: React.FC = () => {
             })
         }
     }, [productId]);
-
 
     const [selectedSizeOption, setSelectedSizeOption] = useState<string>("S");
 
@@ -181,6 +179,26 @@ const ProductDetailPage: React.FC = () => {
                 </div>
                 <div className={styles.lineDevider}></div>
             </div>
+
+            {/*<div className={'col p-0 ps-5'}>*/}
+            {/*    <div className={'row row-cols-4 justify-content-center p-0 m-0'}>*/}
+            {/*        {isLoading ? skeletons : fakeProductsData.map((product,productId) =>*/}
+            {/*            <PreviewProduct*/}
+            {/*                key={productId}*/}
+            {/*                id={productId}*/}
+            {/*                imageUrl={product.product_thumb}*/}
+            {/*                title={product.product_title}*/}
+            {/*                article={product.idProduct}*/}
+            {/*                price={Math.round(product.price)}*/}
+            {/*                rating={product.rating}*/}
+            {/*                discount={product.discount}*/}
+            {/*            />*/}
+
+            {/*        )}*/}
+            {/*    </div>*/}
+            {/*    /!*{products.length === 0 ? null :<Pagionations/>}*!/*/}
+            {/*    <Pagionations/>*/}
+            {/*</div>*/}
             <AlsoLike/>
         </div>
 
