@@ -9,6 +9,7 @@ import {
 import {sizes} from "../../../general/data/sizes";
 import CartProduct from "../domain/model/CartProduct";
 import {Link} from "react-router-dom";
+import AlsoLike from "../../product_page/presentation/AlsoLike";
 
 const CartPage:React.FC = () => {
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems)
@@ -22,6 +23,7 @@ const CartPage:React.FC = () => {
             <Link to="/" className="btn btn-lg btn-dark mb-5">
                 Go to main page
             </Link>
+            <AlsoLike/>
         </div>
     )
     let profileBtn = sessionStorage.getItem("token") ? "/profile" : "/login";

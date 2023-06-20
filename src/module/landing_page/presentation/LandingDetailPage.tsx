@@ -1,10 +1,11 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 // import Product from "../domain/model/Product";
 // import {Store} from "../../../general/redux/storeTypes";
 import {useParams} from "react-router-dom";
 import {getProductDetailsAction} from "../redux/asyncActions";
 import getProductDetails from "../domain/use_case/getProductDetails";
+import Pagination from "../../test/pagination/Pagination";
 
 import Banner from "./Banner";
 import Group12 from "./Group12";
@@ -24,7 +25,11 @@ import Skeleton from "../../category/presentation/Skeleton";
 
 
 
+
+
+
 const LandingDetailPage:React.FC = ()=> {
+    const [currentPage, setCurrentPage] = useState(0)
     const isLoading = useSelector<Store, boolean>(state => state.landingPage.isLoading);
     const {productId} = useParams<string>()
     // const product = useSelector<Store, Product>(
@@ -33,6 +38,11 @@ const LandingDetailPage:React.FC = ()=> {
     // const isLoading = useSelector<Store,boolean>(
     //     state => state.productPage.isLoading
     // );
+
+    function handlePageChange(pageNumber: number) {
+
+        setCurrentPage(pageNumber)
+    }
 
     const fakeProductsData = products2
     const products = useSelector<Store, Array<ProductPreviewInfo>>(state => state.landingPage.data);
@@ -78,6 +88,53 @@ const LandingDetailPage:React.FC = ()=> {
         // console.log(event.target.value);
         setSearchValue(event.target.value);
     }
+
+
+    let paginationData = {
+        "content": [
+            {
+                "discount": "0.0",
+                "idProduct": "7142",
+                "rating": "4",
+                "price": "35.0",
+                "product_thumb": "url/Base64.png",
+                "product_title": "Basic t-shirt"
+            },
+            {
+                "discount": "0.0",
+                "idProduct": "7114",
+                "rating": "4",
+                "price": "35.0",
+                "product_thumb": "url/Base64.png",
+                "product_title": "Basic t-shirt"
+            }
+        ],
+        "pageable": {
+            "sort": {
+                "empty": true,
+                "unsorted": false,
+                "sorted": true
+            },
+            "offset": 0,
+            "pageNumber": 0,
+            "pageSize": 9,
+            "paged": true,
+            "unpaged": false
+        },
+        "last": false,
+        "totalPages": 21,
+        "totalElements": 182,
+        "size": 9,
+        "number": 0,
+        "sort": {
+            "empty": true,
+            "unsorted": false,
+            "sorted": true
+        },
+        "first": true,
+        "numberOfElements": 9,
+        "empty": false
+    };
 
 
     return (
@@ -126,6 +183,7 @@ const LandingDetailPage:React.FC = ()=> {
 
                         )}
                     </div>
+                    <Pagination data={paginationData} onPageChange={handlePageChange} />
                     {products.length === 0 ? null :<Pagionations/>}
                 </div>
                 <h1>Categories</h1>
@@ -138,4 +196,5 @@ const LandingDetailPage:React.FC = ()=> {
 
         </div>)
 }
+
 export default LandingDetailPage;
