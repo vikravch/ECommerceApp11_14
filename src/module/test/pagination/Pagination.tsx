@@ -36,7 +36,7 @@ const Pagination: React.FC<PaginationProps> = ({ data}) => {
     const lastBtn = <li key={totalPages - 1}
                         onClick={() => handlePageChange(totalPages - 1)}
                         className={`page-item`}>
-        <a className="page-link" href="#">{totalPages - 1}</a>
+        <a className="page-link" href="#">{totalPages}</a>
     </li>
 
     useEffect(()=>{
