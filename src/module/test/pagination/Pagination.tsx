@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {getProductDetailsAction} from "../../landing_page/redux/asyncActions";
-import getProductDetails from "../../landing_page/domain/use_case/getProductDetails";
 
 interface Product {
     discount: string;
@@ -12,7 +10,6 @@ interface Product {
 }
 
 interface PaginationData {
-    content: Product[];
     pageable: {
         sort: {
             empty: boolean;
@@ -25,19 +22,7 @@ interface PaginationData {
         paged: boolean;
         unpaged: boolean;
     };
-    last: boolean;
-    totalPages: number;
-    totalElements: number;
-    size: number;
-    number: number;
-    sort: {
-        empty: boolean;
-        unsorted: boolean;
-        sorted: boolean;
-    };
-    first: boolean;
-    numberOfElements: number;
-    empty: boolean;
+    "totalPages": number,
 }
 
 interface PaginationProps {

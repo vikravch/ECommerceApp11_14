@@ -85,30 +85,11 @@ const LandingDetailPage:React.FC = ()=> {
     const [searchValue, setSearchValue] = React.useState("");
     const onChangeSearchInput = (event: { target: { value: React.SetStateAction<string>; }; }) =>
     {
-        // console.log(event.target.value);
         setSearchValue(event.target.value);
     }
 
-
+// fake Pagination data
     let paginationData = {
-        "content": [
-            {
-                "discount": "0.0",
-                "idProduct": "7142",
-                "rating": "4",
-                "price": "35.0",
-                "product_thumb": "url/Base64.png",
-                "product_title": "Basic t-shirt"
-            },
-            {
-                "discount": "0.0",
-                "idProduct": "7114",
-                "rating": "4",
-                "price": "35.0",
-                "product_thumb": "url/Base64.png",
-                "product_title": "Basic t-shirt"
-            }
-        ],
         "pageable": {
             "sort": {
                 "empty": true,
@@ -121,19 +102,7 @@ const LandingDetailPage:React.FC = ()=> {
             "paged": true,
             "unpaged": false
         },
-        "last": false,
         "totalPages": 21,
-        "totalElements": 182,
-        "size": 9,
-        "number": 0,
-        "sort": {
-            "empty": true,
-            "unsorted": false,
-            "sorted": true
-        },
-        "first": true,
-        "numberOfElements": 9,
-        "empty": false
     };
 
 
