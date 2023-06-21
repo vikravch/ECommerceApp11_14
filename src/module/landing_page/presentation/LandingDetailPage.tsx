@@ -183,8 +183,8 @@ const LandingDetailPage:React.FC = ()=> {
 
                         )}
                     </div>
-                    <Pagination data={paginationData} onPageChange={handlePageChange} />
-                    {products.length === 0 ? null :<Pagionations/>}
+
+                    {products.length === 0 ? null :<Pagination data={paginationData} onPageChange={handlePageChange}/>}
                 </div>
                 <h1>Categories</h1>
                 <Categories/>
