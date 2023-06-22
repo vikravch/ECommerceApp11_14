@@ -1,29 +1,25 @@
 import React, {useEffect, useState} from "react";
-
-interface PaginationData {
-    pageable: {
-        sort: {
-            empty: boolean;
-            unsorted: boolean;
-            sorted: boolean;
-        };
-        offset: number;
-        pageNumber: number;
-        pageSize: number;
-        paged: boolean;
-        unpaged: boolean;
-    };
-    "totalPages": number,
-}
-
-interface PaginationProps {
-    data: PaginationData;
-}
+import {PaginationData, PaginationProps} from "./redux/typesPagination";
+import {useSelector} from "react-redux";
+import {Store} from "../../general/redux/storeTypes";
 
 
 const Pagination: React.FC<PaginationProps> = ({ data}) => {
+    // const paginationData = useSelector<Store, PaginationData>(state => state.pagination.data)
+
     const [currentPage, setCurrentPage] = useState(0)
     const { totalPages } = data;
+
+    const handlePageChange = (pageNumber: number) => {
+        console.log(pageNumber)
+        setCurrentPage(pageNumber)
+    };
+    const handlePrevBtnClick = (pageNumber: number) => {
+        setCurrentPage(pageNumber - 1)
+    }
+    const handleNextBtnClick = (pageNumber: number) => {
+        setCurrentPage(pageNumber + 1)
+    }
 
     //const for 2 of ellipsis:
     const ellipsis1 = <li key={"ellipsis1"}> <a className="page-link" href="#">...</a></li>
@@ -39,20 +35,6 @@ const Pagination: React.FC<PaginationProps> = ({ data}) => {
         <a className="page-link" href="#">{totalPages}</a>
     </li>
 
-    useEffect(()=>{
-        console.log(currentPage)
-    },[currentPage]);
-
-    const handlePageChange = (pageNumber: number) => {
-       setCurrentPage(pageNumber)
-    };
-    const handlePrevBtnClick = (pageNumber: number) => {
-        setCurrentPage(pageNumber - 1)
-    }
-    const handleNextBtnClick = (pageNumber: number) => {
-        setCurrentPage(pageNumber + 1)
-    }
-
     const renderPaginationButtons = () => {
         const buttons = [];
         if(totalPages <= 7){
@@ -62,7 +44,7 @@ const Pagination: React.FC<PaginationProps> = ({ data}) => {
                     <li key={i}
                         onClick={() => handlePageChange(i)}
                         className={`page-item ${i === currentPage ? 'active' : ''}`}>
-                        <a className="page-link" href="#">{i + 1}</a>
+                        <a className="page-link" href="">{i + 1}</a>
                     </li>
                 );
             }
@@ -75,7 +57,7 @@ const Pagination: React.FC<PaginationProps> = ({ data}) => {
                         <li key={i}
                             onClick={() => handlePageChange(i)}
                             className={`page-item ${i === currentPage ? 'active' : ''}`}>
-                            <a className="page-link" href="#">{i + 1}</a>
+                            <a className="page-link" href="">{i + 1}</a>
                         </li>
                     );
                 }
@@ -92,7 +74,7 @@ const Pagination: React.FC<PaginationProps> = ({ data}) => {
                     buttons.push(<li key={i}
                                      onClick={() => handlePageChange(i)}
                                      className={`page-item ${i === currentPage ? 'active' : ''}`}>
-                        <a className="page-link" href="#">{i + 1}</a>
+                        <a className="page-link" href="">{i + 1}</a>
                     </li>)
                 }
                 buttons.push(ellipsis2)
@@ -106,22 +88,26 @@ const Pagination: React.FC<PaginationProps> = ({ data}) => {
                     buttons.push(<li key={i}
                                      onClick={() => handlePageChange(i)}
                                      className={`page-item ${i === currentPage ? 'active' : ''}`}>
-                        <a className="page-link" href="#">{i + 1}</a>
+                        <a className="page-link" href="">{i + 1}</a>
                     </li>)
                 }
             }
         }
-        console.log(buttons)
         return buttons;
     };
+
+    // useEffect(()=>{
+    //     console.log(currentPage)
+    // },[]);
+
 
     return (
         <div>
             <nav>
                 <ul className="pagination justify-content-center my-5">
-                    <li className="page-item "><a className="page-link" href="#" onClick={() => handlePrevBtnClick(currentPage)}><span>&laquo;</span></a></li>
+                    <li className="page-item "><a className="page-link" href="" onClick={() => handlePrevBtnClick(currentPage)}><span>&laquo;</span></a></li>
                     {renderPaginationButtons()}
-                    <li className="page-item"><a className="page-link" href="#" onClick={() => handleNextBtnClick(currentPage)}><span>&raquo;</span></a></li>
+                    <li className="page-item"><a className="page-link" href="" onClick={() => handleNextBtnClick(currentPage)}><span>&raquo;</span></a></li>
                 </ul>
             </nav>
         </div>

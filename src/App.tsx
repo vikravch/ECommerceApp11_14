@@ -13,7 +13,6 @@ import Header from "./module/header/presentation/Header";
 import Footer from "./module/landing_page/presentation/Footer";
 //import TestPage from "./module/test/TestPage";
 import CategoryPage from "./module/category/presentation/CategoryPage";
-import Category from "./module/category/presentation/Category";
 import SignIn from "./module/login/presentation/SignIn";
 import SignUp from "./module/login/presentation/SignUp";
 import RestorePass from "./module/login/presentation/RestorePass";

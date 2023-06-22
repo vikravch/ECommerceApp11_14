@@ -17,6 +17,7 @@ const store = createStore(
     combineReducers(
         {
             productPage: productPageReducer,
+            // pagination: paginationReducer,
             landingPage: landingPageReducer,
             cartPage: cartPageReducer,
             checkout: checkoutPageReducer,

@@ -12,6 +12,7 @@ import {BreadCrumbsStore} from "../../module/breadcrumbs/redux/typesBreadcrumbs"
 
 export interface Store{
     productPage: ProductPageStore,
+    // pagination: PaginationStore,
     articlePage: ArticlePageStore
     landingPage: LandingPageStore,
     cartPage: CartPageStore,

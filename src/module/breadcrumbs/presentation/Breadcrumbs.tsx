@@ -1,7 +1,6 @@
 import React from "react";
 import {Params, useLocation, useNavigate, useParams} from "react-router-dom";
 import style from "./Breadcrumbs.module.css";
-import category from "../../category/presentation/Category";
 import {categories} from "../../category/constants";
 import {Crumb} from "./Crumb";
 import {routes} from "../../../general/navigation/routes";

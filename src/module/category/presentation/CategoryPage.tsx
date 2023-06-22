@@ -16,6 +16,8 @@ import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewIn
 import {getProdustsByCategory} from "../redux/asyncActions";
 import Skeleton from "./Skeleton";
 import {Breadcrumbs} from "../../breadcrumbs";
+import Pagination from "../../pagination/Pagination";
+import {paginationData} from "../../pagination/data/fakeData";
 
 type Params = {
     type: string;
@@ -83,6 +85,7 @@ const  CategoryPage:React.FC = () => {
                             discount={product.discount}/>
                         )}
                     </div>
+                    <Pagination data={paginationData}/>
                     {products.length === 0 ? null :<Pagionations/>}
                 </div>
             </div>
