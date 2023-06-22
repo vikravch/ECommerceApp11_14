@@ -9,10 +9,11 @@ import {ChekoutPageStore} from "../../module/checkout/redux/typesCheckoutPage";
 import {CategoryPageStore} from "../../module/category/redux/typesCategoryPage";
 import {LoginPageStore} from "../../module/login/redux/typesLoginPage";
 import {BreadCrumbsStore} from "../../module/breadcrumbs/redux/typesBreadcrumbs";
+import {PaginationStore} from "../../module/pagination/redux/typesPagination";
 
 export interface Store{
     productPage: ProductPageStore,
-    // pagination: PaginationStore,
+     pagination: PaginationStore,
     articlePage: ArticlePageStore
     landingPage: LandingPageStore,
     cartPage: CartPageStore,

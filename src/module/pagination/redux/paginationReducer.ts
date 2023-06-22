@@ -7,25 +7,29 @@ import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewIn
 import {products2} from "../../landing_page/utils/constants";
 
 import {paginationData} from "../data/fakeData";
+import {SET_DATA, START_DATA_LOAD} from "./asyncActions";
 
-// export function paginationReducer(
-//     state: PaginationStore = {data: paginationData,
-//         isLoading: false,
-//     }, action: Action
-// ){
-//     switch (action.type){
-//         case START_DATA_LOAD:{
-//             console.log("case in reducer START_DATA_LOAD")
-//             return { ...state, isLoading: true}
-//         }
-//         case SET_DATA:{
-//             console.log("case in reducer SET_DATA")
-//             return {...state, isLoading: false}
-//         }
-//
-//         default:
-//             return state;
-//     }
-// }
 
-//
+class PaginationStore {
+}
+
+export function paginationReducer(
+    state: PaginationStore = {data: paginationData,
+        isLoading: false,
+    }, action: Action
+){
+    switch (action.type){
+        case START_DATA_LOAD:{
+            console.log("case in reducer START_DATA_LOAD")
+            return { ...state, isLoading: true}
+        }
+        case SET_DATA:{
+            console.log("case in reducer SET_DATA")
+            return {...state, isLoading: false}
+        }
+
+        default:
+            return state;
+    }
+}
+

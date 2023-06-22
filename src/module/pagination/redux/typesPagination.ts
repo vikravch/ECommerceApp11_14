@@ -1,9 +1,9 @@
 
-// export interface PaginationStore{
-//     data: PaginationData;
-//     isLoading: boolean,
-//
-// }
+export interface PaginationStore{
+    data: PaginationData;
+    isLoading: boolean,
+
+}
 export interface PaginationData {
     pageable: {
         sort: {

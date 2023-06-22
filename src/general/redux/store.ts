@@ -12,12 +12,13 @@ import {blogPageReducer} from "../../module/blog_page/redux/blogPageReduser";
 import {ordersDetailsReducer} from "../../module/profile/redux/ordersDetailsReducer";
 import {categoryReducer} from "../../module/category/redux/categoryReducer";
 import {loginPageReducer} from "../../module/login/redux/loginPageReducer";
+import {paginationReducer} from "../../module/pagination/redux/paginationReducer";
 
 const store = createStore(
     combineReducers(
         {
             productPage: productPageReducer,
-            // pagination: paginationReducer,
+             pagination: paginationReducer,
             landingPage: landingPageReducer,
             cartPage: cartPageReducer,
             checkout: checkoutPageReducer,
