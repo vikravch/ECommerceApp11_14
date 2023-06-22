@@ -22,4 +22,6 @@ export interface PaginationData {
 
 export interface PaginationProps {
     data: PaginationData;
+    currentPage: number;
+    setCurrentPage: Function;
 }

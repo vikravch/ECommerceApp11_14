@@ -23,7 +23,8 @@ const transformProduct = (product:any) => {
 const data = transformProduct(products2)
 
 export function landingPageReducer(
-    state: LandingPageStore = {isLoading: false, data: [data]
+    state: LandingPageStore = {
+        isLoading: false, data: [data]
     }, action: Action
 ){
     //todo actions and fetch

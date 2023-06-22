@@ -32,7 +32,8 @@ const PreviewProduct = (props: any) => {
 
             <div className={'pt-2'}>
                 <Rating size={25} emptyColor={"rgba(0, 0, 0, 0.1)"}
-                        fillColor={"#568FFF"} onClick={handleRating} ratingValue={rating}
+                        fillColor={"#568FFF"} onClick={handleRating}
+                        //ratingValue={rating}
                         initialValue={props.rating}/>
             </div>
             <div className="art pt-2">#{props.article}</div>

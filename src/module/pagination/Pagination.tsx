@@ -7,7 +7,7 @@ import {Store} from "../../general/redux/storeTypes";
 const Pagination: React.FC<PaginationProps> = ({ data}) => {
     // const paginationData = useSelector<Store, PaginationData>(state => state.pagination.data)
 
-    const [currentPage, setCurrentPage] = useState(0)
+    const [currentPage, setCurrentPage] = useState(3)
     const { totalPages } = data;
 
     const handlePageChange = (pageNumber: number) => {
