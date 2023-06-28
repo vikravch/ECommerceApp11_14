@@ -85,7 +85,7 @@ const  CategoryPage:React.FC = () => {
                             discount={product.discount}/>
                         )}
                     </div>
-                    <Pagination data={paginationData}/>
+                    <Pagination data={paginationData} currentPage={0} setCurrentPage={()=>{}}/>
                     {products.length === 0 ? null :<Pagionations/>}
                 </div>
             </div>

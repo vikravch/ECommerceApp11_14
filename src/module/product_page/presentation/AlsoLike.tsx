@@ -37,7 +37,7 @@ const AlsoLike = () => {
                         />
                     )}
                 </div>
-                {fakeProductsData.length === 0 ? null :<Pagination data={paginationData}/>}
+                {fakeProductsData.length === 0 ? null :<Pagination data={paginationData} currentPage={0} setCurrentPage={()=>{}}/>}
             </div>
             </div>
 

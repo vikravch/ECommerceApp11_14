@@ -4,11 +4,15 @@ import Pagination from "../../pagination/Pagination";
 import {paginationData} from "../../pagination/data/fakeData";
 import Skeleton from "../../category/presentation/Skeleton";
 import {products2} from "../utils/constants";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
+import {setPaginationPage} from "../../pagination/redux/paginationReducer";
+
 
 const NewArrivals: React.FC = () => {
-    const isLoading = false
+    const dispatch = useDispatch()
+    const isLoading = useSelector<Store, boolean>(state => state.landingPage.isLoading)
+    // @ts-ignore
     const currentPage = useSelector<Store, number>(state => state.landingPage.currentPage);
     const skeletons = [...new Array(12)].map((_, index) => <Skeleton key={index}/>);
     const fakeProductsData = products2
@@ -30,7 +34,7 @@ const NewArrivals: React.FC = () => {
                         />
                     )}
                 </div>
-                <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={} />
+                <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={setPaginationPage} />
                 {/*{products.length === 0 ? null :<Pagination data={paginationData}/>}*/}
             </div>
         </>

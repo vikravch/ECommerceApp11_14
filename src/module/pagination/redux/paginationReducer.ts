@@ -8,14 +8,18 @@ import {products2} from "../../landing_page/utils/constants";
 
 import {paginationData} from "../data/fakeData";
 import {SET_DATA, START_DATA_LOAD} from "./asyncActions";
+import {PaginationStore} from "./typesPagination";
 
+export const SET_CURRENT_PAGE = "change_pagination_page"
 
-class PaginationStore {
-}
-
+export const setPaginationPage = (page:number) => ({
+    type: SET_CURRENT_PAGE,
+    payload: page
+})
 export function paginationReducer(
     state: PaginationStore = {data: paginationData,
         isLoading: false,
+        currentPage: paginationData.pageable.pageNumber
     }, action: Action
 ){
     switch (action.type){

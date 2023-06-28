@@ -6,6 +6,8 @@ import {LandingPageStore} from "./typesLandingPage";
 import {PUT_PRODUCTS} from "../../category/redux/asyncActions";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
 import {products2} from "../utils/constants";
+import {SET_CURRENT_PAGE} from "../../pagination/redux/paginationReducer"
+
 
 
 
@@ -24,7 +26,7 @@ const data = transformProduct(products2)
 
 export function landingPageReducer(
     state: LandingPageStore = {
-        isLoading: false, data: [data]
+        isLoading: false, data: [data], currentPage: 2
     }, action: Action
 ){
     //todo actions and fetch
@@ -34,6 +36,10 @@ export function landingPageReducer(
         }
         case SET_PRODUCT_DATA:{
             return {...state, isLoading: false}
+        }
+        case SET_CURRENT_PAGE: {
+            console.log("Landing reducer")
+            return {...state, currentPage: action.payload}
         }
         case PUT_PRODUCTS:
             const serverProducts = action.payload;

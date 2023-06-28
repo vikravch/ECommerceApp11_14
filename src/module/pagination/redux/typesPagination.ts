@@ -2,6 +2,7 @@
 export interface PaginationStore{
     data: PaginationData;
     isLoading: boolean,
+    currentPage: number;
 
 }
 export interface PaginationData {

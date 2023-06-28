@@ -11,9 +11,9 @@ import {LoginPageStore} from "../../module/login/redux/typesLoginPage";
 import {BreadCrumbsStore} from "../../module/breadcrumbs/redux/typesBreadcrumbs";
 import {PaginationStore} from "../../module/pagination/redux/typesPagination";
 
-export interface Store{
+export interface Store {
     productPage: ProductPageStore,
-     pagination: PaginationStore,
+    pagination: PaginationStore,
     articlePage: ArticlePageStore
     landingPage: LandingPageStore,
     cartPage: CartPageStore,

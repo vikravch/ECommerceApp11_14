@@ -9,7 +9,7 @@ import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewIn
 export interface LandingPageStore{
     isLoading: boolean;
     data: Array<ProductPreviewInfo>;
-    newArrivalsPage: number;
+    currentPage: number;
 }
 
 

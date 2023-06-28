@@ -1,18 +1,19 @@
 import React, {useEffect, useState} from "react";
 import {PaginationData, PaginationProps} from "./redux/typesPagination";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../general/redux/storeTypes";
 
 
-const Pagination: React.FC<PaginationProps> = ({ data}) => {
-    // const paginationData = useSelector<Store, PaginationData>(state => state.pagination.data)
+const Pagination: React.FC<PaginationProps> = ({ data, currentPage, setCurrentPage}) => {
+     const paginationData = useSelector<Store, PaginationData>(state => state.pagination.data)
 
-    const [currentPage, setCurrentPage] = useState(3)
+    const dispatch = useDispatch()
     const { totalPages } = data;
 
     const handlePageChange = (pageNumber: number) => {
+        console.log("handlePageChange:")
         console.log(pageNumber)
-        setCurrentPage(pageNumber)
+        dispatch(setCurrentPage(pageNumber))
     };
     const handlePrevBtnClick = (pageNumber: number) => {
         setCurrentPage(pageNumber - 1)
@@ -95,10 +96,6 @@ const Pagination: React.FC<PaginationProps> = ({ data}) => {
         }
         return buttons;
     };
-
-    // useEffect(()=>{
-    //     console.log(currentPage)
-    // },[]);
 
 
     return (
