@@ -34,7 +34,11 @@ const NewArrivals: React.FC = () => {
                         />
                     )}
                 </div>
-                <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={setPaginationPage} />
+                <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
+                    (page:number)=>{
+                        dispatch(setPaginationPage(page))
+                    }
+                } />
                 {/*{products.length === 0 ? null :<Pagination data={paginationData}/>}*/}
             </div>
         </>

@@ -4,16 +4,15 @@ import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../general/redux/storeTypes";
 
 
-const Pagination: React.FC<PaginationProps> = ({ data, currentPage, setCurrentPage}) => {
-     const paginationData = useSelector<Store, PaginationData>(state => state.pagination.data)
-
-    const dispatch = useDispatch()
-    const { totalPages } = data;
+const Pagination: React.FC<PaginationProps> = (
+    { data, currentPage, setCurrentPage}
+) => {
+     const { totalPages,  } = data;
 
     const handlePageChange = (pageNumber: number) => {
         console.log("handlePageChange:")
         console.log(pageNumber)
-        dispatch(setCurrentPage(pageNumber))
+        setCurrentPage(pageNumber)
     };
     const handlePrevBtnClick = (pageNumber: number) => {
         setCurrentPage(pageNumber - 1)
@@ -58,7 +57,7 @@ const Pagination: React.FC<PaginationProps> = ({ data, currentPage, setCurrentPa
                         <li key={i}
                             onClick={() => handlePageChange(i)}
                             className={`page-item ${i === currentPage ? 'active' : ''}`}>
-                            <a className="page-link" href="">{i + 1}</a>
+                            <span className="page-link">{i + 1}</span>
                         </li>
                     );
                 }
