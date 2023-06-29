@@ -1,0 +1,98 @@
+.navBar {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    background-color: black;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /*background-color: #d7d7d7;*/
+}
+
+li {
+    background-color: black;
+    float: left;
+}
+
+li a {
+    color: #ffffff;
+    background-color: black;
+    display: block;
+    text-align: center;
+    padding: 30px 16px;
+    text-decoration: none;
+}
+
+.active {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    padding: 30px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+/* done :)*/
+
+li a:hover {
+    /*background-color: #d9d9d9;*/
+    color: #111;
+    background-color: #d90b0b;
+}
+
+.lineDevider {
+    border: #000000 solid 0.5px;
+    border-collapse: inherit;
+    width: 100%;
+
+    opacity: 10%;
+}
+
+.imgProfile {
+    background-color: black;
+    cursor: pointer;
+}
+
+.imgCart {
+    background-color: black;
+    height: 20px;
+    width: 16px;
+}
+
+.search {
+    background-color: black;
+    margin-right: 16px;
+    padding: 13px 13px 13px 33px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 250px;
+    height: 40px;
+}
+
+.searchLink {
+    position: absolute;
+    background-color: black;
+}
+
+.searchLink:hover {
+    background: none;
+}
+
+.searchBtn {
+    position: absolute;
+    top: 34px;
+    left: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/*.dark{*/
+/*    color: #FFFFFF;*/
+/*}*/
+/*.white{*/
+/*    color: #000000;*/
+/*}*/

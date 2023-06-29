@@ -18,6 +18,7 @@ import SignUp from "./module/login/presentation/SignUp";
 import RestorePass from "./module/login/presentation/RestorePass";
 import PrivacyPolicy from "./module/login/presentation/PrivacyPolicy";
 import TermsOfUse from "./module/login/presentation/TermsOfUse";
+import Navigation_Menu from "./module/landing_page/presentation/Navigation_Menu";
 
 function App() {
   //TODO fix header style on main page
@@ -26,10 +27,9 @@ function App() {
   return (
       // <div className="container-xl">
       <div>
-          {
-            window.location.pathname !== '/' &&
-              <Header isDark={window.location.pathname === '/'}/>
-          }
+        {window.location.pathname === '/' ? <Navigation_Menu/> : <Header isDark={true}/> }
+              {/*<Header isDark={window.location.pathname === '/'}/>*/}
+
 
         <Routes>
           <Route path="/" element={<LandingDetailPage/>}/>

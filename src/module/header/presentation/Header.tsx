@@ -13,6 +13,9 @@ interface Props {
 }
 
 const Header = (props: Props) => {
+
+    // const styles = (props.isDark) ? darkStyle : whiteStyle
+
     const cartCount = useSelector<Store, number>(state => state.cartPage.cartCount);
     let [cartImg, setCartImg] = useState({img: imgEmpty, spanCountStyle: 'd-none'});
     let [searchVal, setSearchVal] = useState('');
@@ -44,12 +47,12 @@ const Header = (props: Props) => {
     }
 
     return (
-        <div className={(props.isDark) ? styles.dark : styles.white}>
+        <div>
             <div className={styles.navBar}>
                 <ul>
                     <li><a href="/">LOGO</a></li>
                     <li><a className={styles.active} href="/catalog/men">Men</a></li>
-                    <li><a href="/catalog/women">Women</a></li>
+                    <li><a href="/catalog/women">Woman</a></li>
                     <li><a href="/catalog/kids">Kids</a></li>
                     <li><a href="/catalog/sale">Sale</a></li>
                     <li><a href="/catalog/collection">Collections</a></li>

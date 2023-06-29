@@ -21,9 +21,9 @@ import NewArrivals from "./NewArrivals";
 const LandingDetailPage: React.FC = () => {
     return (
         <div className="wrapper clear">
-            <Navigation_Menu/>
+            {/*<Navigation_Menu/>*/}
             <Banner/>
-            <div className="content p-40">
+            <div className="content ">
                 <NewArrivals/>
                 <h1>Categories</h1>
                 <Categories/>

@@ -14,7 +14,7 @@ const Navigation_Menu = () => {
         <nav className="navbar navbar-expand-lg  bg-dark p-20px">
             <div className="container">
                 <div className="collapse navbar-collapse">
-                    <a className="navbar-brand text-light ">LOGO</a>
+                    <a className="navbar-brand text-light " href="/">LOGO</a>
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 bg-dark">
                         <li className="nav-item">
                             <a className="nav-link active text-light" aria-current="page" href="catalog/men">Men</a>
