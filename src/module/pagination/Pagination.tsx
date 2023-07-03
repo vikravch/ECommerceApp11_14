@@ -22,17 +22,17 @@ const Pagination: React.FC<PaginationProps> = (
     }
 
     //const for 2 of ellipsis:
-    const ellipsis1 = <li key={"ellipsis1"}> <a className="page-link" href="#">...</a></li>
-    const ellipsis2 = <li key={"ellipsis2"}> <a className="page-link" href="#">...</a></li>
+    const ellipsis1 = <li key={"ellipsis1"}> <span className="page-link" >...</span></li>
+    const ellipsis2 = <li key={"ellipsis2"}> <span className="page-link" >...</span></li>
     const firstBtn = <li key={0}
                          onClick={() => handlePageChange(0)}
                          className={`page-item`}>
-        <a className="page-link" href="#">1</a>
+        <span className="page-link">1</span>
     </li>
     const lastBtn = <li key={totalPages - 1}
                         onClick={() => handlePageChange(totalPages - 1)}
                         className={`page-item`}>
-        <a className="page-link" href="#">{totalPages}</a>
+        <span className="page-link">{totalPages}</span>
     </li>
 
     const renderPaginationButtons = () => {
@@ -44,7 +44,7 @@ const Pagination: React.FC<PaginationProps> = (
                     <li key={i}
                         onClick={() => handlePageChange(i)}
                         className={`page-item ${i === currentPage ? 'active' : ''}`}>
-                        <a className="page-link" href="">{i + 1}</a>
+                        <span className="page-link">{i + 1}</span>
                     </li>
                 );
             }
@@ -74,7 +74,7 @@ const Pagination: React.FC<PaginationProps> = (
                     buttons.push(<li key={i}
                                      onClick={() => handlePageChange(i)}
                                      className={`page-item ${i === currentPage ? 'active' : ''}`}>
-                        <a className="page-link" href="">{i + 1}</a>
+                        <span className="page-link" >{i + 1}</span>
                     </li>)
                 }
                 buttons.push(ellipsis2)
@@ -88,7 +88,7 @@ const Pagination: React.FC<PaginationProps> = (
                     buttons.push(<li key={i}
                                      onClick={() => handlePageChange(i)}
                                      className={`page-item ${i === currentPage ? 'active' : ''}`}>
-                        <a className="page-link" href="">{i + 1}</a>
+                        <span className="page-link">{i + 1}</span>
                     </li>)
                 }
             }
@@ -101,9 +101,9 @@ const Pagination: React.FC<PaginationProps> = (
         <div>
             <nav>
                 <ul className="pagination justify-content-center my-5">
-                    <li className="page-item "><a className="page-link" href="" onClick={() => handlePrevBtnClick(currentPage)}><span>&laquo;</span></a></li>
+                    <li className="page-item "><span className="page-link" onClick={() => handlePrevBtnClick(currentPage)}><span>&laquo;</span></span></li>
                     {renderPaginationButtons()}
-                    <li className="page-item"><a className="page-link" href="" onClick={() => handleNextBtnClick(currentPage)}><span>&raquo;</span></a></li>
+                    <li className="page-item"><span className="page-link" onClick={() => handleNextBtnClick(currentPage)}><span>&raquo;</span></span></li>
                 </ul>
             </nav>
         </div>

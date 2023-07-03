@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./AlsoLike.module.css";
 import PreviewProduct from "../../product_card/presentation/PreviewProduct";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {useParams} from "react-router-dom";
 import Product from "../domain/model/Product";
@@ -9,13 +9,15 @@ import Skeleton from "../../category/presentation/Skeleton";
 import {products2} from "../../landing_page/utils/constants";
 import Pagination from "../../pagination/Pagination";
 import {paginationData} from "../../pagination/data/fakeData";
+import {setPaginationPage} from "../../pagination/redux/paginationReducer";
 
 
 const AlsoLike = () => {
+    const dispatch = useDispatch()
     const isLoading = useSelector<Store, boolean>(
         state => state.productPage.isLoading
     );
-
+    const currentPage = useSelector<Store, number>(state => state.productPage.currentPage);
     const fakeProductsData = products2
     const skeletons = [...new Array(4)].map((_, index) => <Skeleton key={index} />);
 
@@ -37,7 +39,11 @@ const AlsoLike = () => {
                         />
                     )}
                 </div>
-                {fakeProductsData.length === 0 ? null :<Pagination data={paginationData} currentPage={0} setCurrentPage={()=>{}}/>}
+                <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
+                    (page:number)=>{
+                        dispatch(setPaginationPage(page))
+                    }
+                } />
             </div>
             </div>
 

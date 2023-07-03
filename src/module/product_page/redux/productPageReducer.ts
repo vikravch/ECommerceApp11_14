@@ -3,11 +3,12 @@ import Product from "../domain/model/Product";
 import {Action} from "../../../general/redux/Action";
 import {SET_CART_PRODUCT, SET_PRODUCT_DATA, START_PRODUCT_LOAD} from "./asyncActions";
 import {tempCartPr, tempProductData} from "../data/tempData";
+import {SET_CURRENT_PAGE} from "../../pagination/redux/paginationReducer";
 
 
 export function productPageReducer(
     state: ProductPageStore = {product: new Product(tempProductData),
-        isLoading: false,
+        isLoading: false, currentPage: 0
     }, action: Action
 ){
     switch (action.type){
@@ -21,6 +22,11 @@ export function productPageReducer(
 
         case SET_CART_PRODUCT:{
             return { ...state, cartProduct: tempCartPr}
+        }
+
+        case SET_CURRENT_PAGE: {
+            console.log("ProductPage reducer " + action.payload)
+            return {...state, currentPage: action.payload}
         }
 
         default:
