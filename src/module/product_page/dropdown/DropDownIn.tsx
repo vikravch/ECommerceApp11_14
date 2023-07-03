@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {findAllByDisplayValue} from "@testing-library/react";
 import styles from "../presentation/ProductPage.module.css";
 
 type DropDownInProps = {
-    text: string[];
+    text: string;
     showDropDown: boolean;
     toggleDropDown: Function;
 

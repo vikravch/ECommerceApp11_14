@@ -1,6 +1,44 @@
 import {sizes} from "../../../general/data/sizes";
-import CartProduct from "../../cart/domain/model/CartProduct";
-import {inspect} from "util";
+
+export const fakeFullProduct = {
+    "category": "T-shirts",
+    "client_type": "Man",
+    "colors": [
+        {
+            "color": "Black with print",
+            "product_id": "7114",
+            "product_thumb": "url/Base64.png"
+        },
+        {
+            "color": "White",
+            "product_id": "7142",
+            "product_thumb": "url/Base64.png"
+        },
+        {
+            "color": "Purple",
+            "product_id": "7111",
+            "product_thumb": "url/Base64.png"
+        }
+    ],
+    "description": "The T-Shirt sets you up with soft cotton jersey and a classic logo with camo on the chest.",
+    "details": "Standard fit for a relaxed, easy feel\nFabric: 100% cotton\nMachine wash\nImported\nShown: Cactus Flower\nStyle: CU8914-564",
+    "discount": "0.0",
+    "rating": "4",
+    "price": "35.0",
+    "product_id": "7142",
+    "product_imgs": [
+        "url.png",
+        "url.png"
+    ],
+    "product_thumb": "url/Base64.png",
+    "product_title": "Basic t-shirt",
+    "size": [
+        "S",
+        "L",
+        "XXL"
+    ]
+}
+
 
 export const tempProductData = {
     idProduct: "1111",

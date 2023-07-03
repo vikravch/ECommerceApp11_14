@@ -121,7 +121,7 @@
 }
 
 .price {
-
+    text-decoration: line-through;
     width: 38px;
     height: 30px;
     /*left: 1143px;*/
@@ -143,14 +143,8 @@
 
 
 .productColorText {
-    /*position: absolute;*/
-    width: 43px;
-    height: 18px;
-    /*left: 1085px;*/
-    /*top: 410px;*/
-    margin-top: 27px;
 
-    /* Caption / 3 / Medium */
+    margin-top: 27px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;

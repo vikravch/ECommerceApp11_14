@@ -14,16 +14,17 @@ export default class Product {
     discount: number;
 
     constructor(json: any) {
-        this.idProduct = json.idProduct;
-        this.product_main_img = json.product_main_img;
-        this.product_imgs = json.product_imgs;
-        this.product_title = json.product_title;
-        this.description = json.description;
-        this.rating = json.rating;
-        this.colors = json.colors;
-        this.size = sizes;
-        this.details = json.details;
-        this.price = json.price;
-        this.discount = json.discount;
+        this.idProduct = json.product_id || '';
+        this.product_main_img = json.product_thumb || '';
+        this.product_imgs = json.product_imgs || [''];
+        this.product_title = json.product_title || '';
+        this.description = json.description || '';
+        this.rating = json.rating || '';
+        this.colors = json.colors.map((color: any) => color.color) || ["black", "white", "blue"];
+        this.size = { S: json.size[0], L: json.size[1], M: json.size[2] } || sizes;
+        this.details = json.details || '';
+        this.price = parseFloat(json.price) || 100;
+        this.discount = parseFloat(json.discount) || 50;
     }
 }
+

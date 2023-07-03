@@ -3,24 +3,18 @@ import {useDispatch, useSelector} from "react-redux";
 import Product from "../domain/model/Product";
 import {Store} from "../../../general/redux/storeTypes";
 import {useParams} from "react-router-dom";
-import {
-    addToChartActionTest,
-    getProductDetailsAction,
-    setCartProductAction,
-    setProductDataAction
-} from "../redux/asyncActions";
+import {getProductDetailsAction} from "../redux/asyncActions";
 import getProductDetails from "../domain/use_case/getProductDetails";
-import {inspect} from "util";
+
 import styles from "./ProductPage.module.css";
 import AlsoLike from "./AlsoLike";
-import {addToCartAction, removeFromCartAction} from "../../cart/redux/asyncActions";
+import {addToCartAction} from "../../cart/redux/asyncActions";
 import CartProduct from "../../cart/domain/model/CartProduct";
 import {sizes} from "../../../general/data/sizes";
 import useModal from "../modalWindow/useModal";
 import Modal from "../modalWindow/modal";
 import DropDownOut from "../dropdown/DropDownOut";
-import {Breadcrumbs} from "../../breadcrumbs/presentation/Breadcrumbs";
-import PreviewProduct from "../../product_card/presentation/PreviewProduct";
+import {Breadcrumbs} from "../../breadcrumbs";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -44,6 +38,14 @@ const ProductDetailPage: React.FC = () => {
             })
         }
     }, [productId]);
+
+    const calculateOldPrice = (newPrice: number, discount: number): number => {
+        if (newPrice <= 0 || discount < 0 || discount >= 100) {
+            return newPrice; // Return new price if invalid values are provided
+        }
+
+        return ((100/discount) * newPrice);
+    };
 
     const [selectedSizeOption, setSelectedSizeOption] = useState<string>("S");
 
@@ -102,9 +104,6 @@ const ProductDetailPage: React.FC = () => {
 
     }
 
-    function dropDownDetails() {
-        console.log("Drop down CLICKED")
-    }
 
     return (
         <div>
@@ -125,11 +124,10 @@ const ProductDetailPage: React.FC = () => {
                     <div className={styles.productInfoBox}>
                         <div className={styles.discount}>-{product.discount}%</div>
                         <div className={styles.title}>{product.product_title}</div>
-                        <div className={styles.description}>The T-Shirt sets you up with soft cotton jersey and a
-                            classic logo with camo on the chest.
+                        <div className={styles.description}>{product.description}
                         </div>
                         <div className={styles.newPrice}>${product.price}</div>
-                        <div className={styles.price}>$55</div>
+                        <div className={styles.price}>${calculateOldPrice(product.price, product.discount)}</div>
 
                         <div className={styles.lineDeviderSmall}></div>
 
@@ -138,11 +136,16 @@ const ProductDetailPage: React.FC = () => {
                                 ? `Color: "${tempCartProduct.color}"`
                                 : product.colors[0]}</div>
                             <div className={styles.productColorImg}>
-                                <img onClick={colorHandler} className={styles.active} src={require("./images/Products/color/img1.png")}
-                                     alt="color" id={product.colors[0]}/>
-                                <img onClick={colorHandler} src={require("./images/Products/color/img2.png")} id={product.colors[1]} alt="color"/>
-                                <img onClick={colorHandler} src={require("./images/Products/color/img3.png")} id={product.colors[2]} alt="color"/>
-                                <img onClick={colorHandler} src={require("./images/Products/color/img4.png")} id={product.colors[3]} alt="color"/>
+                                {product.colors.map((color, index) => (
+                                    <img
+                                        key={index}
+                                        onClick={colorHandler}
+                                        className={color === selectedColor ? styles.active : ""}
+                                        src={require(`./images/Products/color/img${index + 1}.png`)}
+                                        id={color}
+                                        alt="color"
+                                    />
+                                ))}
                             </div>
                         </div>
 
@@ -165,11 +168,11 @@ const ProductDetailPage: React.FC = () => {
 
                         <div className={styles.aditionalInfo}>
                             <div>
-                                <DropDownOut title={"Details"}/>
+                                <DropDownOut title={"Details"} text={product.details}/>
                                 <div className={styles.lineDeviderSmall}></div>
                             </div>
                             <div>
-                                <DropDownOut title={"Shipping & Return"}/>
+                                <DropDownOut title={"Shipping & Return"} text={''}/>
                                 <div className={styles.lineDeviderSmall}></div>
                             </div>
 
@@ -179,26 +182,6 @@ const ProductDetailPage: React.FC = () => {
                 </div>
                 <div className={styles.lineDevider}></div>
             </div>
-
-            {/*<div className={'col p-0 ps-5'}>*/}
-            {/*    <div className={'row row-cols-4 justify-content-center p-0 m-0'}>*/}
-            {/*        {isLoading ? skeletons : fakeProductsData.map((product,productId) =>*/}
-            {/*            <PreviewProduct*/}
-            {/*                key={productId}*/}
-            {/*                id={productId}*/}
-            {/*                imageUrl={product.product_thumb}*/}
-            {/*                title={product.product_title}*/}
-            {/*                article={product.idProduct}*/}
-            {/*                price={Math.round(product.price)}*/}
-            {/*                rating={product.rating}*/}
-            {/*                discount={product.discount}*/}
-            {/*            />*/}
-
-            {/*        )}*/}
-            {/*    </div>*/}
-            {/*    /!*{products.length === 0 ? null :<Pagionations/>}*!/*/}
-            {/*    <Pagionations/>*/}
-            {/*</div>*/}
             <AlsoLike/>
         </div>
 
