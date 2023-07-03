@@ -6,6 +6,7 @@ const Categories = () => {
     return (
         <div className={style.categories}>
             <div className={style.big}>
+
                 <div className={style.img1}>
                     <div className={style.text_men}>Men</div>
                     <div className={style.group2}>

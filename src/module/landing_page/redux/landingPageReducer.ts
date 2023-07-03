@@ -38,7 +38,7 @@ export function landingPageReducer(
             return {...state, isLoading: false}
         }
         case SET_CURRENT_PAGE: {
-            console.log("Landing reducer "+action.payload)
+            console.log("Landing reducer " + action.payload)
             return {...state, currentPage: action.payload}
         }
         case PUT_PRODUCTS:

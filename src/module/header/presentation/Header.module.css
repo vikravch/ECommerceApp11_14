@@ -1,21 +1,54 @@
-.navBar {
-
+/* Dark theme */
+.navBarDark {
+    --bg-color: #1a1a1a;
+    --text-color: rgba(255, 255, 255, 0.5);
+    /*--active-bg-color: #f31818;*/
+    --active-text-color: #ffffff;
 }
 
-ul {
-    list-style-type: none;
+/* Light theme */
+.navBarLight {
+    --bg-color: #ffffff;
+    --text-color: rgba(51, 51, 51, 0.3);
+    --active-text-color: #333333;
+}
+
+.navBarDark {
+    background-color: var(--bg-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #FFFFFF;
 }
 
-li {
+.navBarLight {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.navBarDark .imgProfile {
+    filter: invert(1);
+}
+
+.navBarDark .imgCart {
+    filter: invert(1);
+}
+
+.navContainer {
+}
+
+.navBar {
+    margin: 0;
+    padding: 0;
+}
+
+.navItem {
     float: left;
 }
 
-li a {
-    color: black;
+.navItem span {
+    /*color: black;*/
     display: block;
     text-align: center;
     padding: 30px 16px;
@@ -23,56 +56,83 @@ li a {
 }
 
 .active {
-    display: block;
-    text-align: center;
+    /*background-color: var(--active-bg-color);*/
+    color: var(--active-text-color);
     font-weight: bold;
-    padding: 30px 16px;
-    text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
-/* done :)*/
+.navItemRight {
+    float: right;
+}
 
-li a:hover {
-    color: black;
-    background-color: #d9d9d9;
+.navItemRight div {
+    position: relative;
+    margin: 20px;
+    display: inline-block;
+}
+
+
+.navItem :hover {
+    cursor: pointer;
+    background-color: rgba(210, 210, 210, 0.1);
 }
 
 .lineDevider {
-    border: #000000 solid 0.5px;
-    border-collapse: inherit;
-    width: 100%;
-
-    opacity: 10%;
+    height: 1px;
+    width: 100vw;
+    background-color: rgba(231, 231, 231, 0.2);
 }
 
-.imgProfile{
+.imgProfile {
     cursor: pointer;
 }
 
-.imgCart{
+.imgCart {
     height: 20px;
     width: 16px;
 }
 
-.search{
+.cartContainer {
+    position: relative;
+
+}
+
+.cartBadge {
+    position: absolute;
+    top: -15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #2984fc;
+    color: #ffffff;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.search {
+    background-color: var(--bg-color);
+    display: inline-block;
     margin-right: 16px;
     padding: 13px 13px 13px 33px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--text-color);
     border-radius: 10px;
     width: 250px;
     height: 40px;
 }
 
-.searchLink{
+.searchLink {
     position: absolute;
+    top: 34px;
+    left: 10px;
+    display: inline-block;
+    cursor: pointer;
+
 }
 
-.searchLink:hover{
+.searchLink:hover {
     background: none;
 }
 
-.searchBtn{
+.searchBtn {
     position: absolute;
     top: 34px;
     left: 10px;
@@ -80,9 +140,9 @@ li a:hover {
     cursor: pointer;
 }
 
-.dark{
-    color: #FFFFFF;
-}
-.white{
-    color: #000000;
-}
+/*.dark{*/
+/*    color: #FFFFFF;*/
+/*}*/
+/*.white{*/
+/*    color: #000000;*/
+/*}*/

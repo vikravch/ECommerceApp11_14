@@ -71,15 +71,10 @@
 .img_nike
 {
     position: absolute;
-    width: 667.03px;
-    height: 452.64px;
+    width: 567.03px;
+    height: 492.64px;
     left: 391px;
     top: 127px;
-
-    /*filter: blur(150px);*/
-    /*transform: matrix(-0.89, 0.41, -0.49, -0.9, 0, 0);*/
-    background: url("../images/zoomx-invincible-run-flyknit-mens-road-running-shoes-sP2zk7 1.png");
-    /*transform: rotate(-9.75deg);*/
 }
 
 /* grad */

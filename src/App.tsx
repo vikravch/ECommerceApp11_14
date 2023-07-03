@@ -21,15 +21,11 @@ import TermsOfUse from "./module/login/presentation/TermsOfUse";
 import Navigation_Menu from "./module/landing_page/presentation/Navigation_Menu";
 
 function App() {
-  //TODO fix header style on main page
   //sessionStorage.setItem("token", "123"); // h32-0 // p 14
 
   return (
-      // <div className="container-xl">
       <div>
-        {window.location.pathname === '/' ? <Navigation_Menu/> : <Header isDark={true}/> }
-              {/*<Header isDark={window.location.pathname === '/'}/>*/}
-
+        {window.location.pathname === '/' ? <Header isDark={true}/> : <Header isDark={false}/> }
 
         <Routes>
           <Route path="/" element={<LandingDetailPage/>}/>
@@ -49,10 +45,6 @@ function App() {
           <Route path={`/${routes.recovery}`} element={<RestorePass/>}/>
           <Route path={`/${routes.catalog}`} element={<CategoryPage/>}/>
           <Route path={`/${routes.catalog}/:type`} element={<CategoryPage/>}/>
-
-          {/*<Route path="/test" element={<TestPage/>}/>*/}
-          {/*<Route path={`/:category`} element={<Category/>}/>*/}
-
           <Route path={`/${routes.agreement}/privacyPolicy`} element={<PrivacyPolicy/>}/>
           <Route path={`/${routes.agreement}/termsOfUse`} element={<TermsOfUse/>}/>
         </Routes>

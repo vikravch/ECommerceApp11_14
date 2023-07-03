@@ -14,18 +14,18 @@ interface Props {
 
 const Header = (props: Props) => {
 
-    // const styles = (props.isDark) ? darkStyle : whiteStyle
-
     const cartCount = useSelector<Store, number>(state => state.cartPage.cartCount);
     let [cartImg, setCartImg] = useState({img: imgEmpty, spanCountStyle: 'd-none'});
     let [searchVal, setSearchVal] = useState('');
+
+    //link to profile or login
     let profileBtn = sessionStorage.getItem("user") ? "/profile" : "/login";
     const navigate = useNavigate();
     // const handleOnClick = useCallback(() => navigate('/catalog/search'), [navigate]);
     let [startSearch, setStartSearch] = useState(false);
 
-    useEffect(()=>{
-        if(cartCount === 0){
+    useEffect(() => {
+        if (cartCount === 0) {
             setCartImg({img: imgEmpty, spanCountStyle: 'd-none'});
         } else {
             setCartImg({img: img, spanCountStyle: ''});
@@ -39,8 +39,8 @@ const Header = (props: Props) => {
         setStartSearch(false);
     }, [startSearch]);
 
-    function handleKeyPress (event: React.KeyboardEvent<HTMLInputElement>): void {
-        if(event.key === 'Enter'){
+    function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>): void {
+        if (event.key === 'Enter') {
             console.log(searchVal);
             setStartSearch(true);
         }
@@ -49,32 +49,61 @@ const Header = (props: Props) => {
     return (
         <div>
             <div className={styles.navBar}>
-                <ul>
-                    <li><a href="/">LOGO</a></li>
-                    <li><a className={styles.active} href="/catalog/men">Men</a></li>
-                    <li><a href="/catalog/women">Woman</a></li>
-                    <li><a href="/catalog/kids">Kids</a></li>
-                    <li><a href="/catalog/sale">Sale</a></li>
-                    <li><a href="/catalog/collection">Collections</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li></li>
-                    <li className={"position-absolute end-0"}>
-                        <a href={''} className={styles.searchLink}><img src={search} alt={'search'} className={styles.searchBtn} onClick={()=>setStartSearch(true)}/></a>
-                        <input type="search" className={`d-inline-block ${styles.search}`} placeholder="Search"
-                               onChange={(e)=>setSearchVal(e.target.value)}
-                               onKeyPress={(e) => handleKeyPress(e)}/>
-                        <Link to="/cart" className={'d-inline-block'}>
-                            <img src={cartImg.img} className={styles.imgCart} alt={'cart'}/>
-                            <span className={`top-0 start-100 translate-middle badge rounded-pill bg-primary small 
-                                ${cartImg.spanCountStyle}`} style={{fontSize: 9}}>{cartCount}</span>
-                        </Link>
-                        <a href={profileBtn} className={'d-inline-block'}>
-                            <img src={imgProfile} className={'pointer'} alt={"profile"}/>
-                        </a></li>
-                </ul>
+                <div className={(props.isDark) ? `${styles.navBarDark}` : `${styles.navBarLight}`}>
+                    <div className={styles.navItem}>
+                        <span style={{ fontWeight: 'bold' }} onClick={() => window.location.href = '/'}>LOGO</span>
+                    </div>
+                    <div className={`${styles.navItem} ${styles.active}`}>
+                        <span onClick={() => window.location.href = '/catalog/men' } >Men</span>
+                    </div>
+                    <div className={styles.navItem}>
+                        <span onClick={() => window.location.href = '/catalog/women'}>Woman</span>
+                    </div>
+                    <div className={styles.navItem}>
+                        <span onClick={() => window.location.href = '/catalog/kids'}>Kids</span>
+                    </div>
+                    <div className={styles.navItem}>
+                        <span onClick={() => window.location.href = '/catalog/sale'}>Sale</span>
+                    </div>
+                    <div className={styles.navItem}>
+                        <span onClick={() => window.location.href = '/catalog/collection'}>Collections</span>
+                    </div>
+                    <div className={styles.navItem}>
+                        <span onClick={() => window.location.href = '/blog'}>Blog</span>
+                    </div>
+
+                    <div className={styles.navItemRight}>
+                        <div className={styles.searchLink}>
+                            <div>
+                                <img src={search} alt={'search'} className={styles.searchBtn}
+                                     onClick={() => setStartSearch(true)}/>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="search" className={`${styles.search}`} placeholder="Search"
+                                   onChange={(e) => setSearchVal(e.target.value)}
+                                   onKeyPress={(e) => handleKeyPress(e)}/>
+                        </div>
+                        <div>
+                            <Link to="/cart" className={`${styles.cartContainer}`}>
+                                <img src={cartImg.img} className={styles.imgCart} alt={'cart'}/>
+                                <span className={`${cartImg.spanCountStyle} ${styles.cartBadge}`}>{cartCount}</span>
+                            </Link>
+                        </div>
+                        <div>
+
+                             {/*add link to profile Btn*/}
+                            <span className={'d-inline-block'}>
+                                <img src={imgProfile} className={styles.imgProfile} alt={"profile"}/>
+                            </span>
+                        </div>
+                    </div>
+                </div>
                 <div className={styles.lineDevider}/>
             </div>
-        </div>);
-};
+        </div>
+    );
+}
 
-export default Header;
+
+    export default Header;

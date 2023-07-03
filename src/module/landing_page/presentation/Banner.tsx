@@ -4,7 +4,7 @@ import arrow_right from "../images/sumbol/arrow-right.png"
 import left from "../images/sumbol/left.png"
 import right from "../images/sumbol/right.png"
 import React from "react";
-
+import nikeImg from "../images/zoomx-invincible-run-flyknit-mens-road-running-shoes-sP2zk7 1.png"
 
 const Banner = () => {
     return (
@@ -15,7 +15,7 @@ const Banner = () => {
             <div className="{style.grad}">
                 <div className={style.grad_vector1}>
                     <div className={style.grad_vector2}>
-                        <img className={style.img_nike}/>
+                        <img src={nikeImg} className={style.img_nike}/>
                     </div>
                 </div>
             </div>

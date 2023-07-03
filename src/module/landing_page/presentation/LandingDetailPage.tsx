@@ -20,19 +20,16 @@ import NewArrivals from "./NewArrivals";
 
 const LandingDetailPage: React.FC = () => {
     return (
-        <div className="wrapper clear">
-            {/*<Navigation_Menu/>*/}
+        <>
             <Banner/>
-            <div className="content ">
-                <NewArrivals/>
-                <h1>Categories</h1>
-                <Categories/>
-                <h1>Blog</h1>
-                <Blog/>
-            </div>
+            <NewArrivals/>
+            <h1>Categories</h1>
+            <Categories/>
+            <h1>Blog</h1>
+            <Blog/>
             <Subscribtion/>
             <Footer/>
-        </div>)
+        </>)
 }
 
 export default LandingDetailPage;
