@@ -24,17 +24,6 @@ export const Breadcrumbs: React.FC = () => {
               <Crumb path={`/${routes.landingDetail}`} title={"Main  /"} url={"/"}/>
               <Crumb path={`/${routes.men}`} title={"Men /"} url={"/men"}/>
               <Crumb path={`/${routes.men}`} title={"T-shirt /"} url={"/product123"}/>
-              {/*{state.map(crumb => (*/}
-              {/*    <Crumb {...crumb} key={crumb.pathname}/>*/}
-              {/*))}*/}
           </nav>
       )
-  //  const searchParams = new URLSearchParams(location.search);
-  //   let type = useParams<Params>().type ;
-  //
-  //   return (
-  //       <div className={style.Breadcrumbs}>
-  //           {type}
-  //       </div>
-  //   )
 }
