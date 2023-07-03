@@ -9,7 +9,6 @@ import Collection from "./navBarComponents/Collection";
 import Brand from "./navBarComponents/Brand";
 import Style from "./navBarComponents/Style";
 import Season from "./navBarComponents/Season";
-import Pagionations from "../../landing_page/presentation/Pagionations";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
@@ -18,6 +17,7 @@ import Skeleton from "./Skeleton";
 import {Breadcrumbs} from "../../breadcrumbs";
 import Pagination from "../../pagination/Pagination";
 import {paginationData} from "../../pagination/data/fakeData";
+import {setPaginationPage} from "../../pagination/redux/paginationReducer";
 
 type Params = {
     type: string;
@@ -26,7 +26,9 @@ type Params = {
 //TODO you may also like <AlsoLike/>
 
 const  CategoryPage:React.FC = () => {
+
     const isLoading = useSelector<Store, boolean>(state => state.categoryPage.isLoading);
+    const currentPage = useSelector<Store, number>(state => state.categoryPage.currentPage);
     const products = useSelector<Store, Array<ProductPreviewInfo>>(state => state.categoryPage.data);
     const dispatch = useDispatch();
     let type = useParams<Params>().type || '';
@@ -85,8 +87,20 @@ const  CategoryPage:React.FC = () => {
                             discount={product.discount}/>
                         )}
                     </div>
-                    <Pagination data={paginationData} currentPage={0} setCurrentPage={()=>{}}/>
-                    {products.length === 0 ? null :<Pagionations/>}
+
+
+                    {/*{products.length === 0 ? null : */}
+                    {/*    <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={*/}
+                    {/*    (page:number)=>{*/}
+                    {/*        dispatch(setPaginationPage(page))*/}
+                    {/*    }*/}
+                    {/*} />}*/}
+
+                    <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
+                        (page:number)=>{
+                            dispatch(setPaginationPage(page))
+                        }
+                    } />
                 </div>
             </div>
         </div>

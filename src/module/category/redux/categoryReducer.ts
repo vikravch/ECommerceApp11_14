@@ -1,7 +1,8 @@
 import {Action} from "../../../general/redux/Action";
 import {PRODUCTS_REQUEST, PUT_PRODUCTS, SET_CATEGORY, SET_SORT} from "./asyncActions";
-import {SortProps} from "./typesCategoryPage";
+import {CategoryPageStore, SortProps} from "./typesCategoryPage";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
+import {SET_CURRENT_PAGE} from "../../pagination/redux/paginationReducer";
 
 const transformProduct = (product:any) => {
     return {
@@ -15,10 +16,15 @@ const transformProduct = (product:any) => {
 }
 
 export const categoryReducer = (
-    state = {isLoading: true, data: [], sort: {name:'By price', prop:SortProps.PRICE_ASC}},
+    state: CategoryPageStore = {isLoading: true, data: [],
+        sort: {name:'By price', prop:SortProps.PRICE_ASC}, currentPage: 0},
     action: Action
 ) => {
     switch (action.type) {
+        case SET_CURRENT_PAGE: {
+            console.log("Category reducer " + action.payload)
+            return {...state, currentPage: action.payload}
+        }
         case SET_CATEGORY:
             return {...state, Order: action.payload}
         case SET_SORT:

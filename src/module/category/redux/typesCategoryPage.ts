@@ -16,4 +16,5 @@ export interface CategoryPageStore {
     isLoading: boolean;
     data: Array<ProductPreviewInfo>;
     sort: Sort;
+    currentPage: number;
 }

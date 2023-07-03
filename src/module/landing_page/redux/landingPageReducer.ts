@@ -1,5 +1,3 @@
-
-import Product from "../domain/model/Product";
 import {Action} from "../../../general/redux/Action";
 import {SET_PRODUCT_DATA, START_PRODUCT_LOAD} from "./asyncActions";
 import {LandingPageStore} from "./typesLandingPage";
@@ -26,7 +24,7 @@ const data = transformProduct(products2)
 
 export function landingPageReducer(
     state: LandingPageStore = {
-        isLoading: false, data: [data], currentPage: 2
+        isLoading: false, data: [data], currentPage: 0
     }, action: Action
 ){
     //todo actions and fetch
