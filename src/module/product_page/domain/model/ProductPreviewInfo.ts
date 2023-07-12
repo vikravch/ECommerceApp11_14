@@ -2,7 +2,7 @@ export default class ProductPreviewInfo {
     idProduct: string;
     product_thumb: string;
     product_title: string;
-    rating: string;
+    rating: number;
     price: number;
     discount: number;
 

@@ -1,27 +1,36 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PreviewProduct from "../../product_card/presentation/PreviewProduct";
 import Pagination from "../../pagination/Pagination";
 import {paginationData} from "../../pagination/data/fakeData";
 import Skeleton from "../../category/presentation/Skeleton";
-import {products2} from "../utils/constants";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {setPaginationPage} from "../../pagination/redux/paginationReducer";
+import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
+import {getArrivalDetailsAction} from "../redux/asyncActions";
 
 
 const NewArrivals: React.FC = () => {
     const dispatch = useDispatch()
-    const isLoading = useSelector<Store, boolean>(state => state.landingPage.isLoading)
+    const isLoading = useSelector<Store, number>(state => state.landingPage.currentPage)
+    const newArrivals = useSelector<Store, Array<ProductPreviewInfo>>(state => state.landingPage.data)
     // @ts-ignore
     const currentPage = useSelector<Store, number>(state => state.landingPage.currentPage);
     const skeletons = [...new Array(12)].map((_, index) => <Skeleton key={index}/>);
-    const fakeProductsData = products2
+
+    //todo compare current page and do dispatch if needed
+    useEffect(() => {
+        if (currentPage !== 1) {
+            dispatch(getArrivalDetailsAction(0));
+        }
+    }, [currentPage]);
+
     return (
         <>
             <h1>New arrivals</h1>
             <div className={'col p-0 ps-5'}>
                 <div className={'row row-cols-4 justify-content-center p-0 m-0'}>
-                    {isLoading ? skeletons : fakeProductsData.map((product, productId) =>
+                    {isLoading ? skeletons : newArrivals.map((product, productId) =>
                         <PreviewProduct
                             key={productId}
                             id={productId}
@@ -35,11 +44,10 @@ const NewArrivals: React.FC = () => {
                     )}
                 </div>
                 <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
-                    (page:number)=>{
+                    (page: number) => {
                         dispatch(setPaginationPage(page))
                     }
-                } />
-                {/*{products.length === 0 ? null :<Pagination data={paginationData}/>}*/}
+                }/>
             </div>
         </>
     )

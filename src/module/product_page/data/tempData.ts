@@ -27,8 +27,10 @@ export const fakeFullProduct = {
     "price": "35.0",
     "product_id": "7142",
     "product_imgs": [
-        "url.png",
-        "url.png"
+        "https://i.postimg.cc/kGCXQr61/img-1141.jpg",
+        "https://i.postimg.cc/m25WRfLv/img-1111.jpg",
+        "https://i.postimg.cc/9FMHvFhP/img-1121.jpg",
+        "https://i.postimg.cc/XNx0HBT7/img-1131.jpg"
     ],
     "product_thumb": "url/Base64.png",
     "product_title": "Basic t-shirt",
