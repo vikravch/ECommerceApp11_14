@@ -13,15 +13,16 @@ export function productPageReducer(
 ){
     switch (action.type){
         case START_PRODUCT_LOAD:{
+            console.log("case START_PRODUCT_LOAD")
             return { ...state, isLoading: true}
         }
         case SET_PRODUCT_DATA:{
-            let fakeProduct: Product = tempProductData
-            return {...state, product: fakeProduct , isLoading: false}
+            console.log("case SET_PRODUCT_DATA")
+            return {...state, product: action.payload , isLoading: false}
         }
 
         case SET_CART_PRODUCT:{
-            return { ...state, cartProduct: tempCartPr}
+            return { ...state, cartProduct: action.payload}
         }
 
         case SET_CURRENT_PAGE: {

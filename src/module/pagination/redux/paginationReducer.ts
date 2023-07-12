@@ -12,6 +12,7 @@ import {PaginationStore} from "./typesPagination";
 
 export const SET_CURRENT_PAGE = "change_pagination_page"
 
+//todo SET_CURRENT_PAGE it works on all pages at the same time now. Need to fix
 export const setPaginationPage = (page:number) => ({
     type: SET_CURRENT_PAGE,
     payload: page

@@ -1,14 +1,27 @@
 import ProductPageRepository from "../../domain/ProductPageRepository";
 import Product from "../../domain/model/Product";
-import {tempProductData} from "../tempData";
+import {fakeFullProduct, tempProductData} from "../tempData";
+import apiClient from "../../../../general/data/api_client";
+import {setProductDataAction} from "../../redux/asyncActions";
+
 // mirage.js
 export default class ProductPageFakeRepository implements ProductPageRepository{
     async getProductDetails(productId: string): Promise<Product> {
-        // fetch ???
+        apiClient.get<Product>(`/product/`+ productId).then((res) => {
+            console.log("setProductDataAction")
+            setProductDataAction(res.data);
+            //setLoading(false);
+        })
+            .catch((err) => {
+                console.log("ERROR: ")
+                console.log(err.message)
+                //setLoading(false);
+            })
         return new Promise((resolve => {
-            resolve(new Product(tempProductData));
+            console.log("ProductPageFakeRepository - getProductDetails - setting the FAKE product")
+            resolve(new Product(fakeFullProduct));
         }));
-        console.log("async getProductDetails()")
+
     }
     async getProductFake(): Promise<Product> {
         return new Promise(resolve => {

@@ -4,8 +4,7 @@ import Product from "../domain/model/Product";
 import {Store} from "../../../general/redux/storeTypes";
 import {useParams} from "react-router-dom";
 import {getProductDetailsAction} from "../redux/asyncActions";
-import getProductDetails from "../domain/use_case/getProductDetails";
-
+//import getProductDetails from "../domain/use_case/getProductDetails";
 import styles from "./ProductPage.module.css";
 import AlsoLike from "./AlsoLike";
 import {addToCartAction} from "../../cart/redux/asyncActions";
@@ -14,7 +13,6 @@ import {sizes} from "../../../general/data/sizes";
 import useModal from "../modalWindow/useModal";
 import Modal from "../modalWindow/modal";
 import DropDownOut from "../dropdown/DropDownOut";
-import {Breadcrumbs} from "../../breadcrumbs";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -34,8 +32,8 @@ const ProductDetailPage: React.FC = () => {
     useEffect(() => {
         if (productId) {
             dispatch(getProductDetailsAction(productId));
-            getProductDetails(productId).then((data)=>{
-            })
+            // getProductDetails(productId).then((data)=>{
+            // })
         }
     }, [productId]);
 
@@ -84,26 +82,11 @@ const ProductDetailPage: React.FC = () => {
 
 
     let addToCart = () => {
-        // setTempCartProduct({ count: 1,
-        //  color: selectedColor,
-        //     size: selectedSizeOption,
-        //     idProduct: productId??"1111",
-        //     product_thumb: "",
-        //     product_title: product.product_title,
-        //     rating: product.rating,
-        //     price: product.price,
-        //     discount: product.discount,})
-
         console.log("Set product done!: " + JSON.stringify(tempCartProduct))
         dispatch(addToCartAction(tempCartProduct)) //from cartPageReducer
             console.log(cartItems.length)
-            // cartItems.push(tempCartProduct) // пушает второй экземпляр
-
-            console.log(cartItems.length)
-            console.log("cart ITEMS: " + JSON.stringify(cartItems))
-
+           console.log("cart ITEMS: " + JSON.stringify(cartItems))
     }
-
 
     return (
         <div>
@@ -111,8 +94,6 @@ const ProductDetailPage: React.FC = () => {
                 <Modal isOpen={isOpen} toggle={toggle} imgSrc={imgSrc}>
                     <img src={imgSrc} alt="img"/>
                 </Modal>
-
-                <div className={styles.breadcrumbs}><Breadcrumbs/></div>
                 <div className={styles.productPage}>
                     <div className={styles.photoBox}>
                         { product.product_imgs.map(el => {

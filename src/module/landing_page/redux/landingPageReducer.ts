@@ -1,10 +1,11 @@
 import {Action} from "../../../general/redux/Action";
-import {SET_PRODUCT_DATA, START_PRODUCT_LOAD} from "./asyncActions";
+import {SET_DATA, START_LOADING} from "./asyncActions";
 import {LandingPageStore} from "./typesLandingPage";
 import {PUT_PRODUCTS} from "../../category/redux/asyncActions";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
 import {products2} from "../utils/constants";
 import {SET_CURRENT_PAGE} from "../../pagination/redux/paginationReducer"
+import newArrivals from "../presentation/NewArrivals";
 
 
 
@@ -20,19 +21,19 @@ const transformProduct = (product:any) => {
     }
 }
 
-const data = transformProduct(products2)
+const data = [transformProduct(products2)]
 
 export function landingPageReducer(
     state: LandingPageStore = {
-        isLoading: false, data: [data], currentPage: 0
+        isLoading: false, data: data, currentPage: 0
     }, action: Action
 ){
     //todo actions and fetch
     switch (action.type){
-        case START_PRODUCT_LOAD:{
+        case START_LOADING:{
             return { ...state, isLoading: true}
         }
-        case SET_PRODUCT_DATA:{
+        case SET_DATA:{
             return {...state, isLoading: false}
         }
         case SET_CURRENT_PAGE: {
@@ -40,9 +41,9 @@ export function landingPageReducer(
             return {...state, currentPage: action.payload}
         }
         case PUT_PRODUCTS:
-            const serverProducts = action.payload;
-            const newProducts: Array<ProductPreviewInfo> = serverProducts.map(transformProduct)
-            return {...state, isLoading: false, data: newProducts}
+           // const serverProducts = action.payload;
+           // const newProducts: Array<ProductPreviewInfo> = serverProducts.map(transformProduct)
+            return {...state, isLoading: false, data: action.payload}
         default:
             return state;
     }

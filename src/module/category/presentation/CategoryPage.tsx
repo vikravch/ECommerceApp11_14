@@ -14,7 +14,6 @@ import {Store} from "../../../general/redux/storeTypes";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
 import {getProdustsByCategory} from "../redux/asyncActions";
 import Skeleton from "./Skeleton";
-import {Breadcrumbs} from "../../breadcrumbs";
 import Pagination from "../../pagination/Pagination";
 import {paginationData} from "../../pagination/data/fakeData";
 import {setPaginationPage} from "../../pagination/redux/paginationReducer";
@@ -44,7 +43,6 @@ const  CategoryPage:React.FC = () => {
     const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
     return (
         <div className={'container p-0'}>
-            <Breadcrumbs/>
             <div className={'main'}>{type} / <span className={'black'}>All</span></div>
             <div className={"container marCategory"}>
                 <div className={"row justify-content-between"}>
@@ -87,14 +85,6 @@ const  CategoryPage:React.FC = () => {
                             discount={product.discount}/>
                         )}
                     </div>
-
-
-                    {/*{products.length === 0 ? null : */}
-                    {/*    <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={*/}
-                    {/*    (page:number)=>{*/}
-                    {/*        dispatch(setPaginationPage(page))*/}
-                    {/*    }*/}
-                    {/*} />}*/}
 
                     <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
                         (page:number)=>{
