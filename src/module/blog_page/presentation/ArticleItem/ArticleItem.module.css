@@ -1,23 +1,45 @@
 .article {
+
+    display: flex; /* Use flexbox for the container */
+    flex-direction: column; /* Stack the child divs vertically */
+    justify-content: space-between;
     margin: 15px 15px;
     width: 410px;
     height: 540px;
     /*padding: 20px;*/
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+}
+.link {
+    text-decoration: none;
 }
 .article:hover {
     cursor: pointer;
     opacity: 0.7;
 }
+
 .article_item_img_div {
-    width: 410px;
-    height: 270px;
+    background-color: #d3d3d3;
 }
 
 .article_item_img {
     width: 410px;
     height: 270px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 0px 10px 10px 0;
+
+}
+
+.article_title {
+    color: black;
+
+    font-weight: bold;
+    margin: 20px;
+    margin-top: 64px;
+}
+
+.article_date {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.6);
+    margin-left: 20px;
+    margin-bottom: 20px;
 }

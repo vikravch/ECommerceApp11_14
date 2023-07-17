@@ -6,19 +6,21 @@ import {getArticleDetailsAction} from "../../../article_page/redux/asyncActions"
 const ArticleItem: React.FC<any> = (props) => {
 
     return (
-        <Link to={`/article/${props.id}`}>
+        <div>
+            <Link className={style.link} to={`/article/${props.id}`}>
         <div className={style.article} onClick={getArticleDetailsAction(props.id)}>
             <div className={style.article_item_img_div}>
-                <img src={"#"} className={style.article_item_img}></img>
+                <img alt={'img'} src={"#"} className={style.article_item_img}>{props.img}</img>
             </div>
-            <div>
+            <div className={style.article_title}>
                 <h3>{props.title}</h3>
             </div>
-            <div>
-                <span>{props.date}</span>
+            <div className={style.article_date}>
+                <div>{props.date}</div>
             </div>
         </div>
-        </Link>
+            </Link>
+        </div>
     );
 };
 
