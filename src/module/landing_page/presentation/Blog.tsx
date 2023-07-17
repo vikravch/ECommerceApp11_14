@@ -6,44 +6,49 @@ import clock from '../images/blog/clock.png'
 
 const Blog = () => {
     return (
-        <div className="d-flex flex-row">
-            <div className={styles.blog}>
+        <div>
+            <div className={styles.container + ' row'}>
+                <h1 className={styles.h1}>Blog</h1>
+                <div className="d-flex row">
 
-                <div className="styles.blog1">
-                    <h5 className={styles.reach}>Reach Your Fitness Goals with the our Training Club App (NTC). </h5>
+                    <div className={styles.blog + ' col'}>
 
-                    <div className={styles.clock}>
-                        <img width={16.67} height={16.67} src={clock} />
-                        <b>07.08.2020</b>
+                            <h5 className={styles.reach}>Reach Your Fitness Goals with the our Training Club App (NTC). </h5>
+
+                            <div className={styles.clock}>
+                                <img src={clock} />
+                                <b>07.08.2020</b>
+                            </div>
+
                     </div>
-                </div>
-            </div>
+                    <div className={styles.blog + ' col'}>
 
+                        <img width={410} height={270} src={blog1} alt="Blog"/>
 
-            <div className={styles.blog}>
+                        <h5 >Workout From Home Routines: Tips and Best Practices</h5>
 
-                <img width={410} height={270} src={blog1} alt="Blog"/>
+                        <div className={styles.clock}>
+                            <img  src={clock} />
+                            <b>07.08.2020</b>
+                        </div>
+                    </div>
+                    <div className={styles.blog + ' col'}>
 
-                <h5 >Workout From Home Routines: Tips and Best Practices</h5>
+                        <img src={blog2}/>
 
-                <div className={styles.clock1}>
-                    <img width={16.67} height={16.67} src={clock} />
-                    <b>07.08.2020</b>
-                </div>
-            </div>
-            <div className={styles.blog}>
+                        <h5>Train The Way You Want: Energise Your Routine with our Growing Library of Workout</h5>
 
-                <img width={410} height={270} src={blog2} alt="Blog"/>
+                        <div className={styles.clock}>
+                            <img src={clock} />
+                            <b>07.08.2020</b>
+                        </div>
+                    </div>
 
-                <h5>Train The Way You Want: Energise Your Routine with our Growing Library of Workout</h5>
-
-                <div className={styles.clock2}>
-                    <img width={16.67} height={16.67} src={clock} />
-                    <b>07.08.2020</b>
                 </div>
             </div>
 
         </div>
+
     );
 };
 

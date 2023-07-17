@@ -8,6 +8,7 @@ import {Store} from "../../../general/redux/storeTypes";
 import {setPaginationPage} from "../../pagination/redux/paginationReducer";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
 import {getArrivalDetailsAction} from "../redux/asyncActions";
+import styles from "../styles/newArrivals.module.css"
 
 
 const NewArrivals: React.FC = () => {
@@ -27,8 +28,9 @@ const NewArrivals: React.FC = () => {
 
     return (
         <>
-            <h1>New arrivals</h1>
-            <div className={'col p-0 ps-5'}>
+            <div className={styles.container}>
+            <h1 className={styles.h1}>New arrivals</h1>
+            <div className={'col'}>
                 <div className={'row row-cols-4 justify-content-center p-0 m-0'}>
                     {isLoading ? skeletons : newArrivals.map((product, productId) =>
                         <PreviewProduct
@@ -48,6 +50,7 @@ const NewArrivals: React.FC = () => {
                         dispatch(setPaginationPage(page))
                     }
                 }/>
+            </div>
             </div>
         </>
     )

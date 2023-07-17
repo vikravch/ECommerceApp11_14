@@ -1,0 +1,15 @@
+.container {
+    align-content: space-between;
+}
+
+.h1 {
+    margin-top: 98px;
+    margin-left: 155px;
+    margin-bottom: 48px;
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 44px; /* 122.222% */
+    letter-spacing: -1.2px;
+}

@@ -37,9 +37,15 @@
 }
 
 .article_date {
+    display: flex;
     font-size: 18px;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.6);
     margin-left: 20px;
     margin-bottom: 20px;
+}
+
+.article_date img {
+margin-top: 4px;
+    margin-right: 5px;
 }

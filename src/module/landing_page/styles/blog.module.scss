@@ -1,31 +1,57 @@
+.container {
+  //align-content: space-around;
+  //justify-content: space-between;
+  margin-left: 155px;
+  border: #4968fa solid 1px;
+  max-width: 80vw;
+  margin-bottom: 98px;
+
+}
+
 .blog {
-  width: 412px;
+  padding: 0;
+  min-width: 410px;
+  max-width: 410px;
   height: 540px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(183, 50, 50);
   border-radius: 10px;
   margin: 25px 30px;
   transition: box-shadow 0.2s ease-in-out,
   transform 0.2s ease-in-out;
 
   &:hover {
-    box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.10);
     transform: translateY(-5px);
   }
 
+  .blog img {
+    width: 410px;
+    height: 270px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .h1 {
+    margin-top: 98px;
+    margin-left: 155px;
+    margin-bottom: 48px;
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 44px; /* 122.222% */
+    letter-spacing: -1.2px;
+  }
+
   .clock {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-weight: normal;
+    color: rgba(26, 26, 26, 0.27);
     align-content: center;
-    margin: 170px 20px;
+
   }
 
-  .clock1 {
-    align-content: center;
-    margin: 85px 20px;
-  }
-
-  .clock2 {
-    align-content: center;
-    margin: 50px 20px;
-  }
 
   .reach {
     font-weight: 500;
