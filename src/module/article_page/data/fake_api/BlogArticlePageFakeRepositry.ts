@@ -1,15 +1,14 @@
 import BlogArticlePageRepository from "../../domain/BlogArticlePageRepository";
 import Article from "../../domain/model/Article";
-import {article} from "./article";
+import apiClient from "../../../../general/data/api_client";
+import {setArticleDataAction} from "../../redux/asyncActions";
 
 
-export default class BlogArticlePageFakeRepository implements BlogArticlePageRepository{
+export default class BlogArticlePageFakeRepository implements BlogArticlePageRepository {
     async getArticleDetails(id: string): Promise<Article> {
-        //const res = await fetch(`${DOMAIN_NAME}article_get?id=${id}`);
-        const res = JSON.parse(article);
-        return new Promise((resolve => {
-            resolve(res);
-        }));
+        const response = await apiClient.get<Article>('/blog/' + id);
+        console.log("getArticleDetails");
+        setArticleDataAction(response.data);
+        return response.data;
     }
-
 }

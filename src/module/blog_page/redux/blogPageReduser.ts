@@ -1,13 +1,10 @@
 import {Action} from "../../../general/redux/Action";
 import {SET_ARTICLES_LIST_DATA, START_ARTICLES_LIST_LOAD} from "./asyncActions";
 import {BlogPageStore} from "./typesBlogPage";
-import ArticleInfo from "../domain/model/ArticlesList";
-import {articlesList} from "../data/fake_api/articlesList";
-
 
 export function blogPageReducer(
     state: BlogPageStore = {
-        articlesList: new Array<ArticleInfo>(JSON.parse(articlesList)),
+        articlesList: [],
         isLoading: false
     }, action: Action
 ){
