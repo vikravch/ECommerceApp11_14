@@ -6,11 +6,12 @@ import {setDataAction} from "../../redux/asyncActions";
 
 export default class LandingPageFakeRepository implements LandingPageRepository{
     async getNewArrivals(pageNumber: number): Promise<Array<ProductPreviewInfo>> {
-        apiClient.get<Array<ProductPreviewInfo>>(`/collection/new_arrived?page=${pageNumber}&pageSize=12&sort=acquisition_date_desc`).then((res) => {
+        apiClient.get<Array<ProductPreviewInfo>>(`/collection/new_arrived?page=${pageNumber}&pageSize=12&sort=acquisition_date_desc`).then(
+            (res) => {
             console.log("setArrivalsDataAction")
             setDataAction(res.data)
         })
-            .catch((err) => {
+            .catch((err:Error) => {
                 console.log("ERROR: ")
                 console.log(err.message)
             })
