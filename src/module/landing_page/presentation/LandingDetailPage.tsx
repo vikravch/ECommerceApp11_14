@@ -11,9 +11,7 @@ const LandingDetailPage: React.FC = () => {
         <>
             <Banner/>
             <NewArrivals/>
-            <h1>Categories</h1>
             <Categories/>
-            <h1>Blog</h1>
             <Blog/>
             <Subscribtion/>
             <Footer/>
