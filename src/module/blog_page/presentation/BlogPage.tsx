@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import ArticleInfo from "../domain/model/ArticlesList";
 import {Store} from "../../../general/redux/storeTypes";
 import {getArticlesListAction} from "../redux/asyncActions";
+import formatDate from "../dateTransformer";
 
 const BlogPage:React.FC = () => {
     const articlesList = useSelector<Store, Array<ArticleInfo>>(state => state.blogPage.articlesList)
@@ -15,13 +16,7 @@ const BlogPage:React.FC = () => {
         dispatch(getArticlesListAction());
     }, []);
 
-    function formatDate(inputDate: string) {
-        const date = new Date(inputDate);
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const year = String(date.getFullYear());
-        return `${day}.${month}.${year}`;
-    }
+
 
     return (
         <div className={style.wrapper}>

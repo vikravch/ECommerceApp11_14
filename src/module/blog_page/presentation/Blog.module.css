@@ -1,3 +1,17 @@
+
+.articles_wrapper {
+    position: absolute;
+    left: 140px;
+    right: 52.71%;
+    top: 30.85%;
+    bottom: 49.26%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 1600px;
+    height: 1140px;
+}
+
 .wrapper {
     margin: 0 auto;
     display: flex;
@@ -97,18 +111,6 @@
 }
 
 
-.articles_wrapper {
-    position: absolute;
-    left: 140px;
-    right: 52.71%;
-    top: 30.85%;
-    bottom: 49.26%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 1600px;
-    height: 1140px;
-}
 
 .big_text_article1 {
     position: absolute;

@@ -79,3 +79,20 @@
   }
 }
 
+
+.articles_wrapper {
+  //position: absolute;
+  //left: 140px;
+  //right: 52.71%;
+  //top: 30.85%;
+  //bottom: 49.26%;
+  margin-left: 155px;
+  border: #63cc64 solid 1px;
+  max-width: 80vw;
+  margin-bottom: 98px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  //width: 1600px;
+  //height: 1140px;
+}
