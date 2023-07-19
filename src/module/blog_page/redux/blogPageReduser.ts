@@ -5,7 +5,8 @@ import {BlogPageStore} from "./typesBlogPage";
 export function blogPageReducer(
     state: BlogPageStore = {
         articlesList: [],
-        isLoading: false
+        isLoading: false,
+        currentPage: 0
     }, action: Action
 ){
     switch (action.type){
