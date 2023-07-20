@@ -1,6 +1,6 @@
 import BlogPageRepository from "../../domain/BlogPageRepository";
 
-import {blogArticles} from "./articlesList";
+import {blogArticles, headersList} from "./articlesList";
 import ArticleInfo from "../../domain/model/ArticlesList";
 import api_client from "../../../../general/data/api_client";
 import {setArticlesListDataAction, setHeadersListDataAction} from "../../redux/asyncActions";
@@ -43,7 +43,8 @@ export default class BlogPageFakeRepository implements BlogPageRepository{
                 console.log(err.message)
                 //setLoading(false);
             })
-        return Promise.resolve(blogArticles);
+        console.log(headersList.articles)
+        return Promise.resolve(headersList.articles);
     }
 
 }

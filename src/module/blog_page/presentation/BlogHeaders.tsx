@@ -1,35 +1,34 @@
-import {useDispatch} from "react-redux";
 import React from "react";
 import style from "./BlogHearers.module.css";
+import formatDate from "../dateTransformer";
 
 const BlogHeaders = (props: any) => {
-    const dispatch = useDispatch()
 
-//TODO -> return for maped data!!! and css style
-    return (
-        <>
-            <div className={style.headers_container}>
+    if(props.data.length === 5) {
+        return (
+            <div className={style.headers_container + ' row'}>
                 <div className={'row'}>
                     <div className={style.left_header + ' col'}>
-                        <div className={style.big_text_header}>LEARNING TO LOVE YOUR MENTAL HEALTH JOURNEY</div>
+                        <div className={style.big_text_header}>{props.data[0].title}</div>
                         <button className={style.btn_read_more}>Read More</button>
                     </div>
+
                     <div className={style.right_header + ' col'}>
                         <div className={'row'}>
-                            <div className={style.right_header_item + ' col-6'}>
-                                <div> <h3>col 1</h3>
-                                    <span>&#x1F552; {props.date}</span>
+                            <div className={style.right_header_col + ' col-6'}>
+                                <div className={style.right_header_item}> <h3>{props.data[1].title}</h3>
+                                    <span>&#x1F552; {formatDate(props.data[1].timestampDateMod)}</span>
                                 </div>
-                                <div> <h3>col 2</h3>
-                                    <span>&#x1F552; {props.date}</span>
+                                <div className={style.right_header_item}> <h3>{props.data[2].title}</h3>
+                                    <span>&#x1F552; {formatDate(props.data[2].timestampDateMod)}</span>
                                 </div>
                             </div>
-                            <div className={style.right_header_item + ' col-6'}>
-                                <div> <h3>col 3</h3>
-                                    <span>&#x1F552; {props.date}</span>
+                            <div className={style.right_header_col + ' col-6'}>
+                                <div className={style.right_header_item}> <h3>{props.data[3].title}</h3>
+                                    <span>&#x1F552; {formatDate(props.data[3].timestampDateMod)}</span>
                                 </div>
-                                <div> <h3>col 4</h3>
-                                    <span>&#x1F552; {props.date}</span>
+                                <div className={style.right_header_item}> <h3>{props.data[4].title}</h3>
+                                    <span>&#x1F552; {formatDate(props.data[4].timestampDateMod)}</span>
                                 </div>
                             </div>
                         </div>
@@ -37,29 +36,14 @@ const BlogHeaders = (props: any) => {
                 </div>
 
             </div>
+        )
+    }
+    //TODO div for headers in case of <5 ???
 
-            {/*<div className={style.big_text}>*/}
-            {/*    <div className={style.divider}></div>*/}
-            {/*    <div className={style.big_text_article1}>*/}
-
-            {/*    </div>*/}
-            {/*    <div className={style.big_text_article2}>*/}
-            {/*        <h3>Runners X Run For The Ocean</h3>*/}
-            {/*        <span>&#x1F552; 07.08.2020</span>*/}
-            {/*    </div>*/}
-            {/*    <div className={style.big_text_article3}>*/}
-            {/*        <h3>Mental and Physical Health Benefits of Yoga: Proven Results</h3>*/}
-            {/*        <span>&#x1F552; 07.08.2020</span>*/}
-            {/*    </div>*/}
-            {/*    <div className={style.big_text_article4}>*/}
-            {/*        <h3>Summer Sports - Summer Vibes</h3>*/}
-            {/*        <span>&#x1F552; 07.08.2020</span>*/}
-            {/*    </div>*/}
-            {/*    <div className={style.divider_horizontal}></div>*/}
-
-            {/*</div>*/}
-        </>
-
+    else return (
+        <div className={style.headers_container}>
+            <div className={style.big_text_header}>Headers less then 5</div>
+        </div>
     )
 };
 

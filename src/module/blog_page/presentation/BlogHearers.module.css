@@ -1,47 +1,45 @@
 
-.item1 {
-    /*grid-area: item;*/
-    margin: 3px;
-    width: 200px;
-    height: 500px;
-    background-color: gold;
-}
-
-.big_text {
-    position: absolute;
+.headers_container {
+    border: rgba(0, 0, 0, 0.1) solid 1px;
+    border-radius: 10px;
+    display: flex;
+    /*flex-direction: row;*/
+    /*flex-wrap: wrap;*/
     width: 1290px;
     height: 540px;
-    left: 155px;
-    top: 160px;
-    background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    padding: 64px 20px;
 }
 
-.divider {
-    position: absolute;
-    left: 49.92%;
-    right: 50%;
-    top: 3.7%;
-    bottom: 3.7%;
-    background: rgba(0, 0, 0, 0.1);
+.left_header {
+    border-right: rgba(0, 0, 0, 0.1) solid 1px;
+    align-content: space-between;
+    /*height: 540px;*/
+    /*width: 644px;*/
 }
 
-.divider_horizontal {
-    position: absolute;
-    left: 51.55%;
-    right: 1.55%;
-    top: 50%;
-    bottom: 49.81%;
-    background: rgba(0, 0, 0, 0.1);
+.right_header {
+
+}
+
+.right_header_col {
+    height: 475px;
+    /*border: #90DA1A solid 1px;*/
+    display: grid;
+    /*grid-template-rows: 1fr 1fr;*/
+    align-content: space-between;
+}
+
+.right_header_item {
+    height: 190px;
+    margin-bottom: 20px;
+    /*border: #ef7777 solid 1px;*/
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: space-between;
+
 }
 
 .big_text_header {
-    position: absolute;
-    left: 1.55%;
-    right: 52.71%;
-    top: 11.85%;
-    bottom: 49.26%;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -49,25 +47,19 @@
     line-height: 70px;
     letter-spacing: -3px;
     color: #000000;
+    text-transform: uppercase;
 }
 
 .btn_read_more {
+    margin-top: 30px;
     height: 50px;
     width: 127px;
-    left: 40px;
-    top: 304px;
     border-radius: 10px;
     padding: 15px 16px 15px 16px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 15px 16px;
     gap: 10px;
-    position: absolute;
-    left: 1.55%;
-    right: 88.6%;
-    top: 56.3%;
-    bottom: 34.44%;
     background: #000000;
     color: #FFFFFF;
     font-family: 'Inter', sans-serif;
@@ -75,121 +67,12 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 20px;
-    display: flex;
-    align-items: center;
     letter-spacing: -0.3px;
 }
 
 .btn_read_more:hover {
     cursor: pointer;
     opacity: 0.7;
-}
-
-
-
-.big_text_article1 {
-    position: absolute;
-    left: 52.71%;
-    right: 25.58%;
-    top: 6.85%;
-    bottom: 69.26%;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 34px;
-    letter-spacing: -0.8px;
-    text-transform: capitalize;
-    color: #000000;
-}
-
-.big_text_article1:hover {
-    cursor: pointer;
-    opacity: 0.7;
-}
-
-.big_text_article2 {
-    position: absolute;
-    left: 77.74%;
-    right: 1.55%;
-    top: 6.85%;
-    bottom: 75.56%;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 34px;
-    letter-spacing: -0.8px;
-    color: #000000;
-}
-.big_text_article2:hover {
-    cursor: pointer;
-    opacity: 0.7;
-}
-.big_text_article3 {
-    position: absolute;
-    left: 52.71%;
-    right: 25.58%;
-    top: 51.7%;
-    bottom: 17.41%;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 34px;
-    letter-spacing: -0.8px;
-    color: #000000;
-}
-
-.big_text_article3:hover{
-    cursor: pointer;
-    opacity: 0.7;
-}
-.big_text_article4 {
-    position: absolute;
-    left: 76.74%;
-    right: 1.55%;
-    top: 57.7%;
-    bottom: 23.7%;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 34px;
-    letter-spacing: -0.8px;
-    color: #000000;
-}
-.big_text_article4:hover {
-    cursor: pointer;
-    opacity: 0.7;
-}
-.pagination_position {
-    position: absolute;
-    left: 39.3%;
-    top: 77.3%;
-    bottom: 49.26%;
-}
-.pagination {
-    display: inline-block;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-
-.pagination a {
-    color: rgba(0, 0, 0, 0.3);
-    float: left;
-    padding: 8px 16px;
-    font-size: larger;
-    text-decoration: none;
-}
-
-.pagination a.active {
-    background-color: #4968fa;
-    color: white;
-}
-
-.pagination a:hover:not(.active) {
-    background-color: #ddd;
 }
 
 
