@@ -1,6 +1,12 @@
 .container {
-  justify-content: space-between;
+  //border: #90DA1A solid 1px;
+
   margin-left: 155px;
   max-width: 80vw;
   margin-bottom: 98px;
+}
+
+.blog_items {
+  display: flex;
+  flex-direction: row;
 }

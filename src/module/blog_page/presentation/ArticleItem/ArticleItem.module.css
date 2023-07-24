@@ -10,13 +10,17 @@
 
 
 .blog {
+    display: flex;
+    flex-direction: column;
+
     padding: 0;
     min-width: 410px;
     max-width: 410px;
     height: 540px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    margin-right: 30px
+    margin-right: 30px;
+    margin-left: 0px;
 }
 
 .blog :hover {

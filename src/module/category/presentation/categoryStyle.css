@@ -95,8 +95,9 @@ body{
 }
 
 .previewProd{
+    /*border: #1a73e8 solid 2px;*/
+    padding-right: 20px;
     width: max-content;
-    padding: 0 0 0 0;
     position: relative;
 }
 

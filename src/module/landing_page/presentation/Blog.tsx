@@ -24,9 +24,9 @@ const Blog = () => {
     return (
         <div>
 
-            <div className={styles.container + ' row mx-auto '}>
+            <div className={styles.container}>
                 <h1 className={styles.h1}>Blog</h1>
-                <div className="d-flex row">
+                <div className={styles.blog_items}>
                     {articlesList.slice(0, 3).map((item) => (
                         <ArticleItem title={item.title} key={item.id} id={item.id} date={formatDate(item.timestampDateMod)} />
                     ))}
