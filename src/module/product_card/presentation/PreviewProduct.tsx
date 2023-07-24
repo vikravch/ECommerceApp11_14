@@ -14,7 +14,7 @@ const PreviewProduct = (props: any) => {
 
 
     return (
-        <div className={'col mb-4 ps-4 previewProd'}>
+        <div className={'col mb-4 previewProd'}>
             <a href={`/product/${props.article}`}>
                 <img className={'images'} src={props.imageUrl} alt="Product"/></a>
             <img className={'add'} src={addCart} alt="Add" onClick={() => dispatch(addToCartAction({
