@@ -48,28 +48,59 @@ const Header = (props: Props) => {
 
     return (
         <div>
-            <div className={styles.navBar}>
+            <div className={styles.navBar + ' navbar-expand-lg'}>
+
                 <div className={(props.isDark) ? `${styles.navBarDark}` : `${styles.navBarLight}`}>
-                    <div className={styles.navItem}>
-                        <span style={{ fontWeight: 'bold' }} onClick={() => window.location.href = '/'}>LOGO</span>
-                    </div>
-                    <div className={`${styles.navItem} ${styles.active}`}>
-                        <span onClick={() => window.location.href = '/catalog/men' } >Men</span>
-                    </div>
-                    <div className={styles.navItem}>
-                        <span onClick={() => window.location.href = '/catalog/women'}>Woman</span>
-                    </div>
-                    <div className={styles.navItem}>
-                        <span onClick={() => window.location.href = '/catalog/kids'}>Kids</span>
-                    </div>
-                    <div className={styles.navItem}>
-                        <span onClick={() => window.location.href = '/catalog/sale'}>Sale</span>
-                    </div>
-                    <div className={styles.navItem}>
-                        <span onClick={() => window.location.href = '/catalog/collection'}>Collections</span>
-                    </div>
-                    <div className={styles.navItem}>
-                        <span onClick={() => window.location.href = '/blog'}>Blog</span>
+
+                    <button className={styles.humburger + ' navbar-toggler'} type="button" data-bs-toggle="collapse">
+                        <span className="navbar-toggler-icon">---</span>
+                        <div className={styles.mobileNav}>
+                            <div className={styles.mobNavItem}>
+                                <span style={{ fontWeight: 'bold' }} onClick={() => window.location.href = '/'}>LOGO</span>
+                            </div>
+                            <div className={`${styles.mobNavItem} ${styles.active}`}>
+                                <span onClick={() => window.location.href = '/catalog/men' } >Men</span>
+                            </div>
+                            <div className={styles.mobNavItem}>
+                                <span onClick={() => window.location.href = '/catalog/women'}>Woman</span>
+                            </div>
+                            <div className={styles.mobNavItem}>
+                                <span onClick={() => window.location.href = '/catalog/kids'}>Kids</span>
+                            </div>
+                            <div className={styles.mobNavItem}>
+                                <span onClick={() => window.location.href = '/catalog/sale'}>Sale</span>
+                            </div>
+                            <div className={styles.mobNavItem}>
+                                <span onClick={() => window.location.href = '/catalog/collection'}>Collections</span>
+                            </div>
+                            <div className={styles.mobNavItem}>
+                                <span onClick={() => window.location.href = '/blog'}>Blog</span>
+                            </div>
+                        </div>
+                    </button>
+
+                    <div className={styles.leftNav + ' collapse navbar-collapse'}>
+                        <div className={styles.navItem}>
+                            <span style={{ fontWeight: 'bold' }} onClick={() => window.location.href = '/'}>LOGO</span>
+                        </div>
+                        <div className={`${styles.navItem} ${styles.active}`}>
+                            <span onClick={() => window.location.href = '/catalog/men' } >Men</span>
+                        </div>
+                        <div className={styles.navItem}>
+                            <span onClick={() => window.location.href = '/catalog/women'}>Woman</span>
+                        </div>
+                        <div className={styles.navItem}>
+                            <span onClick={() => window.location.href = '/catalog/kids'}>Kids</span>
+                        </div>
+                        <div className={styles.navItem}>
+                            <span onClick={() => window.location.href = '/catalog/sale'}>Sale</span>
+                        </div>
+                        <div className={styles.navItem}>
+                            <span onClick={() => window.location.href = '/catalog/collection'}>Collections</span>
+                        </div>
+                        <div className={styles.navItem}>
+                            <span onClick={() => window.location.href = '/blog'}>Blog</span>
+                        </div>
                     </div>
 
                     <div className={styles.navItemRight}>

@@ -38,9 +38,37 @@
 .navContainer {
 }
 
+.humburger {
+    float: left;
+margin-top: 30px;
+    margin-left: 25px;
+}
+
+.mobileNav {
+display: none;
+}
+
+.mobNavItem {
+    display: flex;
+    margin: 5px;
+    flex-direction: column;
+}
+
+.humburger:focus ~ .mobileNav,
+.humburger:active ~ .mobileNav
+{
+    display: block;
+}
+
 .navBar {
+    /*border: #1a73e8 solid 1px;*/
     margin: 0;
     padding: 0;
+}
+
+.leftNav {
+    float: left;
+    /*border: #90DA1A solid 1px;*/
 }
 
 .navItem {
@@ -63,11 +91,13 @@
 
 .navItemRight {
     float: right;
+    margin: 20px 0px;
+    /*border: #FA4A69 solid 1px;*/
 }
 
 .navItemRight div {
     position: relative;
-    margin: 20px;
+    margin-right: 20px;
     display: inline-block;
 }
 
