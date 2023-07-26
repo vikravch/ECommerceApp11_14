@@ -8,7 +8,7 @@ import nikeImg from "../images/zoomx-invincible-run-flyknit-mens-road-running-sh
 
 const Banner = () => {
     return (
-        <div className={style.rectangle}>
+        <div className={style.rectangle + ' d-sm-none d-md-flex'}>
             <div className={style.air}>AIR Beyond Compare</div>
             <div className={style.explore_best_air}>Explore the best Air Max for fall & beyond</div>
             <div className={style.nike}>NIKE</div>

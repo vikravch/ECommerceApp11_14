@@ -164,6 +164,7 @@
 }
 
 .search {
+    color: var(--active-text-color);
     background-color: var(--bg-color);
     display: inline-block;
     margin-right: 16px;
