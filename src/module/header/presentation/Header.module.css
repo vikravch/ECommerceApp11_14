@@ -40,25 +40,50 @@
 
 .humburger {
     float: left;
-margin-top: 30px;
+    margin-top: 20px;
     margin-left: 25px;
 }
 
+.humburger div {
+    width: 35px;
+    height: 5px;
+    background-color: var(--active-text-color);
+    margin: 10px 0;
+}
+
 .mobileNav {
-display: none;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 78px;
+    left: 0;
+    width: 100vw;
+    z-index: 1;
+    background-color: var(--bg-color);
 }
 
 .mobNavItem {
+
     display: flex;
     margin: 5px;
     flex-direction: column;
 }
 
-.humburger:focus ~ .mobileNav,
-.humburger:active ~ .mobileNav
-{
-    display: block;
+.mobNavItem:hover {
+    cursor: pointer;
+    font-weight: bold;
 }
+
+.activeMenu {
+
+
+}
+
+.no_activeMenu {
+    display: none;
+}
+
 
 .navBar {
     /*border: #1a73e8 solid 1px;*/
@@ -91,7 +116,7 @@ display: none;
 
 .navItemRight {
     float: right;
-    margin: 20px 0px;
+    margin: 20px 0;
     /*border: #FA4A69 solid 1px;*/
 }
 
