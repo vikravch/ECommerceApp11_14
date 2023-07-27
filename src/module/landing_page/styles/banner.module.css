@@ -1,11 +1,61 @@
 .rectangle
 {
+
+    margin-top: 0;
     position: relative;
-    width: 100%;
+    width: 100vw;
     height: 650px;
     background: #17181F;
 
 }
+
+.baner_img {
+margin: 5rem 2rem;
+    max-width: 100%;
+    /*border: #FA4A69 solid 1px;*/
+}
+
+/* Default styles for the banner image */
+.baner_img img {
+    max-width: 100%; /* The image will not exceed its original size */
+    height: auto; /* Maintain the original aspect ratio of the image */
+}
+
+/* Media queries to adjust the image size for different screen sizes */
+@media (max-width: 767px) {
+    /* Styles for small screens (e.g., smartphones) */
+    .baner_img img {
+        max-width: 100%; /* Adjust the image to the full width of the screen */
+        height: auto; /* Maintain the original aspect ratio of the image */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Styles for medium-sized screens (e.g., tablets) */
+    .baner_img img {
+        max-width: 90%; /* Adjust the image to 90% of the screen width */
+        height: auto; /* Maintain the original aspect ratio of the image */
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    /* Styles for larger screens (e.g., small laptops) */
+    .baner_img img {
+        max-width: 80%; /* Adjust the image to 80% of the screen width */
+        height: auto; /* Maintain the original aspect ratio of the image */
+    }
+}
+
+@media (min-width: 1200px) {
+    /* Styles for extra-large screens (e.g., large laptops and desktops) */
+    .baner_img img {
+        max-width: 70%; /* Adjust the image to 70% of the screen width */
+        height: auto; /* Maintain the original aspect ratio of the image */
+    }
+}
+
+
+
 /* AIR Beyond Compare */
 .air
 {
@@ -43,7 +93,7 @@
 
     color: #EEEDF0;
 
-    text-shadow: 0px 5px 12px rgba(203, 105, 193, 0.25);
+    text-shadow: 0 5px 12px rgba(203, 105, 193, 0.25);
 }
 
 /* NIKE */
@@ -67,7 +117,7 @@
 
 }
 
-/* zoomx-invincible-run-flyknit-mens-road-running-shoes-sP2zk7 1 */
+
 .img_nike
 {
     position: absolute;
@@ -139,7 +189,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0px 2px;
+    padding: 0 2px;
 
     width: 67px;
     height: 18px;
@@ -211,7 +261,7 @@
 
     color: #FFFFFF;
 
-    text-shadow: 0px 5px 12px rgba(203, 105, 193, 0.25);
+    text-shadow: 0 5px 12px rgba(203, 105, 193, 0.25);
 }
 
 /* Icons/Navigation/arrow-right */

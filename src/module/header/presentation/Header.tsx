@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from "./Header.module.css";
 import img from '../icons/shopping-bag.png';
 import imgEmpty from '../icons/shoppingBagEmpty.png';
@@ -7,6 +7,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import imgProfile from "../icons/imgProfile.png";
+import DropDownMenu from "./DropDownMenu";
 
 interface Props {
     isDark: boolean
@@ -48,30 +49,36 @@ const Header = (props: Props) => {
 
     return (
         <div>
-            <div className={styles.navBar}>
+            <div className={styles.navBar + ' navbar-expand-lg'}>
+
                 <div className={(props.isDark) ? `${styles.navBarDark}` : `${styles.navBarLight}`}>
-                    <div className={styles.navItem}>
-                        <span style={{ fontWeight: 'bold' }} onClick={() => window.location.href = '/'}>LOGO</span>
+                    <div className={'d-lg-none'}>
+                        <DropDownMenu />
                     </div>
-                    <div className={`${styles.navItem} ${styles.active}`}>
-                        <span>
-                            <Link to='/catalog/men'>Men</Link>
-                        </span>
-                    </div>
-                    <div className={styles.navItem}>
-                        <span onClick={() => window.location.href = '/catalog/women'}>Woman</span>
-                    </div>
-                    <div className={styles.navItem}>
-                        <span onClick={() => window.location.href = '/catalog/kids'}>Kids</span>
-                    </div>
-                    <div className={styles.navItem}>
-                        <span onClick={() => window.location.href = '/catalog/sale'}>Sale</span>
-                    </div>
-                    <div className={styles.navItem}>
-                        <span onClick={() => window.location.href = '/catalog/collection'}>Collections</span>
-                    </div>
-                    <div className={styles.navItem}>
-                        <span onClick={() => window.location.href = '/blog'}>Blog</span>
+
+
+                    <div className={styles.leftNav + ' collapse navbar-collapse'}>
+                        <div className={styles.navItem}>
+                            <span style={{ fontWeight: 'bold' }} onClick={() => window.location.href = '/'}>LOGO</span>
+                        </div>
+                        <div className={`${styles.navItem} ${styles.active}`}>
+                            <span onClick={() => window.location.href = '/catalog/men' } >Men</span>
+                        </div>
+                        <div className={styles.navItem}>
+                            <span onClick={() => window.location.href = '/catalog/women'}>Woman</span>
+                        </div>
+                        <div className={styles.navItem}>
+                            <span onClick={() => window.location.href = '/catalog/kids'}>Kids</span>
+                        </div>
+                        <div className={styles.navItem}>
+                            <span onClick={() => window.location.href = '/catalog/sale'}>Sale</span>
+                        </div>
+                        <div className={styles.navItem}>
+                            <span onClick={() => window.location.href = '/catalog/collection'}>Collections</span>
+                        </div>
+                        <div className={styles.navItem}>
+                            <span onClick={() => window.location.href = '/blog'}>Blog</span>
+                        </div>
                     </div>
 
                     <div className={styles.navItemRight}>

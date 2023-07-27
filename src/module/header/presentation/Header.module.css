@@ -38,9 +38,62 @@
 .navContainer {
 }
 
+.humburger {
+    float: left;
+    margin-top: 20px;
+    margin-left: 25px;
+}
+
+.humburger div {
+    width: 35px;
+    height: 5px;
+    background-color: var(--active-text-color);
+    margin: 10px 0;
+}
+
+.mobileNav {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 78px;
+    left: 0;
+    width: 100vw;
+    z-index: 1;
+    background-color: var(--bg-color);
+}
+
+.mobNavItem {
+
+    display: flex;
+    margin: 5px;
+    flex-direction: column;
+}
+
+.mobNavItem:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.activeMenu {
+
+
+}
+
+.no_activeMenu {
+    display: none;
+}
+
+
 .navBar {
+    /*border: #1a73e8 solid 1px;*/
     margin: 0;
     padding: 0;
+}
+
+.leftNav {
+    float: left;
+    /*border: #90DA1A solid 1px;*/
 }
 
 .navItem {
@@ -63,11 +116,13 @@
 
 .navItemRight {
     float: right;
+    margin: 20px 0;
+    /*border: #FA4A69 solid 1px;*/
 }
 
 .navItemRight div {
     position: relative;
-    margin: 20px;
+    margin-right: 20px;
     display: inline-block;
 }
 
@@ -109,6 +164,7 @@
 }
 
 .search {
+    color: var(--active-text-color);
     background-color: var(--bg-color);
     display: inline-block;
     margin-right: 16px;
