@@ -54,7 +54,9 @@ const Header = (props: Props) => {
                         <span style={{ fontWeight: 'bold' }} onClick={() => window.location.href = '/'}>LOGO</span>
                     </div>
                     <div className={`${styles.navItem} ${styles.active}`}>
-                        <span onClick={() => window.location.href = '/catalog/men' } >Men</span>
+                        <span>
+                            <Link to='/catalog/men'>Men</Link>
+                        </span>
                     </div>
                     <div className={styles.navItem}>
                         <span onClick={() => window.location.href = '/catalog/women'}>Woman</span>
