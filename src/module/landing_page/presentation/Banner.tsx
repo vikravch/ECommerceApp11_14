@@ -10,15 +10,8 @@ const Banner = () => {
     return (
         <div className={style.rectangle + ' d-sm-none d-md-flex'}>
             <div className={'container'}>
-                <div className={style.air}>AIR Beyond Compare</div>
-                <div className={style.explore_best_air}>Explore the best Air Max for fall & beyond</div>
-                <div className={style.nike}>NIKE</div>
-                <div className="{style.grad}">
-                    <div className={style.grad_vector1}>
-                        <div className={style.grad_vector2}>
-                            <img src={nikeImg} className={style.img_nike}/>
-                        </div>
-                    </div>
+                <div className={style.baner_img}>
+                    <img src="https://i.postimg.cc/25wqSgwk/Screenshot-2023-07-27-at-17-24-50.png" alt="banner"/>
                 </div>
 
                 <div className={style.group2}>
