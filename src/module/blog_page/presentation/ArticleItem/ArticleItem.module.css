@@ -1,13 +1,3 @@
-/*.container {*/
-
-/*    margin-left: 155px;*/
-/*    border: #ce49fa solid 10px;*/
-/*    max-width: 80vw;*/
-/*    margin-bottom: 98px;*/
-
-/*}*/
-
-
 
 .blog {
     display: flex;
@@ -20,7 +10,7 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-right: 30px;
-    margin-left: 0px;
+    margin-left: 0;
 }
 
 .blog :hover {
@@ -83,98 +73,3 @@ b {
     margin: auto 10px;
     letter-spacing: -0.8px;
 }
-
-
-
-
-
-
-/*.article {*/
-
-/*    display: flex; !* Use flexbox for the container *!*/
-/*    flex-direction: column; !* Stack the child divs vertically *!*/
-/*    justify-content: space-between;*/
-/*    margin: 25px 30px;*/
-/*    width: 410px;*/
-/*    height: 540px;*/
-/*    !*padding: 20px;*!*/
-/*    border: 1px solid rgba(185, 184, 52, 1);*/
-/*    border-radius: 10px;*/
-/*    transition: box-shadow 0.2s ease-in-out,*/
-/*    transform 0.2s ease-in-out;*/
-/*}*/
-/*.link {*/
-/*    text-decoration: none;*/
-/*}*/
-/*.article:hover {*/
-/*    cursor: pointer;*/
-/*    opacity: 0.7;*/
-/*    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.10);*/
-/*    transform: translateY(-5px);*/
-/*}*/
-
-/*.article_item_img_div {*/
-/*    background-color: #d3d3d3;*/
-/*}*/
-
-/*.article_item_img {*/
-/*    width: 410px;*/
-/*    height: 270px;*/
-
-/*}*/
-
-/*.article_title {*/
-/*    color: black;*/
-
-/*    font-weight: bold;*/
-/*    margin: 20px;*/
-/*    margin-top: 64px;*/
-/*}*/
-
-/*.article_date {*/
-/*    display: flex;*/
-/*    font-size: 18px;*/
-/*    font-weight: 400;*/
-/*    color: rgba(0, 0, 0, 0.6);*/
-/*    margin-left: 20px;*/
-/*    margin-bottom: 20px;*/
-/*}*/
-
-/*.article_date img {*/
-/*margin-top: 4px;*/
-/*    margin-right: 5px;*/
-/*}*/
-
-/*.clock {*/
-/*    margin-left: 20px;*/
-/*    margin-bottom: 20px;*/
-/*    font-weight: normal;*/
-/*    color: rgba(26, 26, 26, 0.27);*/
-/*    align-content: center;*/
-
-/*}*/
-
-/*.blog {*/
-/*    padding: 0;*/
-/*    min-width: 410px;*/
-/*    max-width: 410px;*/
-/*    height: 540px;*/
-/*    border: 1px solid rgb(183, 50, 50);*/
-/*    border-radius: 10px;*/
-/*    margin: 25px 30px;*/
-/*    transition: box-shadow 0.2s ease-in-out,*/
-/*    transform 0.2s ease-in-out;*/
-/*}*/
-
-
-/*.blog :hover {*/
-/*     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.10);*/
-/*     transform: translateY(-5px);*/
-/* }*/
-
-/*.blog img {*/
-/*    width: 410px;*/
-/*    height: 270px;*/
-/*    padding: 0;*/
-/*    margin: 0;*/
-/*}*/
