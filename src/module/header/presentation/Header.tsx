@@ -89,9 +89,12 @@ const Header = (props: Props) => {
                             </div>
                         </div>
                         <div>
-                            <input type="search" className={`${styles.search}`} placeholder="Search"
+                            <input type="search"
+                                   className={`${styles.search}`}
+                                   placeholder="Search"
                                    onChange={(e) => setSearchVal(e.target.value)}
-                                   onKeyPress={(e) => handleKeyPress(e)}/>
+                                   onKeyDown={(e) => handleKeyPress(e)}
+                            />
                         </div>
                         <div>
                             <Link to="/cart" className={`${styles.cartContainer}`}>
@@ -100,11 +103,9 @@ const Header = (props: Props) => {
                             </Link>
                         </div>
                         <div>
-
-                             {/*add link to profile Btn*/}
-                            <span className={'d-inline-block'}>
+                            <Link to={profileBtn} className={'d-inline-block'}>
                                 <img src={imgProfile} className={styles.imgProfile} alt={"profile"}/>
-                            </span>
+                            </Link>
                         </div>
                     </div>
                 </div>
