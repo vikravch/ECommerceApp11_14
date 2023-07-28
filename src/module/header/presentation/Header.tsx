@@ -59,25 +59,25 @@ const Header = (props: Props) => {
 
                     <div className={styles.leftNav + ' collapse navbar-collapse'}>
                         <div className={styles.navItem}>
-                            <span style={{ fontWeight: 'bold' }} onClick={() => window.location.href = '/'}>LOGO</span>
+                            <Link className={styles.logo} to={'/'}>LOGO</Link>
                         </div>
                         <div className={`${styles.navItem} ${styles.active}`}>
-                            <span onClick={() => window.location.href = '/catalog/men' } >Men</span>
+                            <Link className={styles.link} to={'/catalog/men'} >Men</Link>
                         </div>
                         <div className={styles.navItem}>
-                            <span onClick={() => window.location.href = '/catalog/women'}>Woman</span>
+                            <Link className={styles.link} to={'/catalog/women'}>Woman</Link>
                         </div>
                         <div className={styles.navItem}>
-                            <span onClick={() => window.location.href = '/catalog/kids'}>Kids</span>
+                            <Link className={styles.link} to={'/catalog/kids'}>Kids</Link>
                         </div>
                         <div className={styles.navItem}>
-                            <span onClick={() => window.location.href = '/catalog/sale'}>Sale</span>
+                            <Link className={styles.link} to={'/catalog/sale'}>Sale</Link>
                         </div>
                         <div className={styles.navItem}>
-                            <span onClick={() => window.location.href = '/catalog/collection'}>Collections</span>
+                            <Link className={styles.link} to={'/catalog/collection'}>Collections</Link>
                         </div>
                         <div className={styles.navItem}>
-                            <span onClick={() => window.location.href = '/blog'}>Blog</span>
+                            <Link className={styles.link} to={'/blog'}>Blog</Link>
                         </div>
                     </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useLocation} from "react-router-dom";
 import ProductDetailPage from "./module/product_page/presentation/ProductDetailPage";
 import {routes} from "./general/navigation/routes";
 import BlogArticlePage from "./module/article_page/presentation/BlogArticlePage";
@@ -18,14 +18,15 @@ import SignUp from "./module/login/presentation/SignUp";
 import RestorePass from "./module/login/presentation/RestorePass";
 import PrivacyPolicy from "./module/login/presentation/PrivacyPolicy";
 import TermsOfUse from "./module/login/presentation/TermsOfUse";
-import Navigation_Menu from "./module/landing_page/presentation/Navigation_Menu";
 
 function App() {
   //sessionStorage.setItem("token", "123"); // h32-0 // p 14
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   return (
       <div>
-        {window.location.pathname === '/' ? <Header isDark={true}/> : <Header isDark={false}/> }
+        {isHomePage ? <Header isDark={true}/> : <Header isDark={false}/> }
 
         <Routes>
           <Route path="/" element={<LandingDetailPage/>}/>

@@ -9,7 +9,7 @@
 /* Light theme */
 .navBarLight {
     --bg-color: #ffffff;
-    --text-color: rgba(51, 51, 51, 0.3);
+    --text-color: rgba(0, 0, 0, 0.6);
     --active-text-color: #333333;
 }
 
@@ -100,12 +100,28 @@
     float: left;
 }
 
-.navItem span {
-    /*color: black;*/
+.logo {
+    color: var(--text-color);
+    font-weight: bold;
     display: block;
     text-align: center;
     padding: 30px 16px;
     text-decoration: none;
+}
+.link {
+    color: var(--text-color);
+    display: block;
+    text-align: center;
+    padding: 30px 16px;
+    text-decoration: none;
+
+}
+.logo:visited {
+    color: var(--text-color);
+}
+
+.link:visited {
+    color: var(--text-color);
 }
 
 .active {
