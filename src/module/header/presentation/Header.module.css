@@ -2,7 +2,6 @@
 .navBarDark {
     --bg-color: #1a1a1a;
     --text-color: rgba(255, 255, 255, 0.5);
-    /*--active-bg-color: #f31818;*/
     --active-text-color: #ffffff;
 }
 
@@ -35,19 +34,16 @@
     filter: invert(1);
 }
 
-.navContainer {
-}
-
 .humburger {
     float: left;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-left: 25px;
 }
 
 .humburger div {
     width: 35px;
-    height: 5px;
-    background-color: var(--active-text-color);
+    height: 3px;
+    background-color: var(--text-color);
     margin: 10px 0;
 }
 
@@ -64,7 +60,6 @@
 }
 
 .mobNavItem {
-
     display: flex;
     margin: 5px;
     flex-direction: column;
@@ -77,7 +72,6 @@
 
 .activeMenu {
 
-
 }
 
 .no_activeMenu {
@@ -86,14 +80,12 @@
 
 
 .navBar {
-    /*border: #1a73e8 solid 1px;*/
     margin: 0;
     padding: 0;
 }
 
 .leftNav {
     float: left;
-    /*border: #90DA1A solid 1px;*/
 }
 
 .navItem {
@@ -114,36 +106,31 @@
     text-align: center;
     padding: 30px 16px;
     text-decoration: none;
-
 }
 .logo:visited {
     color: var(--text-color);
 }
-
 .link:visited {
     color: var(--text-color);
 }
-
 .active {
-    /*background-color: var(--active-bg-color);*/
     color: var(--active-text-color);
     font-weight: bold;
 }
 
 .navItemRight {
-    float: right;
-    margin: 20px 0;
-    /*border: #FA4A69 solid 1px;*/
-}
-
-.navItemRight div {
     position: relative;
-    margin-right: 20px;
-    display: inline-block;
+    float: right;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    border: #FA4A69 solid 1px;
 }
 
-
-.navItem :hover {
+.navItemRight img {
+    margin-right: 20px;
+}
+.navItem:hover {
     cursor: pointer;
     background-color: rgba(210, 210, 210, 0.1);
 }
@@ -151,26 +138,34 @@
 .lineDevider {
     height: 1px;
     width: 100vw;
-    background-color: rgba(231, 231, 231, 0.2);
+    background-color: #cecece;
 }
 
 .imgProfile {
     cursor: pointer;
 }
 
-.imgCart {
-    height: 20px;
-    width: 16px;
-}
+
 
 .cartContainer {
-    position: relative;
+    /*position: relative;*/
+    margin: 0;
+    padding: 0;
+    /*border: #fac84a solid 1px;*/
+}
 
+.imgCart {
+    /*border: #FA4A69 solid 1px;*/
+    margin: 0;
+    /*height: 20px;*/
+    /*width: 16px;*/
 }
 
 .cartBadge {
-    position: absolute;
-    top: -15px;
+    /*border: #FA4A69 solid 1px;*/
+    /*position: absolute;*/
+    /*top: -15px;*/
+    /*left: 278px;*/
     padding-left: 5px;
     padding-right: 5px;
     background-color: #2984fc;
@@ -191,22 +186,29 @@
     height: 40px;
 }
 
-.searchLink {
-    position: absolute;
-    top: 34px;
-    left: 10px;
-    display: inline-block;
-    cursor: pointer;
-
-}
-
 .searchLink:hover {
     background: none;
 }
 
+@media (max-width: 480px) {
+    .navItemRight {
+        display: flex;
+        flex-direction: row;
+    }
+    .navItemRight input {
+        display: none;
+    }
+    .navItemRight img {
+        margin-right: 15px;
+    }
+    .searchBtn {
+        display: none;
+    }
+}
+
 .searchBtn {
     position: absolute;
-    top: 34px;
+    top: 10px;
     left: 10px;
     display: inline-block;
     cursor: pointer;

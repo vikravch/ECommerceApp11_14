@@ -82,11 +82,9 @@ const Header = (props: Props) => {
                     </div>
 
                     <div className={styles.navItemRight}>
-                        <div className={styles.searchLink}>
-                            <div>
+                        <div>
                                 <img src={search} alt={'search'} className={styles.searchBtn}
                                      onClick={() => setStartSearch(true)}/>
-                            </div>
                         </div>
                         <div>
                             <input type="search"
