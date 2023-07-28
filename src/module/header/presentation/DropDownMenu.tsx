@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 
 import styles from "./Header.module.css";
+import {Link} from "react-router-dom";
 
 const DropDownOut: React.FC = (): JSX.Element => {
     const [showDropDown, setShowDropDown] = useState<boolean>(false);
@@ -31,26 +32,26 @@ const DropDownOut: React.FC = (): JSX.Element => {
                 <div>
                     {showDropDown && (
                         <div className={styles.mobileNav}>
-                            <div className={styles.mobNavItem}>
-                                <span style={{ fontWeight: 'bold' }} onClick={() => window.location.href = '/'}>LOGO</span>
+                            <div className={styles.navItem}>
+                                <Link className={styles.logo} to={'/'}>LOGO</Link>
                             </div>
-                            <div className={`${styles.mobNavItem} ${styles.active}`}>
-                                <span onClick={() => window.location.href = '/catalog/men' } >Men</span>
+                            <div className={`${styles.navItem} ${styles.active}`}>
+                                <Link className={styles.link} to={'/catalog/men'} >Men</Link>
                             </div>
-                            <div className={styles.mobNavItem}>
-                                <span onClick={() => window.location.href = '/catalog/women'}>Woman</span>
+                            <div className={styles.navItem}>
+                                <Link className={styles.link} to={'/catalog/women'}>Woman</Link>
                             </div>
-                            <div className={styles.mobNavItem}>
-                                <span onClick={() => window.location.href = '/catalog/kids'}>Kids</span>
+                            <div className={styles.navItem}>
+                                <Link className={styles.link} to={'/catalog/kids'}>Kids</Link>
                             </div>
-                            <div className={styles.mobNavItem}>
-                                <span onClick={() => window.location.href = '/catalog/sale'}>Sale</span>
+                            <div className={styles.navItem}>
+                                <Link className={styles.link} to={'/catalog/sale'}>Sale</Link>
                             </div>
-                            <div className={styles.mobNavItem}>
-                                <span onClick={() => window.location.href = '/catalog/collection'}>Collections</span>
+                            <div className={styles.navItem}>
+                                <Link className={styles.link} to={'/catalog/collection'}>Collections</Link>
                             </div>
-                            <div className={styles.mobNavItem}>
-                                <span onClick={() => window.location.href = '/blog'}>Blog</span>
+                            <div className={styles.navItem}>
+                                <Link className={styles.link} to={'/blog'}>Blog</Link>
                             </div>
                         </div>
                     )}
