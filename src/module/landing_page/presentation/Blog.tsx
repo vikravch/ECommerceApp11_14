@@ -19,7 +19,7 @@ const Blog = () => {
     return (
         <div>
 
-            <div className={styles.container + ' container'}>
+            <div className={styles.container}>
                 <h1 className={styles.h1}>Blog</h1>
                 <div className={styles.blog_items}>
                     {articlesList.slice(0, 3).map((item) => (
