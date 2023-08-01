@@ -33,25 +33,25 @@ const DropDownOut: React.FC = (): JSX.Element => {
                     {showDropDown && (
                         <div className={styles.mobileNav}>
                             <div className={styles.navItem}>
-                                <Link className={styles.logo} to={'/'}>LOGO</Link>
+                                <Link className={styles.logo} to={'/'} onClick={(): void => toggleDropDown()}>LOGO</Link>
                             </div>
                             <div className={`${styles.navItem} ${styles.active}`}>
-                                <Link className={styles.link} to={'/catalog/men'} >Men</Link>
+                                <Link className={styles.link} to={'/catalog/men'} onClick={(): void => toggleDropDown()}>Men</Link>
                             </div>
                             <div className={styles.navItem}>
-                                <Link className={styles.link} to={'/catalog/women'}>Woman</Link>
+                                <Link className={styles.link} to={'/catalog/women'} onClick={(): void => toggleDropDown()}>Woman</Link>
                             </div>
                             <div className={styles.navItem}>
-                                <Link className={styles.link} to={'/catalog/kids'}>Kids</Link>
+                                <Link className={styles.link} to={'/catalog/kids'} onClick={(): void => toggleDropDown()}>Kids</Link>
                             </div>
                             <div className={styles.navItem}>
-                                <Link className={styles.link} to={'/catalog/sale'}>Sale</Link>
+                                <Link className={styles.link} to={'/catalog/sale'} onClick={(): void => toggleDropDown()}>Sale</Link>
                             </div>
                             <div className={styles.navItem}>
-                                <Link className={styles.link} to={'/catalog/collection'}>Collections</Link>
+                                <Link className={styles.link} to={'/catalog/collection'} onClick={(): void => toggleDropDown()}>Collections</Link>
                             </div>
                             <div className={styles.navItem}>
-                                <Link className={styles.link} to={'/blog'}>Blog</Link>
+                                <Link className={styles.link} to={'/blog'} onClick={(): void => toggleDropDown()}>Blog</Link>
                             </div>
                         </div>
                     )}
