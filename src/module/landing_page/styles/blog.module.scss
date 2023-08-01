@@ -1,5 +1,4 @@
 .container {
-
   margin: auto;
   margin-bottom: 98px;
   max-width: 1320px;
@@ -10,10 +9,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
-  //flex-direction: row;
 }
 
 .h1 {
+  max-width: 1320px;
+  margin-left: 10px;
   margin-top: 98px;
   margin-bottom: 48px;
   font-family: Inter;

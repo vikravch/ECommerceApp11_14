@@ -8,13 +8,13 @@ import imgSale from "../images/group11/image 4.png";
 import imgCollection from "../images/group11/image 5.png";
 
 import {Link} from "react-router-dom";
-import styles from "../styles/newArrivals.module.css";
+// import styles from "../styles/newArrivals.module.css";
 
 const Categories = () => {
     return (
         <>
             <div className={style.container}>
-                <h1 className={styles.h1}>Categories</h1>
+                <h1 className={style.h1}>Categories</h1>
                 <div className={style.category_items}>
                     <div className={style.bigSubContainer}>
                         <Link className={style.link} to={'/catalog/men'}>

@@ -1,9 +1,13 @@
 .container {
-    margin-top: 98px;
-    align-content: space-between;
+    max-width: 1335px;
+    margin: auto;
+
+
 }
 
 .h1 {
+    max-width: 1320px;
+    margin-left: 10px;
     margin-top: 98px;
     margin-bottom: 48px;
     font-family: Inter;
