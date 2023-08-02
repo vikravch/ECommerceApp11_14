@@ -79,7 +79,7 @@ const  CategoryPage:React.FC = () => {
                             id={productId}
                             imageUrl={"http://via.placeholder.com/300x365"}
                             title={product.product_title}
-                            article={product.idProduct}
+                            product_id={product.product_id}
                             price={Math.round(product.price)}
                             rating={product.rating}
                             discount={product.discount}/>

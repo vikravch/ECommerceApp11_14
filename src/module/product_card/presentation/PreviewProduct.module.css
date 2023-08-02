@@ -1,0 +1,14 @@
+.img {
+    width: 300px;
+    height: 365px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.add{
+    position: absolute;
+    cursor: pointer;
+    border-radius: 10px;
+    top: 315px;
+    left: 264px;
+}

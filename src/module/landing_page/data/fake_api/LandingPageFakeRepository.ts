@@ -1,12 +1,12 @@
 import LandingPageRepository from "./LandingPageRepository";
-import ProductPreviewInfo from "../../../product_page/domain/model/ProductPreviewInfo";
-import {products2} from "../../utils/constants";
+import {productsResponse} from "../../utils/constants";
 import apiClient from "../../../../general/data/api_client";
 import {setDataAction} from "../../redux/asyncActions";
+import ApiResponseProductPreview from "../../../../general/dto/APIResponseTypes";
 
 export default class LandingPageFakeRepository implements LandingPageRepository{
-    async getNewArrivals(pageNumber: number): Promise<Array<ProductPreviewInfo>> {
-        apiClient.get<Array<ProductPreviewInfo>>(`/collection/new_arrived?page=${pageNumber}&pageSize=12&sort=acquisition_date_desc`).then(
+    async getNewArrivals(pageNumber: number): Promise<ApiResponseProductPreview> {
+        apiClient.get<ApiResponseProductPreview>(`/collection/new_arrived?page=${pageNumber}&pageSize=12&sort=acquisition_date_desc`).then(
             (res) => {
             console.log("setArrivalsDataAction")
             setDataAction(res.data)
@@ -15,10 +15,10 @@ export default class LandingPageFakeRepository implements LandingPageRepository{
                 console.log("ERROR: ")
                 console.log(err.message)
             })
-        return new Promise<ProductPreviewInfo[]>((resolve) => {
+        return new Promise<ApiResponseProductPreview>((resolve) => {
             console.log("ProductPageFakeRepository - getProductDetails - setting the FAKE product");
             console.log()
-            resolve(products2);
+            resolve(productsResponse);
         });
     }
 }

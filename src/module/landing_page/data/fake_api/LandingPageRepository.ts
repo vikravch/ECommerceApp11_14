@@ -1,5 +1,6 @@
-import ProductPreviewInfo from "../../../product_page/domain/model/ProductPreviewInfo";
+
+import ApiResponseProductPreview from "../../../../general/dto/APIResponseTypes";
 
 export default interface LandingPageRepository{
-    getNewArrivals: (pageNumber: number)=> Promise <Array<ProductPreviewInfo>>;
+    getNewArrivals: (pageNumber: number)=> Promise <ApiResponseProductPreview>;
 }

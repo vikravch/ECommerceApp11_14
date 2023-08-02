@@ -3,6 +3,7 @@ import {Rating} from "react-simple-star-rating";
 import addCart from "../../landing_page/images/sumbol/bag_cart.svg"
 import {addToCartAction} from "../../cart/redux/asyncActions";
 import {useDispatch} from "react-redux";
+import style from "../presentation/PreviewProduct.module.css"
 
 const PreviewProduct = (props: any) => {
     const [rating, setRating] = useState(0);
@@ -16,8 +17,8 @@ const PreviewProduct = (props: any) => {
     return (
         <div className={'col mb-4 previewProd'}>
             <a href={`/product/${props.article}`}>
-                <img className={'images'} src={props.imageUrl} alt="Product"/></a>
-            <img className={'add'} src={addCart} alt="Add" onClick={() => dispatch(addToCartAction({
+                <img className={style.img} src={props.imageUrl} alt="Product"/></a>
+            <img className={style.add} src={addCart} alt="Add" onClick={() => dispatch(addToCartAction({
                 count: 1,
                 color: "Black",
                 size: "M",
