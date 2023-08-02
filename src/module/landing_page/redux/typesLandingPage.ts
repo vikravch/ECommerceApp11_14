@@ -1,5 +1,5 @@
 
-import ApiResponseProductPreview from "../../../general/dto/APIResponseTypes";
+import {ApiResponseProductPreview} from "../../../general/dto/APIResponseTypes";
 
 
 export interface LandingPageStore{

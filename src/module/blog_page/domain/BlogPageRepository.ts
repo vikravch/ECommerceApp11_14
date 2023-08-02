@@ -1,5 +1,5 @@
-import ArticlesList from "./model/ArticlesList";
+import {ApiResponseBlogPreview} from "../../../general/dto/APIResponseTypes";
 
 export default interface BlogArticlePageRepository {
-    getArticlesList: () => Promise<Array<ArticlesList>>;
+    getArticlesList: () => Promise<ApiResponseBlogPreview>;
 }

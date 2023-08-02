@@ -45,6 +45,72 @@ export const blogArticles = [
     }
 ]
 
+export const blogArticlesResponse = {
+    "content": [
+        {
+            "id": "20",
+            "thumbImgUrl": "https://i.imgur.com/CmS0Csv.jpg",
+            "title": "How to Choose the Perfect Sportswear: A Guide for Athletes20",
+            "timestampDateMod": "2023-07-14T22:59:50.000+00:00"
+        },
+        {
+            "id": "21",
+            "thumbImgUrl": "https://i.imgur.com/EosIyw1.png",
+            "title": "Train The Way You Want: Energise Your Routine with our Growing Library of Workout",
+            "timestampDateMod": "2023-07-14T22:59:50.000+00:00"
+        },
+        {
+            "id": "22",
+            "thumbImgUrl": "https://i.imgur.com/nJypwCM.png",
+            "title": "Workout From Home Routines: Tips and Best Practices",
+            "timestampDateMod": "2023-07-14T22:59:50.000+00:00"
+        },
+        {
+            "id": "23",
+            "thumbImgUrl": "https://i.imgur.com/7vkobKf.jpg",
+            "title": "Reach Your Fitness Goals with the our Training Club App (NTC).",
+            "timestampDateMod": "2023-07-14T22:59:50.000+00:00"
+        },
+        {
+            "id": "24",
+            "thumbImgUrl": "https://i.imgur.com/erhOpDY.png",
+            "title": "For Wherever and Whenever You Want To Train",
+            "timestampDateMod": "2023-07-14T22:59:50.000+00:00"
+        },
+        {
+            "id": "25",
+            "thumbImgUrl": "https://i.imgur.com/fHi58j5.png",
+            "title": "17 Tips for Becoming Sportsmen",
+            "timestampDateMod": "2023-07-14T22:59:50.000+00:00"
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "empty": false,
+            "sorted": true,
+            "unsorted": false
+        },
+        "offset": 0,
+        "pageNumber": 0,
+        "pageSize": 6,
+        "paged": true,
+        "unpaged": false
+    },
+    "last": false,
+    "totalPages": 5,
+    "totalElements": 26,
+    "size": 6,
+    "number": 0,
+    "sort": {
+        "empty": false,
+        "sorted": true,
+        "unsorted": false
+    },
+    "first": true,
+    "numberOfElements": 6,
+    "empty": false
+}
+
 export const headersList = {
     "articles": [
         {

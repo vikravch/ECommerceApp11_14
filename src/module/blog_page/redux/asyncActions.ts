@@ -7,7 +7,7 @@ export const getArticlesListAction = ():any => {
         dispatch(startArticlesListLoadAction());
         getArticlesList().
         then((data)=>{
-            dispatch(setArticlesListDataAction(data));
+            dispatch(setArticlesListDataAction(data.content));
         });
     }
 };

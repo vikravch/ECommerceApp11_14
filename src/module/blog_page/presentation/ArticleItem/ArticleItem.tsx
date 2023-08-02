@@ -9,7 +9,6 @@ const ArticleItem: React.FC<any> = (props) => {
     <div className={style.blog} onClick={getArticleDetailsAction(props.id)}>
         <div >
             <img width={410} height={270} src={props.img} alt="Blog"/>
-
             <h5>{props.title}</h5>
 
             <div className={style.clock}>

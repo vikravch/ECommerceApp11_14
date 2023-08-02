@@ -2,7 +2,7 @@ import LandingPageRepository from "./LandingPageRepository";
 import {productsResponse} from "../../utils/constants";
 import apiClient from "../../../../general/data/api_client";
 import {setDataAction} from "../../redux/asyncActions";
-import ApiResponseProductPreview from "../../../../general/dto/APIResponseTypes";
+import {ApiResponseProductPreview} from "../../../../general/dto/APIResponseTypes";
 
 export default class LandingPageFakeRepository implements LandingPageRepository{
     async getNewArrivals(pageNumber: number): Promise<ApiResponseProductPreview> {
