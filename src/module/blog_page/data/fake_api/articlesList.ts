@@ -1,3 +1,5 @@
+import {ApiResponseBlogPreview} from "../../../../general/dto/APIResponseTypes";
+
 export const articlesList = `[{"id":1196,"title":"BNYORIPONW","thumbImgUrl":"http://DUOCYTUSKR","timestampDateMod":5225985221736821174},{"id":1410,"title":"YX@YXICOTL","thumbImgUrl":"http://LWESKFFETA","timestampDateMod":752039541320270179},{"id":3947,"title":"GXBLNEBMOF","thumbImgUrl":"http://HRXTNMDNYI","timestampDateMod":484998835409921887},{"id":5068,"title":"PIOHWYYUFV","thumbImgUrl":"http://R@IOATIPPF","timestampDateMod":1935147327085379767},{"id":5946,"title":"@YWJHTESOA","thumbImgUrl":"http://OITUUOAW@K","timestampDateMod":1458210915589152579},{"id":6343,"title":"ACDPRMYENY","thumbImgUrl":"http://AFXWLIFKA@","timestampDateMod":6812835070577595291}]`;
 
 export const blogArticles = [
@@ -50,7 +52,7 @@ export const blogArticlesResponse = {
         {
             "id": "20",
             "thumbImgUrl": "https://i.imgur.com/CmS0Csv.jpg",
-            "title": "How to Choose the Perfect Sportswear: A Guide for Athletes20",
+            "title": "MOCK How to Choose the Perfect Sportswear: A Guide for Athletes20",
             "timestampDateMod": "2023-07-14T22:59:50.000+00:00"
         },
         {
@@ -109,7 +111,7 @@ export const blogArticlesResponse = {
     "first": true,
     "numberOfElements": 6,
     "empty": false
-}
+} as ApiResponseBlogPreview
 
 export const headersList = {
     "articles": [

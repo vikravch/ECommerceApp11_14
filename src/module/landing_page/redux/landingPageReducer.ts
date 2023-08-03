@@ -5,6 +5,7 @@ import {PUT_PRODUCTS} from "../../category/redux/asyncActions";
 import {productsResponse} from "../utils/constants";
 import {SET_CURRENT_PAGE} from "../../pagination/redux/paginationReducer"
 
+// productsData: productsResponse
 
 export function landingPageReducer(
     state: LandingPageStore = {
@@ -17,6 +18,8 @@ export function landingPageReducer(
             return {...state, isLoading: true}
         }
         case SET_DATA: {
+            console.log("SET DATA PAYLOAD:::")
+            console.log(action.payload)
             return {...state, productsData: action.payload, isLoading: false}
         }
         case SET_CURRENT_PAGE: {

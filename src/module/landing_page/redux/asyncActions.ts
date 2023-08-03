@@ -6,7 +6,7 @@ export const getArrivalDetailsAction = (pageNumber:number):any => {
         console.log("getProductDetailsAction")
         dispatch(startLoadAction());
         new Repository().getNewArrivals(pageNumber).then((data)=>{
-            // console.log(JSON.stringify(data));
+             console.log(JSON.stringify(data));
             dispatch(setDataAction(data));
         });
     }

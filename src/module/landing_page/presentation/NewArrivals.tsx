@@ -15,6 +15,7 @@ const NewArrivals: React.FC = () => {
     const dispatch = useDispatch()
     const isLoading = useSelector<Store, number>(state => state.landingPage.currentPage)
     const newArrivals = useSelector<Store, Array<ProductPreviewInfo>>(state => state.landingPage.productsData.content)
+
     // @ts-ignore
     const currentPage = useSelector<Store, number>(state => state.landingPage.currentPage);
     const skeletons = [...new Array(12)].map((_, index) => <Skeleton key={index}/>);
