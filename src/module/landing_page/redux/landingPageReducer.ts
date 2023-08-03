@@ -1,5 +1,5 @@
 import {Action} from "../../../general/redux/Action";
-import {SET_DATA, START_LOADING} from "./asyncActions";
+import {SET_DATA, START_LOADING, STOP_LOADING} from "./asyncActions";
 import {LandingPageStore} from "./typesLandingPage";
 import {PUT_PRODUCTS} from "../../category/redux/asyncActions";
 import {productsResponse} from "../utils/constants";
@@ -17,6 +17,10 @@ export function landingPageReducer(
         case START_LOADING: {
             return {...state, isLoading: true}
         }
+        case STOP_LOADING: {
+            return {...state, isLoading: false}
+        }
+
         case SET_DATA: {
             console.log("SET DATA PAYLOAD:::")
             console.log(action.payload)

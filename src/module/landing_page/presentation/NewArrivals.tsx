@@ -22,8 +22,8 @@ const NewArrivals: React.FC = () => {
 
     //todo compare current page and do dispatch if needed
     useEffect(() => {
-        if (currentPage !== 1) {
-            dispatch(getArrivalDetailsAction(0));
+        if (currentPage) {
+            dispatch(getArrivalDetailsAction(currentPage));
         }
     }, [currentPage]);
 
@@ -33,7 +33,7 @@ const NewArrivals: React.FC = () => {
             <h1 className={styles.h1}>New arrivals</h1>
             <div className={'col'}>
                 <div className={'row row-cols-4 justify-content-center p-0 m-0'}>
-                    {isLoading ? skeletons : newArrivals.map((product, index) =>
+                    {newArrivals.map((product, index) =>
                         <PreviewProduct
                             key={index}
                             id={index}

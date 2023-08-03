@@ -1,13 +1,10 @@
-import React, {useEffect, useState} from "react";
-import {PaginationData, PaginationProps} from "./redux/typesPagination";
-import {useDispatch, useSelector} from "react-redux";
-import {Store} from "../../general/redux/storeTypes";
-
+import React from "react";
+import { PaginationProps} from "./redux/typesPagination";
 
 const Pagination: React.FC<PaginationProps> = (
     { data, currentPage, setCurrentPage}
 ) => {
-     const { totalPages,  } = data;
+     const { totalPages } = data;
 
     const handlePageChange = (pageNumber: number) => {
         console.log("handlePageChange:")
