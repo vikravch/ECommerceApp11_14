@@ -40,20 +40,14 @@ const ProductDetailPage: React.FC = () => {
             return price;
         }
         console.log(typeof price)
-        console.log("Price (in $):", price);
-        console.log("Discount (in $):", discount);
         const newPriceInUSD: number = + price;
         const discountInUSD: number = + discount;
         const fullPriceInUSD: number = (newPriceInUSD + discountInUSD);
         const discountPercentage: number = (discountInUSD / fullPriceInUSD) * 100;
-        console.log("Full Price (in $):", fullPriceInUSD);
-        console.log("Discount Percentage:", discountPercentage, "%");
         return (Math.round(discountPercentage));
     };
     const discountPercentage = calculateDiscountPersent(product.price, product.discount);
     const fullPrice = Number(product.price) + Number(product.discount);
-
-
 
     const [selectedSizeOption, setSelectedSizeOption] = useState<string>("S");
 
