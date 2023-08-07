@@ -9,11 +9,10 @@ import {getArticlesListAction} from "../../blog_page/redux/asyncActions";
 
 const Blog = () => {
     const articlesList = useSelector<Store, Array<ArticleInfo>>(state => state.blogPage.articlesList)
-
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getArticlesListAction());
+        dispatch(getArticlesListAction(1));
     }, []);
 
     return (

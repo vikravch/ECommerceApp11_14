@@ -1,12 +1,11 @@
 import ArticlesList from "../domain/model/ArticlesList";
 import {getArticlesList} from "../domain/use_case/getArticlesList";
 import {getHeadersList} from "../domain/use_case/getArticlesList";
-import {SET_CURRENT_BLOG_PAGE} from "../../category/redux/asyncActions";
 
-export const getArticlesListAction = ():any => {
+export const getArticlesListAction = (pageNumber: number):any => {
     return (dispatch:Function) => {
         dispatch(startArticlesListLoadAction());
-        getArticlesList().
+        getArticlesList(pageNumber).
         then((data)=>{
             dispatch(setArticlesListDataAction(data.content));
         });
@@ -25,9 +24,9 @@ export const getHearersListAction = ():any => {
 
 export const START_ARTICLES_LIST_LOAD = "start_articles_list_load";
 export const SET_ARTICLES_LIST_DATA = "set_articles_list_data";
-
+export const SET_CURRENT_BLOG_PAGE = 'set_current_blog_page';
 export const SET_HEADERS_LIST_DATA = 'set_headers_list_data';
-export const START_HEADERS_LIST_LOAD = 'start_headers_load'
+export const START_HEADERS_LIST_LOAD = 'start_headers_load';
 
 export const setBlogPaginationPage = (data: number) => ({
     type: SET_CURRENT_BLOG_PAGE,

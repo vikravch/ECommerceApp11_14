@@ -6,9 +6,17 @@ import {setArticleDataAction} from "../../redux/asyncActions";
 
 export default class BlogArticlePageFakeRepository implements BlogArticlePageRepository {
     async getArticleDetails(id: string): Promise<Article> {
-        const response = await apiClient.get<Article>('/blog/' + id);
-        console.log("getArticleDetails");
-        setArticleDataAction(response.data);
-        return response.data;
+        try {
+            const response = await apiClient.get<Article>('/blog/' + id);
+            console.log("getArticleDetails");
+            setArticleDataAction(response.data);
+            return response.data;
+        }
+        catch (error: any) {
+            console.log("ERROR: ");
+            console.log(error.message);
+            throw error;
+        }
+
     }
 }

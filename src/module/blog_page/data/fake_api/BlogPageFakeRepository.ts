@@ -7,16 +7,19 @@ import {ApiResponseBlogPreview} from "../../../../general/dto/APIResponseTypes";
 
 export default class BlogPageFakeRepository implements BlogPageRepository{
 
-    async getArticlesList(): Promise<ApiResponseBlogPreview> {
-        api_client.get<ApiResponseBlogPreview>('/blog?page=0&size=6').then((res) => {
+    async getArticlesList(pageNumber: number): Promise<ApiResponseBlogPreview> {
+        try {
+            const res = await api_client.get<ApiResponseBlogPreview>(`/blog?page=${pageNumber}&size=6`)
+            console.log('GET ARTICLES LIST')
             setArticlesListDataAction(res.data.content)
-        })
-            .catch((err) => {
+            return res.data
+        }
+            catch(error: any) {
                 console.log("ERROR: ")
-                console.log(err.message)
+                console.log(error.message)
                 //setLoading(false);
-            })
-        return Promise.resolve(blogArticlesResponse);
+            }
+         return Promise.resolve(blogArticlesResponse);
     }
 
     async getHeadersList(): Promise<Array<HeadersList>> {

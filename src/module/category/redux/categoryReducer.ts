@@ -1,5 +1,11 @@
 import {Action} from "../../../general/redux/Action";
-import {PRODUCTS_REQUEST, PUT_PRODUCTS, SET_CATEGORY, SET_CURRENT_BLOG_PAGE, SET_SORT} from "./asyncActions";
+import {
+    PRODUCTS_REQUEST,
+    PUT_PRODUCTS,
+    SET_CATEGORY,
+    SET_CURRENT_CATEGORY_PAGE,
+    SET_SORT
+} from "./asyncActions";
 import {CategoryPageStore, SortProps} from "./typesCategoryPage";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
 
@@ -20,7 +26,7 @@ export const categoryReducer = (
     action: Action
 ) => {
     switch (action.type) {
-        case SET_CURRENT_BLOG_PAGE: {
+        case SET_CURRENT_CATEGORY_PAGE: {
             console.log("Category reducer " + action.payload)
             return {...state, currentPage: action.payload}
         }

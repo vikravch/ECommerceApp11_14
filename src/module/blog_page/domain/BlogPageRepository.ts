@@ -1,5 +1,5 @@
 import {ApiResponseBlogPreview} from "../../../general/dto/APIResponseTypes";
 
 export default interface BlogArticlePageRepository {
-    getArticlesList: () => Promise<ApiResponseBlogPreview>;
+    getArticlesList: (pageNumber: number) => Promise<ApiResponseBlogPreview>;
 }

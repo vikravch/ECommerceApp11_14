@@ -88,7 +88,7 @@ const  CategoryPage:React.FC = () => {
 
                     <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
                         (page:number)=>{
-                            dispatch(setBlogPaginationPage(page))
+                         //   dispatch(setBlogPaginationPage(page))
                         }
                     } />
                 </div>

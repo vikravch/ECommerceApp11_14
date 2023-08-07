@@ -4,25 +4,27 @@ import ArticleItem from "./ArticleItem/ArticleItem";
 import {useDispatch, useSelector} from "react-redux";
 import ArticleInfo from "../domain/model/ArticlesList";
 import {Store} from "../../../general/redux/storeTypes";
-import {getArticlesListAction, getHearersListAction} from "../redux/asyncActions";
+import {getArticlesListAction, getHearersListAction, setBlogPaginationPage} from "../redux/asyncActions";
 import formatDate from "../dateTransformer";
 import BlogHeaders from "./BlogHeaders";
 import HeadersList from "../domain/model/HeadersList";
 import styles from "../../landing_page/styles/blog.module.scss";
+import Pagination from "../../pagination/Pagination";
+import {paginationData} from "../../pagination/data/fakeData";
 
 const BlogPage: React.FC = () => {
     const articlesList = useSelector<Store, Array<ArticleInfo>>(state => state.blogPage.articlesList)
     //TODO change state to headersList
     const headersList = useSelector<Store, Array<HeadersList>>(state => state.blogPage.headersList)
+    const currentPage = useSelector<Store, number>(state => state.blogPage.currentPage);
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getArticlesListAction());
+        dispatch(getArticlesListAction(currentPage));
         dispatch(getHearersListAction())
-    }, []);
+    }, [currentPage]);
 
-    const currentPage = useSelector<Store, number>(state => state.blogPage.currentPage);
 
     return (
         <div className={style.wrapper}>
@@ -40,15 +42,13 @@ const BlogPage: React.FC = () => {
                 </div>
 
             </div>
-            {/*<Pagination data={paginationData} currentPage={currentPage} setCurrentPage={*/}
-            {/*    (page: number) => {*/}
-            {/*        dispatch(setPaginationPage(page))*/}
-            {/*    }*/}
-            {/*}/>*/}
+            <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
+                (page: number) => {
+                    dispatch(setBlogPaginationPage(page))
+                }
+            }/>
         </div>
     );
 };
 
 export default BlogPage;
-
-//articlesInfo.ArticleBaseInfo

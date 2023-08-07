@@ -1,5 +1,5 @@
 import React from "react";
-import { PaginationProps} from "./redux/typesPagination";
+import {PaginationProps} from "./redux/typesPagination";
 
 const Pagination: React.FC<PaginationProps> = (
     { data, currentPage, setCurrentPage}

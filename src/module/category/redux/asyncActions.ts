@@ -4,7 +4,7 @@ export const SET_CATEGORY = "set_category";
 export const SET_SORT = "set_sort";
 export const PUT_PRODUCTS = "put_products"
 export const PRODUCTS_REQUEST = "products_request"
-export const SET_CURRENT_BLOG_PAGE = "change_pagination_newarrivals_page"
+export const SET_CURRENT_CATEGORY_PAGE = "change_pagination_category_page"
 
 
 export const getProdustsByCategory = (category:string):any => async (dispatch:Dispatch<any>) => {
