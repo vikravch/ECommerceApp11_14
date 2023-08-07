@@ -7,7 +7,6 @@
     margin-top: 30px;
     margin-left: 155px;
     height: 20px;
-
     font-family: 'Inter', serif;
     font-style: normal;
     font-weight: 500;
@@ -28,13 +27,19 @@
     position: inherit;
     width: 850px;
     height: 1273px;
+    /*width: 45vw; !* (850px / viewport width) * 100 *!*/
+    /*height: 67.5vh; !* (1273px / viewport height) * 100 *!*/
     margin-left: 155px;
     margin-top: 30px;
 }
 
 .photoBox img {
     display: inline;
-    width: 50%;
+    object-fit: cover;
+    max-width: 420px;
+    max-height: 634px;
+    width: 30vw;
+    height: 45vw;
 }
 
 .productInfoBox {

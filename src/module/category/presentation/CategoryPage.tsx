@@ -16,7 +16,7 @@ import {getProdustsByCategory} from "../redux/asyncActions";
 import Skeleton from "./Skeleton";
 import Pagination from "../../pagination/Pagination";
 import {paginationData} from "../../pagination/data/fakeData";
-import {setPaginationPage} from "../../pagination/redux/paginationReducer";
+import {setBlogPaginationPage} from "../../blog_page/redux/asyncActions";
 
 type Params = {
     type: string;
@@ -88,7 +88,7 @@ const  CategoryPage:React.FC = () => {
 
                     <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
                         (page:number)=>{
-                            dispatch(setPaginationPage(page))
+                            dispatch(setBlogPaginationPage(page))
                         }
                     } />
                 </div>

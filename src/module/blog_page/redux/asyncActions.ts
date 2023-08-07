@@ -1,6 +1,7 @@
 import ArticlesList from "../domain/model/ArticlesList";
 import {getArticlesList} from "../domain/use_case/getArticlesList";
 import {getHeadersList} from "../domain/use_case/getArticlesList";
+import {SET_CURRENT_BLOG_PAGE} from "../../category/redux/asyncActions";
 
 export const getArticlesListAction = ():any => {
     return (dispatch:Function) => {
@@ -28,6 +29,10 @@ export const SET_ARTICLES_LIST_DATA = "set_articles_list_data";
 export const SET_HEADERS_LIST_DATA = 'set_headers_list_data';
 export const START_HEADERS_LIST_LOAD = 'start_headers_load'
 
+export const setBlogPaginationPage = (data: number) => ({
+    type: SET_CURRENT_BLOG_PAGE,
+    payload: data
+})
 
 export const startArticlesListLoadAction = () => ({
         type: START_ARTICLES_LIST_LOAD

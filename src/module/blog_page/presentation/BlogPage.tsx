@@ -6,9 +6,6 @@ import ArticleInfo from "../domain/model/ArticlesList";
 import {Store} from "../../../general/redux/storeTypes";
 import {getArticlesListAction, getHearersListAction} from "../redux/asyncActions";
 import formatDate from "../dateTransformer";
-import Pagination from "../../pagination/Pagination";
-import {paginationData} from "../../pagination/data/fakeData";
-import {setPaginationPage} from "../../pagination/redux/paginationReducer";
 import BlogHeaders from "./BlogHeaders";
 import HeadersList from "../domain/model/HeadersList";
 import styles from "../../landing_page/styles/blog.module.scss";
@@ -43,11 +40,11 @@ const BlogPage: React.FC = () => {
                 </div>
 
             </div>
-            <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
-                (page: number) => {
-                    dispatch(setPaginationPage(page))
-                }
-            }/>
+            {/*<Pagination data={paginationData} currentPage={currentPage} setCurrentPage={*/}
+            {/*    (page: number) => {*/}
+            {/*        dispatch(setPaginationPage(page))*/}
+            {/*    }*/}
+            {/*}/>*/}
         </div>
     );
 };

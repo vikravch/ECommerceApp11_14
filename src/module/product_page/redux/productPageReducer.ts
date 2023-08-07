@@ -1,15 +1,20 @@
 import {ProductPageStore} from "./typesProductPage";
 import Product from "../domain/model/Product";
 import {Action} from "../../../general/redux/Action";
-import {SET_ALSOLIKE_DATA, SET_CART_PRODUCT, SET_PRODUCT_DATA, START_PRODUCT_LOAD} from "./asyncActions";
+import {
+    SET_ALSOLIKE_DATA,
+    SET_CART_PRODUCT,
+    SET_CURRENT_ALSOLIKE_PAGE,
+    SET_PRODUCT_DATA,
+    START_PRODUCT_LOAD
+} from "./asyncActions";
 import {fakeFullProduct} from "../data/tempData";
-import {SET_CURRENT_PAGE} from "../../pagination/redux/paginationReducer";
 import {productsResponse} from "../../landing_page/utils/constants";
 
 
 export function productPageReducer(
     state: ProductPageStore = {product: new Product(fakeFullProduct),
-        isLoading: false, currentPage: 0, alsoLikeData: productsResponse
+        isLoading: false, currentPage: 1, alsoLikeData: productsResponse
     }, action: Action
 ){
     switch (action.type){
@@ -26,7 +31,7 @@ export function productPageReducer(
             return { ...state, cartProduct: action.payload}
         }
 
-        case SET_CURRENT_PAGE: {
+        case SET_CURRENT_ALSOLIKE_PAGE: {
             console.log("ProductPage reducer " + action.payload)
             return {...state, currentPage: action.payload}
         }

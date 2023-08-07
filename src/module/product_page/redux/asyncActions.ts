@@ -31,7 +31,8 @@ export const START_PRODUCT_LOAD = "start_product_load";
 export const SET_PRODUCT_DATA = "set_product_data";
 export const SET_CART_PRODUCT = "set_cart_product";
 export const ADD_TO_CHART = "add_to_cart"; //Alena did "//"
-export const SET_ALSOLIKE_DATA = 'set_alsolike_data'
+export const SET_ALSOLIKE_DATA = 'set_alsolike_data';
+export const SET_CURRENT_ALSOLIKE_PAGE = "change_pagination_alsolike_page"
 
 export const startProductLoadAction = () => ({
         type: START_PRODUCT_LOAD
@@ -48,6 +49,11 @@ export const setCartProductAction = (data:CartProduct) => ({
 
 export const setAlsoLikeDataAction = (data: ApiResponseProductPreview ) => ({
     type: SET_ALSOLIKE_DATA,
+    payload: data
+})
+
+export const setAlsoLikePage = (data: number) => ({
+    type: SET_CURRENT_ALSOLIKE_PAGE,
     payload: data
 })
 

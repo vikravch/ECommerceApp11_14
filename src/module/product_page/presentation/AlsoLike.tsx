@@ -6,8 +6,7 @@ import {Store} from "../../../general/redux/storeTypes";
 import Skeleton from "../../category/presentation/Skeleton";
 import Pagination from "../../pagination/Pagination";
 import {paginationData} from "../../pagination/data/fakeData";
-import {setPaginationPage} from "../../pagination/redux/paginationReducer";
-import {getAlsoLikeDetailsAction} from "../redux/asyncActions";
+import {getAlsoLikeDetailsAction, setAlsoLikePage} from "../redux/asyncActions";
 import ProductPreviewInfo from "../domain/model/ProductPreviewInfo";
 
 
@@ -47,7 +46,7 @@ const AlsoLike = () => {
                 </div>
                 <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
                     (page:number)=>{
-                        dispatch(setPaginationPage(page))
+                        dispatch(setAlsoLikePage(page))
                     }
                 } />
             </div>

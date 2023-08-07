@@ -5,9 +5,8 @@ import {paginationData} from "../../pagination/data/fakeData";
 import Skeleton from "../../category/presentation/Skeleton";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
-import {setPaginationPage} from "../../pagination/redux/paginationReducer";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
-import {getArrivalDetailsAction} from "../redux/asyncActions";
+import {getArrivalDetailsAction, setNewArrivalsPaginationPage} from "../redux/asyncActions";
 import styles from "../styles/newArrivals.module.css"
 
 
@@ -49,7 +48,7 @@ const NewArrivals: React.FC = () => {
                 </div>
                 <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
                     (page: number) => {
-                        dispatch(setPaginationPage(page))
+                        dispatch(setNewArrivalsPaginationPage(page))
                     }
                 }/>
             </div>
