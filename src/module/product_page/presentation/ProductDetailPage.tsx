@@ -32,18 +32,28 @@ const ProductDetailPage: React.FC = () => {
     useEffect(() => {
         if (productId) {
             dispatch(getProductDetailsAction(productId));
-            // getProductDetails(productId).then((data)=>{
-            // })
         }
     }, [productId]);
 
-    const calculateOldPrice = (newPrice: number, discount: number): number => {
-        if (newPrice <= 0 || discount < 0 || discount >= 100) {
-            return newPrice; // Return new price if invalid values are provided
+    const calculateDiscountPersent = (price: number, discount: number): number => {
+        if (price <= 0 || discount < 0 || discount >= 100) {
+            return price;
         }
-
-        return ((100/discount) * newPrice);
+        console.log(typeof price)
+        console.log("Price (in $):", price);
+        console.log("Discount (in $):", discount);
+        const newPriceInUSD: number = + price;
+        const discountInUSD: number = + discount;
+        const fullPriceInUSD: number = (newPriceInUSD + discountInUSD);
+        const discountPercentage: number = (discountInUSD / fullPriceInUSD) * 100;
+        console.log("Full Price (in $):", fullPriceInUSD);
+        console.log("Discount Percentage:", discountPercentage, "%");
+        return (Math.round(discountPercentage));
     };
+    const discountPercentage = calculateDiscountPersent(product.price, product.discount);
+    const fullPrice = Number(product.price) + Number(product.discount);
+
+
 
     const [selectedSizeOption, setSelectedSizeOption] = useState<string>("S");
 
@@ -103,12 +113,17 @@ const ProductDetailPage: React.FC = () => {
                     </div>
 
                     <div className={styles.productInfoBox}>
-                        <div className={styles.discount}>-{product.discount}%</div>
+                        {discountPercentage > 0 ? (
+                            <div className={styles.discount}>-{discountPercentage}%</div>
+                        ) : null}
                         <div className={styles.title}>{product.product_title}</div>
                         <div className={styles.description}>{product.description}
                         </div>
                         <div className={styles.newPrice}>${product.price}</div>
-                        <div className={styles.price}>${calculateOldPrice(product.price, product.discount)}</div>
+
+                        {fullPrice !== Number(product.price) ? (
+                            <div className={styles.price}>${fullPrice}</div>
+                        ) : null}
 
                         <div className={styles.lineDeviderSmall}></div>
 
