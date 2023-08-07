@@ -72,7 +72,7 @@ const CartPage:React.FC = () => {
                                         <div className="d-block h-100">
                                         <div className="cart-title row h-50 align-items-start">
                                             <p className="mb-0 card-title text-dark text-end fs-4 fw-500">
-                                                {(item.discount)?<label className="me-2 text-muted" style={{textDecoration: "line-through", textDecorationColor: "rgba(250, 74, 105, 1)"}}>${Math.round((100 * item.price) / (100 - item.discount)) + "  "}</label>:null}
+                                                {(item.discount > 0)?<label className="me-2 text-muted" style={{textDecoration: "line-through", textDecorationColor: "rgba(250, 74, 105, 1)"}}>${Math.round((100 * item.price) / (100 - item.discount)) + "  "}</label>:null}
                                                 ${item.price}</p>
                                         </div>
                                         <div className="row h-50 align-items-end">

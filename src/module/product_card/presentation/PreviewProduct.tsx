@@ -10,9 +10,10 @@ const PreviewProduct = (props: any) => {
     const dispatch = useDispatch();
     const handleRating = (rate: number) => {
         setRating(rate)
-
     }
 
+    //TODO if we addToCart() from ProductPreview, we don't have any colors and sizes from Server.
+    // So we cant push it to cart :(
 
     return (
         <div className={'col mb-4 previewProd'}>

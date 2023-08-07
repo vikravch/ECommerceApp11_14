@@ -39,7 +39,6 @@ const ProductDetailPage: React.FC = () => {
         if (price <= 0 || discount < 0 || discount >= 100) {
             return price;
         }
-        console.log(typeof price)
         const newPriceInUSD: number = + price;
         const discountInUSD: number = + discount;
         const fullPriceInUSD: number = (newPriceInUSD + discountInUSD);
@@ -92,6 +91,8 @@ const ProductDetailPage: React.FC = () => {
            console.log("cart ITEMS: " + JSON.stringify(cartItems))
     }
 
+    console.log(product.product_main_img)
+
     return (
         <div>
             <div>
@@ -100,6 +101,7 @@ const ProductDetailPage: React.FC = () => {
                 </Modal>
                 <div className={styles.productPage}>
                     <div className={styles.photoBox}>
+                        <img onClick={toggle} alt={"imgs"} src={product.product_main_img} key={Math.random()}/>
                         { product.product_imgs.map(el => {
                             return <img onClick={toggle} alt={"imgs"} src={el} key={Math.random()}/>;
                         })}

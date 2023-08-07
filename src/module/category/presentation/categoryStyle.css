@@ -95,14 +95,13 @@ body{
 }
 
 .previewProd{
-    /*border: #1a73e8 solid 2px;*/
-    padding-right: 20px;
-    width: max-content;
+    margin-right: 20px;
+    width: 300px;
     position: relative;
 }
 
 .images{
-    width: 100%;
+    /*width: 100%;*/
     max-width: 300px;
     object-fit: cover;
 }

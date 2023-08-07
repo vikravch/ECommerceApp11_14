@@ -35,7 +35,8 @@
 
 .photoBox img {
     display: inline;
-    object-fit: cover;
+    /*object-fit: cover;*/
+    object-fit: scale-down;
     max-width: 420px;
     max-height: 634px;
     width: 30vw;

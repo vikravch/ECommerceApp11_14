@@ -15,7 +15,7 @@ export default class Product {
 
     constructor(json: any) {
         this.idProduct = json.product_id || '';
-        this.product_main_img = json.product_thumb || '';
+        this.product_main_img = json.product_thumb;
         this.product_imgs = json.product_imgs || [''];
         this.product_title = json.product_title || '';
         this.description = json.description || '';
