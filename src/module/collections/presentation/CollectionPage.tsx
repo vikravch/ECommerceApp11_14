@@ -5,21 +5,27 @@ import {Store} from "../../../general/redux/storeTypes";
 import Skeleton from "../../category/presentation/Skeleton";
 import CollectionCard from "./CollectionCard";
 import {fakeCollectionsResponce} from "../../landing_page/utils/constants";
+import {getCollectionDataAction} from "../redux/asyncActions";
+import CollectionInfo from "../types/CollectionInfo";
 
 
 const CollectionPage = () => {
+    console.log("collection PAGE")
     const dispatch = useDispatch()
     const isLoading = useSelector<Store, boolean>(
         state => state.productPage.isLoading
     );
-    //const collectionsData = useSelector<Store, Array<CollectionInfo>>(state => state.collectionPage.collectionData.content)
-    const collectionsData = fakeCollectionsResponce.content
-    const currentPage = useSelector<Store, number>(state => state.landingPage.currentPage);
+    const collectionsData = useSelector<Store, Array<CollectionInfo>>(state => state.collectionPage.collectionData.content)
+   // const collectionsData = fakeCollectionsResponce.content
+    const currentPage = useSelector<Store, number>(state => state.collectionPage.currentPage);
+
     const skeletons = [...new Array(4)].map((_, index) => <Skeleton key={index}/>);
 
     useEffect(() => {
+        dispatch(getCollectionDataAction(currentPage))
         if (currentPage) {
-            //dispatch(getCollectionDataAction(currentPage));
+            console.log("Use Effect Coll 2")
+            dispatch(getCollectionDataAction(currentPage));
         }
     }, [currentPage]);
 

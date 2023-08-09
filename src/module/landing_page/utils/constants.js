@@ -287,7 +287,7 @@ export  const fakeProducts = [
 export const fakeCollectionsResponce = {
     "content": [
         {
-            "name": "New Names at Neiman's",
+            "name": "MOCK Names at Neiman's",
             "collection_id": "1",
             "img_url": "https://i.imgur.com/of0fltu.png"
         },

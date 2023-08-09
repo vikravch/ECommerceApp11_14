@@ -5,6 +5,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {Navigate} from "react-router-dom";
 
+
+// SUPER USER admin@admin.com:admin
 const SignIn:React.FC = () => {
     // password from 8 symbols, a-z, A-Z, 0-9, no whitespace
     //TODO bg
