@@ -47,7 +47,7 @@ function App() {
           <Route path={`/${routes.recovery}`} element={<RestorePass/>}/>
           <Route path={`/${routes.catalog}`} element={<CategoryPage/>}/>
           <Route path={`/${routes.catalog}/:type`} element={<CategoryPage/>}/>
-
+          <Route path={`/${routes.catalog}/:collectionName`} element={<CategoryPage/>}/>
           <Route path={`/${routes.catalog}/collection`} element={<CollectionPage/>}/>
 
           <Route path={`/${routes.agreement}/privacyPolicy`} element={<PrivacyPolicy/>}/>

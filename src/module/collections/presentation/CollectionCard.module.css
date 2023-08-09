@@ -6,10 +6,32 @@
     border-radius: 10px;
 }
 
+.name {
+    margin: auto;
+
+}
+
 .add{
     position: absolute;
     cursor: pointer;
     border-radius: 10px;
     top: 315px;
     left: 264px;
+}
+
+.link {
+    color: var(--text-color);
+    display: block;
+    text-align: center;
+    padding-top: 30px;
+    text-decoration: none;
+}
+
+.link:visited {
+    color: black;
+}
+
+
+.link:hover {
+    color: rgba(0, 0, 0, 0.5);
 }

@@ -16,7 +16,7 @@ import {getProdustsByCategory} from "../redux/asyncActions";
 import Skeleton from "./Skeleton";
 import Pagination from "../../pagination/Pagination";
 import {paginationData} from "../../pagination/data/fakeData";
-import {setBlogPaginationPage} from "../../blog_page/redux/asyncActions";
+import {convertToSpaceFormat} from "../../../general/common/tools";
 
 type Params = {
     type: string;
@@ -43,10 +43,10 @@ const  CategoryPage:React.FC = () => {
     const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
     return (
         <div className={'container p-0'}>
-            <div className={'main'}>{type} / <span className={'black'}>All</span></div>
+            <div className={'main'}>{convertToSpaceFormat(type)} / <span className={'black'}>All</span></div>
             <div className={"container marCategory"}>
                 <div className={"row justify-content-between"}>
-                    <h1 className={"col-7 p-0 category"}>{type}</h1>
+                    <h1 className={"col-7 p-0 category"}>{convertToSpaceFormat(type)}</h1>
                     <div className={"col-2 align-self-center p-0 selectDiv"}>
                         <select className="form-select form-select-sm select"
                                 onChange={(e)=>{console.log("dispatch me!");}}>

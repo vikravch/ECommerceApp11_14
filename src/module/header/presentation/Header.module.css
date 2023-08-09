@@ -8,7 +8,7 @@
 /* Light theme */
 .navBarLight {
     --bg-color: #ffffff;
-    --text-color: rgba(0, 0, 0, 0.6);
+    --text-color: rgba(0, 0, 0, 0.67);
     --active-text-color: #333333;
 }
 
