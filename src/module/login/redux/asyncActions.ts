@@ -1,4 +1,5 @@
 import {Dispatch} from "react";
+import api_client from "../../../general/data/api_client";
 
 export const LOGIN_SUCCESS = 'login_success';
 export const LOGIN_FAIL = 'login_fail';
@@ -27,8 +28,7 @@ export const signIn = (email:string, password:string): any => async (dispatch:Di
 }
 export const signUp = (email:string, password:string, dateOfBirth: string): any => async (dispatch:Dispatch<any>) => {
     const myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic dXNlcjFAbWFpbC5jb206dGVzdA==");
-    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("User-Password", `Basic ` + email + password );
 
     const raw = JSON.stringify({
         "email": email,
@@ -36,7 +36,7 @@ export const signUp = (email:string, password:string, dateOfBirth: string): any 
         "dateOfBirth": dateOfBirth
     });
 
-    fetch("https://spring-security-app-ecommerce.herokuapp.com/auth/registration", {
+    fetch(api_client + `/auth/registration`, {
         method: 'POST',
         headers: myHeaders,
         body: raw,
