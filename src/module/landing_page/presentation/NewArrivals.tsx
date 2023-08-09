@@ -19,7 +19,6 @@ const NewArrivals: React.FC = () => {
     const currentPage = useSelector<Store, number>(state => state.landingPage.currentPage);
     const skeletons = [...new Array(12)].map((_, index) => <Skeleton key={index}/>);
 
-    //todo compare current page and do dispatch if needed
     useEffect(() => {
         if (currentPage) {
             dispatch(getArrivalDetailsAction(currentPage));

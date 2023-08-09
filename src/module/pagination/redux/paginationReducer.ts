@@ -1,22 +1,8 @@
-import {ProductPageStore} from "../../product_page/redux/typesProductPage";
-import Product from "../../product_page/domain/model/Product";
-import {tempCartPr, tempProductData} from "../../product_page/data/tempData";
 import {Action} from "../../../general/redux/Action";
-import {SET_CART_PRODUCT, SET_PRODUCT_DATA, START_PRODUCT_LOAD} from "../../product_page/redux/asyncActions";
-import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
-import {products2} from "../../landing_page/utils/constants";
-
 import {paginationData} from "../data/fakeData";
 import {SET_DATA, START_DATA_LOAD} from "./asyncActions";
 import {PaginationStore} from "./typesPagination";
 
-
-
-//todo SET_CURRENT_PAGE it works on all pages at the same time now. Need to fix
-// export const setPaginationPage = (page:number) => ({
-//     type: SET_CURRENT_NEWARRIVALS_PAGE,
-//     payload: page
-// })
 export function paginationReducer(
     state: PaginationStore = {data: paginationData,
         isLoading: false,

@@ -1,36 +1,23 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Rating} from "react-simple-star-rating";
-import addCart from "../../landing_page/images/sumbol/bag_cart.svg"
-import {addToCartAction} from "../../cart/redux/asyncActions";
-import {useDispatch} from "react-redux";
-import style from "../presentation/PreviewProduct.module.css"
+import addCart from "../../landing_page/images/sumbol/bag_cart.svg";
+import style from "../presentation/PreviewProduct.module.css";
 
 const PreviewProduct = (props: any) => {
-    const [rating, setRating] = useState(0);
-    const dispatch = useDispatch();
-    const handleRating = (rate: number) => {
-        setRating(rate)
-    }
-
-    //TODO if we addToCart() from ProductPreview, we don't have any colors and sizes from Server.
-    // So we cant push it to cart :(
 
     return (
         <div className={'col mb-4 previewProd'}>
             <a href={`/product/${props.article}`}>
                 <img className={style.img} src={props.imageUrl} alt="Product"/></a>
-            <img className={style.add} src={addCart} alt="Add" onClick={() => dispatch(addToCartAction({
-                count: 1,
-                color: "Black",
-                size: "M",
-                idProduct: props.article,
-                product_thumb: props.product_thumb,
-                product_title: props.product_title,
-                rating: props.rating,
-                price: Math.round(props.price),
-                discount: props.discount
-            }))}/>
-
+            <img className={style.add} src={addCart} alt="Add"
+            />
+            <div className={'pt-2'}>
+                <Rating size={20} emptyColor={"rgba(0, 0, 0, 0.1)"}
+                        fillColor={"#568FFF"}
+                        allowHover={false}
+                        readonly={true}
+                        initialValue={props.rating}/>
+            </div>
             <div className="art pt-2">#{props.article}</div>
             <div className={'row pt-1 fw-500'}>
                 <div className={'col art c-black'}>{props.title}</div>

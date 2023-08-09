@@ -1,11 +1,8 @@
 import React from 'react';
 import style from "./ArticleItem.module.css";
-import {getArticleDetailsAction} from "../../../article_page/redux/asyncActions";
 import {routes} from "../../../../general/navigation/routes";
 
 const ArticleItem: React.FC<any> = (props) => {
-
-    console.log(props.key)
 
     return (
         <div>

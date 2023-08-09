@@ -38,11 +38,10 @@ const BlogHeaders = (props: any) => {
             </div>
         )
     }
-    //TODO div for headers in case of <5 ???
 
     else return (
         <div className={style.headers_container}>
-            <div className={style.big_text_header}>Headers less then 5</div>
+            <div className={style.big_text_header}>No articles</div>
         </div>
     )
 };

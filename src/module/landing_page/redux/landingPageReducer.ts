@@ -12,7 +12,6 @@ export function landingPageReducer(
         isLoading: false, productsData: productsResponse, currentPage: 1
     }, action: Action
 ) {
-    //todo actions and fetch
     switch (action.type) {
         case START_LOADING: {
             return {...state, isLoading: true}
