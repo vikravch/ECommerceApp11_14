@@ -9,8 +9,6 @@ export default class CollectionPageRepository {
             const response = await api_client.get<ApiResponseCollections>(`/products/collections?page=${pageNumber}&size=12`);
             console.log("set COLLeCTIONS");
             console.log(response.data);
-            setDataAction(response.data);
-            //stopLoadAction()
             return response.data;
         } catch (error: any) {
             console.log("ERROR: ");

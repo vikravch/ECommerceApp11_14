@@ -16,7 +16,7 @@ export const getCollectionDataAction = (pageNumber:number):any => {
        // dispatch(startLoadAction());
         new Repository().getCollections(pageNumber).then((data)=>{
             // console.log(JSON.stringify(data));
-            //dispatch(setDataAction(data));
+            dispatch(setDataAction(data));
            // dispatch(stopLoadAction());
         });
     }

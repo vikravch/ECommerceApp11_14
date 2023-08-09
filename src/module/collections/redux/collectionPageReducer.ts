@@ -11,7 +11,7 @@ export function collectionPageReducer(
     switch (action.type) {
         case SET_DATA: {
             console.log("USE CASE")
-            return {...state, collectionData: action.payload}
+            return {...state, collectionData: action.payload, isLoading: false}
         }
         default:
             return state;
