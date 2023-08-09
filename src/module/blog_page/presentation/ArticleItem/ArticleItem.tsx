@@ -9,7 +9,7 @@ const ArticleItem: React.FC<any> = (props) => {
             <div className={style.blog} >
                 <div>
                     <a href={`/${routes.articlePage}/:articleId`}>
-                        <img width={410} height={270} src={props.img} alt="Blog"/>
+                        <img src={props.img} alt="Blog"/>
                         </a>
                         <h5>{props.title}</h5>
 

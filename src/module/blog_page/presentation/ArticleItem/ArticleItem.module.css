@@ -18,6 +18,7 @@
 
 
 .blog img {
+    object-fit: cover;
     border: none;
     width: 410px;
     height: 270px;

@@ -37,7 +37,7 @@ const BlogPage: React.FC = () => {
                 <h1 className={styles.h1}>Blog</h1>
                 <div className={styles.blog_items}>
                     {articlesList.map((item) => (
-                        <ArticleItem title={item.title} key={item.id} id={item.id} date={formatDate(item.timestampDateMod)} />
+                        <ArticleItem img={item.thumbImgUrl} title={item.title} key={item.id} id={item.id} date={formatDate(item.timestampDateMod)} />
                     ))}
                 </div>
 
