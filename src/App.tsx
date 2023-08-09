@@ -18,6 +18,7 @@ import SignUp from "./module/login/presentation/SignUp";
 import RestorePass from "./module/login/presentation/RestorePass";
 import PrivacyPolicy from "./module/login/presentation/PrivacyPolicy";
 import TermsOfUse from "./module/login/presentation/TermsOfUse";
+import CollectionPage from "./module/collections/presentation/CollectionPage";
 
 function App() {
   //sessionStorage.setItem("token", "123"); // h32-0 // p 14
@@ -46,6 +47,9 @@ function App() {
           <Route path={`/${routes.recovery}`} element={<RestorePass/>}/>
           <Route path={`/${routes.catalog}`} element={<CategoryPage/>}/>
           <Route path={`/${routes.catalog}/:type`} element={<CategoryPage/>}/>
+
+          <Route path={`/${routes.catalog}/collection`} element={<CollectionPage/>}/>
+
           <Route path={`/${routes.agreement}/privacyPolicy`} element={<PrivacyPolicy/>}/>
           <Route path={`/${routes.agreement}/termsOfUse`} element={<TermsOfUse/>}/>
         </Routes>

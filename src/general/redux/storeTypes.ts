@@ -10,6 +10,7 @@ import {CategoryPageStore} from "../../module/category/redux/typesCategoryPage";
 import {LoginPageStore} from "../../module/login/redux/typesLoginPage";
 import {BreadCrumbsStore} from "../../module/breadcrumbs/redux/typesBreadcrumbs";
 import {PaginationStore} from "../../module/pagination/redux/typesPagination";
+import {CollectionPageStore} from "../../module/collections/types/typesCollectionPage";
 
 export interface Store {
     productPage: ProductPageStore,
@@ -18,6 +19,7 @@ export interface Store {
     landingPage: LandingPageStore,
     cartPage: CartPageStore,
     checkout: ChekoutPageStore,
+    collectionPage: CollectionPageStore,
     categoryPage: CategoryPageStore,
     profileDetails: ProfileDetailsStore,
     ordersDetails: OrdersDetailsStore,

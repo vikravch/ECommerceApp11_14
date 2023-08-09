@@ -22,7 +22,7 @@ type Params = {
     type: string;
 }
 
-//TODO you may also like <AlsoLike/>
+//TODO you may also like <CollectionPage/>
 
 const  CategoryPage:React.FC = () => {
 
@@ -88,7 +88,7 @@ const  CategoryPage:React.FC = () => {
 
                     <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
                         (page:number)=>{
-                         //   dispatch(setBlogPaginationPage(page))
+                         //   dispatch(setCategoryPaginationPage(page))
                         }
                     } />
                 </div>

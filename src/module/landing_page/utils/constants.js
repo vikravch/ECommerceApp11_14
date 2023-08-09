@@ -138,7 +138,6 @@ export const productsResponse = {
     "empty": false
 }
 
-
 export  const products2 = [
     {
         idProduct: "001",
@@ -284,3 +283,93 @@ export  const fakeProducts = [
     },
 
 ]
+
+export const fakeCollectionsResponce = {
+    "content": [
+        {
+            "name": "New Names at Neiman's",
+            "collection_id": "1",
+            "img_url": "https://i.imgur.com/of0fltu.png"
+        },
+        {
+            "name": "Lux Essentials",
+            "collection_id": "2",
+            "img_url": "https://i.imgur.com/mvKPOlp.png"
+        },
+        {
+            "name": "Exclusives",
+            "collection_id": "3",
+            "img_url": "https://i.imgur.com/SgNxUf9.png"
+        },
+        {
+            "name": "Active Energy",
+            "collection_id": "4",
+            "img_url": "https://i.imgur.com/hO6ZV3l.png"
+        },
+        {
+            "name": "Power Flex",
+            "collection_id": "5",
+            "img_url": "https://i.imgur.com/cx8QHZE.png"
+        },
+        {
+            "name": "Endurance Pro",
+            "collection_id": "6",
+            "img_url": "https://i.imgur.com/n7adJ7B.png"
+        },
+        {
+            "name": "Flex Fit",
+            "collection_id": "7",
+            "img_url": "https://i.imgur.com/kkTOrTq.png"
+        },
+        {
+            "name": "Speed Force",
+            "collection_id": "8",
+            "img_url": "https://i.imgur.com/RLLI5Kv.png"
+        },
+        {
+            "name": "Stamina Max",
+            "collection_id": "9",
+            "img_url": "https://i.imgur.com/bOOKXr9.png"
+        },
+        {
+            "name": "AeroFlex",
+            "collection_id": "10",
+            "img_url": "https://i.imgur.com/W4hkMRj.jpg"
+        },
+        {
+            "name": "Performance X",
+            "collection_id": "11",
+            "img_url": "https://i.imgur.com/iFSd1ic.png"
+        },
+        {
+            "name": "Motion Tech",
+            "collection_id": "12",
+            "img_url": "https://i.imgur.com/of0fltu.png"
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "empty": true,
+            "sorted": false,
+            "unsorted": true
+        },
+        "offset": 0,
+        "pageNumber": 0,
+        "pageSize": 12,
+        "paged": true,
+        "unpaged": false
+    },
+    "last": false,
+    "totalPages": 3,
+    "totalElements": 33,
+    "size": 12,
+    "number": 0,
+    "sort": {
+        "empty": true,
+        "sorted": false,
+        "unsorted": true
+    },
+    "first": true,
+    "numberOfElements": 12,
+    "empty": false
+}
