@@ -2,7 +2,7 @@ import {sizes} from "../../../../general/data/sizes";
 
 export default class Product {
     idProduct: string;
-    product_main_img: string;
+    product_thumb: string;
     product_imgs: string[];
     product_title: string;
     description: string;
@@ -15,7 +15,7 @@ export default class Product {
 
     constructor(json: any) {
         this.idProduct = json.product_id || '';
-        this.product_main_img = json.product_thumb;
+        this.product_thumb = json.product_thumb;
         this.product_imgs = json.product_imgs || [''];
         this.product_title = json.product_title || '';
         this.description = json.description || '';

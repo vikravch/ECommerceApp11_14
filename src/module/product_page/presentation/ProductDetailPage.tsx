@@ -91,8 +91,6 @@ const ProductDetailPage: React.FC = () => {
            console.log("cart ITEMS: " + JSON.stringify(cartItems))
     }
 
-    console.log(product.product_main_img)
-
     return (
         <div>
             <div>
@@ -101,7 +99,7 @@ const ProductDetailPage: React.FC = () => {
                 </Modal>
                 <div className={styles.productPage}>
                     <div className={styles.photoBox}>
-                        <img onClick={toggle} alt={"imgs"} src={product.product_main_img} key={Math.random()}/>
+                        <img onClick={toggle} alt={"img_main"} src={product.product_thumb} key={Math.random()}/>
                         { product.product_imgs.map(el => {
                             return <img onClick={toggle} alt={"imgs"} src={el} key={Math.random()}/>;
                         })}
@@ -118,7 +116,7 @@ const ProductDetailPage: React.FC = () => {
                         <div className={styles.newPrice}>${product.price}</div>
 
                         {fullPrice !== Number(product.price) ? (
-                            <div className={styles.price}>${fullPrice}</div>
+                            <div className={styles.oldPrice}>${fullPrice}</div>
                         ) : null}
 
                         <div className={styles.lineDeviderSmall}></div>

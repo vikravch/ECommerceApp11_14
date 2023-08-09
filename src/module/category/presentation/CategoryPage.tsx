@@ -22,8 +22,6 @@ type Params = {
     type: string;
 }
 
-//TODO you may also like <CollectionPage/>
-
 const  CategoryPage:React.FC = () => {
 
     const isLoading = useSelector<Store, boolean>(state => state.categoryPage.isLoading);

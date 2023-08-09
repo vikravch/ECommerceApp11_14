@@ -44,7 +44,7 @@ export const fakeFullProduct = {
 
 export const tempProductData = {
     idProduct: "1111",
-    product_main_img: "img1111",
+    product_thumb: "img1111",
     product_imgs: ["https://i.postimg.cc/m25WRfLv/img-1111.jpg", "https://i.postimg.cc/kGCXQr61/img-1141.jpg", "https://i.postimg.cc/9FMHvFhP/img-1121.jpg", "https://i.postimg.cc/XNx0HBT7/img-1131.jpg"],
     product_title: "Tshirt",
     description: "Bla bla",
