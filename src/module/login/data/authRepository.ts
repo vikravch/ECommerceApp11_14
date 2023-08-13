@@ -6,13 +6,26 @@ const base64Encoded = btoa(inputString);
 
 
 export default class AuthRepository {
-    async signIn(productId: string): Promise<any> {
 
+    async signIn(email: string, pass: string): Promise<any> {
 
-        // return new Promise<Product>((resolve) => {
-        //     console.log("ProductPageFakeRepository - getProductDetails - setting the FAKE product");
-        //     resolve(tempProductData);
-        // });
+        const headers = {
+            'AUTHORIZATION': `Basic ${btoa(`${email}:`+`${pass}`)}`,
+            'Content-Type': 'application/json',
+        };
+
+        try {
+            const response = await apiClient.post<any>('/auth/login', {}, {headers});
+            console.log("signIn");
+            console.log(response.data);
+            // setter
+            return response.data;
+        }
+        catch (error: any) {
+            console.log("ERROR: ");
+            console.log(error.message);
+            throw error;
+        }
     }
 
     async signUp(email: string, pass: string, dateOfBirth: string, name: string, surname: string): Promise<any> {

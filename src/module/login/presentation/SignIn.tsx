@@ -25,8 +25,8 @@ const SignIn:React.FC = () => {
 
     const handleSignIn = (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        dispatch(signIn(email, password));
-        //new AuthRepository().signIn('1')
+        //dispatch(signIn(email, password));
+        new AuthRepository().signIn(email, password)
     }
 
     if (isLoggedIn) {
