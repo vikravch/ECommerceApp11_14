@@ -28,7 +28,7 @@ const SignUp:React.FC = () => {
         if(pass != confirmPass) {
             alert('Password and repeat password values are not the same.');
         }
-        new AuthRepository().signUp()
+        new AuthRepository().signUp(email, pass, dateOfBirth, name, surname)
         //dispatch(signUp(email, pass, dateOfBirth));
     }
 
