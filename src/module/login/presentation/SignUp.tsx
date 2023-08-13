@@ -1,6 +1,6 @@
 import React, {FormEvent, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {signIn, signUp} from "../redux/asyncActions";
+import {signInAction, signUpAction} from "../redux/asyncActions";
 import {Store} from "../../../general/redux/storeTypes";
 import AuthRepository from "../data/authRepository";
 
@@ -29,7 +29,7 @@ const SignUp:React.FC = () => {
             alert('Password and repeat password values are not the same.');
         }
         new AuthRepository().signUp(email, pass, dateOfBirth, name, surname)
-        //dispatch(signUp(email, pass, dateOfBirth));
+        dispatch(signUpAction(email, pass, dateOfBirth, name, surname));
     }
 
     return (

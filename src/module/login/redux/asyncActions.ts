@@ -1,5 +1,6 @@
 import {Dispatch} from "react";
 import api_client from "../../../general/data/api_client";
+import AuthRepository from "../data/authRepository";
 
 export const LOGIN_SUCCESS = 'login_success';
 export const LOGIN_FAIL = 'login_fail';
@@ -7,56 +8,26 @@ export const SIGN_UP_SUCCESS = 'sign_up_success';
 export const SIGN_UP_FAIL = 'sign_up_fail';
 export const SET_MESSAGE = 'set_message'
 
-export const signIn = (email:string, password:string): any => async (dispatch:Dispatch<any>) => {
-    const myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic dXNlcjFAbWFpbC5jb206dGVzdA==");
-    myHeaders.append("Content-Type", "application/json");
+export const signInAction = (email:string, password:string): any => async (dispatch:Dispatch<any>) => {
 
-    const raw = JSON.stringify({
-        "email": email,
-        "password": password
-    });
+    new AuthRepository().signIn(email, password).then(res => dispatch({type: LOGIN_SUCCESS, payload: res}))
 
-    fetch(api_client + '/auth/login', {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'})
-        .then((response) => response.json())
-        .then(data => dispatch({type: LOGIN_SUCCESS, payload: data}))
-        .catch(error => dispatch({type: LOGIN_FAIL}));
+    // fetch(api_client + '/auth/login', {
+    //     method: 'POST',
+    //     headers: myHeaders,
+    //     body: raw,
+    //     redirect: 'follow'})
+    //     .then((response) => response.json())
+    //     .then(data => dispatch({type: LOGIN_SUCCESS, payload: data}))
+    //     .catch(error => dispatch({type: LOGIN_FAIL}));
 }
-export const signUp = (email:string, password:string, dateOfBirth: string): any => async (dispatch:Dispatch<any>) => {
-    const myHeaders = new Headers();
-    myHeaders.append("User-Password", `Basic ` + email + password );
+export const signUpAction = (email: string, pass: string, dateOfBirth: string, name: string, surname: string): any => async (dispatch:Dispatch<any>) => {
 
-    const raw = JSON.stringify({
-        "email": email,
-        "password": password,
-        "dateOfBirth": dateOfBirth
-    });
-
-//////////////////////////////
-    var axios = require('axios');
-    var data = '{\r\n    "birthDate": "1999-01-01",\r\n    "name": "Name",\r\n    "surname": "Surname"\r\n}';
-
-    var config = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: api_client + 'auth/registration',
-        headers: {
-            'User-Password': 'Basic dXNlckBnbWFpbC5jb206UGFzc3dvcmQx'
-        },
-        data : data
-    };
-
-    axios(config)
-        .then(function (response: any) {
-            console.log(JSON.stringify(response.data));
+    new AuthRepository().signUp(email, pass, dateOfBirth, name, surname)
+        .then(res => {
+            dispatch({type: LOGIN_SUCCESS, payload: res})
+            dispatch({type: SET_MESSAGE, payload: res.message})
         })
-        .catch(function (error: any) {
-            console.log(error);
-        });
 
 
     // fetch(api_client + `/auth/registration`, {

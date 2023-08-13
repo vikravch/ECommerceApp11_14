@@ -1,6 +1,6 @@
 import React, {FormEvent, useState} from 'react';
 import './loginStyle.css';
-import {signIn} from "../redux/asyncActions";
+import {signInAction} from "../redux/asyncActions";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {Navigate} from "react-router-dom";
@@ -25,8 +25,8 @@ const SignIn:React.FC = () => {
 
     const handleSignIn = (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        //dispatch(signIn(email, password));
-        new AuthRepository().signIn(email, password)
+        dispatch(signInAction(email, password));
+        // new AuthRepository().signIn(email, password)
     }
 
     if (isLoggedIn) {

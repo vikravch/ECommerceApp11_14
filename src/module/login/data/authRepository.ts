@@ -1,5 +1,6 @@
 import apiClient from "../../../general/data/api_client";
 import {ApiResponseSignUp} from "../../../general/dto/APIResponseTypes";
+import {LOGIN_SUCCESS} from "../redux/asyncActions";
 
 const inputString = "user@go.com:Pasword10";
 const base64Encoded = btoa(inputString);
@@ -18,6 +19,7 @@ export default class AuthRepository {
             const response = await apiClient.post<any>('/auth/login', {}, {headers});
             console.log("signIn");
             console.log(response.data);
+           // dispatch({type: LOGIN_SUCCESS, payload: data})
             // setter
             return response.data;
         }
@@ -43,7 +45,7 @@ export default class AuthRepository {
         try {
             const response = await apiClient.post<any>('/auth/registration', data, {headers});
             console.log("signUp");
-            console.log(response.data);
+            console.log(response);
             // setter
             return response.data;
         } catch (error: any) {
