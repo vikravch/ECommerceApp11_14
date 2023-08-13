@@ -4,6 +4,7 @@ import {signIn} from "../redux/asyncActions";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {Navigate} from "react-router-dom";
+import AuthRepository from "../data/authRepository";
 
 
 // SUPER USER admin@admin.com:admin
@@ -25,6 +26,7 @@ const SignIn:React.FC = () => {
     const handleSignIn = (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(signIn(email, password));
+        //new AuthRepository().signIn('1')
     }
 
     if (isLoggedIn) {

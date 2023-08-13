@@ -17,7 +17,7 @@ export const signIn = (email:string, password:string): any => async (dispatch:Di
         "password": password
     });
 
-    fetch("https://spring-security-app-ecommerce.herokuapp.com/auth/login", {
+    fetch(api_client + '/auth/login', {
         method: 'POST',
         headers: myHeaders,
         body: raw,
@@ -36,13 +36,36 @@ export const signUp = (email:string, password:string, dateOfBirth: string): any 
         "dateOfBirth": dateOfBirth
     });
 
-    fetch(api_client + `/auth/registration`, {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'})
-        .then((response) => response.json())
-        .then(result => {dispatch({type: SIGN_UP_SUCCESS});
-                         dispatch({type: SET_MESSAGE, payload: result.message})})
-        .catch(error => dispatch({type: SIGN_UP_FAIL, payload: error}));
+//////////////////////////////
+    var axios = require('axios');
+    var data = '{\r\n    "birthDate": "1999-01-01",\r\n    "name": "Name",\r\n    "surname": "Surname"\r\n}';
+
+    var config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: api_client + 'auth/registration',
+        headers: {
+            'User-Password': 'Basic dXNlckBnbWFpbC5jb206UGFzc3dvcmQx'
+        },
+        data : data
+    };
+
+    axios(config)
+        .then(function (response: any) {
+            console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error: any) {
+            console.log(error);
+        });
+
+
+    // fetch(api_client + `/auth/registration`, {
+    //     method: 'POST',
+    //     headers: myHeaders,
+    //     body: raw,
+    //     redirect: 'follow'})
+    //     .then((response) => response.json())
+    //     .then(result => {dispatch({type: SIGN_UP_SUCCESS});
+    //                      dispatch({type: SET_MESSAGE, payload: result.message})})
+    //     .catch(error => dispatch({type: SIGN_UP_FAIL, payload: error}));
 }
