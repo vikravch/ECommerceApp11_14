@@ -9,16 +9,6 @@ import {
 import {CategoryPageStore, SortProps} from "./typesCategoryPage";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
 
-const transformProduct = (product:any) => {
-    return {
-        idProduct: product.prodId,
-        product_thumb: product.thumbUrl,
-        product_title: product.name,
-        rating: product.rating,
-        price: product.price,
-        discount: Math.round(100 - product.price*100/product.oldPrice)
-    }
-}
 
 export const categoryReducer = (
     state: CategoryPageStore = {isLoading: true, data: [],
@@ -37,8 +27,8 @@ export const categoryReducer = (
         case PRODUCTS_REQUEST:
             return {...state, isLoading: true}
         case PUT_PRODUCTS:
-            const newProducts: Array<ProductPreviewInfo> = action.payload
-            return {...state, isLoading: false, data: newProducts}
+
+            return {...state, isLoading: false, data:  action.payload}
         default:
             return state;
     }
