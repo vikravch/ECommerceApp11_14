@@ -37,8 +37,7 @@ export const categoryReducer = (
         case PRODUCTS_REQUEST:
             return {...state, isLoading: true}
         case PUT_PRODUCTS:
-            const serverProducts = action.payload;
-            const newProducts: Array<ProductPreviewInfo> = serverProducts.map(transformProduct)
+            const newProducts: Array<ProductPreviewInfo> = action.payload
             return {...state, isLoading: false, data: newProducts}
         default:
             return state;
