@@ -33,8 +33,6 @@ const  CategoryPage:React.FC = () => {
         type = type[0].toUpperCase() + type.substring(1);
     }
 
-
-    console.log(products)
     useEffect(() => {
         if (type) {
             dispatch(getProdustsByGender(type))

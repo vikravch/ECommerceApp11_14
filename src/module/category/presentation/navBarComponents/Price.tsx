@@ -17,7 +17,7 @@ const Price:React.FC = () => {
                 <div className="accordion-body p-0 pb-4">
                     {price.map((item)=>
                         <div className="form-check mb-1" key={item.id}>
-                            <input className="form-check-input me-2" type="checkbox" value={item.id}/>
+                            <input className="form-check-input me-2" name="flexRadioDefault" type="radio" value={item.id}/>
                             <label className="form-check-label">{item.name}</label>
                         </div>)}
                 </div>

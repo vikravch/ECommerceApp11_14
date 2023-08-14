@@ -12,15 +12,15 @@ export const PUT_PRODUCTS = "put_products"
 export const PRODUCTS_REQUEST = "products_request"
 export const SET_CURRENT_CATEGORY_PAGE = "change_pagination_category_page"
 
+const headers = {
+    'Content-Type': 'application/json',
+};
 
 export const getProdustsByGender = (gender: string): any => async (dispatch: Dispatch<any>) => {
-    const headers = {
-        'Content-Type': 'application/json',
-    };
+
     try {
 
-        const response = await apiClient.get<ApiResponseProductPreview>(`/products?page=0&pageSize=9&
-client_type=${gender.toUpperCase()}`, {headers});
+        const response = await apiClient.get<ApiResponseProductPreview>(`/products?page=0&pageSize=9&client_type=${gender.toUpperCase()}`, {headers});
         console.log("getProdustsByGender");
         console.log(response.data);
         console.log(response.data.content);
@@ -54,18 +54,18 @@ export const getProductsByGenderAndCategory = (gender: string, category: string)
     console.log(category)
 
     if (category == 'ALL') {
-        dispatch(getProdustsByCategory(gender))
+        dispatch(getProdustsByGender(gender))
         return
     } else {
-        console.log(`${api_client}product_by_gender_and_category_get?gender=${gender.toUpperCase()}&category=${category}`)
-        fetch(`${api_client}product_by_gender_and_category_get?gender=${gender.toUpperCase()}&category=${category}`,
+        console.log(`${api_client}product_by_gender_get?gender=${gender.toUpperCase()}&category=${category}`)
+        fetch((`${api_client}product_by_gender_get?gender=${gender.toUpperCase()}&category=${category}`),
             {
                 method: 'GET',
                 redirect: 'follow'
             })
-            .then(response => response.json())
+           // .then(response => response.json())
             .then(response => console.log(response.json()))
-            .then(data => dispatch({type: PUT_PRODUCTS, payload: data}))
+          //  .then(response =>  dispatch({type: PUT_PRODUCTS, payload: response.data.content}))
             .catch(error => console.log('error', error));
     }
 }
