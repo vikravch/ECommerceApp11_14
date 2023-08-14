@@ -115,3 +115,17 @@ export class ApiResponseCollections {
         this.empty = data.empty;
     }
 }
+
+export class ApiResponseSignUp {
+email: string;
+role: string
+
+    constructor(data: ApiResponseSignUp) {
+    this.email = data.email;
+    this.role = data.role;
+    }
+}
+
+export class ApiResponseSignIn {
+
+}

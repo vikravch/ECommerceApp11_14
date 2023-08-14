@@ -11,6 +11,15 @@ import CartProduct from "../domain/model/CartProduct";
 import {Link} from "react-router-dom";
 import AlsoLike from "../../product_page/presentation/AlsoLike";
 
+//TODO:
+// 1. No button in productPreview
+// 2. user not authorized: save cartProduct to Store.
+// 3.  not authorized user: want to checkOut -> we redirect to SignIn/SingUp, after we post cart from Store to server,
+// and receive response with full cart (merged on server)
+// 4. authorized user: onClick addToCart - item to server (id and size?)
+// 5. authorized user: receive cart from server by user token
+//
+
 const CartPage:React.FC = () => {
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems)
     const total = useSelector<Store, number>(state => state.cartPage.cartTotal)

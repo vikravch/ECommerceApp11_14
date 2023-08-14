@@ -4,6 +4,7 @@ import CartProduct from "../../cart/domain/model/CartProduct";
 import Repository from "../data/fake_api/ProductPageFakeRepository";
 import {SET_DATA, setDataAction, startLoadAction, stopLoadAction} from "../../landing_page/redux/asyncActions";
 import {ApiResponseProductPreview} from "../../../general/dto/APIResponseTypes";
+
 export const getProductDetailsAction = (productId:string):any => {
     return (dispatch:Function) => {
         console.log("getProductDetailsAction")

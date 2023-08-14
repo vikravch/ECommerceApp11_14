@@ -12,7 +12,7 @@ import Season from "./navBarComponents/Season";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
-import {getProdustsByCategory} from "../redux/asyncActions";
+import {getProdustsByCategory, getProdustsByGender} from "../redux/asyncActions";
 import Skeleton from "./Skeleton";
 import Pagination from "../../pagination/Pagination";
 import {paginationData} from "../../pagination/data/fakeData";
@@ -26,7 +26,7 @@ const  CategoryPage:React.FC = () => {
 
     const isLoading = useSelector<Store, boolean>(state => state.categoryPage.isLoading);
     const currentPage = useSelector<Store, number>(state => state.categoryPage.currentPage);
-    const products = useSelector<Store, Array<ProductPreviewInfo>>(state => state.categoryPage.data);
+    const products = useSelector<Store, Array<ProductPreviewInfo>>(state => state.categoryPage.data) ;
     const dispatch = useDispatch();
     let type = useParams<Params>().type || '';
     if(type){
@@ -35,10 +35,11 @@ const  CategoryPage:React.FC = () => {
 
     useEffect(() => {
         if (type) {
-            dispatch(getProdustsByCategory(type))
+            dispatch(getProdustsByGender(type))
         }
     }, [type]);
     const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
+
     return (
         <div className={'container p-0'}>
             <div className={'main'}>{convertToSpaceFormat(type)} / <span className={'black'}>All</span></div>
@@ -71,16 +72,17 @@ const  CategoryPage:React.FC = () => {
                 </div>
                 <div className={'col p-0 ps-5'}>
                     <div className={'row row-cols-3 justify-content-center p-0 m-0'}>
-                        {isLoading ? skeletons : products.map((product,productId) =>
+                        {isLoading ? skeletons : products.map((product,index) =>
                             <PreviewProduct
-                            key={productId}
-                            id={productId}
-                            imageUrl={"http://via.placeholder.com/300x365"}
-                            title={product.product_title}
-                            product_id={product.product_id}
-                            price={Math.round(product.price)}
-                            rating={product.rating}
-                            discount={product.discount}/>
+                                key={index}
+                                id={index}
+                                imageUrl={product.product_thumb}
+                                title={product.product_title}
+                                article={product.product_id}
+                                price={Math.round(product.price)}
+                                rating={product.rating}
+                                discount={product.discount}
+                            />
                         )}
                     </div>
 
