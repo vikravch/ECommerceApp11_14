@@ -14,7 +14,7 @@ import {productsResponse} from "../../landing_page/utils/constants";
 
 export function productPageReducer(
     state: ProductPageStore = {product: new Product(fakeFullProduct),
-        isLoading: false, currentPage: 1, alsoLikeData: productsResponse
+        isLoading: false, currentPage: 0, alsoLikeData: productsResponse
     }, action: Action
 ){
     switch (action.type){

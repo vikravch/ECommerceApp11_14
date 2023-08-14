@@ -9,7 +9,7 @@ import {productsResponse} from "../utils/constants";
 
 export function landingPageReducer(
     state: LandingPageStore = {
-        isLoading: false, productsData: productsResponse, currentPage: 1
+        isLoading: false, productsData: productsResponse, currentPage: 0
     }, action: Action
 ) {
     switch (action.type) {
