@@ -68,7 +68,7 @@ const CartPage:React.FC = () => {
                                             <div className="cart-title text-start ms-3">
                                                 <div className="row h-50">
                                                     <p className="mb-0"><label className="text-muted">#{item.product_id}</label></p>
-                                                    <p className="mb-0 card-title"><a className="text-dark fs-4 text-decoration-none fw-500" href={item.product_id}>{item.product_title}</a></p>
+                                                    <p className="mb-0 card-title"><a className="text-dark fs-4 text-decoration-none fw-500" href={'/product/' + item.product_id}>{item.product_title}</a></p>
                                                     <p className="text-muted mb-0">{item.color}</p>
                                                 </div>
                                                 <div className="row h-50 d-flex align-items-end">
