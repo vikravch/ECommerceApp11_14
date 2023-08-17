@@ -1,6 +1,6 @@
 import ProductPageRepository from "../../domain/ProductPageRepository";
 import Product from "../../domain/model/Product";
-import {fakeProductData, tempProductData} from "../tempData";
+import {fakeProductData} from "../tempData";
 import apiClient from "../../../../general/data/api_client";
 import {setProductDataAction} from "../../redux/asyncActions";
 import {ApiResponseProductPreview} from "../../../../general/dto/APIResponseTypes";

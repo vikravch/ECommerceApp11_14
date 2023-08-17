@@ -21,8 +21,8 @@ export default class CartProduct{
         this.product_thumb = data.product_thumb;
         this.product_title = data.product_title;
         this.rating = data.rating;
-        this.price = data.price;
-        this.discount = data.discount;
+        this.price = Number(data.price);
+        this.discount = Number(data.discount);
         this.stock_sizes = data.stock_sizes || [];
         this.stock_quantity = data.stock_quantity || 0;
     }

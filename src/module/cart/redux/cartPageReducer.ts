@@ -1,5 +1,5 @@
 import {Action} from "../../../general/redux/Action";
-import {ADD_TO_CART, CHANGE_COUNT, CHANGE_SIZE, CLEAR_CART, REMOVE_FROM_CART} from "./asyncActions";
+import {ADD_TO_CART, CHANGE_COUNT, CHANGE_SIZE, CLEAR_CART, REMOVE_FROM_CART, SET_CART} from "./asyncActions";
 import CartProduct from "../domain/model/CartProduct";
 
 export const calcTotalPrice = (items: CartProduct[]) => {
@@ -15,9 +15,14 @@ export const cartPageReducer = (
     action: Action
 ) => {
     switch (action.type) {
+        case SET_CART:
+            //TODO manage this return
+            console.log(action.payload)
+            return {...state, cartItems: action.payload.cart, cartCount: action.payload.count, cartTotal: '000'}
+
         case ADD_TO_CART:
             let cartProducts: Array<CartProduct> = [...state.cartItems]
-            const productIndex: number = cartProducts.findIndex((item => item.product_id === action.payload.idProduct))
+            const productIndex: number = cartProducts.findIndex((item => item.product_id === action.payload.product_id))
             if (productIndex !== -1) {
                 cartProducts[productIndex].count += 1;
                 const totalSum = calcTotalPrice(cartProducts)

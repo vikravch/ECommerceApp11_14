@@ -53,8 +53,8 @@ const ProductDetailPage: React.FC = () => {
     const [selectedColor, setSelectedColor] = useState('');
     console.log(selectedColor)
 
-    let [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
-        product_id: productId??"1111",
+    let tempCartProduct= {
+        product_id: product.product_id,
         product_thumb: product.product_thumb,
         count: 1,
         color: selectedColor,
@@ -63,7 +63,8 @@ const ProductDetailPage: React.FC = () => {
         //rating: product.rating,
         price: Number(product.price),
         discount: Number(product.discount),
-    });
+    }
+
 
 
     const selectSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

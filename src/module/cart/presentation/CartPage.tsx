@@ -1,15 +1,17 @@
-import React, {ChangeEvent} from "react";
+import React, {ChangeEvent, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {
     changeCountAction,
-    changeSizeAction,
+    changeSizeAction, getCart,
     removeFromCartAction
 } from "../redux/asyncActions";
 import {sizes} from "../../../general/data/sizes";
 import CartProduct from "../domain/model/CartProduct";
 import {Link} from "react-router-dom";
 import AlsoLike from "../../product_page/presentation/AlsoLike";
+import style from "../presentation/CartPage.module.css"
+import {getArrivalDetailsAction} from "../../landing_page/redux/asyncActions";
 
 //TODO:
 // 1. No button in productPreview
@@ -25,6 +27,17 @@ const CartPage:React.FC = () => {
     const total = useSelector<Store, number>(state => state.cartPage.cartTotal)
     const count = useSelector<Store, number>(state => state.cartPage.cartCount)
     const dispatch = useDispatch()
+
+
+    //TODO useEffect depending on TOKEN
+
+    useEffect(() => {
+        if (cartItems.length < 1) {
+            dispatch(getCart(''))
+        }
+    }, [cartItems]);
+
+
     if (count === 0) return (
         <div className="container" style={{maxWidth: 1070}}>
             <h1 className="text-muted fw-500 my-3">Your cart is empty</h1>
@@ -36,6 +49,7 @@ const CartPage:React.FC = () => {
         </div>
     )
     let profileBtn = sessionStorage.getItem("token") ? "/profile" : "/login";
+
 
     return (<>
             <div className="container" style={{maxWidth: 1070}}>
@@ -49,7 +63,7 @@ const CartPage:React.FC = () => {
                                 <div className="d-flex text-start row">
                                     <div className="col-md-8 col-12">
                                         <div className="d-flex">
-                                                <img className="cart-item-img rounded-3" src="http://via.placeholder.com/165x200" alt=''/>
+                                                <img className={style.cart_item_img} src={item.product_thumb} alt=''/>
                                             <div className="cart-title text-start ms-3">
                                                 <div className="row h-50">
                                                     <p className="mb-0"><label className="text-muted">#{item.product_id}</label></p>
@@ -62,7 +76,7 @@ const CartPage:React.FC = () => {
                                                         <select className="form-select" id="size" required defaultValue={item.size} onChange={(e: ChangeEvent<{value: string}>) => {
                                                             dispatch(changeSizeAction(item.product_id, e.target.value));}}>
                                                             {sizes.map((size, index) => (
-                                                                <option value={size}>{size}</option>
+                                                                <option key={index} value={size}>{size}</option>
                                                             ))}
                                                         </select>
                                                     </div>
