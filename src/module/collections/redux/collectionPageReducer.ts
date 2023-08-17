@@ -1,11 +1,11 @@
 import {CollectionPageStore} from "../types/typesCollectionPage";
 import {Action} from "../../../general/redux/Action";
-import {fakeCollectionsResponce} from "../../landing_page/utils/constants";
+import {fakeCollectionsResponse} from "../../landing_page/utils/constants";
 import {SET_DATA} from "./asyncActions";
 
 export function collectionPageReducer(
     state: CollectionPageStore = {
-        collectionData: fakeCollectionsResponce, currentPage: 0, isLoading: false
+        collectionData: fakeCollectionsResponse, currentPage: 0, isLoading: false
     }, action : Action
 ) {
     switch (action.type) {

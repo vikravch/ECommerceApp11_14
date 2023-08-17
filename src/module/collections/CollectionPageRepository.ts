@@ -1,6 +1,6 @@
 import {ApiResponseCollections} from "../../general/dto/APIResponseTypes";
 import api_client from "../../general/data/api_client";
-import {fakeCollectionsResponce} from "../landing_page/utils/constants";
+import {fakeCollectionsResponse} from "../landing_page/utils/constants";
 
 export default class CollectionPageRepository {
     async getCollections(pageNumber: number): Promise<ApiResponseCollections> {
@@ -19,7 +19,7 @@ export default class CollectionPageRepository {
         return new Promise<ApiResponseCollections>((resolve) => {
             console.log("ProductPageFakeRepository - getProductDetails - setting the FAKE product");
             console.log()
-            resolve(fakeCollectionsResponce);
+            resolve(fakeCollectionsResponse);
         });
     }
 }
