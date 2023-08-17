@@ -1,7 +1,7 @@
 import Order from "../domain/model/Order";
-import {DOMAIN_NAME} from "../../../general/data/server_setting";
 import {CLEAR_CART} from "../../cart/redux/asyncActions";
 import {Dispatch} from "react";
+import api_client from "../../../general/data/api_client";
 
 export const CREATE_ORDER = "create_order";
 
@@ -11,7 +11,7 @@ export const createOrderAction = (data:Order) => ({
 });
 
 export const createOrder = (data:Order):any => async (dispatch:Dispatch<any>) => {
-    fetch(`${DOMAIN_NAME}order_add`,{
+    fetch(`${api_client}order_add`,{
         method: "POST",
         headers: {
             "Content-Type": "application/json",

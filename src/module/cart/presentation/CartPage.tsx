@@ -25,7 +25,7 @@ import {getArrivalDetailsAction} from "../../landing_page/redux/asyncActions";
 const CartPage:React.FC = () => {
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems)
     const total = useSelector<Store, number>(state => state.cartPage.cartTotal)
-    const count = useSelector<Store, number>(state => state.cartPage.cartCount)
+    const count = useSelector<Store, number>(state => state.cartPage.cartItems.length)
     const dispatch = useDispatch()
 
 
@@ -33,6 +33,7 @@ const CartPage:React.FC = () => {
 
     useEffect(() => {
         if (cartItems.length < 1) {
+
             dispatch(getCart(''))
         }
     }, [cartItems]);

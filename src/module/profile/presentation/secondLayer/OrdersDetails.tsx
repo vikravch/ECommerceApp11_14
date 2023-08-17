@@ -4,7 +4,6 @@ import {Store} from "../../../../general/redux/storeTypes";
 import Order from "../../domain/model/Order";
 import {getOrdersAction, getOrdersDetailsAction, setFilterTypeAction} from "../../redux/asyncActions";
 import OrdersItem from "../thirdLayer/OrdersItem";
-import {DOMAIN_NAME} from "../../../../general/data/server_setting";
 
 const OrdersDetails: React.FC = () => {
     const filteredOrders = useSelector<Store, Array<Order>>(state => state.ordersDetails.filteredOrders);

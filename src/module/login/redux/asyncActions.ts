@@ -11,15 +11,6 @@ export const SET_MESSAGE = 'set_message'
 export const signInAction = (email:string, password:string): any => async (dispatch:Dispatch<any>) => {
 
     new AuthRepository().signIn(email, password).then(res => dispatch({type: LOGIN_SUCCESS, payload: res}))
-
-    // fetch(api_client + '/auth/login', {
-    //     method: 'POST',
-    //     headers: myHeaders,
-    //     body: raw,
-    //     redirect: 'follow'})
-    //     .then((response) => response.json())
-    //     .then(data => dispatch({type: LOGIN_SUCCESS, payload: data}))
-    //     .catch(error => dispatch({type: LOGIN_FAIL}));
 }
 export const signUpAction = (email: string, pass: string, dateOfBirth: string, name: string, surname: string): any => async (dispatch:Dispatch<any>) => {
 

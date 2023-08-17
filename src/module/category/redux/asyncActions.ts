@@ -1,5 +1,4 @@
 import {Dispatch} from "react"
-import {DOMAIN_NAME} from "../../../general/data/server_setting";
 import api_client from "../../../general/data/api_client";
 import {log} from "util";
 import apiClient from "../../../general/data/api_client";
