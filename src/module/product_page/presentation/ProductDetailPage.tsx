@@ -1,18 +1,19 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import Product from "../domain/model/Product";
+
 import {Store} from "../../../general/redux/storeTypes";
 import {useParams} from "react-router-dom";
 import {getProductDetailsAction} from "../redux/asyncActions";
-//import getProductDetails from "../domain/use_case/getProductDetails";
+
 import styles from "./ProductPage.module.css";
 import AlsoLike from "./AlsoLike";
 import {addToCartAction} from "../../cart/redux/asyncActions";
 import CartProduct from "../../cart/domain/model/CartProduct";
-import {sizes} from "../../../general/data/sizes";
 import useModal from "../modalWindow/useModal";
 import Modal from "../modalWindow/modal";
 import DropDownOut from "../dropdown/DropDownOut";
+import Product from "../domain/model/Product"
+
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -45,21 +46,36 @@ const ProductDetailPage: React.FC = () => {
         const discountPercentage: number = (discountInUSD / fullPriceInUSD) * 100;
         return (Math.round(discountPercentage));
     };
-    const discountPercentage = calculateDiscountPersent(product.price, product.discount);
+    const discountPercentage = calculateDiscountPersent(Number(product.price), Number(product.discount));
     const fullPrice = Number(product.price) + Number(product.discount);
+    const [selectedSizeOption, setSelectedSizeOption] = useState(product.size[0]);
+    console.log(product.colors[0].color)
+    const [selectedColor, setSelectedColor] = useState('');
+    console.log(selectedColor)
 
-    const [selectedSizeOption, setSelectedSizeOption] = useState<string>("S");
+    let [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
+        product_id: productId??"1111",
+        product_thumb: product.product_thumb,
+        count: 1,
+        color: selectedColor,
+        size: selectedSizeOption,
+        product_title: product.product_title,
+        //rating: product.rating,
+        price: Number(product.price),
+        discount: Number(product.discount),
+    });
+
 
     const selectSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         event.preventDefault();
         const value = event.target.value;
         tempCartProduct.size = value;
         console.log("TEM PR SIZE: " + tempCartProduct.size )
-        // setSelectedSizeOption(value);
+        setSelectedSizeOption(value);
         tempCartProduct.size = value;
+
     };
 
-    const [selectedColor, setSelectedColor] = useState(product.colors[0]);
 
     const colorHandler = (event: React.MouseEvent<HTMLImageElement>) => {
         const colorImg: HTMLImageElement = event.currentTarget;
@@ -71,17 +87,7 @@ const ProductDetailPage: React.FC = () => {
 
     };
 
-    let [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
-        product_id: productId??"1111",
-        product_thumb: "url to img",
-        count: 1,
-        color: selectedColor,
-        size: selectedSizeOption,
-        product_title: product.product_title,
-        rating: product.rating,
-        price: product.price,
-        discount: product.discount,
-    });
+
 
 
     let addToCart = () => {
@@ -124,16 +130,17 @@ const ProductDetailPage: React.FC = () => {
                         <div className={styles.productColorBox}>
                             <div className={styles.productColorText}>{selectedColor !== ""
                                 ? `Color: "${tempCartProduct.color}"`
-                                : product.colors[0]}</div>
+                                : product.colors[0].color}</div>
                             <div className={styles.productColorImg}>
                                 {product.colors.map((color, index) => (
                                     <img
                                         key={index}
                                         onClick={colorHandler}
-                                        className={color === selectedColor ? styles.active : ""}
-                                        src={require(`./images/Products/color/img${index + 1}.png`)}
-                                        id={color}
-                                        alt="color"
+                                        className={color.color === selectedColor ? styles.active : ""}
+                                        src={color.product_thumb}
+
+                                        id={color.color}
+                                        alt="color.color"
                                     />
                                 ))}
                             </div>
@@ -145,9 +152,12 @@ const ProductDetailPage: React.FC = () => {
                             <a href="#">Size guide</a>
                             <div className={styles.sizes}>
                         <select onChange={selectSizeChange} className="form-select">
-                            <option className={styles.productSize} value={sizes.S}>{sizes.S}</option>
-                            <option className={styles.productSize} defaultValue={sizes.M}>{sizes.M}</option>
-                            <option className={styles.productSize} value={sizes.L}>{sizes.L}</option>
+                            {product.size.map((size, index) => (
+                                <option className={styles.productSize} value={size}>{size}</option>
+                            ))}
+                            {/*<option className={styles.productSize} value={sizes.S}>{sizes.S}</option>*/}
+                            {/*<option className={styles.productSize} defaultValue={sizes.M}>{sizes.M}</option>*/}
+                            {/*<option className={styles.productSize} value={sizes.L}>{sizes.L}</option>*/}
                         </select>
                             </div>
                             </div>

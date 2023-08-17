@@ -16,8 +16,8 @@ export const cartPageReducer = (
 ) => {
     switch (action.type) {
         case ADD_TO_CART:
-            let cartProducts: Array<CartProduct> = state.cartItems
-            const productIndex: number = cartProducts.findIndex((item => item.product_id == action.payload.idProduct))
+            let cartProducts: Array<CartProduct> = [...state.cartItems]
+            const productIndex: number = cartProducts.findIndex((item => item.product_id === action.payload.idProduct))
             if (productIndex !== -1) {
                 cartProducts[productIndex].count += 1;
                 const totalSum = calcTotalPrice(cartProducts)

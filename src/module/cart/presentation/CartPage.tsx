@@ -36,6 +36,7 @@ const CartPage:React.FC = () => {
         </div>
     )
     let profileBtn = sessionStorage.getItem("token") ? "/profile" : "/login";
+
     return (<>
             <div className="container" style={{maxWidth: 1070}}>
 
@@ -60,9 +61,9 @@ const CartPage:React.FC = () => {
                                                     <label htmlFor="size" className="form-label text-muted small mb-0">Size</label>
                                                         <select className="form-select" id="size" required defaultValue={item.size} onChange={(e: ChangeEvent<{value: string}>) => {
                                                             dispatch(changeSizeAction(item.product_id, e.target.value));}}>
-                                                            <option value={sizes.S}>{sizes.S}</option>
-                                                            <option value={sizes.M}>{sizes.M}</option>
-                                                            <option value={sizes.L}>{sizes.L}</option>
+                                                            {sizes.map((size, index) => (
+                                                                <option value={size}>{size}</option>
+                                                            ))}
                                                         </select>
                                                     </div>
                                                     <div className="col-md-5">
