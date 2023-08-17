@@ -12,7 +12,7 @@ const CollectionCard = (props: any) => {
     return (
 
         <div className={'col mb-1 previewProd'}>
-            <Link className={style.link} to={'/catalog/' + convertToUnderscoreFormat(props.name)}>
+            <Link className={style.link} to={'/catalog/'}>
                 <img className={style.img} src={props.imageUrl} alt="collectionImg"/>
                 <div className={'pt-2'}>
                 </div>

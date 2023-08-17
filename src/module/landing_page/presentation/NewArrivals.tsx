@@ -20,7 +20,7 @@ const NewArrivals: React.FC = () => {
     const skeletons = [...new Array(12)].map((_, index) => <Skeleton key={index}/>);
 
     useEffect(() => {
-        if (currentPage) {
+        if (currentPage >= 0) {
             dispatch(getArrivalDetailsAction(currentPage));
         }
     }, [currentPage]);

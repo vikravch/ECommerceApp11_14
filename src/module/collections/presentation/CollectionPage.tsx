@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import Skeleton from "../../category/presentation/Skeleton";
 import CollectionCard from "./CollectionCard";
-import {fakeCollectionsResponce} from "../../landing_page/utils/constants";
+import {fakeCollectionsResponse} from "../../landing_page/utils/constants";
 import {getCollectionDataAction} from "../redux/asyncActions";
 import CollectionInfo from "../types/CollectionInfo";
 

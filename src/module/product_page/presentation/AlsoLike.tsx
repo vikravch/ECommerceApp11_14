@@ -21,7 +21,7 @@ const AlsoLike = () => {
     const skeletons = [...new Array(4)].map((_, index) => <Skeleton key={index} />);
 
     useEffect(() => {
-        if (currentPage) {
+        if (currentPage >= 0) {
             dispatch(getAlsoLikeDetailsAction(currentPage));
         }
     }, [currentPage]);

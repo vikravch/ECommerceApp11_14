@@ -44,7 +44,7 @@ const OrdersItem:React.FC<Props> = (props: Props) => {
             <div className={"row borderLine mt-3 mb-1"}/>
             <div className={"row"}>{ props.order.orderLines ?
                 props.order.orderLines.map(item => {
-                    return <ProductItem key={Number(item.idProduct)} product={item}/>
+                    return <ProductItem key={Number(item.product_id)} product={item}/>
                 }) : ''}
             </div>
         </div>

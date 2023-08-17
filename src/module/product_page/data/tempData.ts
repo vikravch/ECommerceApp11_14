@@ -54,14 +54,44 @@ export const tempProductData = {
     details: "details hkjfh dfjjf kfdjk",
     price: 35,
     discount: 45,
+}
 
-
+export const fakeProductData =
+{
+    "category": "Coats & Jackets",
+    "colors": [
+    {
+        "color": "Copper",
+        "product_id": "13",
+        "product_thumb": "https://i.imgur.com/gRpTKWm.jpg"
+    }
+],
+    "description": "Stay protected in harsh weather with our high-performance windbreaker jacket.",
+    "details": "Slim fit\nFabric: Nylon with water-resistant coating\nHand wash only\nImported\nStyle: CJ5421-654",
+    "discount": "0.00",
+    "price": "73.00",
+    "size": [
+    "XXL",
+    "XXXL",
+    "S",
+    "M",
+    "L"
+],
+    "client_type": "MEN",
+    "product_id": "13",
+    "product_imgs": [
+    "https://i.imgur.com/gRpTKWm.jpg",
+    "https://i.imgur.com/gRpTKWm.jpg",
+    "https://i.imgur.com/gRpTKWm.jpg"
+],
+    "product_thumb": "https://i.imgur.com/gRpTKWm.jpg",
+    "product_title": "Lightweight Sports Anorak"
 }
 
 export const tempCartPr = {
     count: 1,
     colors: tempProductData.colors[0],
-    size: tempProductData.size.S,
+    size: tempProductData.size[0],
     idProduct: tempProductData.idProduct,
     product_thumb: tempProductData.product_imgs[0],
     product_title: tempProductData.product_title,
@@ -69,25 +99,3 @@ export const tempCartPr = {
     price: tempProductData.price,
     discount: tempProductData.discount
 }
-
-export const tempProductDataJSON = '{' +
-    '"idProduct":"1111",' +
-    '"product_main_img":"img_1111.jpg",' +
-    '"product_imgs": [img_1131.jpg, img_1141.jpg],' +
-    '"product_title":"Basic T-shirt",' +
-    '"description":"The T-Shirt sets you up with soft cotton jersey and a classic logo with camo on the chest.",' +
-    '"rating":"4",' +
-    '"colors":"Black",' +
-    '"details":"Standard fit for a relaxed, easy feel Fabric: 100% cotton Machine wash Imported Shown: Cactus Flower Style: CU8914-564.",' +
-    '"price":"55",' +
-    '"discount":"45",' +
-    '}';
-
-export const tempProductPreviewData = '{' +
-    '"idProduct":"1111",' +
-    '"product_thumb":"img_1111.jpg",' +
-    '"product_title":"Basic T-shirt",' +
-    '"rating":"4",' +
-    '"price":"55",' +
-    '"discount":"45",' +
-    '}';

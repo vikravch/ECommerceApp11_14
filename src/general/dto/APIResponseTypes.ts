@@ -1,6 +1,7 @@
 import ProductPreviewInfo from "../../module/product_page/domain/model/ProductPreviewInfo";
 import ArticleInfo from "../../module/blog_page/domain/model/ArticlesList";
 import CollectionInfo from "../../module/collections/types/CollectionInfo";
+import CartProduct from "../../module/cart/domain/model/CartProduct";
 
 class Sort {
     empty: boolean;
@@ -128,4 +129,18 @@ role: string
 
 export class ApiResponseSignIn {
 
+}
+
+class ApiResponseCart {
+    cart: CartProduct[];
+    subtotal_price: number;
+    products_discount: number;
+    total_price: number;
+
+    constructor(data: ApiResponseCart) {
+        this.cart = data.cart.map((itemData) => new CartProduct(itemData));
+        this.subtotal_price = data.subtotal_price || 0;
+        this.products_discount = data.products_discount || 0;
+        this.total_price = data.total_price || 0;
+    }
 }

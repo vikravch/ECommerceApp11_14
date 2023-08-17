@@ -1,15 +1,17 @@
-import React, {ChangeEvent} from "react";
+import React, {ChangeEvent, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {
     changeCountAction,
-    changeSizeAction,
+    changeSizeAction, getCart,
     removeFromCartAction
 } from "../redux/asyncActions";
 import {sizes} from "../../../general/data/sizes";
 import CartProduct from "../domain/model/CartProduct";
 import {Link} from "react-router-dom";
 import AlsoLike from "../../product_page/presentation/AlsoLike";
+import style from "../presentation/CartPage.module.css"
+import {getArrivalDetailsAction} from "../../landing_page/redux/asyncActions";
 
 //TODO:
 // 1. No button in productPreview
@@ -25,6 +27,17 @@ const CartPage:React.FC = () => {
     const total = useSelector<Store, number>(state => state.cartPage.cartTotal)
     const count = useSelector<Store, number>(state => state.cartPage.cartCount)
     const dispatch = useDispatch()
+
+
+    //TODO useEffect depending on TOKEN
+
+    useEffect(() => {
+        if (cartItems.length < 1) {
+            dispatch(getCart(''))
+        }
+    }, [cartItems]);
+
+
     if (count === 0) return (
         <div className="container" style={{maxWidth: 1070}}>
             <h1 className="text-muted fw-500 my-3">Your cart is empty</h1>
@@ -36,6 +49,8 @@ const CartPage:React.FC = () => {
         </div>
     )
     let profileBtn = sessionStorage.getItem("token") ? "/profile" : "/login";
+
+
     return (<>
             <div className="container" style={{maxWidth: 1070}}>
 
@@ -44,25 +59,25 @@ const CartPage:React.FC = () => {
                 <div className="col-lg-8">
                         <div className="cart-body">
                             {cartItems.map((item) => (
-                            <div className="cart-item my-4" key={item.idProduct}>
+                            <div className="cart-item my-4" key={item.product_id}>
                                 <div className="d-flex text-start row">
                                     <div className="col-md-8 col-12">
                                         <div className="d-flex">
-                                                <img className="cart-item-img rounded-3" src="http://via.placeholder.com/165x200" alt=''/>
+                                                <img className={style.cart_item_img} src={item.product_thumb} alt=''/>
                                             <div className="cart-title text-start ms-3">
                                                 <div className="row h-50">
-                                                    <p className="mb-0"><label className="text-muted">#{item.idProduct}</label></p>
-                                                    <p className="mb-0 card-title"><a className="text-dark fs-4 text-decoration-none fw-500" href={item.idProduct}>{item.product_title}</a></p>
+                                                    <p className="mb-0"><label className="text-muted">#{item.product_id}</label></p>
+                                                    <p className="mb-0 card-title"><a className="text-dark fs-4 text-decoration-none fw-500" href={item.product_id}>{item.product_title}</a></p>
                                                     <p className="text-muted mb-0">{item.color}</p>
                                                 </div>
                                                 <div className="row h-50 d-flex align-items-end">
                                                     <div className="col-md-7">
                                                     <label htmlFor="size" className="form-label text-muted small mb-0">Size</label>
                                                         <select className="form-select" id="size" required defaultValue={item.size} onChange={(e: ChangeEvent<{value: string}>) => {
-                                                            dispatch(changeSizeAction(item.idProduct, e.target.value));}}>
-                                                            <option value={sizes.S}>{sizes.S}</option>
-                                                            <option value={sizes.M}>{sizes.M}</option>
-                                                            <option value={sizes.L}>{sizes.L}</option>
+                                                            dispatch(changeSizeAction(item.product_id, e.target.value));}}>
+                                                            {sizes.map((size, index) => (
+                                                                <option key={index} value={size}>{size}</option>
+                                                            ))}
                                                         </select>
                                                     </div>
                                                     <div className="col-md-5">
@@ -71,7 +86,7 @@ const CartPage:React.FC = () => {
                                                                className="form-control mw-100"
                                                                type="number"
                                                                defaultValue={item.count}
-                                                               onChange={(e: ChangeEvent<{value: string}>) => { dispatch(changeCountAction(item.idProduct, +e.target.value))}}/>
+                                                               onChange={(e: ChangeEvent<{value: string}>) => { dispatch(changeCountAction(item.product_id, +e.target.value))}}/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,7 +101,7 @@ const CartPage:React.FC = () => {
                                         </div>
                                         <div className="row h-50 align-items-end">
                                             <button className="btn btn-link text-end text-muted text-decoration-none"
-                                                    onClick={() => dispatch(removeFromCartAction(item.idProduct))}>
+                                                    onClick={() => dispatch(removeFromCartAction(item.product_id))}>
                                                 Remove
                                             </button>
                                         </div>

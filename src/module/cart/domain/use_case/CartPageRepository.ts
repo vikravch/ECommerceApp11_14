@@ -1,5 +1,5 @@
-import Cart from "../model/Cart";
+import Cart, {CartData} from "../model/Cart";
 
 export default interface CartPageRepository{
-    getCartDetails: (cartId: string)=> Promise<Cart>;
+    getCartDetails: (cartId: string)=> Promise<CartData>;
 }

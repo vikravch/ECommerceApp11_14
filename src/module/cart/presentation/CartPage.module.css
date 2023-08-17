@@ -1,0 +1,6 @@
+.cart_item_img {
+    height: 200px;
+    width: 165px;
+    object-fit: scale-down;
+    border-radius: 10px;
+}
