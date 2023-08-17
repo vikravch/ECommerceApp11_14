@@ -39,7 +39,7 @@ const CheckoutPage:React.FC = ()=> {
 
     const transformCartItem = (cartItem:CartProduct) => {
         return {
-            prodId: +cartItem.idProduct,
+            prodId: +cartItem.product_id,
             color: cartItem.color,
             size: cartItem.size,
             number: cartItem.count
@@ -70,14 +70,14 @@ const CheckoutPage:React.FC = ()=> {
                                 <span className="text">Goods</span>
                             </h4>
                             {cartItems.map((item) => (
-                            <div className="mb-3" key={item.idProduct}>
+                            <div className="mb-3" key={item.product_id}>
                                 <div className="row g-0 m-0">
                                     <div className="col-md-5 ">
                                         <img src="http://via.placeholder.com/105x127" className="img-fluid rounded" alt="image"/>
                                     </div>
                                     <div className="col-md-7">
                                         <div className="card-body p-0">
-                                            <p className="my-0 small"><label className="text-muted small my-0">#{item.idProduct}</label></p>
+                                            <p className="my-0 small"><label className="text-muted small my-0">#{item.product_id}</label></p>
                                             <p className="my-0 small"><strong className="card-title small my-0">{item.product_title}</strong></p>
                                             <p className="my-0 small"><label className="text-muted small my-0">Color: </label><label className="mx-1 small my-0">{item.color}</label></p>
                                             <p className="my-0 small"><label className="text-muted small my-0">Size: </label><label className="mx-1 small my-0">{item.size}</label></p>

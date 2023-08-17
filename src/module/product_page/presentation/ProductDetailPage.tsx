@@ -72,7 +72,7 @@ const ProductDetailPage: React.FC = () => {
     };
 
     let [tempCartProduct, setTempCartProduct] = useState<CartProduct>({
-        idProduct: productId??"1111",
+        product_id: productId??"1111",
         product_thumb: "url to img",
         count: 1,
         color: selectedColor,

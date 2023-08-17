@@ -44,22 +44,22 @@ const CartPage:React.FC = () => {
                 <div className="col-lg-8">
                         <div className="cart-body">
                             {cartItems.map((item) => (
-                            <div className="cart-item my-4" key={item.idProduct}>
+                            <div className="cart-item my-4" key={item.product_id}>
                                 <div className="d-flex text-start row">
                                     <div className="col-md-8 col-12">
                                         <div className="d-flex">
                                                 <img className="cart-item-img rounded-3" src="http://via.placeholder.com/165x200" alt=''/>
                                             <div className="cart-title text-start ms-3">
                                                 <div className="row h-50">
-                                                    <p className="mb-0"><label className="text-muted">#{item.idProduct}</label></p>
-                                                    <p className="mb-0 card-title"><a className="text-dark fs-4 text-decoration-none fw-500" href={item.idProduct}>{item.product_title}</a></p>
+                                                    <p className="mb-0"><label className="text-muted">#{item.product_id}</label></p>
+                                                    <p className="mb-0 card-title"><a className="text-dark fs-4 text-decoration-none fw-500" href={item.product_id}>{item.product_title}</a></p>
                                                     <p className="text-muted mb-0">{item.color}</p>
                                                 </div>
                                                 <div className="row h-50 d-flex align-items-end">
                                                     <div className="col-md-7">
                                                     <label htmlFor="size" className="form-label text-muted small mb-0">Size</label>
                                                         <select className="form-select" id="size" required defaultValue={item.size} onChange={(e: ChangeEvent<{value: string}>) => {
-                                                            dispatch(changeSizeAction(item.idProduct, e.target.value));}}>
+                                                            dispatch(changeSizeAction(item.product_id, e.target.value));}}>
                                                             <option value={sizes.S}>{sizes.S}</option>
                                                             <option value={sizes.M}>{sizes.M}</option>
                                                             <option value={sizes.L}>{sizes.L}</option>
@@ -71,7 +71,7 @@ const CartPage:React.FC = () => {
                                                                className="form-control mw-100"
                                                                type="number"
                                                                defaultValue={item.count}
-                                                               onChange={(e: ChangeEvent<{value: string}>) => { dispatch(changeCountAction(item.idProduct, +e.target.value))}}/>
+                                                               onChange={(e: ChangeEvent<{value: string}>) => { dispatch(changeCountAction(item.product_id, +e.target.value))}}/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,7 +86,7 @@ const CartPage:React.FC = () => {
                                         </div>
                                         <div className="row h-50 align-items-end">
                                             <button className="btn btn-link text-end text-muted text-decoration-none"
-                                                    onClick={() => dispatch(removeFromCartAction(item.idProduct))}>
+                                                    onClick={() => dispatch(removeFromCartAction(item.product_id))}>
                                                 Remove
                                             </button>
                                         </div>
