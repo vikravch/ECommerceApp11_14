@@ -1,6 +1,7 @@
 .productPage {
     display: inline-flex;
     margin-bottom: 77.5px;
+
 }
 
 .breadcrumbs {
@@ -24,17 +25,19 @@
 }
 
 .photoBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     position: inherit;
-    width: 850px;
-    height: 1273px;
+    /*width: 45vw;;*/
+    /*height: 67.5vh;*/
     /*width: 45vw; !* (850px / viewport width) * 100 *!*/
     /*height: 67.5vh; !* (1273px / viewport height) * 100 *!*/
-    margin-left: 155px;
+    margin-left: 15vw;
     margin-top: 30px;
 }
 
-.photoBox img {
-    display: inline;
+.mainImg {
+    /*display: inline;*/
     /*object-fit: cover;*/
     object-fit: scale-down;
     max-width: 420px;
@@ -42,6 +45,7 @@
     width: 30vw;
     height: 45vw;
 }
+
 
 .productInfoBox {
     display: inline;
@@ -126,6 +130,27 @@
     color: #000000;
 }
 
+.oldPrice {
+    text-decoration: line-through;
+    width: 38px;
+    height: 30px;
+    /*left: 1143px;*/
+    /*top: 329px;*/
+
+    /* Body / 21 */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 30px;
+    /* identical to box height, or 143% */
+    text-align: right;
+    letter-spacing: -0.8px;
+
+    /* Grey / Dark / 3 */
+    color: rgba(0, 0, 0, 0.3);
+}
+
 .price {
     text-decoration: line-through;
     width: 38px;
@@ -166,19 +191,15 @@
 }
 
 .productColorImg {
-    /*position: absolute;*/
-    /*display: inline-block;*/
     box-sizing: border-box;
     height: 80px;
     margin-top: 20px;
-    /*left: 1085px;*/
-    /*top: 449px;*/
-
 }
 
 .productColorImg img {
     /*display: inline-block;*/
     box-sizing: border-box;
+    object-fit: scale-down;
     width: 80px;
     height: 80px;
     cursor: pointer;
@@ -188,6 +209,15 @@
     /* Accent 1 / 4 */
     border: 1px solid #2D74FF;
     border-radius: 10px;
+}
+
+.productAdditionalImgs {
+    display: flex;
+    object-fit: scale-down;
+    max-width: 420px;
+    max-height: 634px;
+    width: 30vw;
+    height: 45vw;
 }
 
 .productSizeBox2 {
@@ -375,4 +405,17 @@
     border-collapse: inherit;
     width: 355px;
     opacity: 10%;
+}
+
+@media (max-width: 980px) {
+    .photoBox {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 780px) {
+    .productAdditionalImgs {
+        display: none;
+    }
 }

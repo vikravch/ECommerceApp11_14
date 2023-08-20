@@ -15,7 +15,7 @@ interface Props {
 
 const Header = (props: Props) => {
 
-    const cartCount = useSelector<Store, number>(state => state.cartPage.cartCount);
+    const cartCount = useSelector<Store, number>(state => state.cartPage.cartItems.length);
     let [cartImg, setCartImg] = useState({img: imgEmpty, spanCountStyle: 'd-none'});
     let [searchVal, setSearchVal] = useState('');
 

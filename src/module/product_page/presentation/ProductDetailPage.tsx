@@ -106,9 +106,9 @@ const ProductDetailPage: React.FC = () => {
                 </Modal>
                 <div className={styles.productPage}>
                     <div className={styles.photoBox}>
-                        <img onClick={toggle} alt={"img_main"} src={product.product_thumb} key={Math.random()}/>
+                        <img className={styles.mainImg} onClick={toggle} alt={"img_main"} src={product.product_thumb} key={Math.random()}/>
                         { product.product_imgs.map(el => {
-                            return <img onClick={toggle} alt={"imgs"} src={el} key={Math.random()}/>;
+                            return <img className={styles.productAdditionalImgs} onClick={toggle} alt={"imgs"} src={el} key={Math.random()}/>;
                         })}
 
                     </div>
@@ -131,7 +131,7 @@ const ProductDetailPage: React.FC = () => {
                         <div className={styles.productColorBox}>
                             <div className={styles.productColorText}>{selectedColor !== ""
                                 ? `Color: "${tempCartProduct.color}"`
-                                : product.colors[0].color}</div>
+                                : `Color: "${product.colors[0].color}"`}</div>
                             <div className={styles.productColorImg}>
                                 {product.colors.map((color, index) => (
                                     <img
@@ -156,9 +156,6 @@ const ProductDetailPage: React.FC = () => {
                             {product.size.map((size, index) => (
                                 <option className={styles.productSize} value={size}>{size}</option>
                             ))}
-                            {/*<option className={styles.productSize} value={sizes.S}>{sizes.S}</option>*/}
-                            {/*<option className={styles.productSize} defaultValue={sizes.M}>{sizes.M}</option>*/}
-                            {/*<option className={styles.productSize} value={sizes.L}>{sizes.L}</option>*/}
                         </select>
                             </div>
                             </div>

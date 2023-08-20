@@ -69,3 +69,15 @@
     background: url("../images/Base.png") center;
     background-size: cover;
 }
+
+@media (max-width: 680px) {
+    .base_img {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .subscribtion {
+        display: none;
+    }
+}

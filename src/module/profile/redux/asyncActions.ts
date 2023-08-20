@@ -2,11 +2,11 @@ import Profile from "../domain/model/Profile";
 import Order from "../domain/model/Order";
 import getProfileFake from "../domain/use_cases/getProfileFake";
 import getOrdersFake from "../domain/use_cases/getOrdersFake";
-import {DOMAIN_NAME} from "../../../general/data/server_setting";
 import {CLEAR_CART} from "../../cart/redux/asyncActions";
 import {CREATE_ORDER} from "../../checkout/redux/asyncActions";
 import ArticleInfo from "../../blog_page/domain/model/ArticlesList";
 import getOrders from "../domain/use_cases/getOrders";
+import api_client from "../../../general/data/api_client";
 
 export const getProfileDetailsAction = (token: string) :any => {
     return (dispatch: Function) => {
@@ -42,7 +42,7 @@ export const getOrdersAction = (token: string) :any => {
         })
     }
 
-    const response = fetch(`${DOMAIN_NAME}all_orders_get`);
+    const response = fetch(`${api_client}all_orders_get`);
     console.log(response)
     // if(response.ok){
     //     console.log(response)
