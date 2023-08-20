@@ -1,1 +1,0 @@
-export const DOMAIN_NAME = "https://ecommerce-project-haifa11.herokuapp.com/"

@@ -25,7 +25,7 @@ import {getArrivalDetailsAction} from "../../landing_page/redux/asyncActions";
 const CartPage:React.FC = () => {
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems)
     const total = useSelector<Store, number>(state => state.cartPage.cartTotal)
-    const count = useSelector<Store, number>(state => state.cartPage.cartCount)
+    const count = useSelector<Store, number>(state => state.cartPage.cartItems.length)
     const dispatch = useDispatch()
 
 
@@ -33,6 +33,7 @@ const CartPage:React.FC = () => {
 
     useEffect(() => {
         if (cartItems.length < 1) {
+
             dispatch(getCart(''))
         }
     }, [cartItems]);
@@ -67,7 +68,7 @@ const CartPage:React.FC = () => {
                                             <div className="cart-title text-start ms-3">
                                                 <div className="row h-50">
                                                     <p className="mb-0"><label className="text-muted">#{item.product_id}</label></p>
-                                                    <p className="mb-0 card-title"><a className="text-dark fs-4 text-decoration-none fw-500" href={item.product_id}>{item.product_title}</a></p>
+                                                    <p className="mb-0 card-title"><a className="text-dark fs-4 text-decoration-none fw-500" href={'/product/' + item.product_id}>{item.product_title}</a></p>
                                                     <p className="text-muted mb-0">{item.color}</p>
                                                 </div>
                                                 <div className="row h-50 d-flex align-items-end">

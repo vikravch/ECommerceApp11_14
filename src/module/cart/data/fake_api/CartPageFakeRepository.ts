@@ -4,6 +4,8 @@
 
 import CartPageRepository from "../../domain/use_case/CartPageRepository";
 import Cart, {CartData} from "../../domain/model/Cart";
+import apiClient, {AccessToken, RefreshToken} from "../../../../general/data/api_client";
+
 
 const  fakeCartData = {
     "cart": [
@@ -79,8 +81,26 @@ const  fakeCartData = {
 
 export default class CartPageFakeRepository implements CartPageRepository{
     async getCartDetails(token: string): Promise<CartData> {
-        // fetch ???
+
+        const headers = {
+            'AccessToken': AccessToken,
+            'RefreshToken': RefreshToken
+        }
+
+        try {
+            const response = await apiClient.get<CartData>('/cart', {headers});
+            console.log("getCartDetails");
+            console.log(response.data);
+            //setAction(response.data);
+            return response.data
+        } catch (error: any) {
+            console.log("ERROR: ");
+            console.log(error.message);
+            throw error;
+        }
+
         return new Promise((resolve => {
+            console.log("ProductPageFakeRepository - getProductDetails - setting the FAKE product");
             resolve(new CartData(fakeCartData));
         }));
     }

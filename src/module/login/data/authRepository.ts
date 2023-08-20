@@ -19,6 +19,10 @@ export default class AuthRepository {
             const response = await apiClient.post<any>('/auth/login', {}, {headers});
             console.log("signIn");
             console.log(response.data);
+            console.log(response.headers);
+            const AccessToken = response.headers.AccessToken
+            const RefreshToken = response.headers.RefreshToken
+            console.log(AccessToken)
            // dispatch({type: LOGIN_SUCCESS, payload: data})
             // setter
             return response.data;
