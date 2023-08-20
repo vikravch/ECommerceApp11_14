@@ -1,23 +1,16 @@
-.subscribtion
-{
-    position: relative;
+.subscription {
     width: 100%;
     height: 440px;
     background: #2D74FF;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.6px;
 }
 
-.textSub
-{
-    position: absolute;
-    width: 599px;
-    height: 258px;
-    left: 155px;
-    top: 91px;
-}
-
-.newsletter
-{
-    position: absolute;
+.newsletter {
+    margin-bottom: 20px;
     font-weight: 400;
     font-size: 24px;
     line-height: 30px;
@@ -26,11 +19,8 @@
 
 }
 
-.subscribeText
-{
-    position: absolute;
-    left: 0%;
-    bottom: 43.41%;
+.subscribeText {
+    margin-bottom: 40px;
     font-weight: 500;
     font-size: 48px;
     line-height: 54px;
@@ -38,80 +28,46 @@
     color: #FFFFFF;
 }
 
-.form
-{
-    position: absolute;
-    left: 9.69%;
-    right: 63.38%;
-    top: 65.68%;
-    bottom: 20.68%;
-}
-.input
-{
+.input {
+    display: inline-block;
+    padding-left: 50px;
+    border: 1px solid var(--text-color);
     width: 280px;
     height: 60px;
     background: #FFFFFF;
     border-radius: 10px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 120% */
+    letter-spacing: -0.6px;
 }
 
-.text_input
-{
-    display: flex;
-    flex-direction: row;
+.emailIcon {
     position: absolute;
-    margin: 20px 20px;
+    top: 18px;
+    left: 18px;
+    display: inline-block;
 }
 
-.button
-{
+.subscribeBtn {
+    width: 136px;
+    height: 60px;
     display: flex;
     padding: 18px 20px;
-    gap: 10px;
-
-    position: absolute;
-    left: 68.5%;
-    /*right: 65.38%;*/
-    top: 0%;
-    /*bottom: 20.68%;*/
-
-    /* Base / Black */
-
     background: #000000;
     border-radius: 10px;
-}
-
-.text_button
-{
-    display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0px 2px;
-
-    width: 96px;
-    height: 24px;
-}
-
-.text_button_sub
-{
-    width: 92px;
-    height: 24px;
     font-weight: 500;
     font-size: 20px;
-
-    display: flex;
-    align-items: center;
     letter-spacing: -0.6px;
     color: #FFFFFF;
 }
-.base_img
-{
-    position: absolute;
-    left: 50%;
-    right: 0%;
-    top: 0%;
-    bottom: 0%;
 
-    background: url("../images/Base.png");
+.base_img {
+    background: url("../images/Base.png") center;
+    background-size: cover;
 }
 
 @media (max-width: 680px) {

@@ -65,7 +65,7 @@ const Header = (props: Props) => {
                             <Link className={styles.link} to={'/catalog/men'} >Men</Link>
                         </div>
                         <div className={styles.navItem}>
-                            <Link className={styles.link} to={'/catalog/women'}>Woman</Link>
+                            <Link className={styles.link} to={'/catalog/women'}>Women</Link>
                         </div>
                         <div className={styles.navItem}>
                             <Link className={styles.link} to={'/catalog/kids'}>Kids</Link>
