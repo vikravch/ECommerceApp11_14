@@ -74,10 +74,19 @@
     .base_img {
         display: none;
     }
+    .subscribeText {
+        font-size: 40px;
+    }
 }
 
 @media (max-width: 480px) {
     .subscribtion {
         display: none;
+    }
+    .newsletter {
+        font-size: 12px;
+    }
+    .subscribeText {
+        font-size: 36px;
     }
 }

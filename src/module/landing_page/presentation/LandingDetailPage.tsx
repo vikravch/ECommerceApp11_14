@@ -19,3 +19,25 @@ const LandingDetailPage: React.FC = () => {
 }
 
 export default LandingDetailPage;
+/*
+            <Banner/>
+
+            <Categories/>
+
+
+            <Footer/>
+
+
+            <Blog/>
+            <Subscribtion/>
+ */
+
+/*
+order:
+            <Banner/>
+            <NewArrivals/>
+            <Categories/>
+            <Blog/>
+            <Subscribtion/>
+            <Footer/>
+ */
