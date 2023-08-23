@@ -35,7 +35,7 @@ const Header = (props: Props) => {
 
     useEffect(() => {
         if (startSearch) {
-            navigate("/catalog/search");
+            navigate('/catalog/search');
         }
         setStartSearch(false);
     }, [startSearch]);
