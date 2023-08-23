@@ -107,7 +107,7 @@ const Header = (props: Props) => {
                         </div>
                     </div>
                 </div>
-                <div className={styles.lineDevider}/>
+
             </div>
         </div>
     );

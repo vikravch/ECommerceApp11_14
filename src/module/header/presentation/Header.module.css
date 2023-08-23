@@ -79,8 +79,10 @@
 
 
 .navBar {
+    min-width: 320px;
     margin: 0;
     padding: 0;
+    border-bottom: 1px solid #cecece;
 }
 
 .leftNav {
@@ -211,6 +213,10 @@
     left: 10px;
     display: inline-block;
     cursor: pointer;
+}
+
+.footer {
+    min-width: 320px;
 }
 
 /*.dark{*/

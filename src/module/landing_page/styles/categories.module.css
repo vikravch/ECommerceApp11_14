@@ -144,7 +144,12 @@
     letter-spacing: -1.2px;
 }
 
-
+@media (max-width: 629px) {
+    /* Styles for mobile devices */
+    .container {
+        display: none;
+    }
+}
 /* Mobile Devices */
 @media (max-width: 767px) {
     /* Styles for mobile devices */
@@ -154,7 +159,7 @@
 }
 
 /* Tablets */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1299px) {
     /* Styles for tablets */
     .category_items {
         grid-template-columns: 1fr;
@@ -162,7 +167,7 @@
 }
 
 /* Desktops and Laptops */
-@media (min-width: 1024px) {
+@media (min-width: 1300px) {
     .category_items {
         grid-template-columns: 1fr 1fr;
     }

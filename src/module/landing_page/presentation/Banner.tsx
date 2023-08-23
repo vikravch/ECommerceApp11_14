@@ -1,40 +1,43 @@
 import style from "../styles/banner.module.css"
 
-import arrow_right from "../images/sumbol/arrow-right.png"
 import left from "../images/sumbol/left.png"
 import right from "../images/sumbol/right.png"
-import React from "react";
-import nikeImg from "../images/zoomx-invincible-run-flyknit-mens-road-running-shoes-sP2zk7 1.png"
+import React, {useState} from "react";
+import {Link} from "react-router-dom";
 
 const Banner = () => {
-    return (
-        <div className={style.rectangle + ' d-sm-none d-md-flex'}>
-            <div className={'container'}>
-                <div className={style.baner_img}>
-                    <img src="https://i.postimg.cc/25wqSgwk/Screenshot-2023-07-27-at-17-24-50.png" alt="banner"/>
-                </div>
+    const images = ['https://i.imgur.com/vycWUvh.png', 'https://i.imgur.com/xTrHyZw.png', 'https://i.imgur.com/tRTLcpn.png'];
+    let [page, setPage] = useState(0);
+    let [animate, setAnimate] = useState(false);
 
-                <div className={style.group2}>
-                    <div className={style.text_explore}>Explore</div>
-                    <div className={style.arrow_right}>
-                        <img src={arrow_right} className={style.arrow_vector}/>
-                    </div>
-                </div>
-                <button className={style.btn}>
-                    <div className={style.btn_text_states}>
-                        <h3 className={style.btn_text}>Buy now</h3>
-                    </div>
-                </button>
-                <div className={style.icon_left}>
-                    <img src={left} className={style.icon_left_vector}/>
-                </div>
-                <div className={style.icon_right}>
-                    <img src={right} className={style.icon_right_vector}/>
+    function onClickHandler(e:any): void {
+        if(e.target.src == left) {
+            setPage(page-1 < 0 ? images.length-1 : page-1);
+        } else if (e.target.src == right) {
+            setPage(page+1 >= images.length ? 0 : page+1);
+        }
+        setAnimate(true);
+        setTimeout(() => setAnimate(false), 500);
+    }
+
+    return (
+        <div className={style.rectangle + ' d-flex justify-content-center'}>
+            <img src={left} className={style.icon_left} alt={'arrow left'}
+                 onClick={(e) => onClickHandler(e)}/>
+            <div className={style.banner_img}>
+                <img src={images[page]} alt="banner" className={animate ? style.carouselImg : ''}/>
+                <div className={style.btnGroup2 + ' d-flex flex-row mt-2'}>
+                    <Link to={'/product/12'}>
+                        <button className={'btn-lg btn-primary rounded-3 ms-5'}>Buy now</button>
+                    </Link>
+                    <Link to={'/catalog/collection'}>
+                        <button className={'btn btn-lg bg-transparent text-light ms-5'}>{`Explore ➔`}</button>
+                    </Link>
                 </div>
             </div>
+            <img src={right} className={style.icon_right} alt={'arrow right'}
+                 onClick={(e) => onClickHandler(e)}/>
         </div>
-
-
     );
 };
 
