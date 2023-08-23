@@ -7,7 +7,7 @@ import styles from "../../header/presentation/Header.module.css";
 
 const Footer = () => {
     return (
-        <footer className="ry-5 bg-dark">
+        <footer className={`y-5 bg-dark + ${styles.footer}`}>
             <div className='container text-md-start p-5'>
                              <div className='row'>
                                  <div className='col'>

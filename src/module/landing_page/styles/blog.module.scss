@@ -24,16 +24,23 @@
   letter-spacing: -1.2px;
 }
 
+@media (max-width: 410px) {
+  .blog_items {
+    margin: 0;
+    gap: 0;
+  }
+}
 /* Mobile Devices */
-@media (max-width: 767px) {
-
+//@media (max-width: 767px) {
+@media (max-width: 844px) {
   .blog_items {
     grid-template-columns: 1fr;
   }
 }
 
 /* Tablets */
-@media (min-width: 768px) and (max-width: 1023px) {
+// @media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 845px) and (max-width: 1319px) {
 
   .blog_items {
     grid-template-columns: 1fr 1fr;
@@ -41,8 +48,8 @@
 }
 
 /* Desktops and Laptops */
-@media (min-width: 1024px) {
-
+//@media (min-width: 1024px) {
+@media (min-width: 1320px) {
   .blog_items {
 
   }

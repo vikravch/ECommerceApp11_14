@@ -215,6 +215,10 @@
     cursor: pointer;
 }
 
+.footer {
+    min-width: 320px;
+}
+
 /*.dark{*/
 /*    color: #FFFFFF;*/
 /*}*/
