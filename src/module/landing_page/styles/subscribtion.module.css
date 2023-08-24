@@ -1,4 +1,5 @@
-.subscription {
+.subscribtion {
+    min-width: 320px;
     width: 100%;
     height: 440px;
     background: #2D74FF;
@@ -81,10 +82,10 @@
 
 @media (max-width: 480px) {
     .subscribtion {
-        display: none;
+        height: 500px;
     }
-    .newsletter {
-        font-size: 12px;
+    .box {
+        width: 100% !important;
     }
     .subscribeText {
         font-size: 36px;
