@@ -10,10 +10,11 @@ import BlogHeaders from "./BlogHeaders";
 import HeadersList from "../domain/model/HeadersList";
 import styles from "../../landing_page/styles/blog.module.scss";
 import Pagination from "../../pagination/Pagination";
-import {paginationData} from "../../pagination/data/fakeData";
+import {PaginationData} from "../../../general/dto/APIResponseTypes";
 
 const BlogPage: React.FC = () => {
     const articlesList = useSelector<Store, Array<ArticleInfo>>(state => state.blogPage.articlesList)
+    const pageData = useSelector<Store, PaginationData>(state => state.blogPage.pageData)
     //TODO change state to headersList
     const headersList = useSelector<Store, Array<HeadersList>>(state => state.blogPage.headersList)
     const currentPage = useSelector<Store, number>(state => state.blogPage.currentPage);
@@ -42,7 +43,7 @@ const BlogPage: React.FC = () => {
                 </div>
 
             </div>
-            <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
+            <Pagination data={pageData} currentPage={currentPage} setCurrentPage={
                 (page: number) => {
                     dispatch(setBlogPaginationPage(page))
                 }

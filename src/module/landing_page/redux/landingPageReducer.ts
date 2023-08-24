@@ -3,13 +3,12 @@ import {SET_CURRENT_NEWARRIVALS_PAGE, SET_DATA, START_LOADING, STOP_LOADING} fro
 import {LandingPageStore} from "./typesLandingPage";
 import {PUT_PRODUCTS, } from "../../category/redux/asyncActions";
 import {productsResponse} from "../utils/constants";
+import {pageResponse} from "../../pagination/data/fakeData";
 // productsData: productsResponse
-
-
 
 export function landingPageReducer(
     state: LandingPageStore = {
-        isLoading: false, productsData: productsResponse, currentPage: 0
+        isLoading: false, productsData: productsResponse, pageData: pageResponse, currentPage: 0
     }, action: Action
 ) {
     switch (action.type) {
@@ -23,7 +22,7 @@ export function landingPageReducer(
         case SET_DATA: {
             console.log("SET DATA PAYLOAD:::")
             console.log(action.payload)
-            return {...state, productsData: action.payload, isLoading: false}
+            return {...state, productsData: action.payload, pageData: action.payload, isLoading: false}
         }
         case SET_CURRENT_NEWARRIVALS_PAGE: {
             console.log("Landing reducer " + action.payload)

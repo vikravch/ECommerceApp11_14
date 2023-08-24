@@ -5,9 +5,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import Skeleton from "../../category/presentation/Skeleton";
 import Pagination from "../../pagination/Pagination";
-import {paginationData} from "../../pagination/data/fakeData";
 import {getAlsoLikeDetailsAction, setAlsoLikePage} from "../redux/asyncActions";
 import ProductPreviewInfo from "../domain/model/ProductPreviewInfo";
+import {PaginationData} from "../../../general/dto/APIResponseTypes";
 
 
 const AlsoLike = () => {
@@ -16,7 +16,7 @@ const AlsoLike = () => {
         state => state.productPage.isLoading
     );
     const alsoLikeData = useSelector<Store, Array<ProductPreviewInfo>>(state => state.productPage.alsoLikeData.content)
-
+    const pageData = useSelector<Store, PaginationData>(state => state.productPage.alsoLikePageData);
     const currentPage = useSelector<Store, number>(state => state.productPage.currentPage);
     const skeletons = [...new Array(4)].map((_, index) => <Skeleton key={index} />);
 
@@ -44,7 +44,7 @@ const AlsoLike = () => {
                         />
                     )}
                 </div>
-                <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
+                <Pagination data={pageData} currentPage={currentPage} setCurrentPage={
                     (page:number)=>{
                         dispatch(setAlsoLikePage(page))
                     }

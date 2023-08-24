@@ -1,13 +1,13 @@
-import ArticlesList from "../domain/model/ArticlesList";
 import {getArticlesList} from "../domain/use_case/getArticlesList";
 import {getHeadersList} from "../domain/use_case/getArticlesList";
+import {ApiResponseBlogPreview} from "../../../general/dto/APIResponseTypes";
 
 export const getArticlesListAction = (pageNumber: number):any => {
     return (dispatch:Function) => {
         dispatch(startArticlesListLoadAction());
         getArticlesList(pageNumber).
         then((data)=>{
-            dispatch(setArticlesListDataAction(data.content));
+            dispatch(setArticlesListDataAction(data));
         });
     }
 };
@@ -36,7 +36,7 @@ export const setBlogPaginationPage = (data: number) => ({
 export const startArticlesListLoadAction = () => ({
         type: START_ARTICLES_LIST_LOAD
     });
-export const setArticlesListDataAction = (data:Array<ArticlesList>) => ({
+export const setArticlesListDataAction = (data:ApiResponseBlogPreview) => ({
     type: SET_ARTICLES_LIST_DATA,
     payload: data
 })

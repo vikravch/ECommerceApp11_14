@@ -15,8 +15,8 @@ import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewIn
 import {getProdustsByCategory, getProdustsByGender} from "../redux/asyncActions";
 import Skeleton from "./Skeleton";
 import Pagination from "../../pagination/Pagination";
-import {paginationData} from "../../pagination/data/fakeData";
 import {convertToSpaceFormat} from "../../../general/common/tools";
+import {PaginationData} from "../../../general/dto/APIResponseTypes";
 
 type Params = {
     type: string;
@@ -27,6 +27,7 @@ const  CategoryPage:React.FC = () => {
     const isLoading = useSelector<Store, boolean>(state => state.categoryPage.isLoading);
     const currentPage = useSelector<Store, number>(state => state.categoryPage.currentPage);
     const products = useSelector<Store, Array<ProductPreviewInfo>>(state => state.categoryPage.data) ;
+    const pageData = useSelector<Store, PaginationData>(state => state.categoryPage.pageData);
     const dispatch = useDispatch();
     let type = useParams<Params>().type || '';
     if(type){
@@ -86,7 +87,7 @@ const  CategoryPage:React.FC = () => {
                         )}
                     </div>
 
-                    <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
+                    <Pagination data={pageData} currentPage={currentPage} setCurrentPage={
                         (page:number)=>{
                          //   dispatch(setCategoryPaginationPage(page))
                         }

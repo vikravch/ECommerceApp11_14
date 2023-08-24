@@ -7,12 +7,12 @@ import {
     SET_SORT
 } from "./asyncActions";
 import {CategoryPageStore, SortProps} from "./typesCategoryPage";
-import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
+import {pageResponse} from "../../pagination/data/fakeData";
 
 
 export const categoryReducer = (
     state: CategoryPageStore = {isLoading: true, data: [],
-        sort: {name:'By price', prop:SortProps.PRICE_ASC}, currentPage: 0},
+        sort: {name:'By price', prop:SortProps.PRICE_ASC}, pageData: pageResponse, currentPage: 0},
     action: Action
 ) => {
     switch (action.type) {
