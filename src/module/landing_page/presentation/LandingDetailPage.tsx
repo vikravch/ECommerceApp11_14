@@ -20,7 +20,5 @@ const LandingDetailPage: React.FC = () => {
 
 export default LandingDetailPage;
 /*
-            <Blog/>
-            <Subscribtion/>
             <Footer/>
  */

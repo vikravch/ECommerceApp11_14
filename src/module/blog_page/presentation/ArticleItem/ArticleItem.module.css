@@ -31,7 +31,7 @@
     margin-top: 98px;
     margin-left: 155px;
     margin-bottom: 48px;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 36px;
     font-style: normal;
     font-weight: 500;
@@ -72,4 +72,25 @@ h5 {
 b {
     margin: auto 10px;
     letter-spacing: -0.8px;
+}
+
+@media (max-width: 410px) {
+    .articleItem {
+        display: flex;
+        justify-content: center;
+    }
+    .blog {
+        min-width: 315px;
+        max-width: 315px;
+        margin: 0 0 20px 0;
+        height: 400px;
+    }
+    .blog img {
+        max-width: 315px;
+        width: 315px;
+        height: 200px;
+    }
+    h5 {
+        margin-bottom: 15px;
+    }
 }
