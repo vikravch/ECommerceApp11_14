@@ -21,7 +21,7 @@ const LandingDetailPage: React.FC = () => {
     return (
         <>
             <Banner/>
-            <div ref={newArrivalsRef} id={'newArrivals'}>
+            <div ref={newArrivalsRef}>
                 <NewArrivals/>
             </div>
             <Categories/>
