@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import style from './BlogPage.module.css';
 import ArticleItem from "./ArticleItem/ArticleItem";
 import {useDispatch, useSelector} from "react-redux";
@@ -10,13 +10,15 @@ import BlogHeaders from "./BlogHeaders";
 import HeadersList from "../domain/model/HeadersList";
 import styles from "../../landing_page/styles/blog.module.scss";
 import Pagination from "../../pagination/Pagination";
-import {paginationData} from "../../pagination/data/fakeData";
+import {PaginationData} from "../../../general/dto/APIResponseTypes";
 
 const BlogPage: React.FC = () => {
     const articlesList = useSelector<Store, Array<ArticleInfo>>(state => state.blogPage.articlesList)
+    const pageData = useSelector<Store, PaginationData>(state => state.blogPage.pageData)
     //TODO change state to headersList
     const headersList = useSelector<Store, Array<HeadersList>>(state => state.blogPage.headersList)
     const currentPage = useSelector<Store, number>(state => state.blogPage.currentPage);
+    const blogH1Ref = useRef<null | HTMLDivElement>(null);
 
     const dispatch = useDispatch()
 
@@ -25,6 +27,11 @@ const BlogPage: React.FC = () => {
         dispatch(getHearersListAction())
     }, [currentPage]);
 
+    useEffect(() => {
+        if (currentPage > 0 && blogH1Ref.current) {
+            blogH1Ref.current.scrollIntoView({behavior: 'smooth'});
+        }
+    }, [articlesList]);
 
     return (
         <div className={style.wrapper}>
@@ -34,7 +41,7 @@ const BlogPage: React.FC = () => {
             <div>
                 <BlogHeaders data={headersList}/></div>
             <div className={styles.container}>
-                <h1 className={styles.h1}>Blog</h1>
+                <h1 className={styles.h1} ref={blogH1Ref}>Blog</h1>
                 <div className={styles.blog_items}>
                     {articlesList.map((item) => (
                         <ArticleItem img={item.thumbImgUrl} title={item.title} key={item.id} id={item.id} date={formatDate(item.timestampDateMod)} />
@@ -42,7 +49,7 @@ const BlogPage: React.FC = () => {
                 </div>
 
             </div>
-            <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
+            <Pagination data={pageData} currentPage={currentPage} setCurrentPage={
                 (page: number) => {
                     dispatch(setBlogPaginationPage(page))
                 }

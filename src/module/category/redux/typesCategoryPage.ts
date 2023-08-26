@@ -1,4 +1,5 @@
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
+import {PaginationData} from "../../../general/dto/APIResponseTypes";
 
 export enum SortProps {
     PRICE_ASC = 'price',
@@ -15,6 +16,7 @@ export type Sort = {
 export interface CategoryPageStore {
     isLoading: boolean;
     data: Array<ProductPreviewInfo>;
+    pageData: PaginationData;
     sort: Sort;
     currentPage: number;
 }

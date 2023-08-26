@@ -11,7 +11,7 @@ export default class BlogPageFakeRepository implements BlogPageRepository{
         try {
             const res = await api_client.get<ApiResponseBlogPreview>(`/blog?page=${pageNumber}&size=6`)
             console.log('GET ARTICLES LIST')
-            setArticlesListDataAction(res.data.content)
+            setArticlesListDataAction(res.data)
             return res.data
         }
             catch(error: any) {

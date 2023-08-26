@@ -1,12 +1,12 @@
 import {Action} from "../../../general/redux/Action";
-import {paginationData} from "../data/fakeData";
 import {SET_DATA, START_DATA_LOAD} from "./asyncActions";
 import {PaginationStore} from "./typesPagination";
+import {pageResponse} from "../data/fakeData";
 
 export function paginationReducer(
-    state: PaginationStore = {data: paginationData,
+    state: PaginationStore = {data: pageResponse,
         isLoading: false,
-        currentPage: paginationData.pageable.pageNumber
+        currentPage: pageResponse.number
     }, action: Action
 ){
     switch (action.type){

@@ -33,6 +33,34 @@ class Pageable {
     }
 }
 
+export class PaginationData {
+    last: boolean;
+    totalElements: number;
+    totalPages: number;
+    size: number;
+    number: number;
+    sort: {
+        empty: boolean;
+        unsorted: boolean;
+        sorted: boolean;
+    };
+    first: boolean;
+    numberOfElements: number;
+    empty: boolean;
+
+    constructor(data: PaginationData) {
+        this.last = data.last;
+        this.totalElements = data.totalElements;
+        this.totalPages = data.totalPages;
+        this.size = data.size;
+        this.number = data.number;
+        this.sort = data.sort;
+        this.first = data.first;
+        this.numberOfElements = data.numberOfElements;
+        this.empty = data.empty;
+    }
+}
+
 export class ApiResponseProductPreview {
     content: ProductPreviewInfo[];
     pageable: Pageable;
@@ -62,7 +90,7 @@ export class ApiResponseProductPreview {
 }
 
 export class ApiResponseBlogPreview {
-    content: ArticleInfo[];
+    content: Array<ArticleInfo>;
     pageable: Pageable;
     last: boolean;
     totalPages: number;

@@ -1,6 +1,5 @@
 .container {
-  margin: auto;
-  margin-bottom: 98px;
+  margin: auto auto 98px auto;
   max-width: 1320px;
 }
 
@@ -16,7 +15,7 @@
   margin-left: 10px;
   margin-top: 98px;
   margin-bottom: 48px;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 36px;
   font-style: normal;
   font-weight: 500;

@@ -1,15 +1,15 @@
-export const paginationData = {
-    "pageable": {
-        "sort": {
-            "empty": true,
-            "unsorted": false,
-            "sorted": true
-        },
-        "offset": 0,
-        "pageNumber": 0,
-        "pageSize": 9,
-        "paged": true,
-        "unpaged": false
+export const pageResponse = {
+    "last": false,
+    "totalElements": 223,
+    "totalPages": 99,
+    "size": 12,
+    "number": 0,
+    "sort": {
+        "empty": false,
+        "sorted": true,
+        "unsorted": false
     },
-    "totalPages": 21,
-};
+    "first": true,
+    "numberOfElements": 12,
+    "empty": false
+}

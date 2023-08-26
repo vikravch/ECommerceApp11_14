@@ -1,19 +1,20 @@
 import React, {useEffect} from "react";
 import PreviewProduct from "../../product_card/presentation/PreviewProduct";
 import Pagination from "../../pagination/Pagination";
-import {paginationData} from "../../pagination/data/fakeData";
 import Skeleton from "../../category/presentation/Skeleton";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
 import {getArrivalDetailsAction, setNewArrivalsPaginationPage} from "../redux/asyncActions";
 import styles from "../styles/newArrivals.module.css"
+import {PaginationData} from "../../../general/dto/APIResponseTypes";
 
 
 const NewArrivals: React.FC = () => {
     const dispatch = useDispatch()
     const isLoading = useSelector<Store, number>(state => state.landingPage.currentPage)
     const newArrivals = useSelector<Store, Array<ProductPreviewInfo>>(state => state.landingPage.productsData.content)
+    const pageData = useSelector<Store, PaginationData>(state => state.landingPage.pageData);
 
     // @ts-ignore
     const currentPage = useSelector<Store, number>(state => state.landingPage.currentPage);
@@ -45,7 +46,7 @@ const NewArrivals: React.FC = () => {
                     )}
 
                 </div>
-                <Pagination data={paginationData} currentPage={currentPage} setCurrentPage={
+                <Pagination data={pageData} currentPage={currentPage} setCurrentPage={
                     (page: number) => {
                         dispatch(setNewArrivalsPaginationPage(page))
                     }

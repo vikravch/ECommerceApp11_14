@@ -6,10 +6,12 @@ import {
     START_HEADERS_LIST_LOAD
 } from "./asyncActions";
 import {BlogPageStore} from "./typesBlogPage";
+import {pageResponse} from "../../pagination/data/fakeData";
 
 export function blogPageReducer(
     state: BlogPageStore = {
         articlesList: [],
+        pageData: pageResponse,
         headersList: [],
         isLoading: false,
         currentPage: 0
@@ -21,7 +23,7 @@ export function blogPageReducer(
         }
         case SET_ARTICLES_LIST_DATA:{
             console.log('SET ARTICLES')
-            return {...state, articlesList: action.payload, isLoading: false}
+            return {...state, articlesList: action.payload.content, pageData: action.payload, isLoading: false}
         }
 
         case SET_CURRENT_BLOG_PAGE: {
