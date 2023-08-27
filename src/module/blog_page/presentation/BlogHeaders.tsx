@@ -6,7 +6,7 @@ const BlogHeaders = (props: any) => {
 
     if(props.data.length === 5) {
         return (
-            <div className={style.headers_container}>
+            <div className={style.header_container}>
 
                     <div className={style.left_header}>
                         <div className={style.big_text_header}>{props.data[0].title}</div>
@@ -31,7 +31,6 @@ const BlogHeaders = (props: any) => {
                                     <span>&#x1F552; {formatDate(props.data[4].timestampDateMod)}</span>
                                 </div>
                             </div>
-
                     </div>
 
 

@@ -15,7 +15,7 @@ const ArticleItem: React.FC<any> = (props) => {
                     <h5>{title}</h5>
 
                     <div className={style.clock}>
-                        <b>{props.date}</b>
+                        <b>&#x1F552; {props.date}</b>
                     </div>
                 </div>
             </div>

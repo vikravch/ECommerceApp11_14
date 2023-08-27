@@ -35,8 +35,8 @@ const BlogPage: React.FC = () => {
 
     return (
         <div className={style.wrapper}>
-            <div className={'row'}>
-                <p className={style.breadcrumbs}>Main / Blog </p>
+            <div className={'container p-0'}>
+                <p className={style.main}>Main / <span className={'black'}>Blog</span></p>
             </div>
             <div>
                 <BlogHeaders data={headersList}/></div>

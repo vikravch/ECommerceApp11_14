@@ -2,13 +2,27 @@ import style from "../styles/banner.module.css"
 
 import left from "../images/sumbol/left.png"
 import right from "../images/sumbol/right.png"
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 const Banner = () => {
     const images = ['https://i.imgur.com/vycWUvh.png', 'https://i.imgur.com/xTrHyZw.png', 'https://i.imgur.com/tRTLcpn.png'];
     let [page, setPage] = useState(0);
     let [animate, setAnimate] = useState(false);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setPage(page =>
+                (page + 1) % images.length
+            );
+            setAnimate(true);
+            setTimeout(() => setAnimate(false), 500);
+        }, 3000);
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, []);
 
     function onClickHandler(e:any): void {
         if(e.target.src == left) {
