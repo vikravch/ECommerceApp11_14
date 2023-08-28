@@ -191,6 +191,18 @@
     background: none;
 }
 
+.searchBtn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.footer {
+    min-width: 320px;
+}
+
 @media (max-width: 480px) {
     .navItemRight {
         display: flex;
@@ -205,16 +217,4 @@
     .searchBtn {
         display: none;
     }
-}
-
-.searchBtn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.footer {
-    min-width: 320px;
 }
