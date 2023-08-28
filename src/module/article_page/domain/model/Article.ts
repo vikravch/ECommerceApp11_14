@@ -2,10 +2,10 @@ export default class Article {
     id: string;
     title: string;
     body:string;
-    timestampDateMod:number;
+    timestampDateMod:string;
 
 
-    constructor(id: string, title: string, body: string, images: string[], thumbImg: string, timestampDateMod: number) {
+    constructor(id: string, title: string, body: string, images: string[], thumbImg: string, timestampDateMod: string) {
         this.id = id;
         this.title = title;
         this.body = body;

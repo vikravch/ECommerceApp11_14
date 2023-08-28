@@ -9,14 +9,13 @@ const ArticleItem: React.FC<any> = (props) => {
         <div className={style.articleItem}>
             <div className={style.blog} >
                 <div>
-                    <a href={`/${routes.articlePage}/:articleId`}>
+                    <a href={`/${routes.articlePage}/${props.id}`} className={'text-decoration-none text-black'}>
                         <img src={props.img} alt="Blog"/>
+                        <h5>{title}</h5>
+                        <div className={style.clock}>
+                            <b>&#x1F552; {props.date}</b>
+                        </div>
                     </a>
-                    <h5>{title}</h5>
-
-                    <div className={style.clock}>
-                        <b>&#x1F552; {props.date}</b>
-                    </div>
                 </div>
             </div>
         </div>

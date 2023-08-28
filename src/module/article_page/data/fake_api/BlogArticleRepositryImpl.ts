@@ -8,7 +8,9 @@ export default class BlogArticlePageFakeRepository implements BlogArticlePageRep
     async getArticleDetails(id: string): Promise<Article> {
         try {
             const response = await apiClient.get<Article>('/blog/' + id);
-            console.log("getArticleDetails");
+            let article = response.data;
+            article.title = article.title.replace(/\s\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/g, '');
+            article.body = article.body.replace(/[{}]/g, '');
             setArticleDataAction(response.data);
             return response.data;
         }
