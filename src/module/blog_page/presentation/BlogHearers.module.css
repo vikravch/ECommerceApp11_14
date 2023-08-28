@@ -38,22 +38,22 @@
 }
 
 .right_header_item {
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: 64px;
+    padding: 64px 20px 20px 20px;
     display: grid;
     grid-template-columns: 1fr;
     align-content: space-between;
+    cursor: pointer;
+}
 
+.right_header_item:hover {
+    background-color: rgba(0, 0, 0, 0.03);
 }
 
 .big_text_header {
-
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 64px;
+    font-size: 50px;
     line-height: 70px;
     letter-spacing: -3px;
     color: #000000;
@@ -71,13 +71,14 @@
     align-items: center;
     gap: 10px;
     background: #000000;
-    color: #FFFFFF;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
+    text-decoration: none;
     line-height: 20px;
     letter-spacing: -0.3px;
+    color: #FFFFFF;
 }
 
 .btn_read_more:hover {
@@ -100,7 +101,7 @@
         align-content: center;
     }
     .big_text_header {
-        font-size: 26px;
+        font-size: 20px;
         line-height: 34px;
         letter-spacing: -0.8px;
         text-transform: uppercase;
@@ -122,8 +123,7 @@
         align-content: normal;
     }
     .right_header_item {
-        width: 145px;
-        margin-top: 0;
+        width: 157px;
         padding: 30px 0 0 10px;
         letter-spacing: -0.8px;
         display: grid;
@@ -151,7 +151,7 @@
         width: 410px;
     }
     .right_header_item {
-        width: 195px;
+        width: 204px;
         padding-bottom: 30px;
     }
 }

@@ -1,4 +1,4 @@
-import Repository from "../../data/fake_api/BlogPageFakeRepository"
+import Repository from "../../data/fake_api/BlogRepositoryImpl"
 import {ApiResponseBlogPreview} from "../../../../general/dto/APIResponseTypes";
 
 export async function getArticlesList(pageNumber: number):Promise<ApiResponseBlogPreview>{

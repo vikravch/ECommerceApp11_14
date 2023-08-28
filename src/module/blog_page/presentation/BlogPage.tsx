@@ -7,7 +7,6 @@ import {Store} from "../../../general/redux/storeTypes";
 import {getArticlesListAction, getHearersListAction, setBlogPaginationPage} from "../redux/asyncActions";
 import formatDate from "../dateTransformer";
 import BlogHeaders from "./BlogHeaders";
-import HeadersList from "../domain/model/HeadersList";
 import styles from "../../landing_page/styles/blog.module.scss";
 import Pagination from "../../pagination/Pagination";
 import {PaginationData} from "../../../general/dto/APIResponseTypes";
@@ -15,16 +14,14 @@ import {PaginationData} from "../../../general/dto/APIResponseTypes";
 const BlogPage: React.FC = () => {
     const articlesList = useSelector<Store, Array<ArticleInfo>>(state => state.blogPage.articlesList)
     const pageData = useSelector<Store, PaginationData>(state => state.blogPage.pageData)
-    //TODO change state to headersList
-    const headersList = useSelector<Store, Array<HeadersList>>(state => state.blogPage.headersList)
     const currentPage = useSelector<Store, number>(state => state.blogPage.currentPage);
     const blogH1Ref = useRef<null | HTMLDivElement>(null);
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getArticlesListAction(currentPage));
         dispatch(getHearersListAction())
+        dispatch(getArticlesListAction(currentPage));
     }, [currentPage]);
 
     useEffect(() => {
@@ -39,7 +36,7 @@ const BlogPage: React.FC = () => {
                 <p className={style.main}>Main / <span className={'black'}>Blog</span></p>
             </div>
             <div>
-                <BlogHeaders data={headersList}/></div>
+                <BlogHeaders/></div>
             <div className={styles.container}>
                 <h1 className={styles.h1} ref={blogH1Ref}>Blog</h1>
                 <div className={styles.blog_items}>

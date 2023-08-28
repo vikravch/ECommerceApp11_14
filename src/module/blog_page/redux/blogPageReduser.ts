@@ -22,7 +22,6 @@ export function blogPageReducer(
             return { ...state, isLoading: true}
         }
         case SET_ARTICLES_LIST_DATA:{
-            console.log('SET ARTICLES')
             return {...state, articlesList: action.payload.content, pageData: action.payload, isLoading: false}
         }
 

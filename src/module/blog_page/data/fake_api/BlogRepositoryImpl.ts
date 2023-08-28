@@ -4,13 +4,13 @@ import api_client from "../../../../general/data/api_client";
 import {setArticlesListDataAction, setHeadersListDataAction} from "../../redux/asyncActions";
 import HeadersList from "../../domain/model/HeadersList";
 import {ApiResponseBlogPreview} from "../../../../general/dto/APIResponseTypes";
+import formatDate from "../../dateTransformer";
 
-export default class BlogPageFakeRepository implements BlogPageRepository{
+export default class BlogRepositoryImpl implements BlogPageRepository{
 
     async getArticlesList(pageNumber: number): Promise<ApiResponseBlogPreview> {
         try {
             const res = await api_client.get<ApiResponseBlogPreview>(`/blog?page=${pageNumber}&size=6`)
-            console.log('GET ARTICLES LIST')
             setArticlesListDataAction(res.data)
             return res.data
         }
@@ -23,15 +23,19 @@ export default class BlogPageFakeRepository implements BlogPageRepository{
     }
 
     async getHeadersList(): Promise<Array<HeadersList>> {
-        api_client.get<Array<HeadersList>>('/blog/header').then((res) => {
-            setHeadersListDataAction(res.data)
-        })
-            .catch((err) => {
-                console.log("ERROR: ")
-                console.log(err.message)
-                //setLoading(false);
-            })
-        console.log(headersList.articles)
+        try {
+            const res = await api_client.get<Array<HeadersList>>('/blog/header');
+            res.data.forEach(h => {
+                h.title = h.title.replace(/\s\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/g, '');
+                h.timestampDateMod = formatDate(h.timestampDateMod);
+            });
+            setHeadersListDataAction(res.data);
+            return res.data;
+        } catch(error: any) {
+            console.log("ERROR: ")
+            console.log(error.message)
+            //setLoading(false);
+        }
         return Promise.resolve(headersList.articles);
     }
 
