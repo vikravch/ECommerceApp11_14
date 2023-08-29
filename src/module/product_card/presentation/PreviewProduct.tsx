@@ -1,6 +1,5 @@
 import React from 'react';
 import {Rating} from "react-simple-star-rating";
-import addCart from "../../landing_page/images/sumbol/bag_cart.svg";
 import style from "../presentation/PreviewProduct.module.css";
 
 const PreviewProduct = (props: any) => {
@@ -9,8 +8,8 @@ const PreviewProduct = (props: any) => {
         <div className={'col mb-4 previewProd'}>
             <a href={`/product/${props.article}`}>
                 <img className={style.img} src={props.imageUrl} alt="Product"/></a>
-            <img className={style.add} src={addCart} alt="Add"
-            />
+            {props.discountPercent > 0 ?
+            <div className={style.discount}>-{props.discountPercent}%</div> : ''}
             <div className={'pt-2'}>
                 <Rating size={20} emptyColor={"rgba(0, 0, 0, 0.1)"}
                         fillColor={"#568FFF"}

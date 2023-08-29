@@ -4,7 +4,12 @@ import ArticleItem from "./ArticleItem/ArticleItem";
 import {useDispatch, useSelector} from "react-redux";
 import ArticleInfo from "../domain/model/ArticlesList";
 import {Store} from "../../../general/redux/storeTypes";
-import {getArticlesListAction, getBlogDataAction, setBlogPaginationPage} from "../redux/asyncActions";
+import {
+    cleanBlogDataAction,
+    getArticlesListAction,
+    getBlogDataAction,
+    setBlogPaginationPage
+} from "../redux/asyncActions";
 import BlogHeaders from "./BlogHeaders/BlogHeaders";
 import styles from "../../landing_page/styles/blog.module.scss";
 import Pagination from "../../pagination/Pagination";
@@ -34,8 +39,10 @@ const BlogPage: React.FC = () => {
     }, [currentPage]);
 
     useEffect(() => {
-        // return null; unmount clean state
-    })
+        return () => {
+            dispatch(cleanBlogDataAction());
+        }
+    }, [dispatch]);
 
     return (
         <>

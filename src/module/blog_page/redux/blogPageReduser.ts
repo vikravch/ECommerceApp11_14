@@ -1,5 +1,6 @@
 import {Action} from "../../../general/redux/Action";
 import {
+    CLEAN_BLOG_DATA,
     SET_ARTICLES_LIST_DATA, SET_CURRENT_BLOG_PAGE,
     SET_HEADERS_LIST_DATA,
     START_ARTICLES_LIST_LOAD, START_BLOG_LOAD,
@@ -31,6 +32,15 @@ export function blogPageReducer(
         }
         case SET_HEADERS_LIST_DATA: {
             return {...state, headersList: action.payload}
+        }
+        case CLEAN_BLOG_DATA: {
+            return {
+                articlesList: [],
+                pageData: pageResponse,
+                headersList: [],
+                isLoading: false,
+                currentPage: 0
+            }
         }
         default:
             return state;

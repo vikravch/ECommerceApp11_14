@@ -28,6 +28,7 @@ export const START_ARTICLES_LIST_LOAD = "start_articles_list_load";
 export const SET_ARTICLES_LIST_DATA = "set_articles_list_data";
 export const SET_CURRENT_BLOG_PAGE = 'set_current_blog_page';
 export const SET_HEADERS_LIST_DATA = 'set_headers_list_data';
+export const CLEAN_BLOG_DATA = 'clean_blog_data';
 
 export const startBlogLoadAction = () => ({
     type: START_BLOG_LOAD
@@ -50,4 +51,8 @@ export const setArticlesListDataAction = (data:ApiResponseBlogPreview) => ({
 export const setHeadersListDataAction = (data:Array<ApiResponseBlogHeader>) => ({
     type: SET_HEADERS_LIST_DATA,
     payload: data
+});
+
+export const cleanBlogDataAction = () => ({
+    type: CLEAN_BLOG_DATA
 });

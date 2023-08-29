@@ -6,6 +6,10 @@ export function convertToSpaceFormat(inputString: string): string {
     return inputString.replace(/_/g, ' ');
 }
 
+export function convertDiscountToPercent(price: number, discount: number): number{
+    return Math.round(discount * 100 / (price + discount));
+}
+
 export default function convertDate(inputDate: string) {
     const date = new Date(inputDate);
     const day = String(date.getDate()).padStart(2, '0');

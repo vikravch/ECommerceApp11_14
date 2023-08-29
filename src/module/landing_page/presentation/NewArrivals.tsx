@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import PreviewProduct from "../../product_card/presentation/PreviewProduct";
 import Pagination from "../../pagination/Pagination";
-import Skeleton from "../../category/presentation/Skeleton";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
@@ -12,13 +11,13 @@ import {PaginationData} from "../../../general/dto/APIResponseTypes";
 
 const NewArrivals: React.FC = () => {
     const dispatch = useDispatch()
-    const isLoading = useSelector<Store, number>(state => state.landingPage.currentPage)
+    // const isLoading = useSelector<Store, number>(state => state.landingPage.currentPage)
     const newArrivals = useSelector<Store, Array<ProductPreviewInfo>>(state => state.landingPage.productsData.content)
     const pageData = useSelector<Store, PaginationData>(state => state.landingPage.pageData);
 
     // @ts-ignore
     const currentPage = useSelector<Store, number>(state => state.landingPage.currentPage);
-    const skeletons = [...new Array(12)].map((_, index) => <Skeleton key={index}/>);
+    // const skeletons = [...new Array(12)].map((_, index) => <Skeleton key={index}/>);
 
     useEffect(() => {
         if (currentPage >= 0) {
@@ -41,7 +40,7 @@ const NewArrivals: React.FC = () => {
                             article={product.product_id}
                             price={Math.round(product.price)}
                             rating={product.rating}
-                            discount={product.discount}
+                            discountPercent={product.discountPercent}
                         />
                     )}
 
