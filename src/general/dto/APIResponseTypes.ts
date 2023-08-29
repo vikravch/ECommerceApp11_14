@@ -117,6 +117,19 @@ export class ApiResponseBlogPreview {
     }
 }
 
+export class ApiResponseBlogHeader {
+    id: string;
+    title: string;
+    timestampDateMod: string;
+
+
+    constructor(data: ApiResponseBlogHeader) {
+        this.id = data.id;
+        this.title = data.title;
+        this.timestampDateMod = data.timestampDateMod;
+    }
+}
+
 export class ApiResponseCollections {
     content: CollectionInfo[];
     pageable: Pageable;

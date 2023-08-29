@@ -1,9 +1,8 @@
 import {Dispatch} from "react"
 import api_client from "../../../general/data/api_client";
-import {log} from "util";
 import apiClient from "../../../general/data/api_client";
 import {ApiResponseProductPreview} from "../../../general/dto/APIResponseTypes";
-import {setDataAction, stopLoadAction} from "../../landing_page/redux/asyncActions";
+import {convertDiscountToPercent} from "../../../general/common/tools";
 
 export const SET_CATEGORY = "set_category";
 export const SET_SORT = "set_sort";
@@ -24,6 +23,7 @@ export const getProdustsByGender = (gender: string): any => async (dispatch: Dis
         console.log(response.data);
         console.log(response.data.content);
         //setDataAction(response.data);
+        response.data.content.forEach(p => p.discountPercent = convertDiscountToPercent(+p.price, +p.discount));
         dispatch({type: PUT_PRODUCTS, payload: response.data.content})
         //stopLoadAction()
         return response.data;
@@ -36,7 +36,7 @@ export const getProdustsByGender = (gender: string): any => async (dispatch: Dis
 
 export const getProdustsByCategory = (category: string): any => async (dispatch: Dispatch<any>) => {
     dispatch({type: PRODUCTS_REQUEST})
-    let URLPart = '';
+    let URLPart: string;
     (category.toUpperCase() == 'SALE') ? (URLPart = 'discount_products_get') : (URLPart = `product_by_gender_get?gender=${category.toUpperCase()}`)
     fetch(`${api_client}${URLPart}`,
         {

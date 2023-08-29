@@ -6,15 +6,12 @@
 
 }
 .header {
-    margin-left: 155px;
-    /*font-size: 16px;*/
-    /*font-weight: 400;*/
-    line-height: 18px;
-    letter-spacing: -0.5px;
-    text-align: left;
-    /*display: inline-block;*/
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    color: rgba(0, 0, 0, 0.3);
 }
 
 .photoBox {

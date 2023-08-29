@@ -12,7 +12,7 @@ import Season from "./navBarComponents/Season";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import ProductPreviewInfo from "../../product_page/domain/model/ProductPreviewInfo";
-import {getProdustsByCategory, getProdustsByGender} from "../redux/asyncActions";
+import {getProdustsByGender} from "../redux/asyncActions";
 import Skeleton from "./Skeleton";
 import Pagination from "../../pagination/Pagination";
 import {convertToSpaceFormat} from "../../../general/common/tools";
@@ -49,7 +49,7 @@ const  CategoryPage:React.FC = () => {
                     <h1 className={"col-7 p-0 category"}>{convertToSpaceFormat(type)}</h1>
                     <div className={"col-2 align-self-center p-0 selectDiv"}>
                         <select className="form-select form-select-sm select"
-                                onChange={(e)=>{console.log("dispatch me!");}}>
+                                onChange={()=>{console.log("dispatch me!");}}>
                             <option value="0">Sort by:</option>
                             <option value="rating">Rating</option>
                             <option value="newest">Newest</option>
@@ -82,7 +82,7 @@ const  CategoryPage:React.FC = () => {
                                 article={product.product_id}
                                 price={Math.round(product.price)}
                                 rating={product.rating}
-                                discount={product.discount}
+                                discountPercent={product.discountPercent}
                             />
                         )}
                     </div>

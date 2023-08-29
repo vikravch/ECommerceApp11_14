@@ -16,6 +16,7 @@ export const productsResponse = {
     "content": [
         {
             "discount": 0.00,
+            "discountPercent": 0.00,
             "rating": 5.00,
             "price": 37.00,
             "product_id": "187",
@@ -24,6 +25,7 @@ export const productsResponse = {
         },
         {
             "discount": 5.00,
+            "discountPercent": 0.00,
             "rating": 5.00,
             "price": 110.50,
             "product_id": "180",
@@ -32,6 +34,7 @@ export const productsResponse = {
         },
         {
             "discount": 0.00,
+            "discountPercent": 0.00,
             "rating": 5.00,
             "price": 82.00,
             "product_id": "183",
@@ -40,6 +43,7 @@ export const productsResponse = {
         },
         {
             "discount": 10.00,
+            "discountPercent": 0.00,
             "rating": 5.00,
             "price": 68.50,
             "product_id": "223",
@@ -48,6 +52,7 @@ export const productsResponse = {
         },
         {
             "discount": 0.00,
+            "discountPercent": 0.00,
             "rating": 5.00,
             "price": 105.50,
             "product_id": "181",
@@ -56,6 +61,7 @@ export const productsResponse = {
         },
         {
             "discount": 0.00,
+            "discountPercent": 0.00,
             "rating": 5.00,
             "price": 50.00,
             "product_id": "182",
@@ -64,6 +70,7 @@ export const productsResponse = {
         },
         {
             "discount": 15.00,
+            "discountPercent": 0.00,
             "rating": 5.00,
             "price": 55.50,
             "product_id": "184",
@@ -72,6 +79,7 @@ export const productsResponse = {
         },
         {
             "discount": 5.00,
+            "discountPercent": 0.00,
             "rating": 5.00,
             "price": 76.50,
             "product_id": "188",
@@ -80,6 +88,7 @@ export const productsResponse = {
         },
         {
             "discount": 0.00,
+            "discountPercent": 0.00,
             "rating": 5.00,
             "price": 101.00,
             "product_id": "186",
@@ -88,6 +97,7 @@ export const productsResponse = {
         },
         {
             "discount": 0.00,
+            "discountPercent": 0.00,
             "rating": 5.00,
             "price": 99.00,
             "product_id": "179",
@@ -96,6 +106,7 @@ export const productsResponse = {
         },
         {
             "discount": 0.00,
+            "discountPercent": 0.00,
             "rating": 5.00,
             "price": 72.00,
             "product_id": "177",
@@ -104,6 +115,7 @@ export const productsResponse = {
         },
         {
             "discount": 0.00,
+            "discountPercent": 0.00,
             "rating": 5.00,
             "price": 92.50,
             "product_id": "178",

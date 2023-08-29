@@ -5,6 +5,7 @@ export default class ProductPreviewInfo {
     rating: number;
     price: number;
     discount: number;
+    discountPercent: number;
 
     constructor(json: any) {
         this.product_id = json.product_id;
@@ -13,5 +14,6 @@ export default class ProductPreviewInfo {
         this.rating = json.rating;
         this.price = json.price;
         this.discount = json.discount;
+        this.discountPercent = 0;
     }
 }

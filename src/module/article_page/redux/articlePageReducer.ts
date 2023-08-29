@@ -5,12 +5,8 @@ import {ArticlePageStore} from "./typesArticlePage";
 
 
 export function articlePageReducer(
-    state: ArticlePageStore = {article: new Article("1196",
-            "BNYORIPONW",
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
-            ["http://POSGQB@EDJ","http://PPWYKHIURV","http://LGDLTIDRTX","http://MX@PVBMRGC","http://CXN@IPCWVB"],
-            "http://DUOCYTUSKR",
-            5225985221736821174), isLoading: false
+    state: ArticlePageStore = {article: new Article("1196", "", "", [], "", ""),
+                                isLoading: false
     }, action: Action
 ){
     switch (action.type){

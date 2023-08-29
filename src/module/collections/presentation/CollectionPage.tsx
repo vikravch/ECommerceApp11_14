@@ -29,24 +29,19 @@ const CollectionPage = () => {
         }
     }, [currentPage]);
 
-    return (<div>
-        <h3 className={styles.header}>Collections:</h3>
-        <div>
-            <div className={'col p-0 ps-5'}>
-                <div className={'row row-cols-4 justify-content-center p-0 m-0'}>
-                    {isLoading ? skeletons : collectionsData.map((product, id) =>
-                        <CollectionCard
-                            key={id}
-                            id={id}
-                            imageUrl={product.img_url}
-                            name={product.name}
-                            collection_id={product.collection_id}
-                        />
-                    )}
-                </div>
-            </div>
+    return (<div className={'container p-0'}>
+        <h3 className={styles.header}>Collections / <span className={'black'}>All</span></h3>
+        <div className={'row row-cols-4 justify-content-center p-0 m-0'}>
+            {isLoading ? skeletons : collectionsData.map((product, id) =>
+                <CollectionCard
+                    key={id}
+                    id={id}
+                    imageUrl={product.img_url}
+                    name={product.name}
+                    collection_id={product.collection_id}
+                />
+            )}
         </div>
-
     </div>)
 };
 
