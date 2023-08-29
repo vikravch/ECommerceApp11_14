@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {Navigate} from "react-router-dom";
 import AuthRepository from "../data/authRepository";
+import {routes} from "../../../general/navigation/routes";
 
 
 // SUPER USER admin@admin.com:admin
@@ -37,13 +38,13 @@ const SignIn:React.FC = () => {
         <div className={'container'}>
             <div className={'breadcrums main'}>Main / <span className={'black'}>Sign in</span></div>
             <div className={'row justify-content-around align-items-center min-height'}>
-                <div className={'col-4 mb-5'}>
-                    <div className="card">
+                <div className={'col-md-7 col-lg-5 col-xl-4 mb-5'}>
+                    <div className="card mainContainer">
                         <div className="card-body p-card">
                             <div className={'container mb-3'}>
                                 <div className={'row justify-content-between'}>
-                                    <div className={'col p-0 card-title h-card'}>Sign In</div>
-                                    <div className={'col-8 p-0 align-self-center gray fw-500 text-end'}>
+                                    <div className={'col-12 col-sm p-0 card-title h-card'}>Sign In</div>
+                                    <div className={'col-12 col-sm-8 p-0 align-self-center gray fw-500 text-end'}>
                                         Don’t have an account?&nbsp;
                                         <a className={'edit text-decoration-none fw-500'} href={'register'}>Sign up</a></div>
                                 </div>
@@ -67,7 +68,7 @@ const SignIn:React.FC = () => {
                                     </div>
                                 )}
                             </form>
-                            <a href="recovery" className={'edit text-decoration-none fw-500 d-block text-center'}>Lost your password?</a>
+                            <a href={`/${routes.recovery}`} className={'edit text-decoration-none fw-500 d-block text-center'}>Lost your password?</a>
                         </div>
                     </div>
                 </div>

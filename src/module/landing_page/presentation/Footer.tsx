@@ -4,6 +4,7 @@ import instagram from "../images/footer/Combined Shape.png"
 import twitter from "../images/footer/Twit.png"
 import {Link} from "react-router-dom";
 import styles from "../../header/presentation/Header.module.css";
+import {routes} from "../../../general/navigation/routes";
 
 const Footer = () => {
     return (
@@ -34,9 +35,9 @@ const Footer = () => {
                          <div className='mx-auto mb-md-0 col col-sm-6 col-md-6 col-lg'>
                              <h5 className='fw-bold mb-4 text-light'>Legals</h5>
                              <p className='text-secondary'>
-                                 <a href={'/agreement/termsOfUse'} className='text-secondary text-decoration-none'>Terms of services</a></p>
+                                 <a href={`/${routes.termsOfUse}/`} className='text-secondary text-decoration-none'>Terms of services</a></p>
                              <p className='text-secondary'>
-                                 <a href={'agreement/privacyPolicy'} className='text-secondary text-decoration-none'>Privacy policy</a></p>
+                                 <a href={`/${routes.privacyPolicy}/`} className='text-secondary text-decoration-none'>Privacy policy</a></p>
                          </div>
 
                          <div  className='mx-auto mb-md-0 col col-sm-6 col-md-6 col-lg'>

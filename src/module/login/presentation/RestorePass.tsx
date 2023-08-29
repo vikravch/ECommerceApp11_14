@@ -5,13 +5,13 @@ const RestorePass:React.FC = () => {
         <div className={'container'}>
             <div className={'breadcrums main'}>Main / <span className={'black'}>Recovery</span></div>
             <div className={'row justify-content-around align-items-center min-height'}>
-                <div className={'col-4 mb-5'}>
-                    <div className="card">
+                <div className={'col-sm-8 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mb-5'}>
+                    <div className="card mainContainer">
                         <div className="card-body p-card">
                             <div className={'container mb-3'}>
                                 <div className={'row justify-content-between'}>
                                     <div className={'col p-0 card-title h-card'}>Restore password</div>
-                                    <div className={'col-2 p-0 align-self-center gray fw-500 text-end'}>
+                                    <div className={'col-12 col-md-2 p-0 align-self-center gray fw-500 text-end'}>
                                         <a className={'edit text-decoration-none fw-500'} href={'login'}>Sign in</a></div>
                                 </div>
                             </div>

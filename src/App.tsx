@@ -50,8 +50,8 @@ function App() {
           <Route path={`/${routes.catalog}/:collectionName`} element={<CategoryPage/>}/>
           <Route path={`/${routes.catalog}/collection`} element={<CollectionPage/>}/>
 
-          <Route path={`/${routes.agreement}/privacyPolicy`} element={<PrivacyPolicy/>}/>
-          <Route path={`/${routes.agreement}/termsOfUse`} element={<TermsOfUse/>}/>
+          <Route path={`/${routes.privacyPolicy}/`} element={<PrivacyPolicy/>}/>
+          <Route path={`/${routes.termsOfUse}/`} element={<TermsOfUse/>}/>
         </Routes>
         {window.location.pathname !== '/' && <Footer/>}
       </div>

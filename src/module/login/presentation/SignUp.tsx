@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {signInAction, signUpAction} from "../redux/asyncActions";
 import {Store} from "../../../general/redux/storeTypes";
 import AuthRepository from "../data/authRepository";
+import {routes} from "../../../general/navigation/routes";
 
 const SignUp:React.FC = () => {
     let [inputType1, setInputType1] = useState('password');
@@ -36,13 +37,13 @@ const SignUp:React.FC = () => {
         <div className={'container'}>
             <div className={'breadcrums main'}>Main / <span className={'black'}>Sign up</span></div>
             <div className={'row justify-content-around align-items-center min-height'}>
-                <div className={'col-4 mb-5'}>
-                    <div className="card">
+                <div className={'col-sm-8 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mb-5'}>
+                    <div className="card mainContainer">
                         <div className="card-body p-card">
                             <div className={'container mb-3'}>
                                 <div className={'row justify-content-between'}>
-                                    <div className={'col p-0 card-title h-card'}>Sign Up</div>
-                                    <div className={'col-8 p-0 align-self-center gray fw-500 text-end'}>
+                                    <div className={'col-6 col-sm p-0 card-title h-card'}>Sign Up</div>
+                                    <div className={'col-6 col-sm-7 col-md-8 p-0 align-self-center gray fw-500 text-end'}>
                                         Already have an account?&nbsp;
                                         <a className={'edit text-decoration-none fw-500'} href={'login'}>Sign In</a></div>
                                 </div>
@@ -84,9 +85,9 @@ const SignUp:React.FC = () => {
                             </form>
                             <p className={'m-0 d-block text-center gray pPrivacy'}>
                                 By signing in to your account you agree with our&nbsp;
-                                <a href={'/agreement/privacyPolicy'}
+                                <a href={`/${routes.privacyPolicy}`}
                                    className={'fw-500 black text-decoration-none'}>Privacy Policy</a> and&nbsp;
-                                <a href={'/agreement/termsOfUse'}
+                                <a href={`/${routes.termsOfUse}`}
                                    className={'fw-500 black text-decoration-none'}>Terms of Use.</a></p>
                         </div>
                     </div>

@@ -1,3 +1,7 @@
+.mainContainer{
+    min-width: 295px;
+}
+
 .bg-gray{
     background: rgba(0, 0, 0, 0.05);
     opacity: 0.5;
