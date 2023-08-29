@@ -32,6 +32,3 @@ const LandingDetailPage: React.FC = () => {
 }
 
 export default LandingDetailPage;
-/*
-            <Footer/>
- */

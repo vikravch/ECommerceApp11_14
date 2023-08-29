@@ -34,6 +34,10 @@
     filter: invert(1);
 }
 
+.navBarDark .searchBtn {
+    filter: invert(1);
+}
+
 .humburger {
     float: left;
     margin: 15px 25px;
@@ -47,6 +51,7 @@
 }
 
 .mobileNav {
+    min-width: 320px;
     padding-left: 20px;
     display: flex;
     flex-direction: column;
@@ -83,6 +88,9 @@
     margin: 0;
     padding: 0;
     border-bottom: 1px solid #cecece;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .leftNav {
@@ -121,11 +129,8 @@
 
 .navItemRight {
     position: relative;
-    float: right;
-    margin-top: 20px;
     display: flex;
-    flex-direction: row;
-    /*border: #FA4A69 solid 1px;*/
+    align-items: center;
 }
 
 .navItemRight img {
@@ -149,24 +154,15 @@
 
 
 .cartContainer {
-    /*position: relative;*/
     margin: 0;
     padding: 0;
-    /*border: #fac84a solid 1px;*/
 }
 
 .imgCart {
-    /*border: #FA4A69 solid 1px;*/
     margin: 0;
-    /*height: 20px;*/
-    /*width: 16px;*/
 }
 
 .cartBadge {
-    /*border: #FA4A69 solid 1px;*/
-    /*position: absolute;*/
-    /*top: -15px;*/
-    /*left: 278px;*/
     padding-left: 5px;
     padding-right: 5px;
     background-color: #2984fc;
@@ -193,7 +189,7 @@
 
 .searchBtn {
     position: absolute;
-    top: 10px;
+    top: 12px;
     left: 10px;
     display: inline-block;
     cursor: pointer;
@@ -203,11 +199,11 @@
     min-width: 320px;
 }
 
+.lockScroll {
+    overflow: hidden;
+}
+
 @media (max-width: 480px) {
-    .navItemRight {
-        display: flex;
-        flex-direction: row;
-    }
     .navItemRight input {
         display: none;
     }
