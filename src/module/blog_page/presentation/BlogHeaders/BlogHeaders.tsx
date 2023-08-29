@@ -1,13 +1,13 @@
 import React from "react";
 import style from "./BlogHearers.module.css";
 import {useSelector} from "react-redux";
-import {Store} from "../../../general/redux/storeTypes";
-import HeadersList from "../domain/model/HeadersList";
+import {Store} from "../../../../general/redux/storeTypes";
 import {useNavigate} from "react-router-dom";
-import {routes} from "../../../general/navigation/routes";
+import {routes} from "../../../../general/navigation/routes";
+import {ApiResponseBlogHeader} from "../../../../general/dto/APIResponseTypes";
 
 const BlogHeaders = () => {
-    const headersList = useSelector<Store, Array<HeadersList>>(state => state.blogPage.headersList)
+    const headersList = useSelector<Store, Array<ApiResponseBlogHeader>>(state => state.blogPage.headersList)
 
     const navigate = useNavigate();
     const handleOnClick = (index: number) => () => {
