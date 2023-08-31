@@ -1,8 +1,9 @@
 
 .modalOverlay {
+    min-width: 320px;
     z-index: 9999;
-    width: 110vw;
-    height: 110vh;
+    width: 101vw;
+    height: 101vh;
     position: fixed;
     top: 0;
     background: rgba(0, 0, 0, 0.6);
@@ -13,20 +14,24 @@
 }
 
 .modalBox {
-    display: block;
-    /*background: #FFFFFF;*/
-    width: 750px;
-    height: 960px;
     padding: 1rem;
-    border-radius: 1rem;
-    justify-content: center;
-    align-items: center;
+
 }
 
 .modalBox img {
+    border-radius: 1rem;
     justify-content: center;
     align-items: center;
     margin: auto;
-    width: 70%;
-    height: 70%;
+    max-height: 95vh;
+    max-width: 95vw;
+}
+
+.iconClose {
+    position: absolute;
+    right: 10%;
+    top: 5%;
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
 }

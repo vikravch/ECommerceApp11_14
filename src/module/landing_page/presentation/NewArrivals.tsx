@@ -38,7 +38,7 @@ const NewArrivals: React.FC = () => {
                             imageUrl={product.product_thumb}
                             title={product.product_title}
                             article={product.product_id}
-                            price={Math.round(product.price)}
+                            price={product.price}
                             rating={product.rating}
                             discountPercent={product.discountPercent}
                         />

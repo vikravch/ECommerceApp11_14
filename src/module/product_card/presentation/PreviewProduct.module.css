@@ -21,3 +21,17 @@
     font-weight: 500;
     line-height: 18px;
 }
+
+.price {
+    text-decoration: line-through;
+    width: 38px;
+    height: 30px;
+    font-family: 'Inter', serif;;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 30px;
+    text-align: right;
+    letter-spacing: -0.8px;
+    color: rgba(0, 0, 0, 0.3);
+}

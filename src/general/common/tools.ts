@@ -1,3 +1,6 @@
+import Product from "../../module/product_page/domain/model/Product";
+import {sizes} from "../data/sizes";
+
 export function convertToUnderscoreFormat(inputString: string): string {
     return inputString.replace(/ /g, '_');
 }
@@ -7,7 +10,8 @@ export function convertToSpaceFormat(inputString: string): string {
 }
 
 export function convertDiscountToPercent(price: number, discount: number): number{
-    return Math.round(discount * 100 / (price + discount));
+    return (price <= 0 || discount < 0 || discount >= 100) ? 0 :
+        Math.round(discount * 100 / (price + discount));
 }
 
 export default function convertDate(inputDate: string) {
@@ -16,6 +20,29 @@ export default function convertDate(inputDate: string) {
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = String(date.getFullYear());
     return `${day}.${month}.${year}`;
+}
+
+export function sortProductSizesColors(product: Product): Product {
+    if(product.colors.length > 1) {
+        const productColorIndex = product.colors.findIndex(c => c.product_id == product.product_id);
+        if(productColorIndex !== -1) {
+            const [targetItem] = product.colors.splice(productColorIndex, 1);
+            product.colors.unshift(targetItem);
+        }
+    }
+
+    if(product.category === 'Sunglasses' || product.size.length <= 1){
+        return product;
+    } else if(product.category === 'Shoes') {
+        product.size = product.size.map(s => Number(s)).sort((a, b) => a - b).map(s => s.toString());
+    } else {
+        product.size = product.size.slice().sort((a, b) => {
+            const indA = sizes.indexOf(a);
+            const indB = sizes.indexOf(b);
+            return indA - indB;
+        })
+    }
+    return product;
 }
 
 export function convertBlogArticleTitle(title: string): string {

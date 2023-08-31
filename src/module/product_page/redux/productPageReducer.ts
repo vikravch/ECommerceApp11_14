@@ -15,7 +15,7 @@ import {pageResponse} from "../../pagination/data/fakeData";
 
 export function productPageReducer(
     state: ProductPageStore = {product: new Product(fakeFullProduct),
-        isLoading: false, currentPage: 0, alsoLikeData: productsResponse, alsoLikePageData: pageResponse
+        isLoading: true, currentPage: 0, alsoLikeData: productsResponse, alsoLikePageData: pageResponse
     }, action: Action
 ){
     switch (action.type){
