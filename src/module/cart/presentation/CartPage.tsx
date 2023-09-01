@@ -76,7 +76,8 @@ const CartPage:React.FC = () => {
                                                     <label htmlFor="size" className="form-label text-muted small mb-0">Size</label>
                                                         <select className="form-select" id="size" required defaultValue={item.size} onChange={(e: ChangeEvent<{value: string}>) => {
                                                             dispatch(changeSizeAction(item.product_id, e.target.value));}}>
-                                                            {sizes.map((size, index) => (
+                                                            {item.stock_sizes.map((size, index) => ( size == item.size ?
+                                                                <option key={index} value={size} selected>{size}</option> :
                                                                 <option key={index} value={size}>{size}</option>
                                                             ))}
                                                         </select>

@@ -47,7 +47,7 @@ const BlogPage: React.FC = () => {
     return (
         <>
         {isLoading ? <Spinner/> :
-        <div className={style.wrapper}>
+        <div>
             <div className={'container p-0'}>
                 <p className={style.main}>Main / <span className={'black'}>Blog</span></p>
             </div>

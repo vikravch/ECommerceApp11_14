@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {getProductDetailsAction} from "../redux/asyncActions";
 import styles from "./ProductPage.module.css";
 import AlsoLike from "./AlsoLike";
@@ -10,9 +10,9 @@ import useModal from "../modalWindow/useModal";
 import Modal from "../modalWindow/modal";
 import DropDownOut from "../dropdown/DropDownOut";
 import Product from "../domain/model/Product"
-import style from "../../article_page/presentation/BlogArticlePage.module.css";
 import {convertDiscountToPercent} from "../../../general/common/tools";
 import CartProduct from "../../cart/domain/model/CartProduct";
+import Spinner from "../../spinner/Spinner";
 
 const ProductDetailPage: React.FC = () => {
     const {productId} = useParams<string>()
@@ -40,8 +40,9 @@ const ProductDetailPage: React.FC = () => {
         product_thumb: product.product_thumb,
         count: 1,
         color: product.colors[0].color,
-        size: selectedSizeOption,
+        size: '',
         product_title: product.product_title,
+        stock_sizes: product.size,
         price: Number(product.price),
         discount: Number(product.discount),
     }
@@ -100,13 +101,17 @@ const ProductDetailPage: React.FC = () => {
     // };
 
     return (
+        <>
+            {isLoading ? <Spinner/> :
         <div style={{minWidth: 320}}>
             <Modal isOpen={isOpen} toggle={toggle} imgSrc={imgSrc}>
                 <img src={imgSrc} alt="img"/>
             </Modal>
             <div className={'container p-0'}>
-                <p className={style.main}>
-                    {clientType} / {product.category} / <span className={'black'}>{product.product_title}</span>
+                <p className={styles.main}>
+                    <Link to={'/catalog/men'} className={styles.main}>{clientType}
+                    </Link> / <Link to={'/catalog/men'} className={styles.main}>{product.category}
+                    </Link> / <span className={'black'}>{product.product_title}</span>
                 </p>
                 <div className={styles.productPage}>
                     <div className={styles.photoBox}>
@@ -187,7 +192,7 @@ const ProductDetailPage: React.FC = () => {
                 </div>
             </div>
             <AlsoLike/>
-        </div>
+        </div>}</>
     );
 }
 export default ProductDetailPage;

@@ -93,11 +93,12 @@ const Header = (props: Props) => {
                         />
                     </div>
                     <div>
-                        <Link to="/cart" className={`${styles.cartContainer}`}>
-                            <img src={cartImg.img} className={styles.imgCart} alt={'cart'}/>
+                        <Link to="/cart" className={`${styles.cartContainer} d-flex justify-content-around`}>
+                            <img src={cartImg.img} className={cartImg.img == imgEmpty ? styles.imgCart : ''} alt={'cart'}/>
                             <span className={`${cartImg.spanCountStyle} ${styles.cartBadge}`}>{cartCount}</span>
                         </Link>
                     </div>
+
                     <div>
                         <Link to={profileBtn} className={'d-inline-block'}>
                             <img src={imgProfile} className={styles.imgProfile} alt={"profile"}/>
