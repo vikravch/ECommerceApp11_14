@@ -4,8 +4,6 @@ import ContentLoader from "react-content-loader"
 const Skeleton: React.FC = () => (
     <ContentLoader
         speed={2}
-        width={300}
-        height={466}
         viewBox="0 0 300 466"
         backgroundColor="#f3f3f3"
         foregroundColor="#ecebeb"

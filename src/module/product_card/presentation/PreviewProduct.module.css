@@ -1,3 +1,10 @@
+.previewProd{
+    margin-right: 20px;
+    padding: 0;
+    width: 300px;
+    position: relative;
+}
+
 .img {
     width: 300px;
     height: 365px;
@@ -34,4 +41,8 @@
     text-align: right;
     letter-spacing: -0.8px;
     color: rgba(0, 0, 0, 0.3);
+}
+
+.p12 {
+    padding: 0 12px 0 12px;
 }

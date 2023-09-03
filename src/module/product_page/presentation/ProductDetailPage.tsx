@@ -175,14 +175,14 @@ const ProductDetailPage: React.FC = () => {
                         <div className={styles.aditionalInfo}>
                             <div>
                                 <DropDownOut title={"Details"} text={product.details}/>
-                                <div className={styles.br}/>
+                                <div className={styles.br + " mt-0"}/>
                             </div>
                             <div>
                                 <DropDownOut title={"Shipping & Returns"} text={"We offer fast and reliable shipping to " +
                                     "your doorstep, ensuring your purchases arrive promptly. If you're not completely " +
                                     "satisfied with your order, our hassle-free return policy makes it easy to initiate " +
                                     "returns and exchanges within 30 days of purchase."}/>
-                                <div className={styles.br}/>
+                                <div className={styles.br + " mt-0"}/>
                             </div>
                         </div>
                     </div>
@@ -190,8 +190,8 @@ const ProductDetailPage: React.FC = () => {
                 <div className={'d-flex justify-content-center'}>
                     <div className={styles.br}/>
                 </div>
+                <AlsoLike/>
             </div>
-            <AlsoLike/>
         </div>}</>
     );
 }

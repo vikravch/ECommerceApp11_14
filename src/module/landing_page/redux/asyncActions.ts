@@ -1,5 +1,6 @@
-import Repository from "../data/fake_api/LandingPageFakeRepository";
+
 import {ApiResponseProductPreview} from "../../../general/dto/APIResponseTypes";
+import Repository from "../data/LandingPageRepositoryImpl";
 
 export const getArrivalDetailsAction = (pageNumber:number):any => {
     return (dispatch:Function) => {
