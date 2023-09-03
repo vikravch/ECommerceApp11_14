@@ -1,7 +1,7 @@
 import React from 'react';
 import {price} from "../../constants";
 
-const Price:React.FC = () => {
+const Price = (props:any) => {
     return (
         <div className="accordion-item border-0">
             <div className={"m-0 borderLine"}/>
@@ -12,7 +12,7 @@ const Price:React.FC = () => {
                     Price
                 </button>
             </h2>
-            <div id="flush-collapseTwo" className="accordion-collapse collapse show"
+            <div id="flush-collapseTwo" className={`accordion-collapse collapse ${props.isCollapseVisible ? 'show' : ''}`}
                  aria-labelledby="flush-headingTwo">
                 <div className="accordion-body p-0 pb-4">
                     {price.map((item)=>

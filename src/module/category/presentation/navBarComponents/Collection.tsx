@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Collection:React.FC = () => {
+const Collection = (props:any) => {
     return (
         <div className="accordion-item border-0">
             <div className={"m-0 borderLine"}/>
@@ -11,7 +11,7 @@ const Collection:React.FC = () => {
                     Collection
                 </button>
             </h2>
-            <div id="flush-collapseFour" className="accordion-collapse collapse show"
+            <div id="flush-collapseFour" className={`accordion-collapse collapse ${props.isCollapseVisible ? 'show' : ''}`}
                  aria-labelledby="flush-headingFour">
                 <div className="accordion-body p-0 pb-4">
                     <div><input className="visually-hidden check" type="radio" name={'collection'} id="check11"/>
