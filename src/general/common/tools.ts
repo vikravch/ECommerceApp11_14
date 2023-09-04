@@ -14,6 +14,10 @@ export function convertDiscountToPercent(price: number, discount: number): numbe
         Math.round(discount * 100 / (price + discount));
 }
 
+export function getFullPrice(price: number, discount: number): string {
+    return (Number(price) + Number(discount)).toFixed(2);
+}
+
 export default function convertDate(inputDate: string) {
     const date = new Date(inputDate);
     const day = String(date.getDate()).padStart(2, '0');

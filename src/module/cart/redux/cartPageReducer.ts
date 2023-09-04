@@ -3,7 +3,7 @@ import {ADD_TO_CART, CHANGE_COUNT, CHANGE_SIZE, CLEAR_CART, REMOVE_FROM_CART, SE
 import CartProduct from "../domain/model/CartProduct";
 
 export const calcTotalPrice = (items: CartProduct[]) => {
-    return items.reduce((sum, obj) => obj.price * obj.count + sum, 0);
+    return items.reduce((sum, obj) => +obj.price * obj.count + sum, 0).toFixed(2);
 };
 
 const oldCart: Array<CartProduct> = JSON.parse(localStorage.getItem("cartItems") || "[]");

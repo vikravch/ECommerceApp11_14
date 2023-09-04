@@ -10,7 +10,7 @@ import useModal from "../modalWindow/useModal";
 import Modal from "../modalWindow/modal";
 import DropDownOut from "../dropdown/DropDownOut";
 import Product from "../domain/model/Product"
-import {convertDiscountToPercent} from "../../../general/common/tools";
+import {convertDiscountToPercent, getFullPrice} from "../../../general/common/tools";
 import CartProduct from "../../cart/domain/model/CartProduct";
 import Spinner from "../../spinner/Spinner";
 
@@ -27,7 +27,7 @@ const ProductDetailPage: React.FC = () => {
     let [discountPercentage, fullPrice] = ['', ''];
     if(+product.discount > 0) {
         discountPercentage = convertDiscountToPercent(+product.price, +product.discount).toString();
-        fullPrice = (Number(product.price) + Number(product.discount)).toFixed(2);
+        fullPrice = getFullPrice(+product.price, +product.discount);
     }
     const clientType = !(product.client_type !== null && product.client_type.length > 0) ? ''
         : product.client_type.at(0) + product.client_type.substring(1).toLowerCase();
@@ -43,8 +43,8 @@ const ProductDetailPage: React.FC = () => {
         size: '',
         product_title: product.product_title,
         stock_sizes: product.size,
-        price: Number(product.price),
-        discount: Number(product.discount),
+        price: product.price,
+        discount: product.discount
     }
 
     useEffect(() => {

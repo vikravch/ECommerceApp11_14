@@ -359,14 +359,6 @@
     width: 100%;
 }
 
-.lineDeviderSmall {
-    display: inline-block;
-    border: #000000 solid 1px;
-    border-collapse: inherit;
-    width: 355px;
-    opacity: 10%;
-}
-
 .lockScroll {
     overflow: hidden;
 }

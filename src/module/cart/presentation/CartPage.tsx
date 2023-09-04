@@ -12,6 +12,7 @@ import {Link} from "react-router-dom";
 import AlsoLike from "../../product_page/presentation/AlsoLike";
 import style from "../presentation/CartPage.module.css"
 import {getArrivalDetailsAction} from "../../landing_page/redux/asyncActions";
+import {convertDiscountToPercent, getFullPrice} from "../../../general/common/tools";
 
 //TODO:
 // 1. No button in productPreview
@@ -55,63 +56,80 @@ const CartPage:React.FC = () => {
 
 
     return (<>
-            <div className="container p-0">
+            <div className="container p-0" style={{minWidth: 320}}>
             <p className={style.main}>Main / <span className={'black'}>Wishlist</span></p>
-            <h1>Cart</h1>
-            <div className="mb-5 row">
-                <div className="col-lg-8">
+            <h1 className={style.mb30}>Cart</h1>
+            <div className="mb-5 row justify-content-evenly">
+                <div className="col-lg-6 p-0">
                         <div className="cart-body">
                             {cartItems.map((item) => (
-                            <div className="cart-item my-4" key={item.product_id}>
-                                <div className="d-flex text-start row">
-                                    <div className="col-md-8 col-12">
-                                        <div className="d-flex">
+                            <div className="cart-item" key={item.product_id}>
+                                <div className={`d-flex text-start row ${style.maxWidth100}`}>
+                                    <div className={`col-sm-9 col-md-9 col-12 pe-0`}>
+                                        <div className="d-flex position-relative">
+                                            <a href={'/product/' + item.product_id}>
                                                 <img className={style.cart_item_img} src={item.product_thumb} alt=''/>
+                                                {+item.discount > 0 ? <div className={style.discount}>-{convertDiscountToPercent(+item.price, +item.discount)}%</div> : ''}
+                                            </a>
                                             <div className="cart-title text-start ms-3">
                                                 <div className="row h-50">
-                                                    <p className="mb-0"><label className="text-muted">#{item.product_id}</label></p>
-                                                    <p className="mb-0 card-title"><a className="text-dark fs-4 text-decoration-none fw-500" href={'/product/' + item.product_id}>{item.product_title}</a></p>
+                                                    <p className="mb-0"><span className="text-muted">#{item.product_id}</span></p>
+                                                    <p className="mb-0 card-title"><a className={style.title} href={'/product/' + item.product_id}>{item.product_title}</a></p>
                                                     <p className="text-muted mb-0">{item.color}</p>
                                                 </div>
+
+                                                {/*Size Quantity*/}
                                                 <div className="row h-50 d-flex align-items-end">
-                                                    <div className="col-md-7">
-                                                    <label htmlFor="size" className="form-label text-muted small mb-0">Size</label>
-                                                        <select className="form-select" id="size" required defaultValue={item.size} onChange={(e: ChangeEvent<{value: string}>) => {
+                                                    <div className="col-sm-6 col-md-7" style={{minWidth: 190}}>
+                                                        <label htmlFor={`size${item.product_id}`} className="form-label text-muted small mb-0">Size</label>
+                                                        <select className="form-select p-sm-0 ps-sm-2" id={`size${item.product_id}`} required defaultValue={item.size} onChange={(e: ChangeEvent<{value: string}>) => {
                                                             dispatch(changeSizeAction(item.product_id, e.target.value));}}>
                                                             {item.stock_sizes.map((size, index) => ( size == item.size ?
-                                                                <option key={index} value={size} selected>{size}</option> :
-                                                                <option key={index} value={size}>{size}</option>
+                                                                    <option key={index} value={size} selected>{size}</option> :
+                                                                    <option key={index} value={size}>{size}</option>
                                                             ))}
                                                         </select>
                                                     </div>
-                                                    <div className="col-md-5">
-                                                    <label htmlFor="quantity" className="form-label text-muted small mb-0">Quantity</label>
-                                                        <input id="quantity"
-                                                               className="form-control mw-100"
-                                                               type="number"
-                                                               defaultValue={item.count}
-                                                               onChange={(e: ChangeEvent<{value: string}>) => { dispatch(changeCountAction(item.product_id, +e.target.value))}}/>
+
+                                                    <div className="col-sm-3 col-md-3" style={{minWidth: 94}}>
+                                                        <label htmlFor={`quantity${item.product_id}`} className="form-label text-muted small mb-0">Quantity</label>
+                                                        <input id={`quantity${item.product_id}`}
+                                                           className="form-control p-sm-0 ps-sm-2 mw-100"
+                                                           type="number" min={"0"} max={item.stock_quantity ? item.stock_quantity : ''} //TODO check stock quantity
+                                                           step="1"
+                                                           defaultValue={item.count}
+                                                           onChange={(e: ChangeEvent<{value: string}>) => {
+                                                               if(+e.target.value < 0) {
+                                                                   e.target.value = "1";
+                                                               } else if(+e.target.value == 0) {
+                                                                   dispatch(removeFromCartAction(item.product_id))
+                                                               } else {
+                                                                   dispatch(changeCountAction(item.product_id, +e.target.value))
+                                                               }}}
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-4 col-12 mt-md-0 px-6 h-200">
+
+                                    <div className="col-sm-3 col-md-3 col-12 mt-md-0 p-0 h-200">
                                         <div className="d-block h-100">
                                         <div className="cart-title row h-50 align-items-start">
-                                            <p className="mb-0 card-title text-dark text-end fs-4 fw-500">
-                                                {(item.discount > 0)?<label className="me-2 text-muted" style={{textDecoration: "line-through", textDecorationColor: "rgba(250, 74, 105, 1)"}}>${Math.round((100 * item.price) / (100 - item.discount)) + "  "}</label>:null}
+                                            <p className={`mb-0 text-end ${style.title}`}>
+                                                {(+item.discount > 0)?<span className={style.fullPrice}>${getFullPrice(+item.price, +item.discount)}</span>:null}
                                                 ${item.price}</p>
                                         </div>
                                         <div className="row h-50 align-items-end">
-                                            <button className="btn btn-link text-end text-muted text-decoration-none"
+                                            <button className="btn btn-link text-end text-muted text-decoration-none p-0"
                                                     onClick={() => dispatch(removeFromCartAction(item.product_id))}>
                                                 Remove
                                             </button>
                                         </div>
                                         </div>
-                                        </div>
                                     </div>
+                                </div>
+                                <div className={style.br}/>
                             </div>
                             ))}
 
@@ -119,41 +137,38 @@ const CartPage:React.FC = () => {
                     </div>
                 {/* Summary*/}
 
-                <div className="col-lg-4 rounded-2 border border-1">
-                    <div className="block mb-5">
+                <div className={`col-md-10 col-lg-3 rounded-2 border border-1 ps-4 pe-4 ${style.minContentHeight}`}>
+                    <div className="block mb-4">
                         <div className="block-header">
-                            <h4 className="text mt-3 fw-500">Summary</h4>
+                            <h4 className={style.summary}>Summary</h4>
                         </div>
-                        <div className="block-body pt-2">
-                            <ul className="list-group list-group-flush mb-3">
-                                <li className="list-group-item d-flex justify-content-between lh-sm">
-                                    <div>
-                                        <input type="text" className="form-control form-control-sm mb-2" placeholder="Promo Code"/>
-                                    </div>
+                        <div className="block-body">
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item d-flex justify-content-between lh-sm p-0">
+                                    <input type="text" name={'placeholder'} className="form-control form-control-sm" placeholder="Promo Code"/>
                                     <button className="btn btn-sm btn-light border border-1" style={{height: 30, width: 70}}>Apply</button>
                                 </li>
-                                <li className="list-group-item d-flex justify-content-between lh-sm">
+                                <li className={`list-group-item d-flex justify-content-between ${style.subtotal1}`}>
                                     <div>
                                         <p className="my-0">Subtotal</p>
                                     </div>
                                     <p className="my-0">${total}</p>
                                 </li>
-                                <li className="list-group-item d-flex justify-content-between lh-sm">
+                                <li className={`list-group-item d-flex justify-content-between ${style.subtotal2}`}>
                                     <div>
                                         <p className="my-0">Estimated Shipping & Handling</p>
                                     </div>
                                     <p className="my-0">$0.00</p>
                                 </li>
-                                <li className="list-group-item d-flex justify-content-between lh-sm py-4">
-                                    <label className="fs-4 fw-500">Total</label>
-                                    <label className="fs-4 fw-500">${total}</label>
+                                <li className={`list-group-item d-flex justify-content-between ${style.total}`}>
+                                    <span>Total</span>
+                                    <span>${total}</span>
                                 </li>
-                                <li className="list-group-item d-flex justify-content-center lh-sm py-4">
-
+                                <li className="list-group-item d-flex justify-content-center p-0">
                                     <a href={profileBtn} className="btn btn-lg btn-primary w-100">
                                         {/*<Link to="/checkout" className="btn btn-lg btn-primary w-100">*/}
                                         Checkout
-                                        {/*/!*</Link>*/}
+                                        {/*</Link>*/}
                                         </a>
                                 </li>
                             </ul>
