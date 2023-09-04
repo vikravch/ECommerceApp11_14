@@ -16,7 +16,7 @@ const Spinner: React.FC = () => {
         return () => {
             document.body.classList.remove(styles.lockScroll)
         }
-    }); // TODO check on deploy
+    });
 
     return (
         <>

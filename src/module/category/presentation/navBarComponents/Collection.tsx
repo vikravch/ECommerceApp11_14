@@ -11,7 +11,7 @@ const Collection = (props:any) => {
                     Collection
                 </button>
             </h2>
-            <div id="flush-collapseFour" className={`accordion-collapse collapse ${props.isCollapseVisible ? 'show' : ''}`}
+            <div id="flush-collapseFour" className={`accordion-collapse collapse ${!props.isButtonFilterVisible ? 'show' : ''}`}
                  aria-labelledby="flush-headingFour">
                 <div className="accordion-body p-0 pb-4">
                     <div><input className="visually-hidden check" type="radio" name={'collection'} id="check11"/>

@@ -20,7 +20,7 @@ export const getProductDetailsAction = (productId:string):any => {
 export const getAlsoLikeDetailsAction = (pageNumber:number):any => {
     return (dispatch:Function) => {
         console.log("getNewArrivalsAction")
-        dispatch(startLoadAction());
+        // dispatch(startLoadAction()); Nastya commented, check why there is state of landing page
         new Repository().getAlsoLike(pageNumber).then((data)=>{
              // console.log(JSON.stringify(data));
             dispatch(setAlsoLikeDataAction(data));

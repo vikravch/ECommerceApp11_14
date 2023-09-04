@@ -18,7 +18,7 @@ import Pagination from "../../pagination/Pagination";
 import {convertToSpaceFormat} from "../../../general/common/tools";
 import {PaginationData} from "../../../general/dto/APIResponseTypes";
 import icon from "../icons/filter.png";
-import Spinner from "../../spinner/Spinner";
+import SpinnerShort from "../../spinner/SpinnerShort";
 
 type Params = {
     type: string;
@@ -29,7 +29,6 @@ const  CategoryPage:React.FC = () => {
     const currentPage = useSelector<Store, number>(state => state.categoryPage.currentPage);
     const products = useSelector<Store, Array<ProductPreviewInfo>>(state => state.categoryPage.data) ;
     const pageData = useSelector<Store, PaginationData>(state => state.categoryPage.pageData);
-    const [isCollapseVisible, setCollapseVisible] = useState(true); // options in each component
     const [isButtonFilterVisible, setIsButtonFilterVisible] = useState(false);
     const [isFullAccordionVisible, setIsFullAccordionVisible] = useState(true);
     const dispatch = useDispatch();
@@ -47,12 +46,8 @@ const  CategoryPage:React.FC = () => {
     useEffect(() => {
         const handleResize = () => {
             if(window.innerWidth < 768) {
-                setCollapseVisible(false);
                 setIsButtonFilterVisible(true);
-                console.log('if')
             } else {
-                console.log('else')
-                setCollapseVisible(true);
                 setIsFullAccordionVisible(true);
                 setIsButtonFilterVisible(false);
             }
@@ -63,31 +58,19 @@ const  CategoryPage:React.FC = () => {
 
         return () => window.removeEventListener('resize', handleResize);
     });
-
-    const chowFullAccordion = (e: React.MouseEvent) => {
-        e.preventDefault();
-        // const nextSibling = e.currentTarget.nextElementSibling;
-        // console.log(nextSibling)
-        // if(nextSibling) {
-        //     nextSibling.classList.toggle('d-none');
-        // }
-        console.log('btn')
-        console.log("b " + isFullAccordionVisible)
-        setIsFullAccordionVisible(!isFullAccordionVisible);
-        console.log("a " + isFullAccordionVisible)
-    }
-
-
     const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
 
     return (
-        <> {isLoading ? <Spinner/> :
+        <>
         <div className={'container p-0 mainCont'}>
             <div className={'main'}>{convertToSpaceFormat(type)} / <span className={'black'}>All</span></div>
             <div className={"container marCategory mainCont"}>
                 <div className={"row justify-content-between"}>
                     <h1 className={"col col-sm-7 p-0 category"}>{convertToSpaceFormat(type)}</h1>
-                    <div className={`col col-sm-1 align-self-center text-end p-0 filterBtn ${isButtonFilterVisible ? '' : 'd-none'}`} onClick={chowFullAccordion}><img src={icon} className={'pe-2'} alt={'filters'} title={'show filters'}/></div>
+                    <div className={`col col-sm-1 align-self-center text-end p-0 filterBtn 
+                    ${isButtonFilterVisible ? '' : 'd-none'}`} onClick={() => setIsFullAccordionVisible(!isFullAccordionVisible)}>
+                        <img src={icon} className={'pe-2'} alt={'filters'} title={'show filters'}/>
+                    </div>
                     <div className={"col col-sm-2 align-self-center p-0 selectDiv"}>
                         <select className="form-select form-select-sm select"
                                 onChange={()=>{console.log("dispatch me!");}}>
@@ -100,16 +83,17 @@ const  CategoryPage:React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className={`row row-cols-1 row-cols-md-2 m-0 ${isButtonFilterVisible ? ' justify-content-end' : ' justify-content-between'}`}>
+            <div className={`row row-cols-1 row-cols-md-2 m-0 
+                ${isButtonFilterVisible ? ' justify-content-end' : ' justify-content-between'}`}>
                 <div className={'col col-sm-1 p-0 nav-bar'} onChange={(e)=>{console.log(e.target);}}>
                     <div className={`accordion accordion-flush ${isFullAccordionVisible ? '' : 'd-none'}`}>
-                        <Category isCollapseVisible={isCollapseVisible} gender={type}/>
-                        <Price isCollapseVisible={isCollapseVisible}/>
-                        <Size isCollapseVisible={isCollapseVisible}/>
-                        <Collection isCollapseVisible={isCollapseVisible}/>
-                        <Brand isCollapseVisible={isCollapseVisible}/>
-                        <Style isCollapseVisible={isCollapseVisible}/>
-                        <Season isCollapseVisible={isCollapseVisible}/>
+                        <Category isButtonFilterVisible={isButtonFilterVisible} gender={type}/>
+                        <Price isButtonFilterVisible={isButtonFilterVisible}/>
+                        <Size isButtonFilterVisible={isButtonFilterVisible}/>
+                        <Collection isButtonFilterVisible={isButtonFilterVisible}/>
+                        <Brand isButtonFilterVisible={isButtonFilterVisible}/>
+                        <Style isButtonFilterVisible={isButtonFilterVisible}/>
+                        <Season isButtonFilterVisible={isButtonFilterVisible}/>
                     </div>
                 </div>
                 <div className={'col col-sm-11 col-md-7 col-lg-8 col-xl-9 p-0'}>
@@ -135,7 +119,8 @@ const  CategoryPage:React.FC = () => {
                     } />
                 </div>
             </div>
-        </div>}
+        </div>
+        {isLoading ? <SpinnerShort/> : ''}
         </>
     );
 };

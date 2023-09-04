@@ -11,7 +11,7 @@ const Brand = (props:any) => {
                     Brand
                 </button>
             </h2>
-            <div id="flush-collapseFive" className={`accordion-collapse collapse ${props.isCollapseVisible ? 'show' : ''}`}
+            <div id="flush-collapseFive" className={`accordion-collapse collapse ${!props.isButtonFilterVisible ? 'show' : ''}`}
                  aria-labelledby="flush-headingFive">
                 <div className="accordion-body p-0 pb-4">
                     <div className="form-check mb-1">

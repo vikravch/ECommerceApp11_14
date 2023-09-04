@@ -29,7 +29,9 @@ const CartPage:React.FC = () => {
     const dispatch = useDispatch()
 
 
-    //TODO useEffect depending on TOKEN
+    //TODO useEffect depending on TOKEN --> it must be in asyncActions; which repository to choose
+
+    // TODO fix Total $190.98000000000002; Subtotal $190.98000000000002; breadcrumbs
 
     useEffect(() => {
         if (cartItems.length < 1) {
@@ -53,8 +55,8 @@ const CartPage:React.FC = () => {
 
 
     return (<>
-            <div className="container" style={{maxWidth: 1070}}>
-
+            <div className="container p-0">
+            <p className={style.main}>Main / <span className={'black'}>Wishlist</span></p>
             <h1>Cart</h1>
             <div className="mb-5 row">
                 <div className="col-lg-8">

@@ -15,7 +15,7 @@ const Category = (props:any) => {
                     Category
                 </button>
             </h2>
-            <div id="category-collapse" className={`accordion-collapse collapse ${props.isCollapseVisible ? 'show' : ''}`}
+            <div id="category-collapse" className={`accordion-collapse collapse ${!props.isButtonFilterVisible ? 'show' : ''}`}
                  aria-labelledby="category-heading">
                 <div className="accordion-body p-0 pb-4">
                     {categories.map((item)=>

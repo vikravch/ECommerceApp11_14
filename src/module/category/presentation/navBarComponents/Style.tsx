@@ -11,7 +11,7 @@ const Style = (props:any) => {
                     Style
                 </button>
             </h2>
-            <div id="flush-collapseSix" className={`accordion-collapse collapse ${props.isCollapseVisible ? 'show' : ''}`}
+            <div id="flush-collapseSix" className={`accordion-collapse collapse ${!props.isButtonFilterVisible ? 'show' : ''}`}
                  aria-labelledby="flush-headingSix">
                 <div className="accordion-body p-0 pb-4">
                     <div className="form-check mb-1">

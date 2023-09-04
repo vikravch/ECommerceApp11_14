@@ -12,7 +12,7 @@ const Price = (props:any) => {
                     Price
                 </button>
             </h2>
-            <div id="flush-collapseTwo" className={`accordion-collapse collapse ${props.isCollapseVisible ? 'show' : ''}`}
+            <div id="flush-collapseTwo" className={`accordion-collapse collapse ${!props.isButtonFilterVisible ? 'show' : ''}`}
                  aria-labelledby="flush-headingTwo">
                 <div className="accordion-body p-0 pb-4">
                     {price.map((item)=>

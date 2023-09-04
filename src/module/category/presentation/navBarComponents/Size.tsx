@@ -11,7 +11,7 @@ const Size = (props:any) => {
                     Size
                 </button>
             </h2>
-            <div id="flush-collapseThree" className={`accordion-collapse collapse ${props.isCollapseVisible ? 'show' : ''}`}
+            <div id="flush-collapseThree" className={`accordion-collapse collapse ${!props.isButtonFilterVisible ? 'show' : ''}`}
                  aria-labelledby="flush-headingThree">
                 <div className="accordion-body p-0 pb-4">
                     <div className={'container'}>
