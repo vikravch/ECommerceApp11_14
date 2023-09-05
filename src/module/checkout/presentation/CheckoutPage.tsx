@@ -98,7 +98,7 @@ const CheckoutPage:React.FC = ()=> {
                                     <div>
                                         <p className="my-0">Subtotal</p>
                                     </div>
-                                    <p className="my-0">${cartTotal.toFixed(2)}</p>
+                                    <p className="my-0">${cartTotal}</p>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between lh-sm">
                                     <div>
@@ -158,8 +158,7 @@ const CheckoutPage:React.FC = ()=> {
                                 </div>
 
                                 <div className="col-sm-6">
-                                    <label htmlFor="email" className="form-label">Email <span
-                                        className="text-muted"></span></label>
+                                    <label htmlFor="email" className="form-label">Email <span className="text-muted"/></label>
                                     <input type="email"
                                            className="form-control"
                                            id="email"

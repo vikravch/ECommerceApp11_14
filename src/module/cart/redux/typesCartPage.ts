@@ -16,4 +16,5 @@ export interface CartPageStore{
     cartItems: Array<CartProduct>,
     cartCount: number,
     cartTotal: number
+    isLoading: boolean
 }

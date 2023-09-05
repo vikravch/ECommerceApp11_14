@@ -38,7 +38,7 @@ export function productPageReducer(
         }
 
         case SET_ALSOLIKE_DATA: {
-            return {...state, alsoLikeData: action.payload, alsoLikePageData: action.payload}
+            return {...state, alsoLikeData: action.payload, alsoLikePageData: action.payload, isLoading: false}
         }
 
         default:
