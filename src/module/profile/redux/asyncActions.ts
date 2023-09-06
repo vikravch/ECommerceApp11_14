@@ -2,15 +2,11 @@ import Profile from "../domain/model/Profile";
 import Order from "../domain/model/Order";
 import getProfileFake from "../domain/use_cases/getProfileFake";
 import getOrdersFake from "../domain/use_cases/getOrdersFake";
-import {CLEAR_CART} from "../../cart/redux/asyncActions";
-import {CREATE_ORDER} from "../../checkout/redux/asyncActions";
-import ArticleInfo from "../../blog_page/domain/model/ArticlesList";
 import getOrders from "../domain/use_cases/getOrders";
-import api_client from "../../../general/data/api_client";
 
 export const getProfileDetailsAction = (token: string) :any => {
     return (dispatch: Function) => {
-        dispatch(startProfileLoadAction());
+        dispatch(startLoadAction());
         getProfileFake(token).then((data) => {
             dispatch(setProfileDataAction(data));
         })
@@ -19,7 +15,7 @@ export const getProfileDetailsAction = (token: string) :any => {
 
 export const getOrdersDetailsAction = (token: string) :any => {
     return (dispatch: Function) => {
-        dispatch(startOrdersLoadAction());
+        dispatch(startLoadAction());
         getOrdersFake(token).then((ordersArray) => {
             let res = new Array(ordersArray.length);
             for(let i = ordersArray.length-1, j = 0; i >= 0; i--, j++){
@@ -32,7 +28,7 @@ export const getOrdersDetailsAction = (token: string) :any => {
 
 export const getOrdersAction = (token: string) :any => {
     return (dispatch: Function) => {
-        dispatch(startOrdersLoadAction());
+        dispatch(startLoadAction());
         getOrders(token).then((ordersArray) => {
             let res = new Array(ordersArray.length);
             for(let i = ordersArray.length-1, j = 0; i >= 0; i--, j++){
@@ -42,8 +38,8 @@ export const getOrdersAction = (token: string) :any => {
         })
     }
 
-    const response = fetch(`${api_client}all_orders_get`);
-    console.log(response)
+    // const response = fetch(`${api_client}all_orders_get`);
+    // console.log(response)
     // if(response.ok){
     //     console.log(response)
     //     const json = response.json();
@@ -58,23 +54,18 @@ export const getOrdersAction = (token: string) :any => {
     // }
 }
 
-export const START_PROFILE_LOAD = 'start_profile_load';
+export const START_LOAD = 'start_load';
 export const SET_PROFILE_DATA = 'set_profile_data';
-export const  START_ORDERS_LOAD = 'start_orders_load';
 export const SET_ORDERS_DATA = 'set_orders_data';
 export const SET_FILTER_TYPE = 'set_filter_type';
 
-export const startProfileLoadAction = () => ({
-    type: START_PROFILE_LOAD
+export const startLoadAction = () => ({
+    type: START_LOAD
 });
 
 export const setProfileDataAction = (data: Profile) => ({
     type: SET_PROFILE_DATA,
     payload: data
-});
-
-export const startOrdersLoadAction = () => ({
-    type: START_ORDERS_LOAD
 });
 
 export const setOrdersDataAction = (data: Array<Order>) => ({

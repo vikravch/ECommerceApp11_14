@@ -8,8 +8,7 @@ import ProfileItem from "../thirdLayer/ProfileItem";
 import Modal from "../fourthLayer/Modal";
 
 const ProfileDetails:React.FC = () => {
-    const profile = useSelector<Store, Profile>(state => state.profileDetails.profile);
-    const isLoading = useSelector<Store, boolean>(state => state.profileDetails.isLoading);
+    const profile = useSelector<Store, Profile>(state => state.profilePage.profile);
 
     const dispatch = useDispatch();
     useEffect(()=>{
@@ -33,7 +32,7 @@ const ProfileDetails:React.FC = () => {
             <div className={"container pb-1"}>
                 <div className={"row justify-content-evenly p-20px"}>
                     <div className={"col-3 avatar"}>{profile.name[0]}{profile.surname[0]}</div>
-                    <div className={"col-9 p-2"}>
+                    <div className={"col-8 col-sm-9 p-2"}>
                         <div className={"name"}>{profile.name} {profile.surname}</div>
                         <div className={"gray"}>Logout</div>
                     </div>

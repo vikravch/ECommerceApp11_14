@@ -7,11 +7,20 @@
     min-height: 75vh;
 }
 
+.min-width {
+    min-width: 320px;
+}
+
 .details{
     background: #FFFFFF;
     padding: 25px 30px 25px 30px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+}
+
+.br {
+    border-top: rgba(0, 0, 0, 0.10) solid 1px;
+    height: 1px;
 }
 
 .borderLine{
@@ -123,7 +132,6 @@
 
 .preview{
     border-radius: 10px;
-    display: block;
     width: 90px;
     height: 110px;
     cursor: pointer;

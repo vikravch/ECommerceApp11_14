@@ -7,9 +7,8 @@ import thunk from "redux-thunk";
 import {logger} from "redux-logger";
 import {landingPageReducer} from "../../module/landing_page/redux/landingPageReducer";
 import {articlePageReducer} from "../../module/article_page/redux/articlePageReducer";
-import {profileDetailsReducer} from "../../module/profile/redux/profileDetailsReducer";
+import {profilePageReducer} from "../../module/profile/redux/profilePageReducer";
 import {blogPageReducer} from "../../module/blog_page/redux/blogPageReduser";
-import {ordersDetailsReducer} from "../../module/profile/redux/ordersDetailsReducer";
 import {categoryReducer} from "../../module/category/redux/categoryReducer";
 import {loginPageReducer} from "../../module/login/redux/loginPageReducer";
 import {paginationReducer} from "../../module/pagination/redux/paginationReducer";
@@ -26,8 +25,7 @@ const store = createStore(
             collectionPage: collectionPageReducer,
             categoryPage: categoryReducer,
             articlePage: articlePageReducer,
-            profileDetails: profileDetailsReducer,
-            ordersDetails: ordersDetailsReducer,
+            profilePage: profilePageReducer,
             blogPage: blogPageReducer,
             loginPage: loginPageReducer,
         }

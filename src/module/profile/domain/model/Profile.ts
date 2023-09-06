@@ -41,9 +41,9 @@ export default class Profile{
 export const getProfilePreviewStr = '{' +
     '"address": "",' +
     '"country": "",' +
-    '"email": "dwight.schrute@gmail.com",' +
-    '"name": "Dwight",' +
+    '"email": "email@mail.com",' +
+    '"name": "User",' +
     '"phone": "",' +
-    '"surname": "Schrute",' +
+    '"surname": "Name",' +
     '"zipCode": ""' +
     '}';

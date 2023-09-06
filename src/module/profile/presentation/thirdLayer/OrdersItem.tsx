@@ -26,25 +26,25 @@ const OrdersItem:React.FC<Props> = (props: Props) => {
     let price = Number(order.totalPrice).toFixed(2);
 
     return (
-        <div className={'details mb-3'}>
-            <div className={"row justify-content-between"}>
-                <div className={"col-9"}>
+        <div className={'details mb-3 '}>
+            <div className={"row justify-content-between m-0 "}>
+                <div className={"col-8 col-sm-9 p-0"}>
                     <div className={"row row-cols-auto"}>
                         <div className={"orderTitle"}>
                         №{order.orderId} – {getStringDate(order.createdAt)}</div>
-                        <div className={styleStatus}>{order.orderStatus}</div>
+                        <div className={`${styleStatus} mb-1 mt-1 m-md-0`}>{order.orderStatus}</div>
                     </div>
                 </div>
-                <div className={"col text-end orderTitle"}>${price}</div>
+                <div className={"col p-0 text-end orderTitle"}>${price}</div>
             </div>
-            <div className={"row"}>
-                <div className={"col gray"}>Delivery: {getStringDate(order.deliveryDate)}</div>
-                <div className={"col text-end gray"}>Payed by {payment}</div>
+            <div className={"row m-0"}>
+                <div className={"col p-0 gray"}>Delivery: {getStringDate(order.deliveryDate)}</div>
+                <div className={"col p-0 text-end gray"}>Payed by {payment}</div>
             </div>
-            <div className={"row borderLine mt-3 mb-1"}/>
-            <div className={"row"}>{ props.order.orderLines ?
-                props.order.orderLines.map(item => {
-                    return <ProductItem key={Number(item.product_id)} product={item}/>
+            <div className={"br mt-3 mb-1"}/>
+            <div className={"row row-cols-2 row-cols-sm-3 m-0"}>{ props.order.orderLines ?
+                props.order.orderLines.map((item, index) => {
+                    return <ProductItem key={index} product={item}/>
                 }) : ''}
             </div>
         </div>

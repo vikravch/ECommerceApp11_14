@@ -10,12 +10,11 @@ const ProductItem:React.FC<Props> = (props: Props) => {
     let product = props.product;
 
     return (
-        <div className={"col-4 mt-4 p-0"}>
-            <div className={"row row-cols-auto"}>
-                <div className={"col ps-3 pe-3"}>
-                    <a href={`/product/${product.idProduct}`}>
-                    <img src={require("../../../../images/t-shirt-7142.png")} className={"preview"} alt="product"/></a>
-                </div>
+        <div className={"col-6 col-sm-4 mt-4 p-0"}>
+            <div className={"row flex-row m-0 "}>
+                <a href={`/product/${product.idProduct}`} className={"col-12 col-md-auto p-0 ps-md-3 pe-md-3"}>
+                    <img src={require("../../../../images/t-shirt-7142.png")} className={"preview"} alt="product"/>
+                </a>
                 <div className={"col p-0"}>
                     <div className={"gray"}>#{product.idProduct}</div>
                     <div className={"prodName"}>{product.product_title}</div>

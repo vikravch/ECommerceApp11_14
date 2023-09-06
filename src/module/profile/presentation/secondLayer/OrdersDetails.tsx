@@ -2,12 +2,15 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../../general/redux/storeTypes";
 import Order from "../../domain/model/Order";
-import {getOrdersAction, getOrdersDetailsAction, setFilterTypeAction} from "../../redux/asyncActions";
+import {
+    getOrdersAction,
+    getOrdersDetailsAction,
+    setFilterTypeAction
+} from "../../redux/asyncActions";
 import OrdersItem from "../thirdLayer/OrdersItem";
 
 const OrdersDetails: React.FC = () => {
-    const filteredOrders = useSelector<Store, Array<Order>>(state => state.ordersDetails.filteredOrders);
-    const isLoading = useSelector<Store, boolean>(state => state.ordersDetails.isLoading);
+    const orders = useSelector<Store, Array<Order>>(state => state.profilePage.orders);
 
     const dispatch = useDispatch();
     useEffect(()=>{
@@ -30,12 +33,12 @@ const OrdersDetails: React.FC = () => {
     dateLastYear.setMonth(dateNow.getMonth() - 12);
 
     return (
-        filteredOrders.length !== 0 ? (
+        orders.length !== 0 ? (
         <>
-            <div className={"container mb-3"}>
+            <div className={"container mt-5 mt-xl-0 mb-3"}>
                 <div className={"row justify-content-between"}>
                     <h1 className={"col-7 fw-500 m-0 p-0"}>Orders</h1>
-                    <div className={"col-2 align-self-center p-0"}>
+                    <div className={"col-4 col-md-2 align-self-center p-0"}>
                         <select className="form-select form-select-sm bordRad fw-500"
                                 onChange={(e)=>filterOrders(e.target.value)}>
                             <option value="0">All</option>
@@ -47,8 +50,8 @@ const OrdersDetails: React.FC = () => {
                 </div>
             </div>
             <div>{
-                filteredOrders.map(item => {
-                    return <OrdersItem key={Number(item.createdAt)} order={item}/>
+                orders.map((item, index) => {
+                    return <OrdersItem key={index} order={item}/>
                 })}
             </div>
         </>
