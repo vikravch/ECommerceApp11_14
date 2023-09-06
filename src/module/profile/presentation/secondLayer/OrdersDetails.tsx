@@ -2,26 +2,20 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../../general/redux/storeTypes";
 import Order from "../../domain/model/Order";
-import {
-    getOrdersAction,
-    getOrdersDetailsAction,
-    setFilterTypeAction
-} from "../../redux/asyncActions";
 import OrdersItem from "../thirdLayer/OrdersItem";
+import {getOrdersAction, sortOrdersAction} from "../../redux/asyncActions";
 
 const OrdersDetails: React.FC = () => {
     const orders = useSelector<Store, Array<Order>>(state => state.profilePage.orders);
 
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(getOrdersDetailsAction(sessionStorage.getItem("user") || ''));
         dispatch(getOrdersAction(sessionStorage.getItem("user") || ''));
     }, []);
 
     function filterOrders(option: string):any{
         console.log(option)
-        // TODO dispatch
-        dispatch(setFilterTypeAction(option));
+        dispatch(sortOrdersAction(option));
     }
 
     let dateNow = new Date();

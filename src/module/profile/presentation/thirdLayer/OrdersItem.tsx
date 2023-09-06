@@ -17,13 +17,13 @@ const OrdersItem:React.FC<Props> = (props: Props) => {
 
     let order = props.order;
     let styleStatus = 'statusBlue';
-    switch (order.orderStatus) {
+    switch (order.order_status) {
         case 'Done': styleStatus = 'statusGreen'; break;
         case 'Canceled': styleStatus = 'statusRed'; break;
         default: break;
     }
-    let payment = order.paymentMethod == 'paypal' ? 'PayPal' : 'card';
-    let price = Number(order.totalPrice).toFixed(2);
+    let payment = order.payment_method == 'paypal' ? 'PayPal' : 'card';
+    let price = Number(order.total_price).toFixed(2);
 
     return (
         <div className={'details mb-3 '}>
@@ -31,19 +31,19 @@ const OrdersItem:React.FC<Props> = (props: Props) => {
                 <div className={"col-8 col-sm-9 p-0"}>
                     <div className={"row row-cols-auto"}>
                         <div className={"orderTitle"}>
-                        №{order.orderId} – {getStringDate(order.createdAt)}</div>
-                        <div className={`${styleStatus} mb-1 mt-1 m-md-0`}>{order.orderStatus}</div>
+                        №{order.order_id} – {getStringDate(order.created_at)}</div>
+                        <div className={`${styleStatus} mb-1 mt-1 m-md-0`}>{order.order_status}</div>
                     </div>
                 </div>
                 <div className={"col p-0 text-end orderTitle"}>${price}</div>
             </div>
             <div className={"row m-0"}>
-                <div className={"col p-0 gray"}>Delivery: {getStringDate(order.deliveryDate)}</div>
+                <div className={"col p-0 gray"}>Delivery: {getStringDate(order.delivery_date)}</div>
                 <div className={"col p-0 text-end gray"}>Payed by {payment}</div>
             </div>
             <div className={"br mt-3 mb-1"}/>
-            <div className={"row row-cols-2 row-cols-sm-3 m-0"}>{ props.order.orderLines ?
-                props.order.orderLines.map((item, index) => {
+            <div className={"row row-cols-2 row-cols-sm-3 m-0"}>{ props.order.order_lines ?
+                props.order.order_lines.map((item, index) => {
                     return <ProductItem key={index} product={item}/>
                 }) : ''}
             </div>
