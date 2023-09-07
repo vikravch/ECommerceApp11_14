@@ -1,7 +1,1 @@
-export const sizes = [
-    "XXL",
-    "XXXL",
-    "S",
-    "M",
-    "L"
-]
+export const sizes = ["4", "5", "6", "7", "8", "10", "12", "14", "16", "XS", "S", "M", "L", "XL", "XXL", "XXXL"];

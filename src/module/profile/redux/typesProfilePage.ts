@@ -1,6 +1,8 @@
 import Profile from "../domain/model/Profile";
+import Order from "../domain/model/Order";
 
-export interface ProfileDetailsStore{
+export interface ProfilePageStore {
     profile: Profile,
+    orders: Array<Order>,
     isLoading: boolean
 }

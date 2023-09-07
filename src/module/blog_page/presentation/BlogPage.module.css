@@ -1,5 +1,5 @@
-.wrapper {
-
+.mainCont {
+    min-width: 320px;
 }
 
 .main{
@@ -71,5 +71,3 @@
     .blog_items {
     }
 }
-
-

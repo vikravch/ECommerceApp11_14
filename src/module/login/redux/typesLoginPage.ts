@@ -1,6 +1,7 @@
+import User from "../domain/model/typesUserPage";
 
 export interface LoginPageStore {
     isLoggedIn: boolean,
-    user: {},
+    user: User,
     message: string
 }

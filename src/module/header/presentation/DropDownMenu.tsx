@@ -9,7 +9,11 @@ const DropDownOut: React.FC = (): JSX.Element => {
     useEffect(() => {
         console.log('use effect')
         console.log(showDropDown)
-
+        if (showDropDown) {
+            document.body.classList.add(styles.lockScroll);
+        } else {
+            document.body.classList.remove(styles.lockScroll);
+        }
     }, [showDropDown]);
 
     const toggleDropDown = () => {
@@ -22,9 +26,9 @@ const DropDownOut: React.FC = (): JSX.Element => {
         <>
             <div>
                 <div className={styles.humburger} onClick={(): void => toggleDropDown()}>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div/>
+                    <div/>
+                    <div/>
                 </div>
             <div
                 className={showDropDown ? 'styles.activeMenu' : 'styles.no_activeMenu'}

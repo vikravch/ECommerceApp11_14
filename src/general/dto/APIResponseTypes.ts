@@ -33,7 +33,7 @@ class Pageable {
     }
 }
 
-export class PaginationData {
+export class PaginationData { // Parent
     last: boolean;
     totalElements: number;
     totalPages: number;
@@ -89,31 +89,15 @@ export class ApiResponseProductPreview {
     }
 }
 
-export class ApiResponseBlogPreview {
+//==================   BLOG   ===================================================================
+export class ApiResponseBlogPreview extends PaginationData{
     content: Array<ArticleInfo>;
     pageable: Pageable;
-    last: boolean;
-    totalPages: number;
-    totalElements: number;
-    size: number;
-    number: number;
-    sort: Sort;
-    first: boolean;
-    numberOfElements: number;
-    empty: boolean;
 
     constructor(data: ApiResponseBlogPreview) {
+        super(data);
         this.content = data.content.map((item) => new ArticleInfo(item));
         this.pageable = new Pageable(data.pageable);
-        this.last = data.last;
-        this.totalPages = data.totalPages;
-        this.totalElements = data.totalElements;
-        this.size = data.size;
-        this.number = data.number;
-        this.sort = new Sort(data.sort);
-        this.first = data.first;
-        this.numberOfElements = data.numberOfElements;
-        this.empty = data.empty;
     }
 }
 
@@ -121,7 +105,6 @@ export class ApiResponseBlogHeader {
     id: string;
     title: string;
     timestampDateMod: string;
-
 
     constructor(data: ApiResponseBlogHeader) {
         this.id = data.id;

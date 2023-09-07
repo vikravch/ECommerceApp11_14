@@ -1,88 +1,125 @@
 import Profile from "../domain/model/Profile";
 import Order from "../domain/model/Order";
-import getProfileFake from "../domain/use_cases/getProfileFake";
-import getOrdersFake from "../domain/use_cases/getOrdersFake";
-import {CLEAR_CART} from "../../cart/redux/asyncActions";
-import {CREATE_ORDER} from "../../checkout/redux/asyncActions";
-import ArticleInfo from "../../blog_page/domain/model/ArticlesList";
 import getOrders from "../domain/use_cases/getOrders";
-import api_client from "../../../general/data/api_client";
+import getProfileDetails from "../domain/use_cases/getProfileDetails";
+import updateProfile from "../domain/use_cases/updateProfile";
+import {routes} from "../../../general/navigation/routes";
+import User from "../../login/domain/model/typesUserPage";
 
-export const getProfileDetailsAction = (token: string) :any => {
+// TODO rate products
+
+export const getProfileDetailsAction = (user: User, navigate: Function): any => {
     return (dispatch: Function) => {
-        dispatch(startProfileLoadAction());
-        getProfileFake(token).then((data) => {
-            dispatch(setProfileDataAction(data));
-        })
+        dispatch(startLoadAction());
+        user.token = "token"; // TODO clean
+        user.refreshToken = "token";
+        if(Object.keys(user).length === 0 || !user.token || !user.refreshToken) {
+            dispatch(stopLoadAction());
+            navigate(`/${routes.login}`);
+            return null;
+        }
+
+        getProfileDetails(user.token)
+            .then((data) => dispatch(setProfileDataAction(data)))
+            .catch((error) => {
+                if(error.response.data.message === "Access token is expired") {// TODO refresh token ?
+                    alertError("Your session expired. Please login.", '');
+                    navigate(`/${routes.login}`);
+                } else {
+                    navigate(
+                    `/${routes.error}/${error.response.data.status}/${encodeURIComponent(error.response.data.message)}`);
+                }
+            });
     }
 }
 
-export const getOrdersDetailsAction = (token: string) :any => {
+export const logoutAction = (): any => {
     return (dispatch: Function) => {
-        dispatch(startOrdersLoadAction());
-        getOrdersFake(token).then((ordersArray) => {
-            let res = new Array(ordersArray.length);
-            for(let i = ordersArray.length-1, j = 0; i >= 0; i--, j++){
-                res[j] = ordersArray[i];
-            }
-            dispatch(setOrdersDataAction(res));
-        })
+        // case LOGOUT: {
+//     sessionStorage.removeItem('RefreshToken'); // TODO check names
+//     sessionStorage.removeItem('AccessToken');
+//     return {profile: new Profile(initialProfile), orders: [], isLoading: false};
+// }
+        // TODO finish
+        dispatch(cleanDataAction());
     }
 }
 
-export const getOrdersAction = (token: string) :any => {
+export const updateProfileAction = (updatedProfile: Profile): any => {
     return (dispatch: Function) => {
-        dispatch(startOrdersLoadAction());
-        getOrders(token).then((ordersArray) => {
-            let res = new Array(ordersArray.length);
-            for(let i = ordersArray.length-1, j = 0; i >= 0; i--, j++){
-                res[j] = ordersArray[i];
-            }
-            dispatch(setOrdersDataAction(res));
-        })
+        dispatch(startLoadAction());
+        updateProfile(updatedProfile)
+            .then(() => dispatch(setProfileDataAction(updatedProfile)))
+            .catch((error) => alertError("Update profile error", error));
     }
-
-    const response = fetch(`${api_client}all_orders_get`);
-    console.log(response)
-    // if(response.ok){
-    //     console.log(response)
-    //     const json = response.json();
-    //     try{
-    //         const ordersArr = JSON.parse(json) as Array<Order>;
-    //         return Promise.resolve(ordersArr);
-    //     } catch(err){
-    //         return Promise.reject(err);
-    //     }
-    // } else {
-    //     return Promise.reject(new Error("Response failed"));
-    // }
 }
 
-export const START_PROFILE_LOAD = 'start_profile_load';
-export const SET_PROFILE_DATA = 'set_profile_data';
-export const  START_ORDERS_LOAD = 'start_orders_load';
-export const SET_ORDERS_DATA = 'set_orders_data';
-export const SET_FILTER_TYPE = 'set_filter_type';
+export const getOrdersAction = (user: User, navigate: Function): any => {
+    return (dispatch: Function) => {
+        dispatch(startLoadAction());
+        if(Object.keys(user).length === 0 || !user.token || !user.refreshToken) {
+            dispatch(setOrdersDataAction([]));
+            return null;
+        }
 
-export const startProfileLoadAction = () => ({
-    type: START_PROFILE_LOAD
+        getOrders(user.token)
+            .then((data) => dispatch(setOrdersDataAction(data)))
+            .catch((error) => {
+                if(error.response.data.message === "Access token is expired") {
+                    // TODO refresh token ?
+                    alertError("Your session expired. Please login.", '');
+                    navigate(`/${routes.login}`);
+                } else {
+                    navigate(
+                    `/${routes.error}/${error.response.data.status}/${encodeURIComponent(error.response.data.message)}`);
+                }
+            });
+    }
+}
+
+export const START_LOAD = 'start_load';
+export const STOP_LOAD = 'stop_load';
+export const SET_PROFILE = 'set_profile_data';
+export const UPDATE_PROFILE = 'update_profile_data';
+export const ADD_PHONE = 'add_phone';
+export const ADD_ADDRESS = 'add_address';
+export const ADD_COUNTRY = 'add_country';
+export const LOGOUT = 'logout';
+export const CLEAN_DATA = 'clean_data';
+
+export const GET_ORDERS = 'get_orders_data';
+export const SET_ORDERS = 'set_orders_data';
+export const SORT_ORDERS = 'sort_orders';
+
+export const startLoadAction = () => ({
+    type: START_LOAD
+});
+
+export const stopLoadAction = () => ({
+   type: STOP_LOAD
 });
 
 export const setProfileDataAction = (data: Profile) => ({
-    type: SET_PROFILE_DATA,
+    type: SET_PROFILE,
     payload: data
 });
 
-export const startOrdersLoadAction = () => ({
-    type: START_ORDERS_LOAD
+export const cleanDataAction = () => ({
+    type: CLEAN_DATA
 });
 
 export const setOrdersDataAction = (data: Array<Order>) => ({
-    type: SET_ORDERS_DATA,
+    type: SET_ORDERS,
     payload: data
 });
 
-export const setFilterTypeAction = (data: string) => ({
-    type: SET_FILTER_TYPE,
-    payload: data
+export const sortOrdersAction = (sort: string) => ({
+    type: SORT_ORDERS
 });
+
+function alertError(msg: string, error: any): void {
+    console.error(msg, error);
+    const errorMsg = error.response && error.response.data ?
+        error.response.data.message : 'An error occurred.';
+    window.alert(error? errorMsg : msg);
+}

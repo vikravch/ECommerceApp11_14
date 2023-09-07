@@ -1,6 +1,7 @@
 import Order from "../model/Order";
-import ProfileDetailsFakeRepository from "../../data/fake_api/ProfileDetailsFakeRepository";
+import Repository from "../../data/fake_api/ProfileFakeRepository";
+// import Repository from "../../data/ProfileRepositoryImpl";
 
 export default async function getOrders(token: string): Promise<Array<Order>>{
-    return new ProfileDetailsFakeRepository().getOrders(token);
+    return new Repository().getOrders(token);
 }

@@ -1,6 +1,5 @@
 import apiClient from "../../../general/data/api_client";
-import {ApiResponseSignUp} from "../../../general/dto/APIResponseTypes";
-import {LOGIN_SUCCESS} from "../redux/asyncActions";
+import User from "../domain/model/typesUserPage";
 
 const inputString = "user@go.com:Pasword10";
 const base64Encoded = btoa(inputString);
@@ -21,11 +20,11 @@ export default class AuthRepository {
             console.log(response.data);
             console.log(response.headers);
             const AccessToken = response.headers.AccessToken
-            const RefreshToken = response.headers.RefreshToken
             console.log(AccessToken)
            // dispatch({type: LOGIN_SUCCESS, payload: data})
             // setter
-            return response.data;
+            return new User(response.headers.accesstoken, response.headers.refreshtoken, response.data.email,
+                response.data.role);
         }
         catch (error: any) {
             console.log("ERROR: ");

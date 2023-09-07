@@ -7,11 +7,20 @@
     min-height: 75vh;
 }
 
+.min-width {
+    min-width: 320px;
+}
+
 .details{
     background: #FFFFFF;
     padding: 25px 30px 25px 30px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+}
+
+.br {
+    border-top: rgba(0, 0, 0, 0.10) solid 1px;
+    height: 1px;
 }
 
 .borderLine{
@@ -63,6 +72,15 @@
     line-height: 15px;
     letter-spacing: -0.2px;
     color: rgba(0, 0, 0, 0.3);
+}
+
+.logout {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logout:hover {
+    color: rgba(45, 116, 255, 1);
 }
 
 .fw-400{
@@ -123,9 +141,9 @@
 
 .preview{
     border-radius: 10px;
-    display: block;
     width: 90px;
     height: 110px;
+    object-fit: scale-down;
     cursor: pointer;
 }
 

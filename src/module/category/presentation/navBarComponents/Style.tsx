@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Style:React.FC = () => {
+const Style = (props:any) => {
     return (
         <div className="accordion-item border-0">
             <div className={"m-0 borderLine"}/>
@@ -11,7 +11,7 @@ const Style:React.FC = () => {
                     Style
                 </button>
             </h2>
-            <div id="flush-collapseSix" className="accordion-collapse collapse show"
+            <div id="flush-collapseSix" className={`accordion-collapse collapse ${!props.isButtonFilterVisible ? 'show' : ''}`}
                  aria-labelledby="flush-headingSix">
                 <div className="accordion-body p-0 pb-4">
                     <div className="form-check mb-1">

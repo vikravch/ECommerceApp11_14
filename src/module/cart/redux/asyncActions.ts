@@ -1,5 +1,4 @@
 import CartProduct from "../domain/model/CartProduct";
-import api_client from "../../../general/data/api_client";
 import CartPageFakeRepository from "../data/fake_api/CartPageFakeRepository";
 import {CartData} from "../domain/model/Cart";
 
@@ -27,9 +26,9 @@ export const setCartData = (data: CartData) => ({
    type: SET_CART,
     payload: data
 })
-export const addToCartAction = (cartItem: CartProduct) => ({
+export const addToCartAction = (data: CartProduct) => ({
     type: ADD_TO_CART,
-    payload: cartItem
+    payload: data
 });
 
 export const changeCountAction = (idProduct: string, count: number) => ({

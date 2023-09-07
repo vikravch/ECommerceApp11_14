@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Brand:React.FC = () => {
+const Brand = (props:any) => {
     return (
         <div className="accordion-item border-0">
             <div className={"m-0 borderLine"}/>
@@ -11,7 +11,7 @@ const Brand:React.FC = () => {
                     Brand
                 </button>
             </h2>
-            <div id="flush-collapseFive" className="accordion-collapse collapse show"
+            <div id="flush-collapseFive" className={`accordion-collapse collapse ${!props.isButtonFilterVisible ? 'show' : ''}`}
                  aria-labelledby="flush-headingFive">
                 <div className="accordion-body p-0 pb-4">
                     <div className="form-check mb-1">

@@ -1,0 +1,12 @@
+.main {
+    margin: 30px 0 40px 0;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.minHeight {
+    min-height: 60vh;
+}

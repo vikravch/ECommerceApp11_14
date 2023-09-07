@@ -41,6 +41,26 @@ export const fakeFullProduct = {
     ]
 }
 
+// export const fakeFullProduct = {
+//     "category": "",
+//     "client_type": "",
+//     "colors": [{
+//         "color": "",
+//         "product_id": "",
+//         "product_thumb": ""
+//     }],
+//     "description": "",
+//     "details": "",
+//     "discount": "",
+//     "rating": "",
+//     "price": "",
+//     "product_id": "",
+//     "product_imgs": [],
+//     "product_thumb": "",
+//     "product_title": "",
+//     "size": []
+// }
+
 
 export const tempProductData = {
     idProduct: "1111",

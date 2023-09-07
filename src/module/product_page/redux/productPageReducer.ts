@@ -15,7 +15,7 @@ import {pageResponse} from "../../pagination/data/fakeData";
 
 export function productPageReducer(
     state: ProductPageStore = {product: new Product(fakeFullProduct),
-        isLoading: false, currentPage: 0, alsoLikeData: productsResponse, alsoLikePageData: pageResponse
+        isLoading: true, currentPage: 0, alsoLikeData: productsResponse, alsoLikePageData: pageResponse
     }, action: Action
 ){
     switch (action.type){
@@ -38,7 +38,7 @@ export function productPageReducer(
         }
 
         case SET_ALSOLIKE_DATA: {
-            return {...state, alsoLikeData: action.payload, alsoLikePageData: action.payload}
+            return {...state, alsoLikeData: action.payload, alsoLikePageData: action.payload, isLoading: false}
         }
 
         default:

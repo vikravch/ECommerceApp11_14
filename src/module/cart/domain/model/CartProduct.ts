@@ -1,4 +1,3 @@
-import ProductPreviewInfo from "../../../product_page/domain/model/ProductPreviewInfo";
 
 export default class CartProduct{
     count: number;
@@ -7,10 +6,9 @@ export default class CartProduct{
     product_id: string;
     product_thumb: string;
     product_title: string;
-    price: number;
-    discount: number;
-    rating?: string;
-    stock_sizes?: string[];
+    price: string;
+    discount: string;
+    stock_sizes: string[];
     stock_quantity?: number;
 
     constructor(data: CartProduct) {
@@ -20,10 +18,9 @@ export default class CartProduct{
         this.product_id = data.product_id;
         this.product_thumb = data.product_thumb;
         this.product_title = data.product_title;
-        this.rating = data.rating;
-        this.price = Number(data.price);
-        this.discount = Number(data.discount);
-        this.stock_sizes = data.stock_sizes || [];
+        this.price = data.price;
+        this.discount = data.discount;
+        this.stock_sizes = data.stock_sizes;
         this.stock_quantity = data.stock_quantity || 0;
     }
 

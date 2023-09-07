@@ -1,10 +1,9 @@
 import {ProductPageStore} from "../../module/product_page/redux/typesProductPage";
 import {CartPageStore} from "../../module/cart/redux/typesCartPage";
 import {ArticlePageStore} from "../../module/article_page/redux/typesArticlePage";
-import {ProfileDetailsStore} from "../../module/profile/redux/typesProfilePage";
+import {ProfilePageStore} from "../../module/profile/redux/typesProfilePage";
 import {LandingPageStore} from "../../module/landing_page/redux/typesLandingPage";
 import {BlogPageStore} from "../../module/blog_page/redux/typesBlogPage";
-import {OrdersDetailsStore} from "../../module/profile/redux/typesOrdersPage";
 import {ChekoutPageStore} from "../../module/checkout/redux/typesCheckoutPage";
 import {CategoryPageStore} from "../../module/category/redux/typesCategoryPage";
 import {LoginPageStore} from "../../module/login/redux/typesLoginPage";
@@ -21,8 +20,7 @@ export interface Store {
     checkout: ChekoutPageStore,
     collectionPage: CollectionPageStore,
     categoryPage: CategoryPageStore,
-    profileDetails: ProfileDetailsStore,
-    ordersDetails: OrdersDetailsStore,
+    profilePage: ProfilePageStore,
     blogPage: BlogPageStore,
     loginPage: LoginPageStore,
     breadcrumbs: BreadCrumbsStore

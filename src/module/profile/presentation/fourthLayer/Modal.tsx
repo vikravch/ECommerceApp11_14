@@ -4,7 +4,7 @@ import {Store} from "../../../../general/redux/storeTypes";
 import Profile from "../../domain/model/Profile";
 
 const Modal:React.FC = () => {
-    const profile = useSelector<Store, Profile>(state => state.profileDetails.profile);
+    const profile = useSelector<Store, Profile>(state => state.profilePage.profile);
 
     return (
         <div className="modal fade" id="modal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">

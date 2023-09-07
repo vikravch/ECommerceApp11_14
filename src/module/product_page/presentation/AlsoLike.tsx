@@ -29,7 +29,7 @@ const AlsoLike = () => {
     return (<div >
         <h4 className={styles.header}>You might also like</h4>
         <div>
-            <div className={'col p-0 ps-5'}>
+            <div className={'col p-0'}>
                 <div className={'row row-cols-4 justify-content-center p-0 m-0'}>
                     {isLoading ? skeletons : alsoLikeData.slice(0, 4).map((product,productId) =>
                         <PreviewProduct
@@ -38,7 +38,7 @@ const AlsoLike = () => {
                             imageUrl={product.product_thumb}
                             title={product.product_title}
                             article={product.product_id}
-                            price={Math.round(product.price)}
+                            price={product.price}
                             rating={product.rating}
                             discount={product.discount}
                         />

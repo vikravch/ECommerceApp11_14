@@ -44,70 +44,67 @@ const Header = (props: Props) => {
         if (event.key === 'Enter') {
             console.log(searchVal);
             setStartSearch(true);
+            setSearchVal('');
         }
     }
 
     return (
         <div>
-            <div className={styles.navBar + ' navbar-expand-lg'}>
+            <div className={`navbar-expand-lg ${styles.navBar} ${(props.isDark) ? styles.navBarDark : styles.navBarLight}`}>
+                <div className={'d-lg-none'}>
+                    <DropDownMenu />
+                </div>
 
-                <div className={(props.isDark) ? `${styles.navBarDark}` : `${styles.navBarLight}`}>
-                    <div className={'d-lg-none'}>
-                        <DropDownMenu />
+
+                <div className={styles.leftNav + ' collapse navbar-collapse'}>
+                    <div className={styles.navItem}>
+                        <Link className={styles.logo} to={'/'}>LOGO</Link>
                     </div>
-
-
-                    <div className={styles.leftNav + ' collapse navbar-collapse'}>
-                        <div className={styles.navItem}>
-                            <Link className={styles.logo} to={'/'}>LOGO</Link>
-                        </div>
-                        <div className={`${styles.navItem} ${styles.active}`}>
-                            <Link className={styles.link} to={'/catalog/men'} >Men</Link>
-                        </div>
-                        <div className={styles.navItem}>
-                            <Link className={styles.link} to={'/catalog/women'}>Women</Link>
-                        </div>
-                        <div className={styles.navItem}>
-                            <Link className={styles.link} to={'/catalog/kids'}>Kids</Link>
-                        </div>
-                        <div className={styles.navItem}>
-                            <Link className={styles.link} to={'/catalog/sale'}>Sale</Link>
-                        </div>
-                        <div className={styles.navItem}>
-                            <Link className={styles.link} to={'/catalog/collection'}>Collections</Link>
-                        </div>
-                        <div className={styles.navItem}>
-                            <Link className={styles.link} to={'/blog'}>Blog</Link>
-                        </div>
+                    <div className={`${styles.navItem} ${styles.active}`}>
+                        <Link className={styles.link} to={'/catalog/men'} >Men</Link>
                     </div>
-
-                    <div className={styles.navItemRight}>
-                        <div>
-                                <img src={search} alt={'search'} className={styles.searchBtn}
-                                     onClick={() => setStartSearch(true)}/>
-                        </div>
-                        <div>
-                            <input type="search"
-                                   className={`${styles.search}`}
-                                   placeholder="Search"
-                                   onChange={(e) => setSearchVal(e.target.value)}
-                                   onKeyDown={(e) => handleKeyPress(e)}
-                            />
-                        </div>
-                        <div>
-                            <Link to="/cart" className={`${styles.cartContainer}`}>
-                                <img src={cartImg.img} className={styles.imgCart} alt={'cart'}/>
-                                <span className={`${cartImg.spanCountStyle} ${styles.cartBadge}`}>{cartCount}</span>
-                            </Link>
-                        </div>
-                        <div>
-                            <Link to={profileBtn} className={'d-inline-block'}>
-                                <img src={imgProfile} className={styles.imgProfile} alt={"profile"}/>
-                            </Link>
-                        </div>
+                    <div className={styles.navItem}>
+                        <Link className={styles.link} to={'/catalog/women'}>Women</Link>
+                    </div>
+                    <div className={styles.navItem}>
+                        <Link className={styles.link} to={'/catalog/kids'}>Kids</Link>
+                    </div>
+                    <div className={styles.navItem}>
+                        <Link className={styles.link} to={'/catalog/sale'}>Sale</Link>
+                    </div>
+                    <div className={styles.navItem}>
+                        <Link className={styles.link} to={'/catalog/collection'}>Collections</Link>
+                    </div>
+                    <div className={styles.navItem}>
+                        <Link className={styles.link} to={'/blog'}>Blog</Link>
                     </div>
                 </div>
 
+                <div className={styles.navItemRight}>
+                    <div className={'d-flex'}>
+                        <img src={search} alt={'search'} className={styles.searchBtn}
+                             onClick={() => setStartSearch(true)}/>
+                        <input type="search"
+                               className={`${styles.search}`}
+                               placeholder="Search"
+                               value={searchVal}
+                               onChange={(e) => setSearchVal(e.target.value)}
+                               onKeyDown={(e) => handleKeyPress(e)}
+                        />
+                    </div>
+                    <div>
+                        <Link to="/cart" className={`${styles.cartContainer} d-flex justify-content-around`}>
+                            <img src={cartImg.img} className={cartImg.img == imgEmpty ? styles.imgCart : ''} alt={'cart'}/>
+                            <span className={`${cartImg.spanCountStyle} ${styles.cartBadge}`}>{cartCount}</span>
+                        </Link>
+                    </div>
+
+                    <div>
+                        <Link to={profileBtn} className={'d-inline-block'}>
+                            <img src={imgProfile} className={styles.imgProfile} alt={"profile"}/>
+                        </Link>
+                    </div>
+                </div>
             </div>
         </div>
     );

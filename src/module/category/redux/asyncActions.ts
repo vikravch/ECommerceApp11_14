@@ -4,10 +4,10 @@ import apiClient from "../../../general/data/api_client";
 import {ApiResponseProductPreview} from "../../../general/dto/APIResponseTypes";
 import {convertDiscountToPercent} from "../../../general/common/tools";
 
+export const START_PRODUCTS_LOAD = "start_products_load";
 export const SET_CATEGORY = "set_category";
 export const SET_SORT = "set_sort";
 export const PUT_PRODUCTS = "put_products"
-export const PRODUCTS_REQUEST = "products_request"
 export const SET_CURRENT_CATEGORY_PAGE = "change_pagination_category_page"
 
 const headers = {
@@ -15,7 +15,7 @@ const headers = {
 };
 
 export const getProdustsByGender = (gender: string): any => async (dispatch: Dispatch<any>) => {
-
+    dispatch(startProductsLoadAction());
     try {
 
         const response = await apiClient.get<ApiResponseProductPreview>(`/products?page=0&pageSize=9&client_type=${gender.toUpperCase()}`, {headers});
@@ -35,7 +35,7 @@ export const getProdustsByGender = (gender: string): any => async (dispatch: Dis
 }
 
 export const getProdustsByCategory = (category: string): any => async (dispatch: Dispatch<any>) => {
-    dispatch({type: PRODUCTS_REQUEST})
+    dispatch(startProductsLoadAction());
     let URLPart: string;
     (category.toUpperCase() == 'SALE') ? (URLPart = 'discount_products_get') : (URLPart = `product_by_gender_get?gender=${category.toUpperCase()}`)
     fetch(`${api_client}${URLPart}`,
@@ -51,7 +51,7 @@ export const getProdustsByCategory = (category: string): any => async (dispatch:
 export const getProductsByGenderAndCategory = (gender: string, category: string): any => async (dispatch: Dispatch<any>) => {
     console.log(gender)
     console.log(category)
-
+    dispatch(startProductsLoadAction());
     if (category == 'ALL') {
         dispatch(getProdustsByGender(gender))
         return
@@ -69,4 +69,7 @@ export const getProductsByGenderAndCategory = (gender: string, category: string)
     }
 }
 
+export const startProductsLoadAction = () => ({
+    type: START_PRODUCTS_LOAD
+});
 
