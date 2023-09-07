@@ -13,6 +13,7 @@ export const routes = {
     women: "women",
     kids: "kids",
     catalog: "catalog",
+    error: "error",
     privacyPolicy: "agreement/privacyPolicy",
     termsOfUse: "agreement/termsOfUse"
 };

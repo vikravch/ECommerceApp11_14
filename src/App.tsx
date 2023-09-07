@@ -19,9 +19,10 @@ import RestorePass from "./module/login/presentation/RestorePass";
 import PrivacyPolicy from "./module/login/presentation/PrivacyPolicy";
 import TermsOfUse from "./module/login/presentation/TermsOfUse";
 import CollectionPage from "./module/collections/presentation/CollectionPage";
+import ErrorPage from "./module/error_page/presentation/ErrorPage";
 
 function App() {
-  //sessionStorage.setItem("token", "123"); // h32-0 // p 14
+  //sessionStorage.setItem("token", "123");
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
@@ -50,6 +51,8 @@ function App() {
           <Route path={`/${routes.catalog}/:collectionName`} element={<CategoryPage/>}/>
           <Route path={`/${routes.catalog}/collection`} element={<CollectionPage/>}/>
 
+          <Route path={`/${routes.error}`} element={<ErrorPage/>}/>
+          <Route path={`/${routes.error}/:status/:message`} element={<ErrorPage/>}/>
           <Route path={`/${routes.privacyPolicy}/`} element={<PrivacyPolicy/>}/>
           <Route path={`/${routes.termsOfUse}/`} element={<TermsOfUse/>}/>
         </Routes>

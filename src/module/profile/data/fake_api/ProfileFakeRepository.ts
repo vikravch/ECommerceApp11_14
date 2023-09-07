@@ -9,14 +9,24 @@ export default class ProfileFakeRepository implements ProfileRepository{
                 resolve(new Profile(JSON.parse(getProfilePreviewStr)))
             }, 1000);
         });
-        // const errorResponse = {response: {data: {message: 'Custom error message from server'}}};
+        // const errorResponse = {response: {data: {status: 200, message: 'Custom error message from server'}}};
         // return Promise.reject(errorResponse);
     }
 
     async getOrders(token:string): Promise<Array<Order>> {
         return new Promise(resolve => {
             setTimeout(() => {
-                resolve(JSON.parse(orders));
+                const ordersArray = JSON.parse(orders);
+                let res = new Array(ordersArray.length);
+                for(let i = ordersArray.length-1, j = 0; i >= 0; i--, j++){
+                    ordersArray[i].order_status = ordersArray[i].order_status.replaceAll("_", " ");
+                    ordersArray[i].order_status = ordersArray[i].order_status.at(0)
+                        + ordersArray[i].order_status.toLowerCase().substring(1);
+                    ordersArray[i].payment_method = String(ordersArray[i].payment_method).split('_')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
+                    res[j] = ordersArray[i];
+                }
+                resolve(res);
             }, 1000);
         });
     }

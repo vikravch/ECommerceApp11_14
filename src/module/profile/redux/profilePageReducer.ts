@@ -1,7 +1,7 @@
 import {ProfilePageStore} from "./typesProfilePage";
 import {Action} from "../../../general/redux/Action";
 import Profile from "../domain/model/Profile";
-import {CLEAN_DATA, SORT_ORDERS, SET_ORDERS, SET_PROFILE, START_LOAD} from "./asyncActions";
+import {CLEAN_DATA, SORT_ORDERS, SET_ORDERS, SET_PROFILE, START_LOAD, STOP_LOAD} from "./asyncActions";
 import {initialProfile} from "../data/InitialState";
 
 export function profilePageReducer(
@@ -11,8 +11,10 @@ export function profilePageReducer(
     switch(action.type) {
         case START_LOAD:
             return {...state, isLoading: true};
-        case SET_PROFILE:
+        case STOP_LOAD:
             return {...state, isLoading: false};
+        case SET_PROFILE:
+            return {...state, profile: action.payload, isLoading: false};
         case CLEAN_DATA:
             return {profile: new Profile(initialProfile), orders: [], isLoading: false};
         case SET_ORDERS:

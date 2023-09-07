@@ -22,56 +22,66 @@ export default class Order{
     }
 }
 
+function formatDateToISO(date: Date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}`;
+}
+
 let dateNow = new Date();
 let dateAll = new Date();
 dateAll.setMonth(dateNow.getMonth() - 25);
-export const getOrder1Str = `{"created_at": ${Number(dateAll).toString()},` +
+export const getOrder1Str = `{"created_at": "${formatDateToISO(dateAll)}",` +
     '"delivery_date": "2023-06-27T16:58:37.274200044",' +
-    '"order_id": "123451",' + // need number
+    '"order_id": "10",' +
     '"order_lines": [' +
-        '{"color": "Black with print",' +
+        '{"color": "Kelly Green",' +
         '"quantity": "1",' +
-        '"product_id": "1234512",' +
-        '"product_thumb": "./../../../images/t-shirt-7114.png",' +
-        '"product_title": "Basic T-shirt",' +
-        '"size": "L"}' +
+        '"product_id": "12",' +
+        '"product_thumb": "https://i.imgur.com/6Rv6tkJ.jpg",' +
+        '"product_title": "Water-resistant Track Jacket",' +
+        '"size": "7"}' +
     '],' +
     '"order_status": "CANCELED",' + // "CANCELED", "PAID", "ASSEMBLY", "ON_THE_WAY", "DONE"
     '"payment_method": "VISA",' +
     '"shipping_method": "STANDARD",' + //PREMIUM
-    '"totalPrice": "230.2",' +
-    '"updatedAt": "16592229347452"}';
+    '"total_price": "230.2"}';
 
 let dateLastYear = new Date();
 dateLastYear.setMonth(dateNow.getMonth() - 10);
-export const getOrder2Str = `{"created_at": ${Number(dateLastYear).toString()},` +
+export const getOrder2Str = `{"created_at": "${formatDateToISO(dateLastYear)}",` +
     '"delivery_date": "2023-06-27T16:58:37.274200044",' +
-    '"order_id": "123452",' +
+    '"order_id": "90",' +
     '"order_lines": [' +
-        '{"color": "White",' +
+        '{"color": "Platinum",' +
         '"quantity": "1",' +
-        '"product_id": "1111111",' +
-        '"product_thumb": "./../../../images/t-shirt-7142.png",' +
-        '"product_title": "Pants",' +
+        '"product_id": "11",' +
+        '"product_thumb": "https://i.imgur.com/jxh7Vv6.jpg",' +
+        '"product_title": "Performance Windbreaker Jacket",' +
         '"size": "L"},' +
-        '{"color": "Purple",' +
+        '{"color": "Peach",' +
         '"quantity": "1",' +
-        '"product_id": "2222222",' +
-        '"product_thumb": "./../../../images/t-shirt-7114.png",' +
-        '"product_title": "Panties",' +
-        '"size": "L"},' +
-        '{"color": "Purple",' +
+        '"product_id": "22",' +
+        '"product_thumb": "https://i.imgur.com/SmNQkQe.jpg",' +
+        '"product_title": "Dri-fit Training Tee",' +
+        '"size": "XXL"},' +
+        '{"color": "Burgundy",' +
         '"quantity": "1",' +
-        '"product_id": "2222223",' +
-        '"product_thumb": "./../../../images/t-shirt-7114.png",' +
-        '"product_title": "Panties",' +
-        '"size": "L"},' +
-        '{"color": "Purple",' +
+        '"product_id": "23",' +
+        '"product_thumb": "https://i.imgur.com/yOIl63G.jpg",' +
+        '"product_title": "Dri-fit Training Tee",' +
+        '"size": "M"},' +
+        '{"color": "Copper",' +
         '"quantity": "1",' +
-        '"product_id": "2222224",' +
-        '"product_thumb": "./../../../images/t-shirt-7114.png",' +
-        '"product_title": "Panties",' +
-        '"size": "L"}' +
+        '"product_id": "174",' +
+        '"product_thumb": "https://i.imgur.com/GPc1aYy.jpg",' +
+        '"product_title": "Graphic Print Performance Tee",' +
+        '"size": "8"}' +
     '],' +
     '"order_status": "ASSEMBLY",' +
     '"payment_method": "MASTERCARD",' +
@@ -80,22 +90,22 @@ export const getOrder2Str = `{"created_at": ${Number(dateLastYear).toString()},`
 
 let dateLast6Month = new Date();
 dateLast6Month.setMonth(dateNow.getMonth() - 4);
-export const getOrder3Str = `{"created_at": ${Number(dateLast6Month).toString()},` +
+export const getOrder3Str = `{"created_at": "${formatDateToISO(dateLast6Month)}",` +
     '"delivery_date": "2023-06-27T16:58:37.274200044",' +
-    '"order_id": "123453",' +
+    '"order_id": "120",' +
     '"order_lines": [' +
-        '{"color": "Black",' +
+        '{"color": "Mint Green",' +
         '"quantity": "1",' +
-        '"product_id": "32132122",' +
-        '"product_thumb": "./../../../images/t-shirt-7142.png",' +
-        '"product_title": "Strings",' +
-        '"size": "L"},' +
-        '{"color": "Purple",' +
+        '"product_id": "21",' +
+        '"product_thumb": "https://i.imgur.com/ceJIM09.jpg",' +
+        '"product_title": "Soccer Training Jersey",' +
+        '"size": "5"},' +
+        '{"color": "Yellow",' +
         '"quantity": "1",' +
-        '"product_id": "2223344",' +
-        '"product_thumb": "./../../../images/t-shirt-7114.png",' +
-        '"product_title": "Toilet paper",' +
-        '"size": "L"}' +
+        '"product_id": "44",' +
+        '"product_thumb": "https://i.imgur.com/Cn9sKOm.jpg",' +
+        '"product_title": "Basketball One-piece Uniform",' +
+        '"size": "XS"}' +
     '],' +
     '"order_status": "DONE",' +
     '"payment_method": "PAY_PAL",' +
@@ -104,22 +114,22 @@ export const getOrder3Str = `{"created_at": ${Number(dateLast6Month).toString()}
 
 let dateLastMonth = new Date();
 dateLastMonth.setDate(dateNow.getDate() - 14);
-export const getOrder4Str = `{"created_at": ${Number(dateLastMonth).toString()},` +
+export const getOrder4Str = `{"created_at": "${formatDateToISO(dateLastMonth)}",` +
     '"delivery_date": "2023-06-27T16:58:37.274200044",' +
-    '"order_id": "123454",' +
+    '"order_id": "123",' +
     '"order_lines": [' +
-        '{"color": "Black or white",' +
-        '"quantity": "1",' +
-        '"product_id": "1234567",' +
-        '"product_thumb": "./../../../images/t-shirt-7142.png",' +
-        '"product_title": "Basic T-shirt",' +
+        '{"color": "Off-White",' +
+        '"quantity": "2",' +
+        '"product_id": "67",' +
+        '"product_thumb": "https://i.imgur.com/k1wYWRr.jpg",' +
+        '"product_title": "Basketball Training Shorts",' +
         '"size": "L"},' +
-        '{"color": "Deep Purple",' +
+        '{"color": "Purple",' +
         '"quantity": "1",' +
-        '"product_id": "4332345",' +
-        '"product_thumb": "./../../../images/t-shirt-7142.png",' +
-        '"product_title": "Sunglasses",' +
-        '"size": "L"}' +
+        '"product_id": "45",' +
+        '"product_thumb": "https://i.imgur.com/xOdWJdH.jpg",' +
+        '"product_title": "Tennis Skirted Bodysuit",' +
+        '"size": "4"}' +
     '],' +
     '"order_status": "ON_THE_WAY",' +
     '"payment_method": "VISA",' +

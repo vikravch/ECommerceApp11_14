@@ -3,24 +3,21 @@ import '../profileStyle.css';
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../../general/redux/storeTypes";
 import Profile from "../../domain/model/Profile";
-import {getProfileDetailsAction} from "../../redux/asyncActions";
 import ProfileItem from "../thirdLayer/ProfileItem";
 import Modal from "../fourthLayer/Modal";
+import {logoutAction} from "../../redux/asyncActions";
 
 const ProfileDetails:React.FC = () => {
     const profile = useSelector<Store, Profile>(state => state.profilePage.profile);
-
+    const login = useSelector<Store, string>(state => state.loginPage.user.login);
     const dispatch = useDispatch();
-    useEffect(()=>{
-        dispatch(getProfileDetailsAction(sessionStorage.getItem("user") || ''));
-    }, []);
 
     useEffect(()=>{
         //TODO rerender after profile change
     }, [profile]);
 
     const profileView = {
-        "Email": profile.email,
+        "Email": login ? login : profile.email,
         "Phone": profile.phone == "" ? "" :
             `(${profile.phone.substring(0,3)}) ${profile.phone.substring(3,6)}-${profile.phone.substring(6)}`,
         "Address": `${profile.address} ${profile.zipCode}`,
@@ -34,7 +31,9 @@ const ProfileDetails:React.FC = () => {
                     <div className={"col-3 avatar"}>{profile.name[0]}{profile.surname[0]}</div>
                     <div className={"col-8 col-sm-9 p-2"}>
                         <div className={"name"}>{profile.name} {profile.surname}</div>
-                        <div className={"gray"}>Logout</div>
+                        <div>
+                            <a href={"/"} className={"gray logout"} onClick={() => dispatch(logoutAction())}>Logout</a>
+                        </div>
                     </div>
                 </div>
                 <div className={"row borderLine"}/>

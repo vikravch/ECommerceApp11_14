@@ -1,13 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import '../profileStyle.css';
 import ProfileDetails from '../secondLayer/ProfileDetails';
 import OrdersDetails from "../secondLayer/OrdersDetails";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../../general/redux/storeTypes";
 import SpinnerShort from "../../../spinner/SpinnerShort";
+import {getOrdersAction, getProfileDetailsAction} from "../../redux/asyncActions";
+import {useNavigate} from "react-router-dom";
+import User from "../../../login/domain/model/typesUserPage";
 
 const ProfilePage:React.FC = () => {
     const isLoading = useSelector<Store, boolean>(state => state.profilePage.isLoading);
+    const user = useSelector<Store, User>(state => state.loginPage.user);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        dispatch(getProfileDetailsAction(user, navigate));
+        dispatch(getOrdersAction(user, navigate));
+    }, []);
 
     return (
         <div className={'container p-0 fonts min-height min-width'}>

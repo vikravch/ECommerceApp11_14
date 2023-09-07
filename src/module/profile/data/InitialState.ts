@@ -1,9 +1,9 @@
 export const initialProfile = {
     "address": "",
     "country": "",
-    "email": "email@mail.com",
-    "name": "User",
+    "email": "",
+    "name": "",
     "phone": "",
-    "surname": "Name",
+    "surname": "",
     "zipCode": ""
 }

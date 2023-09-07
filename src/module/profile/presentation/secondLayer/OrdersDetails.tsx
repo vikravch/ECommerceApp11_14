@@ -1,20 +1,18 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../../general/redux/storeTypes";
 import Order from "../../domain/model/Order";
 import OrdersItem from "../thirdLayer/OrdersItem";
-import {getOrdersAction, sortOrdersAction} from "../../redux/asyncActions";
+import {sortOrdersAction} from "../../redux/asyncActions";
 
 const OrdersDetails: React.FC = () => {
     const orders = useSelector<Store, Array<Order>>(state => state.profilePage.orders);
-
+    const [filteredOrders, setFilteredOrders] = useState([]);
     const dispatch = useDispatch();
-    useEffect(()=>{
-        dispatch(getOrdersAction(sessionStorage.getItem("user") || ''));
-    }, []);
 
     function filterOrders(option: string):any{
         console.log(option)
+        setFilteredOrders([]); //!
         dispatch(sortOrdersAction(option));
     }
 
@@ -43,8 +41,8 @@ const OrdersDetails: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div>{
-                orders.map((item, index) => {
+            <div>{(filteredOrders.length > 0 ? filteredOrders :
+                orders).map((item, index) => {
                     return <OrdersItem key={index} order={item}/>
                 })}
             </div>
