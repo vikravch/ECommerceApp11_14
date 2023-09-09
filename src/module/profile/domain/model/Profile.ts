@@ -28,22 +28,22 @@ export default class Profile{
 //     '"zipCode": "45463"' +
 //     '}';
 
-// export const getProfilePreviewStr = '{' +
-//     '"address": "Thornridge Cir. Syracuse, Connecticut, 21",' +
-//     '"country": "England",' +
-//     '"email": "bill.sanders@gmail.com",' +
-//     '"name": "Bill",' +
-//     '"phone": "2395550108",' +
-//     '"surname": "Sanders",' +
-//     '"zipCode": "123456"' +
-//     '}';
-
 export const getProfilePreviewStr = '{' +
-    '"address": "",' +
-    '"country": "",' +
-    '"email": "email@mail.com",' +
-    '"name": "User",' +
-    '"phone": "",' +
-    '"surname": "Name",' +
-    '"zipCode": ""' +
+    '"address": "Thornridge Cir. Syracuse, Connecticut, 21",' +
+    '"country": "England",' +
+    '"email": "bill.sanders@gmail.com",' +
+    '"name": "Bill",' +
+    '"phone": "2395550108",' +
+    '"surname": "Sanders",' +
+    '"zipCode": "123456"' +
     '}';
+
+// export const getProfilePreviewStr = '{' +
+//     '"address": "",' +
+//     '"country": "",' +
+//     '"email": "email@mail.com",' +
+//     '"name": "User",' +
+//     '"phone": "",' +
+//     '"surname": "Name",' +
+//     '"zipCode": ""' +
+//     '}';

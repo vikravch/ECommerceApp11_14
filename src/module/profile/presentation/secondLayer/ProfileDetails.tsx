@@ -33,9 +33,8 @@ const ProfileDetails:React.FC = () => {
                     <div className={"col-3 avatar"}>{profile.name[0]}{profile.surname[0]}</div>
                     <div className={"col-8 col-sm-9 p-2"}>
                         <div className={"name"}>{profile.name} {profile.surname}</div>
-                        <div className={"gray logout"} onClick={() => {dispatch(logoutAction()); navigate("/");}}>Logout
-                            {/*<a href={"/"} className={"gray logout"} onClick={() => dispatch(logoutAction())}>Logout</a>*/}
-                        </div>
+                        <div className={"gray logout"}
+                             onClick={() => {navigate("/"); dispatch(logoutAction())}}>Logout</div>
                     </div>
                 </div>
                 <div className={"row borderLine"}/>
