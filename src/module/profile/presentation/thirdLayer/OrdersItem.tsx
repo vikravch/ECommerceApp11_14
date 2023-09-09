@@ -27,10 +27,10 @@ const OrdersItem:React.FC<Props> = (props: Props) => {
                         <div className={`${styleStatus} mb-1 mt-1 m-md-0`}>{order.order_status}</div>
                     </div>
                 </div>
-                <div className={"col p-0 text-end orderTitle"}>${Number(order.total_price).toFixed(2)}</div>
+                <div className={"col p-0 text-end orderTitle"}>${order.total_price}</div>
             </div>
             <div className={"row m-0"}>
-                <div className={"col p-0 gray"}>Delivery: {convertDateToOrderDate(order.delivery_date)}</div>
+                <div className={"col p-0 gray"}>Delivery: {order.delivery_date}</div>
                 <div className={"col p-0 text-end gray"}>Payed by {order.payment_method}</div>
             </div>
             <div className={"br mt-3 mb-1"}/>

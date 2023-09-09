@@ -55,8 +55,10 @@ export const cartPageReducer = (
                 sGoods[sizeIndex].size = action.payload.size
                 localStorage.setItem("cartItems", JSON.stringify(sGoods))
                 return {...state, cartItems: sGoods}
-        case CLEAR_CART:
+        case CLEAR_CART: {
+            localStorage.removeItem("cartItems");
             return {...state, cartItems: [], cartTotal: 0, cartCount: 0}
+        }
         default:
             // return {state, cartCount: state.cartItems.length, cartTotal: calcTotalPrice(state.cartItems)};
             return state;

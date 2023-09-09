@@ -50,7 +50,7 @@ export const getOrder1Str = `{"created_at": "${formatDateToISO(dateAll)}",` +
     '"order_status": "CANCELED",' + // "CANCELED", "PAID", "ASSEMBLY", "ON_THE_WAY", "DONE"
     '"payment_method": "VISA",' +
     '"shipping_method": "STANDARD",' + //PREMIUM
-    '"total_price": "230.2"}';
+    '"total_price": "230.20"}';
 
 let dateLastYear = new Date();
 dateLastYear.setMonth(dateNow.getMonth() - 10);
@@ -86,7 +86,7 @@ export const getOrder2Str = `{"created_at": "${formatDateToISO(dateLastYear)}",`
     '"order_status": "ASSEMBLY",' +
     '"payment_method": "MASTERCARD",' +
     '"shipping_method": "PREMIUM",' +
-    '"total_price": "150.1"}';
+    '"total_price": "150.10"}';
 
 let dateLast6Month = new Date();
 dateLast6Month.setMonth(dateNow.getMonth() - 4);
@@ -110,7 +110,7 @@ export const getOrder3Str = `{"created_at": "${formatDateToISO(dateLast6Month)}"
     '"order_status": "DONE",' +
     '"payment_method": "PAY_PAL",' +
     '"shipping_method": "STANDARD",' +
-    '"total_price": "100."}';
+    '"total_price": "100.00"}';
 
 let dateLastMonth = new Date();
 dateLastMonth.setDate(dateNow.getDate() - 14);
@@ -134,7 +134,7 @@ export const getOrder4Str = `{"created_at": "${formatDateToISO(dateLastMonth)}",
     '"order_status": "ON_THE_WAY",' +
     '"payment_method": "VISA",' +
     '"shipping_method": "PREMIUM",' +
-    '"total_price": "99.0"}';
+    '"total_price": "99.00"}';
 
 export const orders = `[${getOrder1Str}, ${getOrder2Str}, ${getOrder3Str}, ${getOrder4Str}]`;
 export const orders2 = `[${getOrder1Str}]`;

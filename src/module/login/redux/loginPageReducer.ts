@@ -1,5 +1,5 @@
 import {Action} from "../../../general/redux/Action";
-import {LOGIN_FAIL, LOGIN_SUCCESS, SET_MESSAGE, SIGN_UP_FAIL, SIGN_UP_SUCCESS} from "./asyncActions";
+import {CLEAN_LOGIN_DATA, LOGIN_FAIL, LOGIN_SUCCESS, SET_MESSAGE, SIGN_UP_FAIL, SIGN_UP_SUCCESS} from "./asyncActions";
 import User from "../domain/model/typesUserPage";
 
 const user: User = JSON.parse(sessionStorage.getItem("user") || "{}");
@@ -25,6 +25,10 @@ export const loginPageReducer = (
             return {...state, isLoggedIn: false, message: action.payload}
         case SET_MESSAGE:
             return {...state, message: action.payload}
+        case CLEAN_LOGIN_DATA: {
+            sessionStorage.removeItem("user")
+            return {isLoggedIn: false, user: {}, message: ''}
+        }
         default:
             return state;
     }
