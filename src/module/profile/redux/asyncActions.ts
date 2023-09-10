@@ -5,6 +5,8 @@ import getProfileDetails from "../domain/use_cases/getProfileDetails";
 import updateProfile from "../domain/use_cases/updateProfile";
 import {routes} from "../../../general/navigation/routes";
 import User from "../../login/domain/model/typesUserPage";
+import {cleanLoginData} from "../../login/redux/asyncActions";
+import {clearCartAction} from "../../cart/redux/asyncActions";
 
 // TODO rate products
 
@@ -35,12 +37,14 @@ export const getProfileDetailsAction = (user: User, navigate: Function): any => 
 
 export const logoutAction = (): any => {
     return (dispatch: Function) => {
+        dispatch(startLoadAction());
         // case LOGOUT: {
 //     sessionStorage.removeItem('RefreshToken'); // TODO check names
 //     sessionStorage.removeItem('AccessToken');
 //     return {profile: new Profile(initialProfile), orders: [], isLoading: false};
 // }
-        // TODO finish
+        dispatch(cleanLoginData());
+        dispatch(clearCartAction());
         dispatch(cleanDataAction());
     }
 }
@@ -89,7 +93,6 @@ export const CLEAN_DATA = 'clean_data';
 
 export const GET_ORDERS = 'get_orders_data';
 export const SET_ORDERS = 'set_orders_data';
-export const SORT_ORDERS = 'sort_orders';
 
 export const startLoadAction = () => ({
     type: START_LOAD
@@ -111,10 +114,6 @@ export const cleanDataAction = () => ({
 export const setOrdersDataAction = (data: Array<Order>) => ({
     type: SET_ORDERS,
     payload: data
-});
-
-export const sortOrdersAction = (sort: string) => ({
-    type: SORT_ORDERS
 });
 
 function alertError(msg: string, error: any): void {

@@ -1,12 +1,14 @@
 import {Dispatch} from "react";
 import api_client from "../../../general/data/api_client";
 import AuthRepository from "../data/authRepository";
+import {CLEAN_DATA} from "../../profile/redux/asyncActions";
 
 export const LOGIN_SUCCESS = 'login_success';
 export const LOGIN_FAIL = 'login_fail';
 export const SIGN_UP_SUCCESS = 'sign_up_success';
 export const SIGN_UP_FAIL = 'sign_up_fail';
 export const SET_MESSAGE = 'set_message'
+export const CLEAN_LOGIN_DATA = 'clean_login_data';
 
 export const signInAction = (email:string, password:string): any => async (dispatch:Dispatch<any>) => {
 
@@ -31,3 +33,7 @@ export const signUpAction = (email: string, pass: string, dateOfBirth: string, n
     //                      dispatch({type: SET_MESSAGE, payload: result.message})})
     //     .catch(error => dispatch({type: SIGN_UP_FAIL, payload: error}));
 }
+
+export const cleanLoginData = () => ({
+    type: CLEAN_LOGIN_DATA
+});

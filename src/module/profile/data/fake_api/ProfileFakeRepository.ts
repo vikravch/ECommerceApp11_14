@@ -1,6 +1,7 @@
 import ProfileRepository from "../../domain/ProfileRepository";
 import Profile, {getProfilePreviewStr} from "../../domain/model/Profile";
 import Order, {orders} from "../../domain/model/Order";
+import {convertDateToOrderDate} from "../../../../general/common/tools";
 
 export default class ProfileFakeRepository implements ProfileRepository{
     async getProfile(token: string): Promise<Profile> {
@@ -18,13 +19,13 @@ export default class ProfileFakeRepository implements ProfileRepository{
             setTimeout(() => {
                 const ordersArray = JSON.parse(orders);
                 let res = new Array(ordersArray.length);
-                for(let i = ordersArray.length-1, j = 0; i >= 0; i--, j++){
-                    ordersArray[i].order_status = ordersArray[i].order_status.replaceAll("_", " ");
-                    ordersArray[i].order_status = ordersArray[i].order_status.at(0)
-                        + ordersArray[i].order_status.toLowerCase().substring(1);
-                    ordersArray[i].payment_method = String(ordersArray[i].payment_method).split('_')
-                        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
+                for(let i = ordersArray.length-1, j = 0; i >= 0; i--, j++) {
                     res[j] = ordersArray[i];
+                    res[j].order_status = (res[j].order_status.at(0)
+                        + res[j].order_status.toLowerCase().substring(1)).replaceAll("_", " ");
+                    res[j].payment_method = String(res[j].payment_method).split('_')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
+                    res[j].delivery_date = convertDateToOrderDate(res[j].delivery_date);
                 }
                 resolve(res);
             }, 1000);
