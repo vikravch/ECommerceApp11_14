@@ -5,22 +5,38 @@ import api_client from "../../../general/data/api_client";
 import {convertDateToOrderDate} from "../../../general/common/tools";
 
 export default class ProfileRepositoryImpl implements ProfileRepository{
-    async getProfile(token: string): Promise<Profile> {
-        const headers = {"AccessToken": token};
+    async getProfile(token: string, refreshToken: string): Promise<Profile> {
+        const config = {
+            headers:{
+                "AccessToken": token,
+                "RefreshToken": refreshToken
+            },
+            redirect: "follow"
+        };
 
         try {
-            const response = await api_client.post<any>("/profile", {}, {headers});
+            const response = await api_client.get<any>("/profile", config);
             return response.data;
         } catch (error: any) {
             throw error;
         }
     }
 
-    async getOrders(token: string): Promise<Array<Order>> {
-        const headers = {"AccessToken": token};
+    async updateProfile(updatedProfile: Profile): Promise<void> {
+        return Promise.resolve(undefined);
+    }
+
+    async getOrders(token: string, refreshToken: string): Promise<Array<Order>> {
+        const config = {
+            headers:{
+                "AccessToken": token,
+                "RefreshToken": refreshToken
+            },
+            redirect: "follow"
+        };
 
         try {
-            const response = await api_client.post<any>("/profile/orders", {}, {headers});
+            const response = await api_client.get<any>("/profile/orders", config);
             let res = new Array(response.data.length);
             for(let i = response.data.length-1, j = 0; i >= 0; i--, j++) {
                 res[j] = response.data[i];
@@ -35,9 +51,5 @@ export default class ProfileRepositoryImpl implements ProfileRepository{
         } catch (error: any) {
             throw error;
         }
-    }
-
-    async updateProfile(updatedProfile: Profile): Promise<void> {
-        return Promise.resolve(undefined);
     }
 }

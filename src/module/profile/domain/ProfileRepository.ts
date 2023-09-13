@@ -2,7 +2,7 @@ import Profile from "./model/Profile";
 import Order from "./model/Order";
 
 export default interface ProfileRepository {
-    getProfile: (token: string) => Promise<Profile>;
-    getOrders: (token: string) => Promise<Array<Order>>;
+    getProfile: (token: string, refreshToken: string) => Promise<Profile>;
+    getOrders: (token: string, refreshToken: string) => Promise<Array<Order>>;
     updateProfile: (updatedProfile: Profile) => Promise<void>;
 }

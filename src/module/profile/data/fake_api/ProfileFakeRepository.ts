@@ -4,7 +4,7 @@ import Order, {orders} from "../../domain/model/Order";
 import {convertDateToOrderDate} from "../../../../general/common/tools";
 
 export default class ProfileFakeRepository implements ProfileRepository{
-    async getProfile(token: string): Promise<Profile> {
+    async getProfile(token: string, refreshToken: string): Promise<Profile> {
         return new Promise(resolve => {
             setTimeout(() => {
                 resolve(new Profile(JSON.parse(getProfilePreviewStr)))
@@ -14,7 +14,7 @@ export default class ProfileFakeRepository implements ProfileRepository{
         // return Promise.reject(errorResponse);
     }
 
-    async getOrders(token:string): Promise<Array<Order>> {
+    async getOrders(token:string, refreshToken: string): Promise<Array<Order>> {
         return new Promise(resolve => {
             setTimeout(() => {
                 const ordersArray = JSON.parse(orders);
