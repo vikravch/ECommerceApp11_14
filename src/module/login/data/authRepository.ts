@@ -46,8 +46,11 @@ export default class AuthRepository {
         };
 
         try {
+            console.log("signUp starts");
+            console.log(headers)
+            console.log(data)
             const response = await apiClient.post<any>('/auth/registration', data, {headers});
-            console.log("signUp");
+            console.log("signUp after axios");
             console.log(response);
             // setter
             return response.data;
@@ -58,49 +61,22 @@ export default class AuthRepository {
         }
     }
 
-        //     const raw = JSON.stringify({
-        //         "birthDate": "1999-01-01",
-        //         "name": "Name",
-        //         "surname": "Surname"
-        //     });
-        //
-        //     var myHeaders = new Headers();
-        //     myHeaders.append("User-Password", "Basic dXNlckBnb28uY29tOlBhc3N3b3JkMTA=");
-        //     myHeaders.append("Content-Type", "application/json");
-        //
-        //     const requestOptions: RequestInit = {
-        //         method: 'POST',
-        //         headers: myHeaders,
-        //         body: raw,
-        //         redirect: 'follow' // Ensure 'redirect' has the correct type
-        //     };
-        //
-        //     fetch("https://ecommerce2-sport-production.up.railway.app/auth/registration", requestOptions)
-        //         .then(response => response.text())
-        //         .then(result => console.log(result))
-        //         .catch(error => console.log('error', error));
-        //
-        // }
+    async refreshAccessToken() {
+        try {
+            const response = await apiClient.post('/auth/token/refresh', {
+                refreshToken: localStorage.getItem('refreshToken'),
+            });
 
-    //     var axios = require('axios');
-    //     var data = '{\r\n    "birthDate": "1999-01-01",\r\n    "name": "Name",\r\n    "surname": "Surname"\r\n}';
-    //
-    //     var config = {
-    //         method: 'post',
-    //         maxBodyLength: Infinity,
-    //         url: 'localhost:8181/auth/registration',
-    //         headers: {
-    //             'User-Password': 'Basic dXNlckBnbWFpbC5jb206UGFzc3dvcmQx'
-    //         },
-    //         data: data
-    //     };
-    //
-    //     axios(config)
-    //         .then(function (response: ApiResponseSignUp) {
-    //             console.log(JSON.stringify(response.role));
-    //         })
-    //         .catch(function (error: Error) {
-    //             console.log(error);
-    //         });
-    // }
+            const newToken = response.data.accessToken;
+
+            // Update the stored access token
+            localStorage.setItem('token', newToken);
+
+            return newToken;
+        } catch (error) {
+            console.error('Error refreshing token:', error);
+            // Handle token refresh error
+            return null;
+        }
+    }
 }

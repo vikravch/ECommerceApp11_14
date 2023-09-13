@@ -21,17 +21,6 @@ export const signUpAction = (email: string, pass: string, dateOfBirth: string, n
             dispatch({type: LOGIN_SUCCESS, payload: res})
             dispatch({type: SET_MESSAGE, payload: res.message})
         })
-
-
-    // fetch(api_client + `/auth/registration`, {
-    //     method: 'POST',
-    //     headers: myHeaders,
-    //     body: raw,
-    //     redirect: 'follow'})
-    //     .then((response) => response.json())
-    //     .then(result => {dispatch({type: SIGN_UP_SUCCESS});
-    //                      dispatch({type: SET_MESSAGE, payload: result.message})})
-    //     .catch(error => dispatch({type: SIGN_UP_FAIL, payload: error}));
 }
 
 export const cleanLoginData = () => ({
