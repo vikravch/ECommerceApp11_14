@@ -3,8 +3,12 @@ import api_client from "../../../general/data/api_client";
 import apiClient from "../../../general/data/api_client";
 import {ApiResponseProductPreview} from "../../../general/dto/APIResponseTypes";
 import {convertDiscountToPercent} from "../../../general/common/tools";
+import Product from "../../product_page/domain/model/Product";
+import {setProductDataAction} from "../../product_page/redux/asyncActions";
+import {fakeProductData} from "../../product_page/data/tempData";
+import {categoryProductsFake} from "../fakeData/productsFake";
 
-export const START_PRODUCTS_LOAD = "start_products_load";
+export const PRODUCTS_LOAD = "products_load";
 export const SET_CATEGORY = "set_category";
 export const SET_SORT = "set_sort";
 export const PUT_PRODUCTS = "put_products"
@@ -14,12 +18,16 @@ const headers = {
     'Content-Type': 'application/json',
 };
 
-export const getProdustsByGender = (gender: string): any => async (dispatch: Dispatch<any>) => {
-    dispatch(startProductsLoadAction());
-    try {
+export const productsLoadAction = () => ({
+    type: PRODUCTS_LOAD
+});
 
+export const getProdustsByGender = (gender: string): any => async (dispatch: Dispatch<any>) => {
+    dispatch(productsLoadAction());
+    try {
+        console.log("BEFORE getProdustsByGender");
         const response = await apiClient.get<ApiResponseProductPreview>(`/products?page=0&pageSize=9&client_type=${gender.toUpperCase()}`, {headers});
-        console.log("getProdustsByGender");
+        console.log("after getProdustsByGender");
         console.log(response.data);
         console.log(response.data.content);
         //setDataAction(response.data);
@@ -30,12 +38,18 @@ export const getProdustsByGender = (gender: string): any => async (dispatch: Dis
     } catch (error: any) {
         console.log("ERROR: ");
         console.log(error.message);
-        throw error;
+        dispatch({type: PRODUCTS_LOAD, isLoading: false})
+       // throw error;
+        return new Promise<ApiResponseProductPreview>((resolve) => {
+            console.log("ProductPageFakeRepository - getProductDetails - setting the FAKE product");
+            dispatch({type: PUT_PRODUCTS, payload: categoryProductsFake.content})
+            //resolve(categoryProductsFake.content);
+        })
     }
 }
 
 export const getProdustsByCategory = (category: string): any => async (dispatch: Dispatch<any>) => {
-    dispatch(startProductsLoadAction());
+    dispatch(productsLoadAction());
     let URLPart: string;
     (category.toUpperCase() == 'SALE') ? (URLPart = 'discount_products_get') : (URLPart = `product_by_gender_get?gender=${category.toUpperCase()}`)
     fetch(`${api_client}${URLPart}`,
@@ -51,7 +65,7 @@ export const getProdustsByCategory = (category: string): any => async (dispatch:
 export const getProductsByGenderAndCategory = (gender: string, category: string): any => async (dispatch: Dispatch<any>) => {
     console.log(gender)
     console.log(category)
-    dispatch(startProductsLoadAction());
+    dispatch(productsLoadAction());
     if (category == 'ALL') {
         dispatch(getProdustsByGender(gender))
         return
@@ -69,7 +83,5 @@ export const getProductsByGenderAndCategory = (gender: string, category: string)
     }
 }
 
-export const startProductsLoadAction = () => ({
-    type: START_PRODUCTS_LOAD
-});
+
 
