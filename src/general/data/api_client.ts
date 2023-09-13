@@ -2,6 +2,7 @@ import axios from "axios";
 
 export default axios.create({
     baseURL: 'https://ecommerce3-sport-production.up.railway.app'
+    // baseURL: 'http://localhost:8181'
 })
 
 

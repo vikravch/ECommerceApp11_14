@@ -13,24 +13,24 @@ import {clearCartAction} from "../../cart/redux/asyncActions";
 export const getProfileDetailsAction = (user: User, navigate: Function): any => {
     return (dispatch: Function) => {
         dispatch(startLoadAction());
-        user.token = "token"; // TODO clean
-        user.refreshToken = "token";
         if(Object.keys(user).length === 0 || !user.token || !user.refreshToken) {
             dispatch(stopLoadAction());
             navigate(`/${routes.login}`);
             return null;
         }
 
-        getProfileDetails(user.token)
+        getProfileDetails(user.token, user.refreshToken)
             .then((data) => dispatch(setProfileDataAction(data)))
             .catch((error) => {
-                if(error.response.data.message === "Access token is expired") {// TODO refresh token ?
+                console.log(error)
+                if(error.message === "Access token is expired") {
                     alertError("Your session expired. Please login.", '');
                     navigate(`/${routes.login}`);
                 } else {
                     navigate(
-                    `/${routes.error}/${error.response.data.status}/${encodeURIComponent(error.response.data.message)}`);
+                        `/${routes.error}/${error.code}/${encodeURIComponent(error.message)}`);
                 }
+                dispatch(stopLoadAction());
             });
     }
 }
@@ -66,17 +66,18 @@ export const getOrdersAction = (user: User, navigate: Function): any => {
             return null;
         }
 
-        getOrders(user.token)
+        getOrders(user.token, user.refreshToken)
             .then((data) => dispatch(setOrdersDataAction(data)))
             .catch((error) => {
-                if(error.response.data.message === "Access token is expired") {
-                    // TODO refresh token ?
+                // error.response.data.message, error.response.data.status // TODO refresh token ?
+                if(error.message === "Access token is expired") {
                     alertError("Your session expired. Please login.", '');
                     navigate(`/${routes.login}`);
                 } else {
                     navigate(
-                    `/${routes.error}/${error.response.data.status}/${encodeURIComponent(error.response.data.message)}`);
+                        `/${routes.error}/${error.code}/${encodeURIComponent(error.message)}`);
                 }
+                dispatch(stopLoadAction());
             });
     }
 }
