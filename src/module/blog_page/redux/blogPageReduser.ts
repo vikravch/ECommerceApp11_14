@@ -31,7 +31,7 @@ export function blogPageReducer(
             return {...state, articlesList: action.payload.content, pageData: action.payload, isLoading: false}
         }
         case SET_HEADERS_LIST_DATA: {
-            return {...state, headersList: action.payload}
+            return {...state, headersList: action.payload, isLoading: false}
         }
         case CLEAN_BLOG_DATA: {
             return {

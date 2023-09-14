@@ -19,13 +19,17 @@ export default class ProductPageFakeRepository implements ProductPageRepository{
             } catch (error: any) {
                 console.log("ERROR: ");
                 console.log(error.message);
-                throw error;
+
+                //throw error;
+                // return fake data if server dead
+                return new Promise<Product>((resolve) => {
+                    console.log("ProductPageFakeRepository - getProductDetails - setting the FAKE product");
+                    setProductDataAction(fakeProductData);
+                    resolve(fakeProductData);
+                });
             }
 
-            return new Promise<Product>((resolve) => {
-                console.log("ProductPageFakeRepository - getProductDetails - setting the FAKE product");
-                resolve(fakeProductData);
-            });
+
         }
 
     async getAlsoLike(pageNumber: number): Promise<ApiResponseProductPreview> {

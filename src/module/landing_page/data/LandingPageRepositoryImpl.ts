@@ -3,6 +3,8 @@ import {ApiResponseProductPreview} from "../../../general/dto/APIResponseTypes";
 import api_client from "../../../general/data/api_client";
 import {convertDiscountToPercent} from "../../../general/common/tools";
 import {setDataAction, stopLoadAction} from "../redux/asyncActions";
+import {productsResponse} from "../utils/constants";
+
 
 
 export default class LandingPageFakeRepository implements LandingPageRepository {
@@ -20,5 +22,10 @@ export default class LandingPageFakeRepository implements LandingPageRepository 
             console.log(error.message);
             throw error;
         }
+        return new Promise<ApiResponseProductPreview>((resolve) => {
+            console.log("ProductPageFakeRepository - getProductDetails - setting the FAKE product");
+            console.log()
+            resolve(productsResponse);
+        });
     }
 }

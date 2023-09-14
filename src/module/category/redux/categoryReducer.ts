@@ -3,7 +3,7 @@ import {
     PUT_PRODUCTS,
     SET_CATEGORY,
     SET_CURRENT_CATEGORY_PAGE,
-    SET_SORT, START_PRODUCTS_LOAD
+    SET_SORT, PRODUCTS_LOAD
 } from "./asyncActions";
 import {CategoryPageStore, SortProps} from "./typesCategoryPage";
 import {pageResponse} from "../../pagination/data/fakeData";
@@ -15,7 +15,7 @@ export const categoryReducer = (
     action: Action
 ) => {
     switch (action.type) {
-        case START_PRODUCTS_LOAD: return {...state, isLoading: true}
+        case PRODUCTS_LOAD: return {...state, isLoading: true}
         case SET_CURRENT_CATEGORY_PAGE: {
             console.log("Category reducer " + action.payload)
             return {...state, currentPage: action.payload, isLoading: false}

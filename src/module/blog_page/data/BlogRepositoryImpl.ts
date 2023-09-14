@@ -3,6 +3,10 @@ import api_client from "../../../general/data/api_client";
 import {setArticlesListDataAction, setHeadersListDataAction} from "../redux/asyncActions";
 import {ApiResponseBlogHeader, ApiResponseBlogPreview} from "../../../general/dto/APIResponseTypes";
 import convertDate, {convertBlogArticleTitle} from "../../../general/common/tools";
+import Product from "../../product_page/domain/model/Product";
+import {setProductDataAction} from "../../product_page/redux/asyncActions";
+import {fakeProductData} from "../../product_page/data/tempData";
+import {blogItemsFake, headersFake} from "../presentation/fake_data/blogFakeData";
 
 export default class BlogRepositoryImpl implements BlogPageRepository{
 
@@ -20,7 +24,16 @@ export default class BlogRepositoryImpl implements BlogPageRepository{
                 console.log("ERROR: ")
                 console.log(error.message)
                 //setLoading(false);
-                throw error;
+               // throw error;
+                return new Promise<ApiResponseBlogPreview>((resolve) => {
+                    console.log("fake headers");
+                    blogItemsFake.content.forEach(a => {
+                        a.title = convertBlogArticleTitle(a.title);
+                       // a.timestampDateMod = convertDate(a.timestampDateMod);
+                    });
+                    setArticlesListDataAction(blogItemsFake);
+                    resolve(blogItemsFake);
+                })
             }
     }
 
@@ -37,7 +50,16 @@ export default class BlogRepositoryImpl implements BlogPageRepository{
             console.log("ERROR: ")
             console.log(error.message)
             //setLoading(false);
-            throw error;
+             //throw error;
+            return new Promise<Array<ApiResponseBlogHeader>>((resolve) => {
+                console.log("fake headers");
+                headersFake.forEach(h => {
+                    h.title = convertBlogArticleTitle(h.title);
+                   // h.timestampDateMod = convertDate(h.timestampDateMod);
+                });
+                setHeadersListDataAction(headersFake);
+                resolve(headersFake);
+            })
         }
     }
 
