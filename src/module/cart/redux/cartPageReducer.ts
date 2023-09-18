@@ -18,7 +18,7 @@ export const cartPageReducer = (
         case SET_CART:
             //TODO manage this return
             console.log(action.payload)
-            return {...state, cartItems: action.payload.cart, cartCount: action.payload.count, cartTotal: ''}
+            return {...state, cartItems: action.payload.cart, cartCount: parseFloat(action.payload.subtotal_price), cartTotal:  parseFloat(action.payload.total_price)}
 
         case ADD_TO_CART:
             let cartProducts: Array<CartProduct> = [...state.cartItems]

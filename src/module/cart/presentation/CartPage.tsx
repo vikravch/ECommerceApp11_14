@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {
     changeCountAction,
-    changeSizeAction, getCart,
+    changeSizeAction, fillCartOnServer, getCart,
     removeFromCartAction
 } from "../redux/asyncActions";
 import CartProduct from "../domain/model/CartProduct";
@@ -12,6 +12,7 @@ import AlsoLike from "../../product_page/presentation/AlsoLike";
 import style from "../presentation/CartPage.module.css"
 import {convertDiscountToPercent, getFullPrice} from "../../../general/common/tools";
 import Spinner from "../../spinner/Spinner";
+import User from "../../login/domain/model/typesUserPage";
 
 //TODO:
 // 1. No button in productPreview
@@ -22,21 +23,42 @@ import Spinner from "../../spinner/Spinner";
 // 5. authorized user: receive cart from server by user token
 //
 
+
+
 const CartPage:React.FC = () => {
+
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems)
     const total = useSelector<Store, number>(state => state.cartPage.cartTotal)
     const count = useSelector<Store, number>(state => state.cartPage.cartItems.length)
     const isLoading = useSelector<Store, boolean>(state => state.cartPage.isLoading)
+    const user = useSelector<Store, User>(state => state.loginPage.user);
     const dispatch = useDispatch()
 
     //TODO useEffect depending on TOKEN --> it must be in asyncActions; which repository to choose
     // TODO - line 94 check stock quantity
+    //
+    // function transformCartItems (cartItems: Array<CartProduct>) {
+    //     const items = cartItems.map((el) => {
+    //         el.product_id, el.size
+    //         console.log(el.product_id)
+    //     })
+    //     return items
+    // }
+    // const fillCartItems = transformCartItems(cartItems)
 
     useEffect(() => {
-        if (cartItems.length < 1) {
-            dispatch(getCart(''))
+        //dispatch(getCart(user.token, user.refreshToken))
+        if (cartItems.length > 0) {
+            dispatch(fillCartOnServer(user.token, user.refreshToken, []))
+          //  dispatch(getCart(user.token, user.refreshToken))
         }
-    }, [cartItems]);
+        if (cartItems.length < 1) {
+            dispatch(getCart(user.token, user.refreshToken))
+        }
+
+    }, []);
+
+
 
 
     if (count === 0) return (

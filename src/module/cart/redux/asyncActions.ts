@@ -9,13 +9,24 @@ export const CHANGE_SIZE = "change_size"
 export const CLEAR_CART = "clear_cart"
 export const SET_CART = 'set_cart'
 
+export const fillCartOnServer = (token: string, refreshToken: string,  items :[]):any => {
+    return (dispatch : Function) => {
+        console.log("FILL CART")
+        const myHeaders = new Headers();
+        myHeaders.append("AccessToken", token);
+        myHeaders.append("RefreshToken", "refreshToken");
+        new CartPageFakeRepository().fillCartOnServer(items, token, refreshToken).then((data) => {
+            dispatch(setCartData(data))
+        })
+    }
 
-export const getCart = (token: string):any => {
+}
+export const getCart = (token: string, refreshToken: string):any => {
     return (dispatch : Function) => {
         const myHeaders = new Headers();
-        myHeaders.append("AccessToken", "token.token.token");
-        myHeaders.append("RefreshToken", "refreshToken");
-        new CartPageFakeRepository().getCartDetails('').then((data) => {
+        myHeaders.append("AccessToken", token);
+        myHeaders.append("RefreshToken", refreshToken);
+        new CartPageFakeRepository().getCartDetails(token, refreshToken).then((data) => {
             dispatch(setCartData(data))
         })
     }

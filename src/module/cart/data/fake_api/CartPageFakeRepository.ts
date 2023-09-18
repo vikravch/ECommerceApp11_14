@@ -3,9 +3,8 @@
 // mirage.js
 
 import CartPageRepository from "../../domain/use_case/CartPageRepository";
-import Cart, {CartData} from "../../domain/model/Cart";
-import apiClient, {AccessToken, RefreshToken} from "../../../../general/data/api_client";
-
+import {CartData} from "../../domain/model/Cart";
+import apiClient from "../../../../general/data/api_client";
 
 const  fakeCartData = {
     "cart": [
@@ -79,12 +78,14 @@ const  fakeCartData = {
     "total_price": 304
 }
 
+
 export default class CartPageFakeRepository implements CartPageRepository{
-    async getCartDetails(token: string): Promise<CartData> {
+
+    async getCartDetails(token: string, refreshToken: string): Promise<CartData> {
 
         const headers = {
-            'AccessToken': AccessToken,
-            'RefreshToken': RefreshToken
+            'AccessToken': token,
+            'RefreshToken': refreshToken
         }
 
         try {
@@ -99,6 +100,42 @@ export default class CartPageFakeRepository implements CartPageRepository{
             throw error;
         }
 
+        return new Promise((resolve => {
+            console.log("ProductPageFakeRepository - getProductDetails - setting the FAKE product");
+            resolve(new CartData(fakeCartData));
+        }));
+    }
+    async fillCartOnServer(items: [], token: string, refreshToken: string): Promise<CartData> {
+        const headers = {
+            'AccessToken': token,
+            'RefreshToken': refreshToken,
+            'Content-Type': 'application/json'
+        }
+
+        const data = JSON.stringify([
+            {
+                "product_id": "40",
+                "size": "L"
+            },
+            {
+                "product_id": "12",
+                "size": "7"
+            }
+        ]);
+        console.log(data)
+        console.log(headers)
+        try {
+            console.log("FILL CartDetails Repo");
+            const response = await apiClient.post<CartData>('/cart', data, {headers});
+            console.log("FILL CartDetails");
+            console.log(response.data);
+            //setAction(response.data);
+            return response.data
+        } catch (error: any) {
+            console.log("ERROR: ");
+            console.log(error.message);
+            throw error;
+        }
         return new Promise((resolve => {
             console.log("ProductPageFakeRepository - getProductDetails - setting the FAKE product");
             resolve(new CartData(fakeCartData));
