@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {
     changeCountAction,
-    changeSizeAction, fillCartOnServer, getCart,
+    changeSizeAction, deleteFromCart, fillCartOnServer, getCart,
     removeFromCartAction
 } from "../redux/asyncActions";
 import CartProduct from "../domain/model/CartProduct";
@@ -36,20 +36,23 @@ const CartPage:React.FC = () => {
 
     //TODO useEffect depending on TOKEN --> it must be in asyncActions; which repository to choose
     // TODO - line 94 check stock quantity
+    //TODO - items from state to fillCart Action
     //
-    // function transformCartItems (cartItems: Array<CartProduct>) {
-    //     const items = cartItems.map((el) => {
-    //         el.product_id, el.size
-    //         console.log(el.product_id)
-    //     })
-    //     return items
-    // }
-    // const fillCartItems = transformCartItems(cartItems)
+    function transformCartItems (cartItems: Array<CartProduct>) {
+        const items = cartItems.map((el) => {
+            return {
+                product_id: el.product_id,
+                size: el.size,
+            };
+        })
+        return items
+    }
+    const fillCartItems = transformCartItems(cartItems)
 
     useEffect(() => {
         //dispatch(getCart(user.token, user.refreshToken))
         if (cartItems.length > 0) {
-            dispatch(fillCartOnServer(user.token, user.refreshToken, []))
+            dispatch(fillCartOnServer(user.token, user.refreshToken, fillCartItems))
           //  dispatch(getCart(user.token, user.refreshToken))
         }
         if (cartItems.length < 1) {
@@ -116,12 +119,13 @@ const CartPage:React.FC = () => {
                                                        className={`form-control mw-100 ${style.pInput}`}
                                                        type="number" min={"0"} max={item.stock_quantity ? item.stock_quantity : ''} //TODO check stock quantity
                                                        step="1"
-                                                       defaultValue={item.count}
+                                                       defaultValue={item.quantity}
                                                        onChange={(e: ChangeEvent<{value: string}>) => {
                                                            if(+e.target.value < 0) {
                                                                e.target.value = "1";
                                                            } else if(+e.target.value == 0) {
-                                                               dispatch(removeFromCartAction(item.product_id))
+                                                              // dispatch(removeFromCartAction(item.product_id))
+                                                               dispatch(deleteFromCart(user.token, user.refreshToken, item))
                                                            } else {
                                                                dispatch(changeCountAction(item.product_id, +e.target.value))
                                                            }}}
@@ -138,7 +142,7 @@ const CartPage:React.FC = () => {
                                             </div>
                                             <div className="align-items-end text-end">
                                                 <button className="btn btn-link col align-self-end text-end text-muted text-decoration-none p-0"
-                                                        onClick={() => dispatch(removeFromCartAction(item.product_id))}>
+                                                        onClick={() => dispatch((deleteFromCart(user.token, user.refreshToken, item)))}>
                                                     Remove
                                                 </button>
                                             </div>

@@ -3,7 +3,7 @@ import {ADD_TO_CART, CHANGE_COUNT, CHANGE_SIZE, CLEAR_CART, REMOVE_FROM_CART, SE
 import CartProduct from "../domain/model/CartProduct";
 
 export const calcTotalPrice = (items: CartProduct[]) => {
-    return items.reduce((sum, obj) => +obj.price * obj.count + sum, 0).toFixed(2);
+    return items.reduce((sum, obj) => +obj.price * obj.quantity + sum, 0).toFixed(2);
 };
 
 const oldCart: Array<CartProduct> = JSON.parse(localStorage.getItem("cartItems") || "[]");
@@ -25,7 +25,7 @@ export const cartPageReducer = (
             const productIndex: number = cartProducts.findIndex(
                 (item => item.product_id === action.payload.product_id && item.size == action.payload.size))
             if (productIndex !== -1) {
-                cartProducts[productIndex].count += 1;
+                cartProducts[productIndex].quantity += 1;
                 const totalSum = calcTotalPrice(cartProducts)
                 localStorage.setItem("cartItems", JSON.stringify(cartProducts))
                 return {...state, cartItems: cartProducts, cartTotal: totalSum}
@@ -45,7 +45,7 @@ export const cartPageReducer = (
         case CHANGE_COUNT:
                 let newGoods =  state.cartItems
                 const changeIndex: number = newGoods.findIndex((product: { product_id: string; }) => product.product_id === action.payload.idProduct)
-                newGoods[changeIndex].count = action.payload.count
+                newGoods[changeIndex].quantity = action.payload.count
                 const totalPrice = calcTotalPrice(newGoods)
                 localStorage.setItem("cartItems", JSON.stringify(newGoods))
                 return {...state, cartItems: newGoods, cartTotal: totalPrice}

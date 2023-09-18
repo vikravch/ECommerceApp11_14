@@ -38,7 +38,7 @@ const ProductDetailPage: React.FC = () => {
     let tempCartProduct: CartProduct = {
         product_id: product.product_id,
         product_thumb: product.product_thumb,
-        count: 1,
+        quantity: 1,
         color: product.colors[0].color,
         size: '',
         product_title: product.product_title,

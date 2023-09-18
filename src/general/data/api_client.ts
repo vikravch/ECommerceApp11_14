@@ -26,7 +26,7 @@ axiosInstance.interceptors.request.use(
     }
 );
 
-// Response interceptor
+//Response interceptor
 axiosInstance.interceptors.response.use(
     (response) => {
         // Do something with the response
@@ -35,10 +35,10 @@ axiosInstance.interceptors.response.use(
     async (error) => {
         const originalRequest = error.config;
 
-        // Check if the error is due to an expired token
+       // Check if the error is due to an expired token
         if (error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
-
+            console.log("Interseptors 1")
             // Refresh the token
             const newToken = await new AuthRepository().refreshAccessToken();
 
@@ -48,6 +48,18 @@ axiosInstance.interceptors.response.use(
                 return axiosInstance(originalRequest);
             }
         }
+        // if (error.response.status === 500 && !originalRequest._retry) {
+        //     originalRequest._retry = true;
+        //     console.log("Interseptors2")
+        //     // Refresh the token
+        //     const newToken = await new AuthRepository().refreshAccessToken();
+        //
+        //     if (newToken) {
+        //         // Retry the original request with the new token
+        //         originalRequest.headers['Authorization'] = `Bearer ${newToken}`;
+        //         return axiosInstance(originalRequest);
+        //     }
+        // }
 
         return Promise.reject(error);
     }
