@@ -1,7 +1,7 @@
-import apiClient from "../../../general/data/api_client";
+import apiClient, {RefreshToken} from "../../../general/data/api_client";
 import User from "../domain/model/typesUserPage";
 
-const inputString = "user@go.com:Pasword10";
+const inputString = "user@go.com:Password10";
 const base64Encoded = btoa(inputString);
 
 
@@ -62,18 +62,20 @@ export default class AuthRepository {
     }
 
     async refreshAccessToken() {
-        try {
-            const response = await apiClient.post('/auth/token/refresh', {
-                refreshToken: localStorage.getItem('refreshToken'),
-            });
+        console.log("RefreshToken")
+        const headers = {
+            'RefreshToken': sessionStorage.getItem('refreshToken'),
+        };
 
+        try {
+            const response = await apiClient.get('/auth/token/refresh_token', {headers});
             const newToken = response.data.accessToken;
 
             // Update the stored access token
-            localStorage.setItem('token', newToken);
+            sessionStorage.setItem('token', newToken);
 
             return newToken;
-        } catch (error) {
+        } catch (error: any) {
             console.error('Error refreshing token:', error);
             // Handle token refresh error
             return null;

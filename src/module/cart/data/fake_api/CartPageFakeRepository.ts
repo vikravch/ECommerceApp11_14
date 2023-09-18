@@ -3,9 +3,9 @@
 // mirage.js
 
 import CartPageRepository from "../../domain/use_case/CartPageRepository";
-import Cart, {CartData} from "../../domain/model/Cart";
-import apiClient, {AccessToken, RefreshToken} from "../../../../general/data/api_client";
-
+import {CartData} from "../../domain/model/Cart";
+import apiClient from "../../../../general/data/api_client";
+import {DeletedItem, FillCartItems} from "../../redux/typesCartPage";
 
 const  fakeCartData = {
     "cart": [
@@ -79,12 +79,14 @@ const  fakeCartData = {
     "total_price": 304
 }
 
+
 export default class CartPageFakeRepository implements CartPageRepository{
-    async getCartDetails(token: string): Promise<CartData> {
+
+    async getCartDetails(token: string, refreshToken: string): Promise<CartData> {
 
         const headers = {
-            'AccessToken': AccessToken,
-            'RefreshToken': RefreshToken
+            'AccessToken': token,
+            'RefreshToken': refreshToken
         }
 
         try {
@@ -104,5 +106,68 @@ export default class CartPageFakeRepository implements CartPageRepository{
             resolve(new CartData(fakeCartData));
         }));
     }
+    async fillCartOnServer(items: Array<FillCartItems>, token: string, refreshToken: string): Promise<CartData> {
+        const headers = {
+            'AccessToken': token,
+            'RefreshToken': refreshToken,
+            'Content-Type': 'application/json'
+        }
 
+        // const data = JSON.stringify([
+        //     {
+        //         "product_id": "40",
+        //         "size": "L"
+        //     },
+        //     {
+        //         "product_id": "12",
+        //         "size": "7"
+        //     }
+        // ]);
+        //console.log(data)
+
+        console.log(headers)
+        try {
+            console.log("FILL CartDetails Repo");
+            const response = await apiClient.post<CartData>('/cart', items, {headers});
+            console.log("FILL CartDetails");
+            console.log(response.data);
+            //setAction(response.data);
+            return response.data
+        } catch (error: any) {
+            console.log("ERROR: ");
+            console.log(error.message);
+            throw error;
+        }
+        return new Promise((resolve => {
+            console.log("ProductPageFakeRepository - getProductDetails - setting the FAKE product");
+            resolve(new CartData(fakeCartData));
+        }));
+    }
+
+    async deleteCartItem(token: string, refreshToken: string, item: DeletedItem): Promise<any> {
+        console.log(" before try - Delete item from cart");
+        const headers = {
+            'AccessToken': token,
+            'RefreshToken': refreshToken,
+            'Content-Type': 'application/json'
+        }
+        try {
+            console.log(" before - Delete item from cart");
+            const response = await apiClient.delete<DeletedItem>('/cart/product', {
+                headers,
+                data: {
+                    item
+                },
+            });
+            console.log("//Delete item from cart");
+            console.log(response.data);
+            //setAction(response.data);
+            return response.data
+        } catch (error: any) {
+            console.log("ERROR: ");
+            console.log(error.message);
+            throw error;
+        }
+
+    }
 }
