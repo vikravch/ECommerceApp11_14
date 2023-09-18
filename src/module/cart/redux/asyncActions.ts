@@ -34,7 +34,9 @@ export const getCart = (token: string, refreshToken: string):any => {
 }
 
 export const deleteFromCart = (token: string, refreshToken: string, item: CartProduct):any => {
+
     return(dispatch : Function) => {
+        dispatch(removeFromCartAction(item.product_id))
         const extractedData = {
             product_id: item.product_id,
             size: item.size,
@@ -45,7 +47,7 @@ export const deleteFromCart = (token: string, refreshToken: string, item: CartPr
         myHeaders.append("RefreshToken", refreshToken);
 
         new CartPageFakeRepository().deleteCartItem(token, refreshToken, extractedData).then((data) => {
-            dispatch(removeFromCartAction(data.product_id))
+
         })
     }
 }
