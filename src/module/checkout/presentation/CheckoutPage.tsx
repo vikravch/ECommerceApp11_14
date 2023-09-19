@@ -45,7 +45,7 @@ const CheckoutPage:React.FC = ()=> {
             prodId: +cartItem.product_id,
             color: cartItem.color,
             size: cartItem.size,
-            number: cartItem.count
+            number: cartItem.quantity
         }
     }
 
@@ -96,7 +96,7 @@ const CheckoutPage:React.FC = ()=> {
                                                         className="mx-1 small my-0">{item.size}</label></p>
                                                     <p className="my-0 small"><label
                                                         className="text-muted small my-0">Quantity: </label><label
-                                                        className="mx-1 small my-0">{item.count}</label></p>
+                                                        className="mx-1 small my-0">{item.quantity}</label></p>
                                                     <p className="my-0 small"><label
                                                         className="small my-0"><strong>${item.price}</strong></label>
                                                     </p>

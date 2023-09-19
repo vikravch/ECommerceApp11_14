@@ -1,6 +1,6 @@
 
 export default class CartProduct{
-    count: number;
+    quantity: number;
     color: string;
     size: string;
     product_id: string;
@@ -12,7 +12,7 @@ export default class CartProduct{
     stock_quantity?: number;
 
     constructor(data: CartProduct) {
-        this.count = data.count;
+        this.quantity = data.quantity;
         this.color = data.color;
         this.size = data.size;
         this.product_id = data.product_id;

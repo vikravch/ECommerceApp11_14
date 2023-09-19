@@ -94,7 +94,7 @@ const CartPage:React.FC = () => {
                                                        className={`form-control mw-100 ${style.pInput}`}
                                                        type="number" min={"0"} max={item.stock_quantity ? item.stock_quantity : ''} //TODO check stock quantity
                                                        step="1"
-                                                       defaultValue={item.count}
+                                                       defaultValue={item.quantity}
                                                        onChange={(e: ChangeEvent<{value: string}>) => {
                                                            if(+e.target.value < 0) {
                                                                e.target.value = "1";
