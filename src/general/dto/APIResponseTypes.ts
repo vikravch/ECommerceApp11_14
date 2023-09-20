@@ -90,7 +90,7 @@ export class ApiResponseProductPreview {
 }
 
 //==================   BLOG   ===================================================================
-export class ApiResponseBlogPreview extends PaginationData{
+export class ApiResponseBlogPreview extends PaginationData {
     content: Array<ArticleInfo>;
     pageable: Pageable;
 
@@ -142,12 +142,12 @@ export class ApiResponseCollections {
 }
 
 export class ApiResponseSignUp {
-email: string;
-role: string
+    email: string;
+    role: string
 
     constructor(data: ApiResponseSignUp) {
-    this.email = data.email;
-    this.role = data.role;
+        this.email = data.email;
+        this.role = data.role;
     }
 }
 
@@ -155,7 +155,7 @@ export class ApiResponseSignIn {
 
 }
 
-class ApiResponseCart {
+export class ApiResponseCart {
     cart: CartProduct[];
     subtotal_price: number;
     products_discount: number;
@@ -166,5 +166,31 @@ class ApiResponseCart {
         this.subtotal_price = data.subtotal_price || 0;
         this.products_discount = data.products_discount || 0;
         this.total_price = data.total_price || 0;
+    }
+}
+
+// Categories:
+export class ClothingCategory {
+    sizes: string[];
+    category_id: string;
+    category_name: string;
+    size_type: string;
+
+    constructor(
+       data: ClothingCategory
+    ) {
+        this.sizes = data.sizes;
+        this.category_id = data.category_id;
+        this.category_name = data.category_name;
+        this.size_type = data.size_type;
+    }
+}
+
+
+export class ApiResponseCategoryList {
+    data: ClothingCategory[];
+
+    constructor(data: ApiResponseCategoryList) {
+        this.data = data.data.map((item) => new ClothingCategory(item));
     }
 }

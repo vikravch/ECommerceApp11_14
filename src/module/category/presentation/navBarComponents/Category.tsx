@@ -1,10 +1,22 @@
-import React from 'react';
-import {categories} from "../../constants";
+import React, {useEffect} from 'react';
 import {getProductsByGenderAndCategory} from "../../redux/asyncActions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {getCategoriesList} from "./redux/asyncActions";
+import {Store} from "../../../../general/redux/storeTypes";
+import {ClothingCategory} from "../../../../general/dto/APIResponseTypes";
+
+//TODO OnClick for category items!
 
 const Category = (props:any) => {
     const dispatch = useDispatch();
+
+    const categoriesList = useSelector<Store, Array<ClothingCategory>>(state => state.categoryPage.CategoriesList)
+
+    useEffect(() => {
+       // getCategoriesList url/categories
+        dispatch(getCategoriesList())
+    }, []);
+
     return (
         <div className="accordion-item border-0">
             <div className={"m-0 borderLine"}/>
@@ -18,10 +30,10 @@ const Category = (props:any) => {
             <div id="category-collapse" className={`accordion-collapse collapse ${!props.isButtonFilterVisible ? 'show' : ''}`}
                  aria-labelledby="category-heading">
                 <div className="accordion-body p-0 pb-4">
-                    {categories.map((item)=>
-                        <div key={item.id}>
-                            <input className="visually-hidden check" type="radio" name={'category'} value={item.name} id={item.id} onClick={() => dispatch(getProductsByGenderAndCategory(props.gender,item.URL))}/>
-                            <label className="form-check-label pointer" htmlFor={item.id}>{item.name}</label>
+                    {categoriesList.map((item)=>
+                        <div key={item.category_id}>
+                            <input className="visually-hidden check" type="radio" name={'category'} value={item.category_name} id={item.category_id} onClick={() => dispatch(getProductsByGenderAndCategory(props.gender,item.category_name))}/>
+                            <label className="form-check-label pointer" htmlFor={item.category_id}>{item.category_name}</label>
                         </div>)}
                 </div>
             </div>
