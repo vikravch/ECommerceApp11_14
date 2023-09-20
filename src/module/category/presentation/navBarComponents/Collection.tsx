@@ -29,7 +29,7 @@ const Collection = (props:any) => {
                  aria-labelledby="flush-headingFour">
                 <div className="accordion-body p-0 pb-4">
                     {collectionsData.map((item) =>
-                        <div><input className="visually-hidden check" type="radio" name={'collection'} id={item.collection_id}/>
+                        <div key={item.collection_id}><input className="visually-hidden check" type="radio" name={'collection'} id={item.collection_id}/>
                             <label className="form-check-label pointer" htmlFor={item.collection_id}>{item.name}</label></div>
                     )}
                 </div>
