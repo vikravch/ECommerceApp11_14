@@ -1,11 +1,9 @@
-import React, {ChangeEvent, useEffect} from "react";
+import React, {ChangeEvent} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {
     changeCountAction,
-    changeSizeAction, deleteFromCart, fillCartOnServer, getCart,
-    removeFromCartAction
-} from "../redux/asyncActions";
+    changeSizeAction, deleteFromCart} from "../redux/asyncActions";
 import CartProduct from "../domain/model/CartProduct";
 import {Link} from "react-router-dom";
 import AlsoLike from "../../product_page/presentation/AlsoLike";
@@ -38,30 +36,6 @@ const CartPage:React.FC = () => {
     // TODO - line 94 check stock quantity
     //TODO - items from state to fillCart Action
     //
-    function transformCartItems (cartItems: Array<CartProduct>) {
-        const items = cartItems.map((el) => {
-            return {
-                product_id: el.product_id,
-                size: el.size,
-            };
-        })
-        return items
-    }
-    const fillCartItems = transformCartItems(cartItems)
-
-    useEffect(() => {
-        //dispatch(getCart(user.token, user.refreshToken))
-        if (cartItems.length > 0) {
-            dispatch(fillCartOnServer(user.token, user.refreshToken, fillCartItems))
-          //  dispatch(getCart(user.token, user.refreshToken))
-        }
-        if (cartItems.length < 1) {
-            dispatch(getCart(user.token, user.refreshToken))
-        }
-
-    }, []);
-
-
 
 
     if (count === 0) return (
@@ -104,14 +78,24 @@ const CartPage:React.FC = () => {
                                             <div className="d-flex flex-column flex-sm-row h-50 justify-content-start align-items-start align-items-sm-end">
                                                 <div className="col-3 col-sm-6 col-md-7 col-lg-9 col-xl-8 pe-4">
                                                     <label htmlFor={`size${item.product_id}`} className="form-label text-muted small mb-0">Size</label>
-                                                    <select style={{minWidth: 190}} className={`form-select ${style.pSelect}`} id={`size${item.product_id}`} required defaultValue={item.size} onChange={(e: ChangeEvent<{value: string}>) => {
-                                                        dispatch(changeSizeAction(item.product_id, e.target.value));}}>
-                                                        {item.stock_sizes.map((size, index) => ( size == item.size ?
-                                                                <option key={index} value={size} selected>{size}</option> :
-                                                                <option key={index} value={size}>{size}</option>
+                                                    <select
+                                                        style={{minWidth: 190}}
+                                                        className={`form-select ${style.pSelect}`}
+                                                        id={`size${item.product_id}`}
+                                                        required
+                                                        defaultValue={item.size}
+                                                        onChange={(e: ChangeEvent<{value: string}>) => {
+                                                            dispatch(changeSizeAction(item.product_id, e.target.value));
+                                                        }}
+                                                    >
+                                                        {item.stock_sizes.map((size, index) => (
+                                                            <option key={index} value={size}>
+                                                                {size}
+                                                            </option>
                                                         ))}
                                                     </select>
                                                 </div>
+
 
                                                 <div className="col-3 col-sm-3 col-md-3" style={{minWidth: 94}}>
                                                     <label htmlFor={`quantity${item.product_id}`} className="form-label text-muted small mb-0">Quantity</label>

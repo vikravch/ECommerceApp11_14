@@ -1,14 +1,10 @@
 import apiClient, {RefreshToken} from "../../../general/data/api_client";
 import User from "../domain/model/typesUserPage";
 
-const inputString = "user@go.com:Password10";
-const base64Encoded = btoa(inputString);
-
-
 export default class AuthRepository {
 
     async signIn(email: string, pass: string): Promise<any> {
-
+        console.log(`Basic ${btoa(`${email}:`+`${pass}`)}`)
         const headers = {
             'AUTHORIZATION': `Basic ${btoa(`${email}:`+`${pass}`)}`,
             'Content-Type': 'application/json',
@@ -19,7 +15,7 @@ export default class AuthRepository {
             console.log("signIn");
             console.log(response.data);
             console.log(response.headers);
-            const AccessToken = response.headers.AccessToken
+            const AccessToken = response.headers.accesstoken
             console.log(AccessToken)
            // dispatch({type: LOGIN_SUCCESS, payload: data})
             // setter

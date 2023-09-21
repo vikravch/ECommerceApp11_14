@@ -4,8 +4,10 @@ import {signInAction} from "../redux/asyncActions";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {Navigate} from "react-router-dom";
-import AuthRepository from "../data/authRepository";
 import {routes} from "../../../general/navigation/routes";
+import {fillCartOnServer, getCart} from "../../cart/redux/asyncActions";
+import User from "../domain/model/typesUserPage";
+import CartProduct from "../../cart/domain/model/CartProduct";
 
 
 // SUPER USER admin@admin.com:admin
@@ -18,7 +20,21 @@ const SignIn:React.FC = () => {
     const [password, setPassword] = useState('');
     const message = useSelector<Store, string>(state => state.loginPage.message);
     const isLoggedIn = useSelector<Store, boolean>(state => state.loginPage.isLoggedIn);
+    const user = useSelector<Store, User>(state => state.loginPage.user);
+    const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems)
+
     const dispatch = useDispatch();
+
+    function transformCartItems (cartItems: Array<CartProduct>) {
+        return cartItems.map((el) => {
+            return {
+                product_id: el.product_id,
+                size: el.size,
+            };
+        })
+    }
+
+    const fillCartItems = transformCartItems(cartItems)
 
     function changeInputType(): void {
         inputType == 'password' ? setInputType('text') : setInputType('password');
@@ -27,10 +43,15 @@ const SignIn:React.FC = () => {
     const handleSignIn = (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(signInAction(email, password));
-        // new AuthRepository().signIn(email, password)
     }
 
     if (isLoggedIn) {
+        if (cartItems.length > 0) {
+            dispatch(fillCartOnServer(user.token, user.refreshToken, fillCartItems))
+        }
+        if (cartItems.length < 1) {
+            dispatch(getCart(user.token, user.refreshToken))
+        }
         return <Navigate to="/profile"/>;
     }
 
