@@ -3,15 +3,16 @@ import {
     PUT_PRODUCTS,
     SET_CATEGORY,
     SET_CURRENT_CATEGORY_PAGE,
-    SET_SORT, PRODUCTS_LOAD
+    SET_SORT, PRODUCTS_LOAD, SET_CATEGORY_LIST, SET_SEASONS_LIST
 } from "./asyncActions";
 import {CategoryPageStore, SortProps} from "./typesCategoryPage";
 import {pageResponse} from "../../pagination/data/fakeData";
 
 
 export const categoryReducer = (
+
     state: CategoryPageStore = {isLoading: false, data: [],
-        sort: {name:'By price', prop:SortProps.PRICE_ASC}, pageData: pageResponse, currentPage: 0},
+        sort: {name:'By price', prop:SortProps.PRICE_ASC}, pageData: pageResponse, currentPage: 0, CategoriesList: [], SeasonsData: []},
     action: Action
 ) => {
     switch (action.type) {
@@ -20,6 +21,11 @@ export const categoryReducer = (
             console.log("Category reducer " + action.payload)
             return {...state, currentPage: action.payload, isLoading: false}
         }
+        case SET_CATEGORY_LIST:
+            return {...state, CategoriesList: action.payload}
+        case SET_SEASONS_LIST:
+            return { ...state, SeasonsData: action.payload}
+
         case SET_CATEGORY:
             return {...state, Order: action.payload, isLoading: false}
         case SET_SORT:

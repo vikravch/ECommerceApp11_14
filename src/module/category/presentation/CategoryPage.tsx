@@ -33,6 +33,7 @@ const  CategoryPage:React.FC = () => {
     const [isFullAccordionVisible, setIsFullAccordionVisible] = useState(true);
     const dispatch = useDispatch();
     let type = useParams<Params>().type || '';
+
     if(type){
         type = type[0].toUpperCase() + type.substring(1);
     }
@@ -58,12 +59,13 @@ const  CategoryPage:React.FC = () => {
 
         return () => window.removeEventListener('resize', handleResize);
     });
+
     const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
 
     return (
         <>
         <div className={'container p-0 mainCont'}>
-            <div className={'main'}>{convertToSpaceFormat(type)} / <span className={'black'}>All</span></div>
+            <div className={'main'}>{convertToSpaceFormat(type)} / <span className={'black'}>{}</span></div>
             <div className={"container marCategory mainCont"}>
                 <div className={"row justify-content-between"}>
                     <h1 className={"col col-sm-7 p-0 category"}>{convertToSpaceFormat(type)}</h1>

@@ -1,6 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {getCollectionDataAction} from "../../../collections/redux/asyncActions";
+import {Store} from "../../../../general/redux/storeTypes";
+import CollectionInfo from "../../../collections/types/CollectionInfo";
+
+//TODO OnClick for collection items!
 
 const Collection = (props:any) => {
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getCollectionDataAction(0))
+    }, []);
+
+    const collectionsData = useSelector<Store, Array<CollectionInfo>>(state => state.collectionPage.collectionData.content)
+
     return (
         <div className="accordion-item border-0">
             <div className={"m-0 borderLine"}/>
@@ -14,16 +28,10 @@ const Collection = (props:any) => {
             <div id="flush-collapseFour" className={`accordion-collapse collapse ${!props.isButtonFilterVisible ? 'show' : ''}`}
                  aria-labelledby="flush-headingFour">
                 <div className="accordion-body p-0 pb-4">
-                    <div><input className="visually-hidden check" type="radio" name={'collection'} id="check11"/>
-                        <label className="form-check-label pointer" htmlFor="check11">All</label></div>
-                    <div><input className="visually-hidden check" type="radio" name={'collection'} id="check12"/>
-                        <label className="form-check-label pointer" htmlFor="check12">Super</label></div>
-                    <div><input className="visually-hidden check" type="radio" name={'collection'} id="check13"/>
-                        <label className="form-check-label pointer" htmlFor="check13">Super-puper</label></div>
-                    <div><input className="visually-hidden check" type="radio" name={'collection'} id="check14"/>
-                        <label className="form-check-label pointer" htmlFor="check14">Wow</label></div>
-                    <div><input className="visually-hidden check" type="radio" name={'collection'} id="check15"/>
-                        <label className="form-check-label pointer" htmlFor="check15">Trash</label></div>
+                    {collectionsData.map((item) =>
+                        <div key={item.collection_id}><input className="visually-hidden check" type="radio" name={'collection'} id={item.collection_id}/>
+                            <label className="form-check-label pointer" htmlFor={item.collection_id}>{item.name}</label></div>
+                    )}
                 </div>
             </div>
         </div>
