@@ -104,14 +104,24 @@ const CartPage:React.FC = () => {
                                             <div className="d-flex flex-column flex-sm-row h-50 justify-content-start align-items-start align-items-sm-end">
                                                 <div className="col-3 col-sm-6 col-md-7 col-lg-9 col-xl-8 pe-4">
                                                     <label htmlFor={`size${item.product_id}`} className="form-label text-muted small mb-0">Size</label>
-                                                    <select style={{minWidth: 190}} className={`form-select ${style.pSelect}`} id={`size${item.product_id}`} required defaultValue={item.size} onChange={(e: ChangeEvent<{value: string}>) => {
-                                                        dispatch(changeSizeAction(item.product_id, e.target.value));}}>
-                                                        {item.stock_sizes.map((size, index) => ( size == item.size ?
-                                                                <option key={index} value={size} selected>{size}</option> :
-                                                                <option key={index} value={size}>{size}</option>
+                                                    <select
+                                                        style={{minWidth: 190}}
+                                                        className={`form-select ${style.pSelect}`}
+                                                        id={`size${item.product_id}`}
+                                                        required
+                                                        defaultValue={item.size}
+                                                        onChange={(e: ChangeEvent<{value: string}>) => {
+                                                            dispatch(changeSizeAction(item.product_id, e.target.value));
+                                                        }}
+                                                    >
+                                                        {item.stock_sizes.map((size, index) => (
+                                                            <option key={index} value={size}>
+                                                                {size}
+                                                            </option>
                                                         ))}
                                                     </select>
                                                 </div>
+
 
                                                 <div className="col-3 col-sm-3 col-md-3" style={{minWidth: 94}}>
                                                     <label htmlFor={`quantity${item.product_id}`} className="form-label text-muted small mb-0">Quantity</label>
