@@ -27,6 +27,7 @@ import User from "../../login/domain/model/typesUserPage";
 
 const CartPage:React.FC = () => {
 
+    const isLoggedIn = useSelector<Store, boolean>(state => state.loginPage.isLoggedIn);
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems)
     const total = useSelector<Store, number>(state => state.cartPage.cartTotal)
     const count = useSelector<Store, number>(state => state.cartPage.cartItems.length)
@@ -38,6 +39,7 @@ const CartPage:React.FC = () => {
     // TODO - line 94 check stock quantity
     //TODO - items from state to fillCart Action
     //
+
     function transformCartItems (cartItems: Array<CartProduct>) {
         const items = cartItems.map((el) => {
             return {
@@ -50,16 +52,17 @@ const CartPage:React.FC = () => {
     const fillCartItems = transformCartItems(cartItems)
 
     useEffect(() => {
-        //dispatch(getCart(user.token, user.refreshToken))
-        if (cartItems.length > 0) {
-            dispatch(fillCartOnServer(user.token, user.refreshToken, fillCartItems))
-          //  dispatch(getCart(user.token, user.refreshToken))
-        }
-        if (cartItems.length < 1) {
-            dispatch(getCart(user.token, user.refreshToken))
-        }
+        if(isLoggedIn) {
 
-    }, []);
+            if (cartItems.length > 0) {
+                dispatch(fillCartOnServer(user.token, user.refreshToken, fillCartItems))
+                //  dispatch(getCart(user.token, user.refreshToken))
+            }
+            if (cartItems.length < 1) {
+                dispatch(getCart(user.token, user.refreshToken))
+            }
+        }
+    }, [isLoggedIn ]);
 
 
 

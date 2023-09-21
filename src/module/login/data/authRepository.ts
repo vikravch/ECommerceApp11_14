@@ -1,10 +1,6 @@
 import apiClient, {RefreshToken} from "../../../general/data/api_client";
 import User from "../domain/model/typesUserPage";
 
-const inputString = "user@go.com:Password10";
-const base64Encoded = btoa(inputString);
-
-
 export default class AuthRepository {
 
     async signIn(email: string, pass: string): Promise<any> {
