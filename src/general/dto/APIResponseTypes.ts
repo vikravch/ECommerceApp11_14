@@ -194,3 +194,11 @@ export class ApiResponseCategoryList {
         this.data = data.data.map((item) => new ClothingCategory(item));
     }
 }
+
+export class ApiSeasonsList {
+    seasons: string[];
+
+    constructor(data: ApiSeasonsList) {
+        this.seasons = data.seasons.map((item) => (item));
+    }
+}

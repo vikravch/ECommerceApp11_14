@@ -21,4 +21,5 @@ export interface CategoryPageStore {
     currentPage: number;
 
     CategoriesList: Array<ClothingCategory>
+    SeasonsData: string[]
 }

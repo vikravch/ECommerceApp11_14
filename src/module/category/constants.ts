@@ -258,3 +258,12 @@ export const categoryData = [
             "size_type": "NO_SIZE"
         }
     ]
+
+export const seasonsList = {
+    "seasons": [
+        "MOCK",
+        "SUMMER",
+        "DEMI_SEASON",
+        "WINTER"
+    ]
+}

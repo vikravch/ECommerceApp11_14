@@ -13,7 +13,6 @@ const Category = (props:any) => {
     const categoriesList = useSelector<Store, Array<ClothingCategory>>(state => state.categoryPage.CategoriesList)
 
     useEffect(() => {
-       // getCategoriesList url/categories
         dispatch(getCategoriesList())
     }, []);
 

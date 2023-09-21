@@ -1,7 +1,8 @@
 import {Dispatch} from "react";
 import api_client from "../../../../../general/data/api_client";
-import {ApiResponseCategoryList} from "../../../../../general/dto/APIResponseTypes";
-import {SET_CATEGORY_LIST} from "../../../redux/asyncActions";
+import {ApiResponseCategoryList, ApiSeasonsList} from "../../../../../general/dto/APIResponseTypes";
+import {SET_CATEGORY_LIST, SET_SEASONS_LIST} from "../../../redux/asyncActions";
+import {seasonsList} from "../../../constants";
 
 
 const headers = {
@@ -13,8 +14,13 @@ export const setCategories = (data: ApiResponseCategoryList ) => ({
     payload: data
 });
 
+export const setSeasons = (data: string[] ) => ({
+    type: SET_SEASONS_LIST,
+    payload: data
+});
+
 export const getCategoriesList = (): any => async (dispatch: Dispatch<any>) => {
-   // dispatch(getCategoriesList());
+
     try {
         console.log("BEFORE getCatList");
         const response = await api_client.get<ApiResponseCategoryList>(`/products/categories`, {headers});
@@ -34,5 +40,30 @@ export const getCategoriesList = (): any => async (dispatch: Dispatch<any>) => {
            // dispatch(setCategories(categoryData); // not setting
            // resolve(new ApiResponseCategoryList(categoryData));
         //})
+    }
+}
+
+export const getSeasonsList = (): any => async (dispatch: Dispatch<any>) => {
+
+    try {
+        console.log("BEFORE getSeasonList");
+        const response = await api_client.get<ApiSeasonsList>(`/products/seasons`, {headers});
+        console.log("after getSeasonList");
+        console.log(response.data);
+        console.log(response);
+
+        dispatch(setSeasons(response.data.seasons))
+        return response.data;
+    } catch (error: any) {
+        console.log("ERROR: ");
+        console.log(error.message);
+      //  throw error;
+
+         return new Promise<ApiSeasonsList>((resolve) => {
+         console.log("get seasons list - setting the FAKE list");
+        const fakeData = new ApiSeasonsList(seasonsList)
+        dispatch(setSeasons(fakeData.seasons))
+        resolve(new ApiSeasonsList(fakeData));
+        })
     }
 }

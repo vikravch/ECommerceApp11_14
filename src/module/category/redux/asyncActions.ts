@@ -8,6 +8,7 @@ import {categoryProductsFake} from "../fakeData/productsFake";
 export const PRODUCTS_LOAD = "products_load";
 export const SET_CATEGORY = "set_category";
 export const SET_CATEGORY_LIST = "set_category_list";
+export const SET_SEASONS_LIST = "set_seasons_list"
 export const SET_SORT = "set_sort";
 export const PUT_PRODUCTS = "put_products"
 export const SET_CURRENT_CATEGORY_PAGE = "change_pagination_category_page"
