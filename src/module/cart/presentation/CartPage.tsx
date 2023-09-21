@@ -1,11 +1,9 @@
-import React, {ChangeEvent, useEffect} from "react";
+import React, {ChangeEvent} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Store} from "../../../general/redux/storeTypes";
 import {
     changeCountAction,
-    changeSizeAction, deleteFromCart, fillCartOnServer, getCart,
-    removeFromCartAction
-} from "../redux/asyncActions";
+    changeSizeAction, deleteFromCart} from "../redux/asyncActions";
 import CartProduct from "../domain/model/CartProduct";
 import {Link} from "react-router-dom";
 import AlsoLike from "../../product_page/presentation/AlsoLike";
@@ -27,7 +25,6 @@ import User from "../../login/domain/model/typesUserPage";
 
 const CartPage:React.FC = () => {
 
-    const isLoggedIn = useSelector<Store, boolean>(state => state.loginPage.isLoggedIn);
     const cartItems = useSelector<Store, Array<CartProduct>>(state => state.cartPage.cartItems)
     const total = useSelector<Store, number>(state => state.cartPage.cartTotal)
     const count = useSelector<Store, number>(state => state.cartPage.cartItems.length)
@@ -39,32 +36,6 @@ const CartPage:React.FC = () => {
     // TODO - line 94 check stock quantity
     //TODO - items from state to fillCart Action
     //
-
-    function transformCartItems (cartItems: Array<CartProduct>) {
-        const items = cartItems.map((el) => {
-            return {
-                product_id: el.product_id,
-                size: el.size,
-            };
-        })
-        return items
-    }
-    const fillCartItems = transformCartItems(cartItems)
-
-    useEffect(() => {
-        if(isLoggedIn) {
-
-            if (cartItems.length > 0) {
-                dispatch(fillCartOnServer(user.token, user.refreshToken, fillCartItems))
-                //  dispatch(getCart(user.token, user.refreshToken))
-            }
-            if (cartItems.length < 1) {
-                dispatch(getCart(user.token, user.refreshToken))
-            }
-        }
-    }, [isLoggedIn ]);
-
-
 
 
     if (count === 0) return (
